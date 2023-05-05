@@ -31,6 +31,7 @@ class ListarLojaService {
                     referencia: true,
                     logo: true,
                     whatsapp: true,
+                    vendedores: true,
                     produtos: {
                         select: {
                             id: true,
