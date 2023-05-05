@@ -29,6 +29,7 @@ import { ListarServicosController } from './controllers/servico/ListarServicosCo
 import { DetalheProdutoController } from './controllers/produto/DetalheProdutoController';
 
 import { DeletarProdutoController } from './controllers/produto/DeleteProductController';
+import { DeletarVendedorController } from './controllers/vendedor/DeletarVendedorController';
 
 import { CriarServicoController } from './controllers/servico/CriarServicoController';
 
@@ -57,7 +58,7 @@ rotas.get('/me', Authenticator, new MeLojaController().handle)
 
 //Vendedor
 rotas.post('/vendedor', Authenticator, uploadUser.single('foto'), new CriarVendedorController().handle)
-
+rotas.delete('/vendedor', Authenticator, new DeletarVendedorController().handle)
 
 //Servicos
 rotas.post('/servico', uploadUser.single('foto'), uploadUser.array('imagens'), new CriarServicoController().handle)

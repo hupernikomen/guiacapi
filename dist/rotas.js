@@ -26,6 +26,7 @@ const AtualizarServicoController_1 = require("./controllers/servico/AtualizarSer
 const ListarServicosController_1 = require("./controllers/servico/ListarServicosController");
 const DetalheProdutoController_1 = require("./controllers/produto/DetalheProdutoController");
 const DeleteProductController_1 = require("./controllers/produto/DeleteProductController");
+const DeletarVendedorController_1 = require("./controllers/vendedor/DeletarVendedorController");
 const CriarServicoController_1 = require("./controllers/servico/CriarServicoController");
 const authenticator_1 = require("./middlewares/authenticator");
 const uploadUser = (0, multer_1.default)({
@@ -46,6 +47,7 @@ rotas.put('/loja', authenticator_1.Authenticator, uploadUser.single('logo'), new
 rotas.get('/me', authenticator_1.Authenticator, new MeLojaController_1.MeLojaController().handle);
 //Vendedor
 rotas.post('/vendedor', authenticator_1.Authenticator, uploadUser.single('foto'), new CriarVendedorController_1.CriarVendedorController().handle);
+rotas.delete('/vendedor', authenticator_1.Authenticator, new DeletarVendedorController_1.DeletarVendedorController().handle);
 //Servicos
 rotas.post('/servico', uploadUser.single('foto'), uploadUser.array('imagens'), new CriarServicoController_1.CriarServicoController().handle);
 rotas.put('/servico', new AtualizarServicoController_1.AtualizarServicoController().handle);
