@@ -9,6 +9,7 @@ class MeLojaService {
             select: {
                 id: true,
                 nome: true,
+                latlng:true,
                 bio: true,
                 ativo: true,
                 produtos: true,
