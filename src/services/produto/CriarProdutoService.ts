@@ -4,7 +4,6 @@ interface ProductRequest {
   nome: string;
   descricao: string;
   preco: string;
-  oferta: string;
   tamanho: string;
   cor: string;
   imagens: object,
@@ -17,7 +16,6 @@ class CriarProdutoService {
     nome,
     descricao,
     preco,
-    oferta,
     tamanho,
     cor,
     imagens,
@@ -31,7 +29,6 @@ class CriarProdutoService {
           nome,
           descricao,
           preco,
-          oferta,
           tamanho,
           cor,
           imagens,

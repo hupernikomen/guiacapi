@@ -15,19 +15,25 @@ class ListarProdutosService {
         id: true,
         nome: true,
         preco: true,
-        descricao:true,
-        tamanho:true,
+        descricao: true,
+        tamanho: true,
         oferta: true,
         imagens: true,
-        createdAt:true,
-        updatedAt:true,
-        categoria:{
-          select:{
-            id:true,
-            nome:true
+        createdAt: true,
+        updatedAt: true,
+        categoria: {
+          select: {
+            id: true,
+            nome: true
           }
         },
-        lojaID:true,
+        loja: {
+          select: {
+            id: true,
+            nome: true
+          }
+        },
+
 
       },
     });

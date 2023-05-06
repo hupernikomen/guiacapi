@@ -42,7 +42,12 @@ class ListarProdutosService {
                             nome: true
                         }
                     },
-                    lojaID: true,
+                    loja: {
+                        select: {
+                            id: true,
+                            nome: true
+                        }
+                    },
                 },
             });
             return produto;
