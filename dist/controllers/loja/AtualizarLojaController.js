@@ -17,7 +17,6 @@ class AtualizarLojaController {
             const lojaID = req.query.lojaID;
             const { ativo, nome, whatsapp, bio, endereco, bairro, referencia, latlng, entrega } = req.body;
             const file = req.file;
-            const boo = entrega === 'true';
             const atualizarLojaService = new AtualizarLojaService_1.AtualizarLojaService();
             const data = yield atualizarLojaService.execute({
                 lojaID,
@@ -30,7 +29,7 @@ class AtualizarLojaController {
                 bairro,
                 referencia,
                 latlng,
-                entrega: boo
+                entrega
             });
             return res.json(data);
         });

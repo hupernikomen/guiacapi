@@ -30,13 +30,13 @@ class AtualizarLojaService {
 
     }: lojaDataRequest) {
 
-        const usuario = await prismaClient.loja.findUnique({
+        const loja = await prismaClient.loja.findUnique({
             where: {
                 id: lojaID
             }
         })
 
-        if (!usuario) {
+        if (!loja) {
             throw new Error("Ops, infelizmente não encontramos!");
 
         }

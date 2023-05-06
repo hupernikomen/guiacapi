@@ -18,8 +18,6 @@ class AtualizarLojaController {
 
         const file = req.file
 
-        const boo = entrega === 'true'
-
         const atualizarLojaService = new AtualizarLojaService();
 
         const data = await atualizarLojaService.execute({
@@ -33,7 +31,7 @@ class AtualizarLojaController {
             bairro,
             referencia,
             latlng,
-            entrega: boo
+            entrega
 
         })
 

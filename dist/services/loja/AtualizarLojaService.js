@@ -17,12 +17,12 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class AtualizarLojaService {
     execute({ lojaID, ativo, logo, nome, whatsapp, bio, endereco, bairro, referencia, latlng, entrega }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const usuario = yield prisma_1.default.loja.findUnique({
+            const loja = yield prisma_1.default.loja.findUnique({
                 where: {
                     id: lojaID
                 }
             });
-            if (!usuario) {
+            if (!loja) {
                 throw new Error("Ops, infelizmente não encontramos!");
             }
             const data = yield prisma_1.default.loja.update({
