@@ -34,8 +34,6 @@ class ListarProdutosService {
                     tamanho: true,
                     oferta: true,
                     imagens: true,
-                    createdAt: true,
-                    updatedAt: true,
                     categoria: {
                         select: {
                             id: true,
@@ -45,7 +43,8 @@ class ListarProdutosService {
                     loja: {
                         select: {
                             id: true,
-                            nome: true
+                            nome: true,
+                            entrega: true
                         }
                     },
                 },
