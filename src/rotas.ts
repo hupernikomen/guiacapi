@@ -10,7 +10,7 @@ import { CriarRegiaoController } from './controllers/regiao/CriarRegiaoControlle
 import { CriarVendedorController } from './controllers/vendedor/CriarVendedorController';
 
 import { AuthLojaController } from './controllers/auth/AuthUserController'
-import { MeLojaController } from './controllers/loja/MeLojaController';
+// import { MeLojaController } from './controllers/loja/MeLojaController';
 
 import { AtualizarLojaController } from './controllers/loja/AtualizarLojaController';
 import { AtualizarProdutoController } from './controllers/produto/AtualizarProdutoController';
@@ -56,7 +56,7 @@ rotas.post('/esquecisenha', new EsqueciSenhaController().handle)
 
 rotas.post('/loja', new CriarLojaController().handle)
 rotas.put('/loja', Authenticator, uploadUser.single('logo'), new AtualizarLojaController().handle)
-rotas.get('/me', Authenticator, new MeLojaController().handle)
+// rotas.get('/me', Authenticator, new MeLojaController().handle)
 
 //Vendedor
 rotas.post('/vendedor', Authenticator, uploadUser.single('foto'), new CriarVendedorController().handle)
