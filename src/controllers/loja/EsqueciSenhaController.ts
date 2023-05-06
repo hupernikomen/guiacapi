@@ -13,13 +13,13 @@ class EsqueciSenhaController {
             novasenha,
         })
 
-        if(!loja) {
+        if (!loja) {
             throw new Error("Ops, algo deu errado!");
-            
+
         }
 
         return res.status(200).json({
-            message: "Cadastrado com Sucesso"
+            novasenha
         })
     }
 }
