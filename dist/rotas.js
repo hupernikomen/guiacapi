@@ -29,6 +29,7 @@ const DeleteProductController_1 = require("./controllers/produto/DeleteProductCo
 const DeletarVendedorController_1 = require("./controllers/vendedor/DeletarVendedorController");
 const CriarServicoController_1 = require("./controllers/servico/CriarServicoController");
 const authenticator_1 = require("./middlewares/authenticator");
+const EsqueciSenhaController_1 = require("./controllers/loja/EsqueciSenhaController");
 const uploadUser = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageTypes.s3 : multer_2.storageTypes.local,
@@ -42,6 +43,7 @@ exports.rotas = rotas;
 rotas.get('/lojas', new ListarLojasController_1.ListarLojasController().handle); //Front [com filtro de regiao]
 rotas.get('/loja', new ListarLojaController_1.ListarLojaController().handle); //Front
 rotas.post('/login', new AuthUserController_1.AuthLojaController().handle); //Front
+rotas.post('/esquecisenha', new EsqueciSenhaController_1.EsqueciSenhaController().handle);
 rotas.post('/loja', new CriarLojaController_1.CriarLojaController().handle);
 rotas.put('/loja', authenticator_1.Authenticator, uploadUser.single('logo'), new AtualizarLojaController_1.AtualizarLojaController().handle);
 rotas.get('/me', authenticator_1.Authenticator, new MeLojaController_1.MeLojaController().handle);

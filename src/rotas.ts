@@ -34,6 +34,7 @@ import { DeletarVendedorController } from './controllers/vendedor/DeletarVendedo
 import { CriarServicoController } from './controllers/servico/CriarServicoController';
 
 import { Authenticator } from './middlewares/authenticator';
+import { EsqueciSenhaController } from './controllers/loja/EsqueciSenhaController';
 
 
 const uploadUser = multer({
@@ -50,6 +51,7 @@ const rotas = Router();
 rotas.get('/lojas', new ListarLojasController().handle)  //Front [com filtro de regiao]
 rotas.get('/loja', new ListarLojaController().handle)  //Front
 rotas.post('/login', new AuthLojaController().handle)  //Front
+rotas.post('/esquecisenha', new EsqueciSenhaController().handle)
 
 
 rotas.post('/loja', new CriarLojaController().handle)
