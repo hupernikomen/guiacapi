@@ -37,7 +37,8 @@ class BuscarProdutosService {
                     loja: {
                         select: {
                             id: true,
-                            nome: true
+                            nome: true,
+                            entrega: true
                         }
                     }
                 },
