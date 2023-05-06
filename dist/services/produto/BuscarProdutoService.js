@@ -25,15 +25,8 @@ class BuscarProdutosService {
                     id: true,
                     nome: true,
                     preco: true,
-                    descricao: true,
                     oferta: true,
                     imagens: true,
-                    categoria: {
-                        select: {
-                            id: true,
-                            nome: true
-                        }
-                    },
                     loja: {
                         select: {
                             id: true,

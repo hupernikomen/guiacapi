@@ -31,10 +31,15 @@ class ListarPorCategoriaService {
                     id: true,
                     nome: true,
                     preco: true,
-                    descricao: true,
                     oferta: true,
                     imagens: true,
-                    lojaID: true,
+                    loja: {
+                        select: {
+                            id: true,
+                            nome: true,
+                            entrega: true
+                        }
+                    },
                 },
             });
             return categoria;

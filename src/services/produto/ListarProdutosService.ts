@@ -19,12 +19,6 @@ class ListarProdutosService {
         tamanho: true,
         oferta: true,
         imagens: true,
-        categoria: {
-          select: {
-            id: true,
-            nome: true
-          }
-        },
         loja: {
           select: {
             id: true,

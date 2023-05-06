@@ -19,7 +19,12 @@ class DetalheProdutoService {
         tamanho: true,
         imagens: true,
         createdAt:true,
-        loja: true,
+        loja: {
+          select:{
+            id:true,
+            nome:true,
+          }
+        },
         categoria: {
           select: {
             id: true,
