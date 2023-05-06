@@ -33,7 +33,7 @@ export function fileFilter (req, file, callback) {
   let errorMessage = '';
   const ext = path.extname(file.originalname);
 
-  if(ext !== '.png' && ext !== '.jpg' && ext !== '.jpeg' && ext !== '.webp') {
+  if(ext !== '.png' && ext !== '.jpg' && ext !== '.jpeg') {
       return callback(new Error('Only images are allowed'))
   }
 
