@@ -33,9 +33,9 @@ export function fileFilter (req, file, callback) {
   let errorMessage = '';
   const ext = path.extname(file.originalname);
 
-  if(ext !== '.png' && ext !== '.jpg' && ext !== '.jpeg') {
-      return callback(new Error('Only images are allowed'))
-  }
+  // if(ext !== '.png' && ext !== '.jpg' && ext !== '.jpeg') {
+  //     return callback(new Error('Only images are allowed'))
+  // }
 
   if(errorMessage) {
     console.log(errorMessage);
