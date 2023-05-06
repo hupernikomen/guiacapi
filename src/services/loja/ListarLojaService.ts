@@ -24,25 +24,16 @@ class ListarLojaService {
                 logo: true,
                 whatsapp: true,
                 vendedores:true,
+                regiao: true,
+                entrega:true,
                 produtos: {
                     select: {
                         id: true,
                         nome: true,
-                        descricao: true,
                         preco: true,
-                        oferta: true,
-                        tamanho: true,
                         imagens: true,
-                        categoria: {
-                          select: {
-                            id: true,
-                            nome: true,
-                          },
-                        },
                       },
                 },
-                regiao: true,
-                entrega:true
             }
         })
 
