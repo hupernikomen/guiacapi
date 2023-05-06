@@ -56,7 +56,7 @@ rotas.post('/esquecisenha', new EsqueciSenhaController().handle)
 
 rotas.post('/loja', new CriarLojaController().handle)
 rotas.put('/loja', Authenticator, uploadUser.single('logo'), new AtualizarLojaController().handle)
-rotas.get('/me', new MeLojaController().handle)
+rotas.get('/me', Authenticator, new MeLojaController().handle)
 
 //Vendedor
 rotas.post('/vendedor', Authenticator, uploadUser.single('foto'), new CriarVendedorController().handle)

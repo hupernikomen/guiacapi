@@ -46,7 +46,7 @@ rotas.post('/login', new AuthUserController_1.AuthLojaController().handle); //Fr
 rotas.post('/esquecisenha', new EsqueciSenhaController_1.EsqueciSenhaController().handle);
 rotas.post('/loja', new CriarLojaController_1.CriarLojaController().handle);
 rotas.put('/loja', authenticator_1.Authenticator, uploadUser.single('logo'), new AtualizarLojaController_1.AtualizarLojaController().handle);
-rotas.get('/me', new MeLojaController_1.MeLojaController().handle);
+rotas.get('/me', authenticator_1.Authenticator, new MeLojaController_1.MeLojaController().handle);
 //Vendedor
 rotas.post('/vendedor', authenticator_1.Authenticator, uploadUser.single('foto'), new CriarVendedorController_1.CriarVendedorController().handle);
 rotas.delete('/vendedor', authenticator_1.Authenticator, new DeletarVendedorController_1.DeletarVendedorController().handle);
