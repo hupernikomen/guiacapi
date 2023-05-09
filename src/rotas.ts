@@ -21,6 +21,7 @@ import { ListarProdutosController } from './controllers/produto/ListarProdutosCo
 import { ListarPorCategoriaController } from './controllers/produto/ListarPorCategoriaController';
 import { ListarRegioesController } from './controllers/regiao/ListarRegioesController';
 import { ListarLojaController } from './controllers/loja/ListarLojaController';
+import { ListarVendedoresController } from './controllers/vendedor/ListarVendedoresController';
 
 
 import { AtualizarServicoController } from './controllers/servico/AtualizarServicoController';
@@ -56,11 +57,12 @@ rotas.post('/esquecisenha', new EsqueciSenhaController().handle)
 
 rotas.post('/loja', new CriarLojaController().handle)
 rotas.put('/loja', Authenticator, uploadUser.single('logo'), new AtualizarLojaController().handle)
-rotas.get('/me', Authenticator, new MeLojaController().handle)
+rotas.get('/me', Authenticator, new MeLojaController().handle) // Rota para Controle
 
 //Vendedor
 rotas.post('/vendedor', Authenticator, uploadUser.single('foto'), new CriarVendedorController().handle)
 rotas.delete('/vendedor', Authenticator, new DeletarVendedorController().handle)
+rotas.get('/vendedores', new ListarVendedoresController().handle)
 
 //Servicos
 rotas.post('/servico', uploadUser.single('foto'), uploadUser.array('imagens'), new CriarServicoController().handle)

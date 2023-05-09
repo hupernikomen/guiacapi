@@ -22,6 +22,7 @@ const ListarProdutosController_1 = require("./controllers/produto/ListarProdutos
 const ListarPorCategoriaController_1 = require("./controllers/produto/ListarPorCategoriaController");
 const ListarRegioesController_1 = require("./controllers/regiao/ListarRegioesController");
 const ListarLojaController_1 = require("./controllers/loja/ListarLojaController");
+const ListarVendedoresController_1 = require("./controllers/vendedor/ListarVendedoresController");
 const AtualizarServicoController_1 = require("./controllers/servico/AtualizarServicoController");
 const ListarServicosController_1 = require("./controllers/servico/ListarServicosController");
 const DetalheProdutoController_1 = require("./controllers/produto/DetalheProdutoController");
@@ -46,10 +47,11 @@ rotas.post('/login', new AuthUserController_1.AuthLojaController().handle); //Fr
 rotas.post('/esquecisenha', new EsqueciSenhaController_1.EsqueciSenhaController().handle);
 rotas.post('/loja', new CriarLojaController_1.CriarLojaController().handle);
 rotas.put('/loja', authenticator_1.Authenticator, uploadUser.single('logo'), new AtualizarLojaController_1.AtualizarLojaController().handle);
-rotas.get('/me', authenticator_1.Authenticator, new MeLojaController_1.MeLojaController().handle);
+rotas.get('/me', authenticator_1.Authenticator, new MeLojaController_1.MeLojaController().handle); // Rota para Controle
 //Vendedor
 rotas.post('/vendedor', authenticator_1.Authenticator, uploadUser.single('foto'), new CriarVendedorController_1.CriarVendedorController().handle);
 rotas.delete('/vendedor', authenticator_1.Authenticator, new DeletarVendedorController_1.DeletarVendedorController().handle);
+rotas.get('/vendedores', new ListarVendedoresController_1.ListarVendedoresController().handle);
 //Servicos
 rotas.post('/servico', uploadUser.single('foto'), uploadUser.array('imagens'), new CriarServicoController_1.CriarServicoController().handle);
 rotas.put('/servico', new AtualizarServicoController_1.AtualizarServicoController().handle);
