@@ -16,10 +16,10 @@ class ListarVendedoresController {
         return __awaiter(this, void 0, void 0, function* () {
             const lojaID = req.query.lojaID;
             const listarVendedoresService = new ListarVendedoresService_1.ListarVendedoresService();
-            const lojas = yield listarVendedoresService.execute({
+            const vendedores = yield listarVendedoresService.execute({
                 lojaID
             });
-            return res.json(lojas);
+            return res.json(vendedores);
         });
     }
 }

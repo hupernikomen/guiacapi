@@ -9,10 +9,10 @@ class ListarVendedoresController {
 
         const listarVendedoresService = new ListarVendedoresService()
 
-        const lojas = await listarVendedoresService.execute({
+        const vendedores = await listarVendedoresService.execute({
             lojaID
         })
-        return res.json(lojas)
+        return res.json(vendedores)
 
     }
 }
