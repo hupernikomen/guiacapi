@@ -19,9 +19,11 @@ class ListarVendedoresService {
         return __awaiter(this, void 0, void 0, function* () {
             const vendedores = yield prisma_1.default.vendedor.findMany({
                 where: {
-                    id: lojaID
+                    // id: lojaID,
+                    lojaID: lojaID
                 },
                 select: {
+                    lojaID: true,
                     id: true,
                     nome: true,
                     whatsapp: true,
