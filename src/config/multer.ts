@@ -34,9 +34,9 @@ export function fileFilter (req, file, callback) {
   const ext = path.extname(file.originalname);
 
 
-  if(ext !== '.PNG' && ext !== '.JPG' && ext !== '.JPEG' && ext !== '.WEBP') {
-      return callback(new Error('Formato de arquivo não aceito'))
-  }
+  // if(ext !== '.PNG' && ext !== '.JPG' && ext !== '.JPEG' && ext !== '.WEBP') {
+  //     return callback(new Error('Formato de arquivo não aceito'))
+  // }
   
 
   if(errorMessage) {
