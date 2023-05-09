@@ -15,7 +15,8 @@ class CriarProdutoController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const criarProdutoService = new CriarProdutoService_1.CriarProdutoService();
-            const { nome, descricao, preco, tamanho, cor, categoriaID, lojaID } = req.body;
+            const lojaID = req.query.lojaID;
+            const { nome, descricao, preco, tamanho, cor, categoriaID } = req.body;
             if (!req.files) {
                 throw new Error("Ops.. algo deu errado!");
             }

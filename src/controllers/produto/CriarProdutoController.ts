@@ -4,15 +4,14 @@ import { CriarProdutoService } from "../../services/produto/CriarProdutoService"
 class CriarProdutoController {
   async handle(req: Request, res: Response) {
     const criarProdutoService = new CriarProdutoService();
-
+    const lojaID = req.query.lojaID as string
     const {
       nome,
       descricao,
       preco,
       tamanho,
       cor,
-      categoriaID,
-      lojaID } =
+      categoriaID } =
       req.body;
 
     if (!req.files) {
