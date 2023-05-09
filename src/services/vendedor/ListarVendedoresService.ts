@@ -13,8 +13,9 @@ class ListarVendedoresService {
             where: {
                 id: lojaID
             },
-            
+
             select: {
+                id:true,
                 nome: true,
                 whatsapp: true,
                 foto: true
