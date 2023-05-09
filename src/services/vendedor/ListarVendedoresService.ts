@@ -13,7 +13,7 @@ class ListarVendedoresService {
             where: {
                 id: lojaID
             },
-
+            
             select: {
                 nome: true,
                 whatsapp: true,
