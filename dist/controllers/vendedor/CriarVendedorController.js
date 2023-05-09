@@ -14,7 +14,8 @@ const CriarVendedorService_1 = require("../../services/vendedor/CriarVendedorSer
 class CriarVendedorController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { nome, whatsapp, lojaID } = req.body;
+            const { nome, whatsapp } = req.body;
+            const lojaID = req.query.lojaID;
             if (!req.file) {
                 throw new Error("Ops.. algo deu errado!");
             }

@@ -3,7 +3,8 @@ import { CriarVendedorService } from '../../services/vendedor/CriarVendedorServi
 
 class CriarVendedorController {
     async handle(req: Request, res: Response) {
-        const { nome, whatsapp,lojaID } = req.body
+        const { nome, whatsapp } = req.body
+        const lojaID = req.query.lojaID as string
 
         if (!req.file) {
             throw new Error("Ops.. algo deu errado!");
