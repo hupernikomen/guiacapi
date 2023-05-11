@@ -11,6 +11,7 @@ class MeLojaService {
                 nome: true,
                 latlng:true,
                 bio: true,
+                bairro:true,
                 ativo: true,
                 produtos: true,
                 whatsapp: true,
