@@ -15,6 +15,7 @@ class MeLojaService {
                 ativo: true,
                 produtos: true,
                 whatsapp: true,
+                referencia:true,
                 logo: true,
                 endereco:true,
                 entrega:true,
