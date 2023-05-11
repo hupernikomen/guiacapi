@@ -14,16 +14,16 @@ datasource db {
 
 model Servico {
   id            String   @id @default(uuid())
-  nomeServico   String
-  nome          String
+  nomeServico   String   @default("")
+  nome          String   @default("")
   foto          Json[]
   arrPortfolio  Json[]
   listaServicos String[]
-  whatsapp      String
-  email         String
+  whatsapp      String   @default("")
+  email         String   @default("")
   domicilio     Boolean  @default(false)
-  endereco      String
-  bio           String
+  endereco      String   @default("")
+  bio           String   @default("")
   ativo         Boolean  @default(false)
   categoria     String   @default("")
 
@@ -44,13 +44,13 @@ model Loja {
   logo Json[]
 
   ativo    Boolean @default(false)
-  nome     String?
-  whatsapp String?
-  bio      String?
+  nome     String? @default("")
+  whatsapp String? @default("")
+  bio      String? @default("")
 
-  endereco   String?
-  bairro     String?
-  referencia String?
+  endereco   String? @default("")
+  bairro     String? @default("")
+  referencia String? @default("")
   latlng     Json?
 
   entrega Boolean @default(false)
@@ -70,8 +70,8 @@ model Loja {
 model Vendedor {
   id String @id @default(uuid())
 
-  nome     String
-  whatsapp String
+  nome     String @default("")
+  whatsapp String @default("")
   foto     Json[]
 
   loja   Loja   @relation(fields: [lojaID], references: [id])
@@ -85,9 +85,9 @@ model Vendedor {
 
 model Produto {
   id        String   @id @default(uuid())
-  nome      String
-  descricao String
-  preco     String
+  nome      String   @default("")
+  descricao String   @default("")
+  preco     String   @default("")
   oferta    String   @default("")
   tamanho   String[]
   cor       String[]
