@@ -85,6 +85,7 @@ model Vendedor {
 
 model Produto {
   id        String   @id @default(uuid())
+  cod       String?  @default("")
   nome      String   @default("")
   descricao String   @default("")
   preco     String   @default("")
