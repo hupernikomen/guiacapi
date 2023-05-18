@@ -8,6 +8,7 @@ import { CriarCategoriaController } from './controllers/categoria/CriarCategoria
 import { CriarProdutoController } from './controllers/produto/CriarProdutoController';
 import { CriarRegiaoController } from './controllers/regiao/CriarRegiaoController';
 import { CriarVendedorController } from './controllers/vendedor/CriarVendedorController';
+import { CriarSubCategoriaController } from './controllers/subcategoria/CriarSubCategoriaController';
 
 import { AuthLojaController } from './controllers/auth/AuthUserController'
 import { MeLojaController } from './controllers/loja/MeLojaController';
@@ -72,6 +73,7 @@ rotas.get('/servicos', new ListarServicosController().handle)
 // Categoria
 rotas.get('/categorias', new ListarCategoriasController().handle)  //Front
 rotas.post('/categoria', new CriarCategoriaController().handle)
+rotas.post('/subcategoria', new CriarSubCategoriaController().handle)
 
 
 // Produto

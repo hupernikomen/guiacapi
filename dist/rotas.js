@@ -12,6 +12,7 @@ const CriarCategoriasController_1 = require("./controllers/categoria/CriarCatego
 const CriarProdutoController_1 = require("./controllers/produto/CriarProdutoController");
 const CriarRegiaoController_1 = require("./controllers/regiao/CriarRegiaoController");
 const CriarVendedorController_1 = require("./controllers/vendedor/CriarVendedorController");
+const CriarSubCategoriaController_1 = require("./controllers/subcategoria/CriarSubCategoriaController");
 const AuthUserController_1 = require("./controllers/auth/AuthUserController");
 const MeLojaController_1 = require("./controllers/loja/MeLojaController");
 const AtualizarLojaController_1 = require("./controllers/loja/AtualizarLojaController");
@@ -59,6 +60,7 @@ rotas.get('/servicos', new ListarServicosController_1.ListarServicosController()
 // Categoria
 rotas.get('/categorias', new ListarCategoriasController_1.ListarCategoriasController().handle); //Front
 rotas.post('/categoria', new CriarCategoriasController_1.CriarCategoriaController().handle);
+rotas.post('/subcategoria', new CriarSubCategoriaController_1.CriarSubCategoriaController().handle);
 // Produto
 rotas.get('/produtos', new ListarProdutosController_1.ListarProdutosController().handle); //Front [com filtro de regiao]
 rotas.post('/produto', authenticator_1.Authenticator, uploadUser.array('files', 5), new CriarProdutoController_1.CriarProdutoController().handle);
