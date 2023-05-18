@@ -25,16 +25,14 @@ class DetalheProdutoService {
             nome:true,
           }
         },
+        subcategoriaID:true,
         categoria: {
           select: {
             id: true,
             nome: true,
-            subcategoria:{
-              select:{
-                nome:true
-              }
-            }
+          
           },
+          
         },
       },
     });
