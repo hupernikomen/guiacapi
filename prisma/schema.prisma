@@ -107,12 +107,23 @@ model Produto {
 }
 
 model Categoria {
-  id   String @id @default(uuid())
-  nome String
-
+  id           String         @id @default(uuid())
+  nome         String
+  
+  subcategoria SubCategoria[]
   produto Produto[]
 
   @@map("categorias")
+}
+
+model SubCategoria {
+  id   String @id @default(uuid())
+  nome String
+
+  categoria   Categoria @relation(fields: [categoriaID], references: [id])
+  categoriaID String
+
+  @@map("subcategorias")
 }
 
 model Regiao {
