@@ -10,7 +10,7 @@ const path_1 = __importDefault(require("path"));
 const multer_s3_1 = __importDefault(require("multer-s3"));
 const aws_sdk_1 = __importDefault(require("aws-sdk"));
 const path_2 = require("path");
-console.log(process.env.BUCKETEER_BUCKET_NAME, 'teste');
+require('dotenv').config();
 let s3 = new aws_sdk_1.default.S3({
     accessKeyId: process.env.ACCESS_KEY_ID,
     secretAccessKey: process.env.SECRET_ACCESS_KEY,
@@ -57,7 +57,7 @@ exports.storageTypes = {
     }),
     s3: (0, multer_s3_1.default)({
         s3: s3,
-        bucket: "guiaapi-s3bucket",
+        bucket: process.env.BUCKETEER_BUCKET_NAME,
         contentType: multer_s3_1.default.AUTO_CONTENT_TYPE,
         acl: "public-read",
         key: (req, file, cb) => {
