@@ -25,7 +25,6 @@ class DetalheProdutoService {
             nome:true,
           }
         },
-        subcategoriaID:true,
         categoria: {
           select: {
             id: true,
