@@ -24,6 +24,7 @@ const ListarPorCategoriaController_1 = require("./controllers/produto/ListarPorC
 const ListarRegioesController_1 = require("./controllers/regiao/ListarRegioesController");
 const ListarLojaController_1 = require("./controllers/loja/ListarLojaController");
 const ListarVendedoresController_1 = require("./controllers/vendedor/ListarVendedoresController");
+const ListarSubCategoriasController_1 = require("./controllers/subcategoria/ListarSubCategoriasController");
 const AtualizarServicoController_1 = require("./controllers/servico/AtualizarServicoController");
 const ListarServicosController_1 = require("./controllers/servico/ListarServicosController");
 const DetalheProdutoController_1 = require("./controllers/produto/DetalheProdutoController");
@@ -63,6 +64,7 @@ rotas.get('/categorias', new ListarCategoriasController_1.ListarCategoriasContro
 rotas.post('/categoria', new CriarCategoriasController_1.CriarCategoriaController().handle);
 rotas.post('/subcategoria', new CriarSubCategoriaController_1.CriarSubCategoriaController().handle);
 rotas.delete('/subcategoria', new DeletarSubCategoriaController_1.DeletarSubCategoriaController().handle);
+rotas.get('/subcategorias', new ListarSubCategoriasController_1.ListarSubCategoriasController().handle);
 // Produto
 rotas.get('/produtos', new ListarProdutosController_1.ListarProdutosController().handle); //Front [com filtro de regiao]
 rotas.post('/produto', authenticator_1.Authenticator, uploadUser.array('files', 5), new CriarProdutoController_1.CriarProdutoController().handle);

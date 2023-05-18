@@ -23,6 +23,7 @@ import { ListarPorCategoriaController } from './controllers/produto/ListarPorCat
 import { ListarRegioesController } from './controllers/regiao/ListarRegioesController';
 import { ListarLojaController } from './controllers/loja/ListarLojaController';
 import { ListarVendedoresController } from './controllers/vendedor/ListarVendedoresController';
+import { ListarSubCategoriasController } from './controllers/subcategoria/ListarSubCategoriasController';
 
 
 import { AtualizarServicoController } from './controllers/servico/AtualizarServicoController';
@@ -76,6 +77,7 @@ rotas.get('/categorias', new ListarCategoriasController().handle)  //Front
 rotas.post('/categoria', new CriarCategoriaController().handle)
 rotas.post('/subcategoria', new CriarSubCategoriaController().handle)
 rotas.delete('/subcategoria', new DeletarSubCategoriaController().handle)
+rotas.get('/subcategorias', new ListarSubCategoriasController().handle)
 
 
 // Produto
