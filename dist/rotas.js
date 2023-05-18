@@ -62,7 +62,7 @@ rotas.get('/servicos', new ListarServicosController_1.ListarServicosController()
 rotas.get('/categorias', new ListarCategoriasController_1.ListarCategoriasController().handle); //Front
 rotas.post('/categoria', new CriarCategoriasController_1.CriarCategoriaController().handle);
 rotas.post('/subcategoria', new CriarSubCategoriaController_1.CriarSubCategoriaController().handle);
-rotas.delete('subcategoria', new DeletarSubCategoriaController_1.DeletarSubCategoriaController().handle);
+rotas.delete('/subcategoria', new DeletarSubCategoriaController_1.DeletarSubCategoriaController().handle);
 // Produto
 rotas.get('/produtos', new ListarProdutosController_1.ListarProdutosController().handle); //Front [com filtro de regiao]
 rotas.post('/produto', authenticator_1.Authenticator, uploadUser.array('files', 5), new CriarProdutoController_1.CriarProdutoController().handle);

@@ -6,9 +6,9 @@ class DeletarSubCategoriaController {
   async handle(req: Request, res: Response) {
     const subcategoriaID = req.query.subcategoriaID as string
 
-    const deletarProduto = new DeletarSubCategoriaService()
+    const deletarSubCategoria = new DeletarSubCategoriaService()
 
-    await deletarProduto.execute({
+    await deletarSubCategoria.execute({
         subcategoriaID
     })
 

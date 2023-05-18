@@ -75,7 +75,7 @@ rotas.get('/servicos', new ListarServicosController().handle)
 rotas.get('/categorias', new ListarCategoriasController().handle)  //Front
 rotas.post('/categoria', new CriarCategoriaController().handle)
 rotas.post('/subcategoria', new CriarSubCategoriaController().handle)
-rotas.delete('subcategoria', new DeletarSubCategoriaController().handle)
+rotas.delete('/subcategoria', new DeletarSubCategoriaController().handle)
 
 
 // Produto

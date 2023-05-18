@@ -15,8 +15,8 @@ class DeletarSubCategoriaController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const subcategoriaID = req.query.subcategoriaID;
-            const deletarProduto = new DeteletarSubCategoriaService_1.DeletarSubCategoriaService();
-            yield deletarProduto.execute({
+            const deletarSubCategoria = new DeteletarSubCategoriaService_1.DeletarSubCategoriaService();
+            yield deletarSubCategoria.execute({
                 subcategoriaID
             });
             return res.status(200).json({
