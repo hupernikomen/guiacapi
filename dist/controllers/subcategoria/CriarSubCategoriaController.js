@@ -14,7 +14,8 @@ const CriarSubCategoriaService_1 = require("../../services/subcategoria/CriarSub
 class CriarSubCategoriaController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { nome, categoriaID } = req.body;
+            const { nome } = req.body;
+            const categoriaID = req.query.categoriaID;
             const criarSubCategoriaService = new CriarSubCategoriaService_1.CriarSubCategoriaService();
             const subcategoria = yield criarSubCategoriaService.execute({
                 nome,

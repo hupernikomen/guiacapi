@@ -4,7 +4,8 @@ import { CriarSubCategoriaService } from '../../services/subcategoria/CriarSubCa
 class CriarSubCategoriaController {
     async handle(req: Request, res: Response) {
 
-        const { nome, categoriaID } = req.body
+        const { nome } = req.body
+        const categoriaID = req.query.categoriaID as string
 
         const criarSubCategoriaService = new CriarSubCategoriaService();
 
