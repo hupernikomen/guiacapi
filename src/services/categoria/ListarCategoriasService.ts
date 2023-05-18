@@ -7,7 +7,12 @@ class ListarCategoriasService {
             select: {
                 id: true,
                 nome: true,
-                subcategoria:true,
+                subcategoria:{
+                    select:{
+                        id: true,
+                        nome: true
+                    }
+                },
                 _count:true
             }
         })
