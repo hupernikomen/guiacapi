@@ -1,15 +1,16 @@
 -- CreateTable
 CREATE TABLE "servicos" (
     "id" TEXT NOT NULL,
+    "nomeServico" TEXT NOT NULL DEFAULT '',
+    "nome" TEXT NOT NULL DEFAULT '',
     "foto" JSONB[],
-    "imgServicos" JSONB[],
-    "nome" TEXT NOT NULL,
-    "tipoServico" TEXT NOT NULL,
-    "whatsapp" TEXT NOT NULL,
-    "email" TEXT NOT NULL,
+    "arrPortfolio" JSONB[],
+    "listaServicos" TEXT[],
+    "whatsapp" TEXT NOT NULL DEFAULT '',
+    "email" TEXT NOT NULL DEFAULT '',
     "domicilio" BOOLEAN NOT NULL DEFAULT false,
-    "endereco" TEXT NOT NULL,
-    "bio" TEXT NOT NULL,
+    "endereco" TEXT NOT NULL DEFAULT '',
+    "bio" TEXT NOT NULL DEFAULT '',
     "ativo" BOOLEAN NOT NULL DEFAULT false,
     "categoria" TEXT NOT NULL DEFAULT '',
     "regiaoID" TEXT,
@@ -26,12 +27,12 @@ CREATE TABLE "lojas" (
     "senha" TEXT NOT NULL,
     "logo" JSONB[],
     "ativo" BOOLEAN NOT NULL DEFAULT false,
-    "nome" TEXT,
-    "whatsapp" TEXT,
-    "bio" TEXT,
-    "endereco" TEXT,
-    "bairro" TEXT,
-    "referencia" TEXT,
+    "nome" TEXT DEFAULT '',
+    "whatsapp" TEXT DEFAULT '',
+    "bio" TEXT DEFAULT '',
+    "endereco" TEXT DEFAULT '',
+    "bairro" TEXT DEFAULT '',
+    "referencia" TEXT DEFAULT '',
     "latlng" JSONB,
     "entrega" BOOLEAN NOT NULL DEFAULT false,
     "regiaoID" TEXT,
@@ -42,17 +43,32 @@ CREATE TABLE "lojas" (
 );
 
 -- CreateTable
+CREATE TABLE "vendedores" (
+    "id" TEXT NOT NULL,
+    "nome" TEXT NOT NULL DEFAULT '',
+    "whatsapp" TEXT NOT NULL DEFAULT '',
+    "foto" JSONB[],
+    "lojaID" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "vendedores_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "produtos" (
     "id" TEXT NOT NULL,
-    "nome" TEXT NOT NULL,
-    "descricao" TEXT NOT NULL,
-    "preco" TEXT NOT NULL,
+    "cod" TEXT DEFAULT '',
+    "nome" TEXT NOT NULL DEFAULT '',
+    "descricao" TEXT NOT NULL DEFAULT '',
+    "preco" TEXT NOT NULL DEFAULT '',
     "oferta" TEXT NOT NULL DEFAULT '',
-    "tamanho" TEXT,
+    "tamanho" TEXT[],
     "cor" TEXT[],
     "imagens" JSONB[],
     "lojaID" TEXT NOT NULL,
     "categoriaID" TEXT NOT NULL,
+    "subcategoriaID" TEXT NOT NULL DEFAULT '',
     "createdAt" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
 
@@ -65,6 +81,15 @@ CREATE TABLE "categorias" (
     "nome" TEXT NOT NULL,
 
     CONSTRAINT "categorias_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "subcategorias" (
+    "id" TEXT NOT NULL,
+    "nome" TEXT NOT NULL,
+    "categoriaID" TEXT NOT NULL,
+
+    CONSTRAINT "subcategorias_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -82,7 +107,13 @@ ALTER TABLE "servicos" ADD CONSTRAINT "servicos_regiaoID_fkey" FOREIGN KEY ("reg
 ALTER TABLE "lojas" ADD CONSTRAINT "lojas_regiaoID_fkey" FOREIGN KEY ("regiaoID") REFERENCES "regioes"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
+ALTER TABLE "vendedores" ADD CONSTRAINT "vendedores_lojaID_fkey" FOREIGN KEY ("lojaID") REFERENCES "lojas"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
 ALTER TABLE "produtos" ADD CONSTRAINT "produtos_lojaID_fkey" FOREIGN KEY ("lojaID") REFERENCES "lojas"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "produtos" ADD CONSTRAINT "produtos_categoriaID_fkey" FOREIGN KEY ("categoriaID") REFERENCES "categorias"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "subcategorias" ADD CONSTRAINT "subcategorias_categoriaID_fkey" FOREIGN KEY ("categoriaID") REFERENCES "categorias"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
