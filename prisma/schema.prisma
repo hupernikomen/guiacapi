@@ -100,7 +100,7 @@ model Produto {
   categoria   Categoria @relation(fields: [categoriaID], references: [id])
   categoriaID String
 
-  subcategoriaID String
+  subcategoriaID String @default("")
 
   createdAt DateTime? @default(now())
   updatedAt DateTime? @default(now())
