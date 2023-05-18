@@ -15,9 +15,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListarSubCategoriasService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class ListarSubCategoriasService {
-    execute() {
+    execute({ categoriaID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const subcategoria = yield prisma_1.default.subCategoria.findMany({
+                where: {
+                    categoriaID
+                },
                 select: {
                     id: true,
                     nome: true,

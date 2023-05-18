@@ -4,9 +4,13 @@ import { ListarSubCategoriasService } from '../../services/subcategoria/ListarSu
 
 class ListarSubCategoriasController {
     async handle(req: Request, res: Response) {
+
+        const categoriaID = req.query.categoriaID as string
         const listarSubCategoriasService = new ListarSubCategoriasService()
 
-        const subcategorias = await listarSubCategoriasService.execute()
+        const subcategorias = await listarSubCategoriasService.execute({
+            categoriaID
+        })
         return res.json(subcategorias)
 
     }

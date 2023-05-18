@@ -14,8 +14,11 @@ const ListarSubCategoriasService_1 = require("../../services/subcategoria/Listar
 class ListarSubCategoriasController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            const categoriaID = req.query.categoriaID;
             const listarSubCategoriasService = new ListarSubCategoriasService_1.ListarSubCategoriasService();
-            const subcategorias = yield listarSubCategoriasService.execute();
+            const subcategorias = yield listarSubCategoriasService.execute({
+                categoriaID
+            });
             return res.json(subcategorias);
         });
     }
