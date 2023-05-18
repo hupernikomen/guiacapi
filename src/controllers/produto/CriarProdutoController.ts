@@ -11,7 +11,9 @@ class CriarProdutoController {
       preco,
       tamanho,
       cor,
-      categoriaID } =
+      categoriaID,
+      subcategoriaID
+     } =
       req.body;
 
     if (!req.files) {
@@ -29,6 +31,7 @@ class CriarProdutoController {
         cor,
         imagens:files,
         categoriaID,
+        subcategoriaID,
         lojaID,
       })
 
