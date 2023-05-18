@@ -5,6 +5,8 @@ import multerS3 from 'multer-s3'
 import AWS from 'aws-sdk';
 import { resolve } from 'path'
 
+require('dotenv').config()
+
 
 let s3  = new AWS.S3({
   accessKeyId: process.env.ACCESS_KEY_ID,
