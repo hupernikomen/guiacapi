@@ -21,6 +21,7 @@ class ListarCategoriasService {
                 select: {
                     id: true,
                     nome: true,
+                    subcategoria: true,
                     _count: true
                 }
             });
