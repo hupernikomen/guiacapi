@@ -35,7 +35,6 @@ class CriarProdutoService {
           cor,
           imagens,
           categoriaID,
-          subcategoriaID,
           lojaID,
           createdAt:new Date()
         },
