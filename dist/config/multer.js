@@ -10,7 +10,7 @@ const path_1 = __importDefault(require("path"));
 const multer_s3_1 = __importDefault(require("multer-s3"));
 const aws_sdk_1 = __importDefault(require("aws-sdk"));
 const path_2 = require("path");
-require('dotenv').config();
+require("dotenv/config");
 let s3 = new aws_sdk_1.default.S3({
     accessKeyId: process.env.ACCESS_KEY_ID,
     secretAccessKey: process.env.SECRET_ACCESS_KEY,

@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 require("express-async-errors");
+require("dotenv/config");
 const path_1 = __importDefault(require("path"));
 const rotas_1 = require("./rotas");
 const app = (0, express_1.default)();

@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.rotas = void 0;
 const express_1 = require("express");
 const multer_1 = __importDefault(require("multer"));
+require("dotenv/config");
+const authenticator_1 = require("./middlewares/authenticator");
 const multer_2 = require("./config/multer");
 const CriarLojaController_1 = require("./controllers/loja/CriarLojaController");
 const CriarCategoriasController_1 = require("./controllers/categoria/CriarCategoriasController");
@@ -29,7 +31,6 @@ const DetalheProdutoController_1 = require("./controllers/produto/DetalheProduto
 const DeleteProductController_1 = require("./controllers/produto/DeleteProductController");
 const DeletarVendedorController_1 = require("./controllers/vendedor/DeletarVendedorController");
 const CriarServicoController_1 = require("./controllers/servico/CriarServicoController");
-const authenticator_1 = require("./middlewares/authenticator");
 const EsqueciSenhaController_1 = require("./controllers/loja/EsqueciSenhaController");
 const uploadUser = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,

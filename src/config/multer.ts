@@ -5,7 +5,7 @@ import multerS3 from 'multer-s3'
 import AWS from 'aws-sdk';
 import { resolve } from 'path'
 
-require('dotenv').config()
+import 'dotenv/config';
 
 
 let s3  = new AWS.S3({
@@ -13,6 +13,7 @@ let s3  = new AWS.S3({
   secretAccessKey: process.env.SECRET_ACCESS_KEY,
   region: 'us-east-1',
 });
+
 
 export default{
   upload(folder: string){

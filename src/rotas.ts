@@ -1,5 +1,8 @@
 import { Router, Request, Response } from 'express';
 import multer from 'multer'
+import 'dotenv/config';
+
+import { Authenticator } from './middlewares/authenticator';
 
 import { fileFilter, storageTypes } from './config/multer'
 
@@ -34,7 +37,6 @@ import { DeletarVendedorController } from './controllers/vendedor/DeletarVendedo
 
 import { CriarServicoController } from './controllers/servico/CriarServicoController';
 
-import { Authenticator } from './middlewares/authenticator';
 import { EsqueciSenhaController } from './controllers/loja/EsqueciSenhaController';
 
 

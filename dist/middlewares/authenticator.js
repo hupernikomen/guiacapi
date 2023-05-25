@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Authenticator = void 0;
 const jsonwebtoken_1 = require("jsonwebtoken");
+require("dotenv/config");
 function Authenticator(req, res, next) {
     const authToken = req.headers.authorization;
     if (!authToken) {
@@ -10,7 +11,6 @@ function Authenticator(req, res, next) {
     const [, token] = authToken.split(" ");
     try {
         const { sub } = (0, jsonwebtoken_1.verify)(token, process.env.JWT_SECRET);
-        console.log(sub, "sub");
         req.loja_ID = sub;
         return next();
     }

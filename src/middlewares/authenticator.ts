@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { verify } from 'jsonwebtoken';
-
+import 'dotenv/config';
 
 
 interface Payload {
@@ -28,7 +28,6 @@ export function Authenticator(
             process.env.JWT_SECRET
         ) as Payload
 
-        console.log(sub, "sub");
         
 
         req.loja_ID = sub
