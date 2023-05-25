@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 import { MeLojaService } from '../../services/loja/MeLojaService'
 
 class MeLojaController {
+    
     async handle(request:Request,response:Response) {
 
         const loja_ID = request.loja_ID

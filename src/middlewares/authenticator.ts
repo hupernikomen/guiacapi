@@ -1,6 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 import { verify } from 'jsonwebtoken';
 
+
+
 interface Payload {
     sub: string
 }
@@ -25,6 +27,9 @@ export function Authenticator(
             token,
             process.env.JWT_SECRET
         ) as Payload
+
+        console.log(sub, "sub");
+        
 
         req.loja_ID = sub
 
