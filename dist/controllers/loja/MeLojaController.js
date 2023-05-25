@@ -14,7 +14,6 @@ const MeLojaService_1 = require("../../services/loja/MeLojaService");
 class MeLojaController {
     handle(request, response) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(request);
             const loja_ID = request.loja_ID;
             const meLojaService = new MeLojaService_1.MeLojaService();
             const me = yield meLojaService.execute(loja_ID);

@@ -19,7 +19,7 @@ app.use((error, request, response, next) => {
             error: error.message
         });
     }
-    return response.json(500).json({
+    return response.status(500).json({
         status: 'error',
         message: 'Erro Interno do Servidor'
     });
