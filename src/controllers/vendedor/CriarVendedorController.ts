@@ -3,7 +3,7 @@ import { CriarVendedorService } from '../../services/vendedor/CriarVendedorServi
 
 class CriarVendedorController {
     async handle(req: Request, res: Response) {
-        const { nome, whatsapp,setor } = req.body
+        const { nome, whatsapp, setor } = req.body
         const lojaID = req.query.lojaID as string
 
 
