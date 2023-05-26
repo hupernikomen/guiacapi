@@ -3,7 +3,7 @@ import prismaClient from "../../prisma";
 interface vendedorRequest {
     nome: string,
     whatsapp: string,
-    foto: object,
+    setor: string,
     lojaID:string
 }
 
@@ -11,7 +11,7 @@ class CriarVendedorService {
     async execute({
         nome,
         whatsapp,
-        foto,
+        setor,
         lojaID
     }: vendedorRequest) {
 
@@ -30,7 +30,7 @@ class CriarVendedorService {
             data: {
                 nome,
                 whatsapp,
-                foto,
+                setor,
                 lojaID
             }
         })

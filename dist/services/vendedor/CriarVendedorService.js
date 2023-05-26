@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CriarVendedorService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class CriarVendedorService {
-    execute({ nome, whatsapp, foto, lojaID }) {
+    execute({ nome, whatsapp, setor, lojaID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const vendedorExiste = yield prisma_1.default.vendedor.findFirst({
                 where: {
@@ -29,7 +29,7 @@ class CriarVendedorService {
                 data: {
                     nome,
                     whatsapp,
-                    foto,
+                    setor,
                     lojaID
                 }
             });

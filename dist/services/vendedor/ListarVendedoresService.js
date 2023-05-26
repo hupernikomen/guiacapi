@@ -27,7 +27,7 @@ class ListarVendedoresService {
                     id: true,
                     nome: true,
                     whatsapp: true,
-                    foto: true
+                    setor: true
                 }
             });
             return vendedores;

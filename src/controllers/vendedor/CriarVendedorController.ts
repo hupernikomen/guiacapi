@@ -3,25 +3,20 @@ import { CriarVendedorService } from '../../services/vendedor/CriarVendedorServi
 
 class CriarVendedorController {
     async handle(req: Request, res: Response) {
-        const { nome, whatsapp } = req.body
+        const { nome, whatsapp,setor } = req.body
         const lojaID = req.query.lojaID as string
 
-        if (!req.file) {
-            throw new Error("Ops.. algo deu errado!");
-        } else {
-            const file = req.file;
 
-            const criarVendedorService = new CriarVendedorService();
+        const criarVendedorService = new CriarVendedorService();
 
-            const vendedor = await criarVendedorService.execute({
-                nome,
-                whatsapp,
-                foto: file,
-                lojaID
-            })
+        const vendedor = await criarVendedorService.execute({
+            nome,
+            whatsapp,
+            setor,
+            lojaID
+        })
 
-            return res.json(vendedor)
-        }
+        return res.json(vendedor)
     }
 }
 

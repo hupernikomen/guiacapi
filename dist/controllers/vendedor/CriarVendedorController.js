@@ -14,22 +14,16 @@ const CriarVendedorService_1 = require("../../services/vendedor/CriarVendedorSer
 class CriarVendedorController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { nome, whatsapp } = req.body;
+            const { nome, whatsapp, setor } = req.body;
             const lojaID = req.query.lojaID;
-            if (!req.file) {
-                throw new Error("Ops.. algo deu errado!");
-            }
-            else {
-                const file = req.file;
-                const criarVendedorService = new CriarVendedorService_1.CriarVendedorService();
-                const vendedor = yield criarVendedorService.execute({
-                    nome,
-                    whatsapp,
-                    foto: file,
-                    lojaID
-                });
-                return res.json(vendedor);
-            }
+            const criarVendedorService = new CriarVendedorService_1.CriarVendedorService();
+            const vendedor = yield criarVendedorService.execute({
+                nome,
+                whatsapp,
+                setor,
+                lojaID
+            });
+            return res.json(vendedor);
         });
     }
 }

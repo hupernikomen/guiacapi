@@ -72,7 +72,7 @@ model Vendedor {
 
   nome     String @default("")
   whatsapp String @default("")
-  foto     Json[]
+  setor    String @default("")
 
   loja   Loja   @relation(fields: [lojaID], references: [id])
   lojaID String
@@ -107,15 +107,13 @@ model Produto {
 }
 
 model Categoria {
-  id           String         @id @default(uuid())
-  nome         String
-  
+  id   String @id @default(uuid())
+  nome String
+
   produto Produto[]
 
   @@map("categorias")
 }
-
-
 
 model Regiao {
   id   String @id @default(uuid())
