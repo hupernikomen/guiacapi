@@ -18,6 +18,7 @@ const AuthUserController_1 = require("./controllers/auth/AuthUserController");
 const MeLojaController_1 = require("./controllers/loja/MeLojaController");
 const AtualizarLojaController_1 = require("./controllers/loja/AtualizarLojaController");
 const AtualizarProdutoController_1 = require("./controllers/produto/AtualizarProdutoController");
+const AtualizarCategoriaController_1 = require("./controllers/categoria/AtualizarCategoriaController");
 const ListarCategoriasController_1 = require("./controllers/categoria/ListarCategoriasController");
 const ListarLojasController_1 = require("./controllers/loja/ListarLojasController");
 const ListarProdutosController_1 = require("./controllers/produto/ListarProdutosController");
@@ -30,6 +31,7 @@ const ListarServicosController_1 = require("./controllers/servico/ListarServicos
 const DetalheProdutoController_1 = require("./controllers/produto/DetalheProdutoController");
 const DeleteProductController_1 = require("./controllers/produto/DeleteProductController");
 const DeletarVendedorController_1 = require("./controllers/vendedor/DeletarVendedorController");
+const DeletarCategoriaController_1 = require("./controllers/categoria/DeletarCategoriaController");
 const CriarServicoController_1 = require("./controllers/servico/CriarServicoController");
 const EsqueciSenhaController_1 = require("./controllers/loja/EsqueciSenhaController");
 const uploadUser = (0, multer_1.default)({
@@ -60,6 +62,8 @@ rotas.get('/servicos', new ListarServicosController_1.ListarServicosController()
 // Categoria
 rotas.get('/categorias', new ListarCategoriasController_1.ListarCategoriasController().handle); //Front
 rotas.post('/categoria', new CriarCategoriasController_1.CriarCategoriaController().handle);
+rotas.delete('/categoria', authenticator_1.Authenticator, new DeletarCategoriaController_1.DeletarCategoriaController().handle);
+rotas.put('/categoria', authenticator_1.Authenticator, new AtualizarCategoriaController_1.AtualizarCategoriaController().handle);
 // Produto
 rotas.get('/produtos', new ListarProdutosController_1.ListarProdutosController().handle); //Front [com filtro de regiao]
 rotas.post('/produto', authenticator_1.Authenticator, uploadUser.array('files', 5), new CriarProdutoController_1.CriarProdutoController().handle);
