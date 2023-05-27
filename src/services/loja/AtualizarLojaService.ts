@@ -11,7 +11,7 @@ interface lojaDataRequest {
     bairro: string,
     referencia: string,
     latlng: object,
-    entrega: boolean
+    entrega: string
 }
 
 class AtualizarLojaService {

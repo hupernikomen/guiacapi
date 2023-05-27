@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "lojas" ALTER COLUMN "entrega" SET DEFAULT '',
+ALTER COLUMN "entrega" SET DATA TYPE TEXT;

@@ -53,7 +53,7 @@ model Loja {
   referencia String? @default("")
   latlng     Json?
 
-  entrega Boolean @default(false)
+  entrega String @default("")
 
   produtos   Produto[]
   vendedores Vendedor[]
