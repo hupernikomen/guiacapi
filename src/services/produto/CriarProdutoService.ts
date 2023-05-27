@@ -8,7 +8,6 @@ interface ProductRequest {
   cor: string;
   imagens: object,
   categoriaID: string;
-  subcategoriaID:string,
   lojaID: string;
 }
 
@@ -21,7 +20,6 @@ class CriarProdutoService {
     cor,
     imagens,
     categoriaID,
-    subcategoriaID,
     lojaID,
   }: ProductRequest) {
     try {
