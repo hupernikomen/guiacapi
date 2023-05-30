@@ -50,10 +50,9 @@ model Profissional {
 }
 
 model Loja {
-  id    String @id @default(uuid())
-  email String @unique
-  senha String
-
+  id         String  @id @default(uuid())
+  email      String  @unique
+  senha      String
   avatar     Json?
   statusGuia Boolean @default(false)
   nome       String?
@@ -66,6 +65,9 @@ model Loja {
 
   produtos   Produto[]
   vendedores Vendedor[]
+
+  tema   Temas  @relation(fields: [temaID], references: [id])
+  temaID String @default("#a82424")
 
   regiao   Regiao @relation(fields: [regiaoID], references: [id])
   regiaoID String
@@ -121,6 +123,9 @@ model Categoria {
 
   produto Produto[]
 
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @default(now())
+
   @@map("categorias")
 }
 
@@ -131,5 +136,17 @@ model Regiao {
   loja    Loja[]
   servico Servico[]
 
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @default(now())
+
   @@map("regioes")
+}
+
+model Temas {
+  id    String   @id @default(uuid())
+  cores String[]
+
+  loja Loja[]
+
+  @@map("temas")
 }
