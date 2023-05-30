@@ -2,16 +2,16 @@ import { Request, Response } from 'express'
 import { MeLojaService } from '../../services/loja/MeLojaService'
 
 class MeLojaController {
-    
-    async handle(request:Request,response:Response) {
 
-        const loja_ID = request.loja_ID
+    async handle(req: Request, res: Response) {
+
+        const loja_ID = req.loja_ID
 
         const meLojaService = new MeLojaService();
 
         const me = await meLojaService.execute(loja_ID)
 
-        return response.json(me)
+        return res.json(me)
     }
 }
 
