@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 
 import { DeletaPdtService } from '../../services/produto/DeletaPdtService'
 
-class DeletarProdutoController {
+class DeletaPdtController {
   async handle(req: Request, res: Response) {
     const produtoID = req.query.produtoID as string
 
@@ -19,4 +19,4 @@ class DeletarProdutoController {
   }
 }
 
-export { DeletarProdutoController }
+export { DeletaPdtController }

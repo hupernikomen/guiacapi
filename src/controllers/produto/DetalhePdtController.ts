@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import { DetalhePdtService } from '../../services/produto/DetalhePdtService'
 
 
-class DetalheProdutoController {
+class DetalhePdtController {
     async handle(req: Request, res: Response) {
 
         const produtoID = req.query.produtoID as string
@@ -17,4 +17,4 @@ class DetalheProdutoController {
     }
 }
 
-export { DetalheProdutoController }
+export { DetalhePdtController }

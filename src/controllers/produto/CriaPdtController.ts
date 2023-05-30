@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { CriaPdtService } from "../../services/produto/CriaPdtService";
 
-class CriarProdutoController {
+class CriaPdtController {
   async handle(req: Request, res: Response) {
     const criaPdtService = new CriaPdtService();
     const lojaID = req.query.lojaID as string
@@ -40,4 +40,4 @@ class CriarProdutoController {
   }
 }
 
-export { CriarProdutoController };
+export { CriaPdtController };

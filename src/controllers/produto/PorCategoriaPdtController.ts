@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import { PorCategoriaPdtService } from '../../services/produto/PorCategoriaPdtService'
 
 
-class ListarPorCategoriaController {
+class PorCategoriaPdtController {
     async handle(req: Request, res: Response) {
         const categoriaID = req.query.categoriaID as string
 
@@ -16,4 +16,4 @@ class ListarPorCategoriaController {
     }
 }
 
-export { ListarPorCategoriaController }
+export { PorCategoriaPdtController }

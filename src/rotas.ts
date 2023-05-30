@@ -18,12 +18,12 @@ import { CriaCtController } from './controllers/categoria/CriaCtController';
 import { DeletaCtController } from './controllers/categoria/DeletaCtController';
 import { AtualizaCtController } from './controllers/categoria/AtualizaCtController';
 
-import { CriarProdutoController } from './controllers/produto/CriarProdutoController';
+import { CriaPdtController } from './controllers/produto/CriaPdtController';
 import { AtualizaPdtController } from './controllers/produto/AtualizaPdtController';
-import { DetalheProdutoController } from './controllers/produto/DetalheProdutoController';
-import { DeletarProdutoController } from './controllers/produto/DeleteProductController';
-import { ListarProdutosController } from './controllers/produto/ListarProdutosController';
-import { ListarPorCategoriaController } from './controllers/produto/ListarPorCategoriaController';
+import { DetalhePdtController } from './controllers/produto/DetalhePdtController';
+import { DeletaPdtController } from './controllers/produto/DeletaPdtController';
+import { ListaPdtController } from './controllers/produto/ListaPdtController';
+import { PorCategoriaPdtController } from './controllers/produto/PorCategoriaPdtController';
 
 import { CriaRgController } from './controllers/regiao/CriaRgController';
 import { ListaRgController } from './controllers/regiao/ListaRgController';
@@ -78,12 +78,11 @@ rotas.put('/categoria', Authenticator,new AtualizaCtController().handle)
 
 
 // Produto
-rotas.get('/produtos', new ListarProdutosController().handle)  //Front [com filtro de regiao]
-rotas.post('/produto', Authenticator, uploadUser.array('files', 5), new CriarProdutoController().handle)
-rotas.get('/porcategoria', new ListarPorCategoriaController().handle)  //Front [com filtro de regiao]
-rotas.get('/detalhe', new DetalheProdutoController().handle)
-
-rotas.delete('/produto', Authenticator, new DeletarProdutoController().handle)
+rotas.get('/produtos', new ListaPdtController().handle)  //Front [com filtro de regiao]
+rotas.post('/produto', Authenticator, uploadUser.array('files', 5), new CriaPdtController().handle)
+rotas.get('/porcategoria', new PorCategoriaPdtController().handle)  //Front [com filtro de regiao]
+rotas.get('/detalhe', new DetalhePdtController().handle)
+rotas.delete('/produto', Authenticator, new DeletaPdtController().handle)
 rotas.put('/produto', Authenticator, new AtualizaPdtController().handle)
 
 

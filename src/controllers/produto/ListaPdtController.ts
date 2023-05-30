@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import { ListaPdtService } from '../../services/produto/ListaPdtService'
 
 
-class ListarProdutosController {
+class ListaPdtController {
     async handle(req: Request, res: Response) {
         const listaPdtService = new ListaPdtService()
 
@@ -12,4 +12,4 @@ class ListarProdutosController {
     }
 }
 
-export { ListarProdutosController }
+export { ListaPdtController }
