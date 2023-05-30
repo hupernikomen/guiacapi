@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { CriarProdutoService } from "../../services/produto/CriarProdutoService";
+import { CriaPdtService } from "../../services/produto/CriaPdtService";
 
 class CriarProdutoController {
   async handle(req: Request, res: Response) {
-    const criarProdutoService = new CriarProdutoService();
+    const criaPdtService = new CriaPdtService();
     const lojaID = req.query.lojaID as string
     const {
       nome,
@@ -21,7 +21,7 @@ class CriarProdutoController {
       
 
 
-      const produto = await criarProdutoService.execute({
+      const produto = await criaPdtService.execute({
         nome,
         descricao,
         preco,

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { DetalheProdutoService } from '../../services/produto/DetalheProdutoService'
+import { DetalhePdtService } from '../../services/produto/DetalhePdtService'
 
 
 class DetalheProdutoController {
@@ -7,9 +7,9 @@ class DetalheProdutoController {
 
         const produtoID = req.query.produtoID as string
 
-        const detalheProdutoService = new DetalheProdutoService()
+        const detalhePdtService = new DetalhePdtService()
 
-        const produto = await detalheProdutoService.execute({
+        const produto = await detalhePdtService.execute({
             produtoID
         })
         return res.json(produto)

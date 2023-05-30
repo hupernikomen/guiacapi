@@ -12,12 +12,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.MeLojaController = void 0;
 const MeLojaService_1 = require("../../services/loja/MeLojaService");
 class MeLojaController {
-    handle(request, response) {
+    handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const loja_ID = request.loja_ID;
+            const loja_ID = req.loja_ID;
             const meLojaService = new MeLojaService_1.MeLojaService();
             const me = yield meLojaService.execute(loja_ID);
-            return response.json(me);
+            return res.json(me);
         });
     }
 }

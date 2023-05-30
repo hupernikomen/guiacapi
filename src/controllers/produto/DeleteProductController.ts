@@ -1,14 +1,14 @@
 import { Request, Response } from 'express'
 
-import { DeletarProdutoService } from '../../services/produto/DeletarProdutoService'
+import { DeletaPdtService } from '../../services/produto/DeletaPdtService'
 
 class DeletarProdutoController {
   async handle(req: Request, res: Response) {
     const produtoID = req.query.produtoID as string
 
-    const deletarProduto = new DeletarProdutoService()
+    const deletaPdtService = new DeletaPdtService()
 
-    await deletarProduto.execute({
+    await deletaPdtService.execute({
       produtoID
     })
 

@@ -10,11 +10,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CriarProdutoController = void 0;
-const CriarProdutoService_1 = require("../../services/produto/CriarProdutoService");
+const CriaPdtService_1 = require("../../services/produto/CriaPdtService");
 class CriarProdutoController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const criarProdutoService = new CriarProdutoService_1.CriarProdutoService();
+            const criaPdtService = new CriaPdtService_1.CriaPdtService();
             const lojaID = req.query.lojaID;
             const { nome, descricao, preco, tamanho, categoriaID, } = req.body;
             if (!req.files) {
@@ -22,7 +22,7 @@ class CriarProdutoController {
             }
             else {
                 const files = req.files;
-                const produto = yield criarProdutoService.execute({
+                const produto = yield criaPdtService.execute({
                     nome,
                     descricao,
                     preco,

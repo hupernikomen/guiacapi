@@ -10,13 +10,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DeletarProdutoController = void 0;
-const DeletarProdutoService_1 = require("../../services/produto/DeletarProdutoService");
+const DeletaPdtService_1 = require("../../services/produto/DeletaPdtService");
 class DeletarProdutoController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const produtoID = req.query.produtoID;
-            const deletarProduto = new DeletarProdutoService_1.DeletarProdutoService();
-            yield deletarProduto.execute({
+            const deletaPdtService = new DeletaPdtService_1.DeletaPdtService();
+            yield deletaPdtService.execute({
                 produtoID
             });
             return res.status(200).json({

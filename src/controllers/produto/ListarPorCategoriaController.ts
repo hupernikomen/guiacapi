@@ -1,14 +1,14 @@
 import { Request, Response } from 'express'
-import { ListarPorCategoriaService } from '../../services/produto/ListarPorCategoriaService'
+import { PorCategoriaPdtService } from '../../services/produto/PorCategoriaPdtService'
 
 
 class ListarPorCategoriaController {
     async handle(req: Request, res: Response) {
         const categoriaID = req.query.categoriaID as string
 
-        const listarPorCategoriaService = new ListarPorCategoriaService()
+        const porCategoriaPdtService = new PorCategoriaPdtService()
 
-        const produto = await listarPorCategoriaService.execute({
+        const produto = await porCategoriaPdtService.execute({
             categoriaID
         })
 

@@ -1,36 +1,36 @@
-import prismaClient from "../../prisma";
+// import prismaClient from "../../prisma";
 
-interface ProductRequest {
-  nomeProduto: string;
-}
+// interface ProductRequest {
+//   nomeProduto: string;
+// }
 
-class BuscarProdutosService {
-  async execute({
-    nomeProduto
-  }:ProductRequest) {
-    const produto = await prismaClient.produto.findMany({
-      where: {
-        nome: nomeProduto
-      },
-      select: {
-        id: true,
-        nome: true,
-        preco: true,
-        oferta: true,
-        imagens: true,
-        loja:{
-          select:{
-            id:true,
-            nome:true,
-            entrega:true
-          }
-        }
+// class BuscarProdutosService {
+//   async execute({
+//     nomeProduto
+//   }:ProductRequest) {
+//     const produto = await prismaClient.produto.findMany({
+//       where: {
+//         nome: nomeProduto
+//       },
+//       select: {
+//         id: true,
+//         nome: true,
+//         preco: true,
+//         oferta: true,
+//         imagens: true,
+//         loja:{
+//           select:{
+//             id:true,
+//             nome:true,
+//             entrega:true
+//           }
+//         }
 
-      },
-    });
+//       },
+//     });
 
-    return produto;
-  }
-}
+//     return produto;
+//   }
+// }
 
-export { BuscarProdutosService };
+// export { BuscarProdutosService };
