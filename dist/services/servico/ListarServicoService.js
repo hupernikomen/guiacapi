@@ -21,15 +21,6 @@ class ListarServicosService {
                 select: {
                     id: true,
                     nome: true,
-                    domicilio: true,
-                    bio: true,
-                    endereco: true,
-                    foto: true,
-                    whatsapp: true,
-                    nomeServico: true,
-                    listaServicos: true,
-                    arrPortfolio: true,
-                    categoria: true
                 }
             });
             return servico;

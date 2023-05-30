@@ -52,7 +52,7 @@ rotas.post('/loja', new CriarLojaController_1.CriarLojaController().handle);
 rotas.put('/loja', authenticator_1.Authenticator, uploadUser.single('logo'), new AtualizarLojaController_1.AtualizarLojaController().handle);
 rotas.get('/me', authenticator_1.Authenticator, new MeLojaController_1.MeLojaController().handle); // Rota para Controle
 //Vendedor
-rotas.post('/vendedor', authenticator_1.Authenticator, new CriarVendedorController_1.CriarVendedorController().handle);
+rotas.post('/vendedor', authenticator_1.Authenticator, uploadUser.single('avatar'), new CriarVendedorController_1.CriarVendedorController().handle);
 rotas.delete('/vendedor', authenticator_1.Authenticator, new DeletarVendedorController_1.DeletarVendedorController().handle);
 rotas.get('/vendedores', new ListarVendedoresController_1.ListarVendedoresController().handle);
 //Servicos

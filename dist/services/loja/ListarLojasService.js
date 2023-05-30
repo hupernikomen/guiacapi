@@ -19,7 +19,7 @@ class ListarLojasService {
         return __awaiter(this, void 0, void 0, function* () {
             const loja = yield prisma_1.default.loja.findMany({
                 where: {
-                    ativo: true,
+                    statusGuia: true,
                     // regiao:{
                     //     nome: "Dirceu" // Logica de alteração de REGIAO no FrontEnd
                     // }
@@ -27,7 +27,7 @@ class ListarLojasService {
                 select: {
                     id: true,
                     nome: true,
-                    logo: true,
+                    avatar: true,
                     produtos: {
                         select: {
                             id: true,
@@ -49,7 +49,6 @@ class ListarLojasService {
                     endereco: true,
                     entrega: true,
                     latlng: true,
-                    whatsapp: true,
                     createdAt: true,
                     bairro: true,
                     referencia: true,

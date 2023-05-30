@@ -1,6 +1,7 @@
 import prismaClient from "../../prisma";
 
 interface vendedorRequest {
+    avatar:object,
     nome: string,
     whatsapp: string,
     setor: string,
@@ -9,6 +10,7 @@ interface vendedorRequest {
 
 class CriarVendedorService {
     async execute({
+        avatar,
         nome,
         whatsapp,
         setor,
@@ -28,6 +30,7 @@ class CriarVendedorService {
 
         const vendedor = await prismaClient.vendedor.create({
             data: {
+                avatar,
                 nome,
                 whatsapp,
                 setor,

@@ -34,7 +34,7 @@ class DetalheProdutoService {
                         select: {
                             id: true,
                             nome: true,
-                            logo: true
+                            avatar: true
                         }
                     },
                     categoria: {

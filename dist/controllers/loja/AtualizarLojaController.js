@@ -15,15 +15,14 @@ class AtualizarLojaController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const lojaID = req.query.lojaID;
-            const { ativo, nome, whatsapp, bio, endereco, bairro, referencia, latlng, entrega } = req.body;
+            const { statusGuia, nome, bio, endereco, bairro, referencia, latlng, entrega } = req.body;
             const file = req.file;
             const atualizarLojaService = new AtualizarLojaService_1.AtualizarLojaService();
             const data = yield atualizarLojaService.execute({
                 lojaID,
-                ativo,
-                logo: file,
+                statusGuia,
+                avatar: file,
                 nome,
-                whatsapp,
                 bio,
                 endereco,
                 bairro,

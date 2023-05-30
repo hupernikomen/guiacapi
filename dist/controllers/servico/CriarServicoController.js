@@ -15,28 +15,13 @@ class CriarServicoController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const criarServicoService = new CriarServicoService_1.CriarServicoService();
-            const { nome, nomeServico, listaServicos, bio, email, endereco, whatsapp, domicilio, categoria } = req.body;
-            if (!req.file || !req.files) {
-                throw new Error("Ops.. algo deu errado!");
-            }
-            else {
-                const file = req.file;
-                const img = req.files;
-                const servico = yield criarServicoService.execute({
-                    foto: file,
-                    arrPortfolio: img,
-                    nome,
-                    nomeServico,
-                    listaServicos,
-                    bio,
-                    email,
-                    endereco,
-                    whatsapp,
-                    domicilio,
-                    categoria
-                });
-                return res.status(200).json(servico);
-            }
+            const regiaoID = req.query.regiaoID;
+            const { nome } = req.body;
+            const servico = yield criarServicoService.execute({
+                nome,
+                regiaoID
+            });
+            return res.status(200).json(servico);
         });
     }
 }

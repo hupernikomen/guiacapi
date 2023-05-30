@@ -5,9 +5,8 @@ class AtualizarLojaController {
     async handle(req: Request, res: Response) {
         const lojaID = req.query.lojaID as string
         const {
-            ativo,
+            statusGuia,
             nome,
-            whatsapp,
             bio,
             endereco,
             bairro,
@@ -22,10 +21,9 @@ class AtualizarLojaController {
 
         const data = await atualizarLojaService.execute({
             lojaID,
-            ativo,
-            logo: file,
+            statusGuia,
+            avatar: file,
             nome,
-            whatsapp,
             bio,
             endereco,
             bairro,

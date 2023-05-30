@@ -17,13 +17,20 @@ class CriarVendedorController {
             const { nome, whatsapp, setor } = req.body;
             const lojaID = req.query.lojaID;
             const criarVendedorService = new CriarVendedorService_1.CriarVendedorService();
-            const vendedor = yield criarVendedorService.execute({
-                nome,
-                whatsapp,
-                setor,
-                lojaID
-            });
-            return res.json(vendedor);
+            if (!req.file) {
+                throw new Error("Ops.. algo deu errado!");
+            }
+            else {
+                const file = req.file;
+                const vendedor = yield criarVendedorService.execute({
+                    avatar: file,
+                    nome,
+                    whatsapp,
+                    setor,
+                    lojaID
+                });
+                return res.json(vendedor);
+            }
         });
     }
 }

@@ -4,12 +4,14 @@ import { hash } from 'bcryptjs'
 interface lojaRequest {
     email: string,
     senha: string,
+    regiaoID: string,
 }
 
 class CriarLojaService {
     async execute({
         email,
         senha,
+        regiaoID
     }: lojaRequest) {
 
         if (!email) {
@@ -23,7 +25,7 @@ class CriarLojaService {
         })
 
         if (emailExiste) {
-            throw new Error("Usuario já cadastrado!");
+            throw new Error("Loja já cadastrada!");
         }
 
         const passwordCripto = await hash(senha, 8)
@@ -32,7 +34,7 @@ class CriarLojaService {
             data: {
                 email,
                 senha: passwordCripto,
-                createdAt:new Date()
+                regiaoID
             }
             
         })

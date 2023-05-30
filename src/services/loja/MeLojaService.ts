@@ -12,11 +12,10 @@ class MeLojaService {
                 latlng:true,
                 bio: true,
                 bairro:true,
-                ativo: true,
+                statusGuia: true,
                 produtos: true,
-                whatsapp: true,
                 referencia:true,
-                logo: true,
+                avatar: true,
                 endereco:true,
                 entrega:true,
                 regiao:{

@@ -2,13 +2,6 @@ import prismaClient from "../../prisma";
 
 interface servicoRequest {
     nome: string,
-    nomeServico: string,
-    listaServicos:string,
-    bio: string,
-    email: string,
-    endereco: string,
-    whatsapp: string,
-    domicilio: boolean,
     servicoID:string
 }
 
@@ -16,13 +9,6 @@ class AtualizarServicoService {
 
     async execute({
         nome,
-        nomeServico,
-        listaServicos,
-        bio,
-        email,
-        endereco,
-        whatsapp,
-        domicilio,
         servicoID
     }: servicoRequest) {
 
@@ -31,14 +17,7 @@ class AtualizarServicoService {
                 id:servicoID
             },
             data: {
-                nome,
-                nomeServico,
-                listaServicos,
-                bio,
-                email,
-                endereco,
-                whatsapp,
-                domicilio,
+                nome
             }
         })
 

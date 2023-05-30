@@ -3,6 +3,8 @@ import { CriarLojaService } from '../../services/loja/CriarLojaService'
 
 class CriarLojaController {
     async handle(req: Request, res: Response) {
+
+        const regiaoID = req.query.regiaoID as string
         const { email, senha } = req.body
 
         const criarLojaService = new CriarLojaService();
@@ -10,6 +12,7 @@ class CriarLojaController {
         const loja = await criarLojaService.execute({
             email,
             senha,
+            regiaoID
         })
 
         if(!loja) {

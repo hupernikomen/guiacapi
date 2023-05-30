@@ -14,11 +14,13 @@ const CriarLojaService_1 = require("../../services/loja/CriarLojaService");
 class CriarLojaController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            const regiaoID = req.query.regiaoID;
             const { email, senha } = req.body;
             const criarLojaService = new CriarLojaService_1.CriarLojaService();
             const loja = yield criarLojaService.execute({
                 email,
                 senha,
+                regiaoID
             });
             if (!loja) {
                 throw new Error("Ops, algo deu errado!");

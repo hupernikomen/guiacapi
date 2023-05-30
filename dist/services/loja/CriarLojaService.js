@@ -16,7 +16,7 @@ exports.CriarLojaService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 const bcryptjs_1 = require("bcryptjs");
 class CriarLojaService {
-    execute({ email, senha, }) {
+    execute({ email, senha, regiaoID }) {
         return __awaiter(this, void 0, void 0, function* () {
             if (!email) {
                 throw new Error("Email Incorreto");
@@ -27,14 +27,14 @@ class CriarLojaService {
                 }
             });
             if (emailExiste) {
-                throw new Error("Usuario já cadastrado!");
+                throw new Error("Loja já cadastrada!");
             }
             const passwordCripto = yield (0, bcryptjs_1.hash)(senha, 8);
             const loja = yield prisma_1.default.loja.create({
                 data: {
                     email,
                     senha: passwordCripto,
-                    createdAt: new Date()
+                    regiaoID
                 }
             });
             return loja;

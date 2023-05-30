@@ -8,26 +8,12 @@ class AtualizarServicoController {
     const servicoID = req.query.servicoID as string 
 
     const {
-        nome,
-        nomeServico,
-        listaServicos,
-        bio,
-        email,
-        endereco,
-        whatsapp,
-        domicilio,
+        nome
      } =
       req.body;
 
       const servico = await atualizarServicoService.execute({
         nome,
-        nomeServico,
-        listaServicos,
-        bio,
-        email,
-        endereco,
-        whatsapp,
-        domicilio,
         servicoID
       })
 

@@ -16,16 +16,9 @@ class AtualizarServicoController {
         return __awaiter(this, void 0, void 0, function* () {
             const atualizarServicoService = new AtualizarServicoService_1.AtualizarServicoService();
             const servicoID = req.query.servicoID;
-            const { nome, nomeServico, listaServicos, bio, email, endereco, whatsapp, domicilio, } = req.body;
+            const { nome } = req.body;
             const servico = yield atualizarServicoService.execute({
                 nome,
-                nomeServico,
-                listaServicos,
-                bio,
-                email,
-                endereco,
-                whatsapp,
-                domicilio,
                 servicoID
             });
             return res.status(200).json(servico);

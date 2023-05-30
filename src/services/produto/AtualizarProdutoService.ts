@@ -6,7 +6,6 @@ interface productRequest {
     preco: string,
     oferta: string,
     tamanho: string,
-    cor: string,
     categoriaID: string,
     produtoID: string,
 }
@@ -18,7 +17,6 @@ class UpdateProductService {
         preco,
         oferta,
         tamanho,
-        cor,
         categoriaID,
         produtoID
 
@@ -36,7 +34,6 @@ class UpdateProductService {
                 preco,
                 oferta,
                 tamanho,
-                cor,
                 categoriaID,
                 updatedAt: today
             }

@@ -20,7 +20,7 @@ class ListarProdutosService {
             const produto = yield prisma_1.default.produto.findMany({
                 where: {
                     loja: {
-                        ativo: true,
+                        statusGuia: true,
                         // regiao: {
                         //   nome: "Dirceu", // Logica de alteração de REGIAO no FrontEnd
                         // },

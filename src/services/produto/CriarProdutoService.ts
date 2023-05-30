@@ -1,14 +1,13 @@
 import prismaClient from "../../prisma";
 
 interface ProductRequest {
-  nome: string;
-  descricao: string;
-  preco: string;
-  tamanho: string;
-  cor: string;
+  nome: string,
+  descricao: string,
+  preco: string,
+  tamanho: string,
   imagens: object,
-  categoriaID: string;
-  lojaID: string;
+  categoriaID: string,
+  lojaID: string,
 }
 
 class CriarProdutoService {
@@ -17,7 +16,6 @@ class CriarProdutoService {
     descricao,
     preco,
     tamanho,
-    cor,
     imagens,
     categoriaID,
     lojaID,
@@ -30,11 +28,9 @@ class CriarProdutoService {
           descricao,
           preco,
           tamanho,
-          cor,
           imagens,
           categoriaID,
           lojaID,
-          createdAt:new Date()
         },
       });
       return produto;

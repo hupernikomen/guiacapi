@@ -15,21 +15,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AtualizarServicoService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class AtualizarServicoService {
-    execute({ nome, nomeServico, listaServicos, bio, email, endereco, whatsapp, domicilio, servicoID }) {
+    execute({ nome, servicoID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const servico = yield prisma_1.default.servico.update({
                 where: {
                     id: servicoID
                 },
                 data: {
-                    nome,
-                    nomeServico,
-                    listaServicos,
-                    bio,
-                    email,
-                    endereco,
-                    whatsapp,
-                    domicilio,
+                    nome
                 }
             });
             return servico;

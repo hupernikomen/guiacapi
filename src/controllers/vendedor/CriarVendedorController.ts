@@ -9,14 +9,23 @@ class CriarVendedorController {
 
         const criarVendedorService = new CriarVendedorService();
 
-        const vendedor = await criarVendedorService.execute({
-            nome,
-            whatsapp,
-            setor,
-            lojaID
-        })
+        if (!req.file) {
+            throw new Error("Ops.. algo deu errado!");
+        } else {
+            const file = req.file;
 
-        return res.json(vendedor)
+
+
+            const vendedor = await criarVendedorService.execute({
+                avatar: file,
+                nome,
+                whatsapp,
+                setor,
+                lojaID
+            })
+
+            return res.json(vendedor)
+        }
     }
 }
 

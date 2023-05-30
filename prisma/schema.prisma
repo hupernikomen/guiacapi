@@ -13,22 +13,13 @@ datasource db {
 // yarn prisma migrate dev
 
 model Servico {
-  id            String   @id @default(uuid())
-  nomeServico   String   @default("")
-  nome          String   @default("")
-  foto          Json[]
-  arrPortfolio  Json[]
-  listaServicos String[]
-  whatsapp      String   @default("")
-  email         String   @default("")
-  domicilio     Boolean  @default(false)
-  endereco      String   @default("")
-  bio           String   @default("")
-  ativo         Boolean  @default(false)
-  categoria     String   @default("")
+  id   String @id @default(uuid())
+  nome String
 
-  regiao   Regiao? @relation(fields: [regiaoID], references: [id])
-  regiaoID String?
+  regiao   Regiao @relation(fields: [regiaoID], references: [id])
+  regiaoID String
+
+  profissional Profissional[]
 
   createdAt DateTime? @default(now())
   updatedAt DateTime? @default(now())
@@ -36,30 +27,48 @@ model Servico {
   @@map("servicos")
 }
 
+model Profissional {
+  id            String   @id @default(uuid())
+  nome          String
+  avatar        Json
+  portfolio     Json[]
+  listaServicos String[]
+  whatsapp      String   @unique
+  email         String   @unique
+  aDomicilio    Boolean  @default(false)
+  endereco      String
+  bio           String
+  statusGuia    Boolean  @default(false)
+
+  servico   Servico @relation(fields: [servicoID], references: [id])
+  servicoID String
+
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @default(now())
+
+  @@map("profissionais")
+}
+
 model Loja {
   id    String @id @default(uuid())
-  email String
+  email String @unique
   senha String
 
-  logo Json[]
-
-  ativo    Boolean @default(false)
-  nome     String? @default("")
-  whatsapp String? @default("")
-  bio      String? @default("")
-
-  endereco   String? @default("")
-  bairro     String? @default("")
-  referencia String? @default("")
+  avatar     Json?
+  statusGuia Boolean @default(false)
+  nome       String?
+  bio        String?
+  endereco   String?
+  bairro     String?
+  referencia String?
   latlng     Json?
-
-  entrega String @default("")
+  entrega    Boolean @default(false)
 
   produtos   Produto[]
   vendedores Vendedor[]
 
-  regiao   Regiao? @relation(fields: [regiaoID], references: [id])
-  regiaoID String?
+  regiao   Regiao @relation(fields: [regiaoID], references: [id])
+  regiaoID String
 
   createdAt DateTime? @default(now())
   updatedAt DateTime? @default(now())
@@ -70,9 +79,10 @@ model Loja {
 model Vendedor {
   id String @id @default(uuid())
 
-  nome     String @default("")
-  whatsapp String @default("")
-  setor    String @default("")
+  avatar   Json
+  nome     String
+  whatsapp String @unique
+  setor    String
 
   loja   Loja   @relation(fields: [lojaID], references: [id])
   lojaID String
@@ -85,13 +95,12 @@ model Vendedor {
 
 model Produto {
   id        String   @id @default(uuid())
-  cod       String?  @default("")
-  nome      String   @default("")
-  descricao String   @default("")
-  preco     String   @default("")
-  oferta    String   @default("")
+  cod       String?
+  nome      String
+  descricao String
+  preco     String
+  oferta    String?
   tamanho   String[]
-  cor       String[]
   imagens   Json[]
 
   loja   Loja   @relation(fields: [lojaID], references: [id])

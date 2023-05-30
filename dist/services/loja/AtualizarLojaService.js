@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AtualizarLojaService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class AtualizarLojaService {
-    execute({ lojaID, ativo, logo, nome, whatsapp, bio, endereco, bairro, referencia, latlng, entrega }) {
+    execute({ lojaID, statusGuia, avatar, nome, bio, endereco, bairro, referencia, latlng, entrega }) {
         return __awaiter(this, void 0, void 0, function* () {
             const loja = yield prisma_1.default.loja.findUnique({
                 where: {
@@ -30,10 +30,9 @@ class AtualizarLojaService {
                     id: lojaID
                 },
                 data: {
-                    ativo,
+                    statusGuia,
                     nome,
-                    logo,
-                    whatsapp,
+                    avatar,
                     bio,
                     endereco,
                     bairro,

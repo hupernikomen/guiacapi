@@ -21,7 +21,7 @@ class ListarPorCategoriaService {
                 where: {
                     categoriaID,
                     loja: {
-                        ativo: true,
+                        statusGuia: true,
                         // regiao: {
                         //   nome: "Dirceu", // Logica de alteração de REGIAO no FrontEnd
                         // },

@@ -64,7 +64,7 @@ rotas.put('/loja', Authenticator, uploadUser.single('logo'), new AtualizarLojaCo
 rotas.get('/me', Authenticator, new MeLojaController().handle) // Rota para Controle
 
 //Vendedor
-rotas.post('/vendedor', Authenticator, new CriarVendedorController().handle)
+rotas.post('/vendedor', Authenticator, uploadUser.single('avatar'), new CriarVendedorController().handle)
 rotas.delete('/vendedor', Authenticator, new DeletarVendedorController().handle)
 rotas.get('/vendedores', new ListarVendedoresController().handle)
 

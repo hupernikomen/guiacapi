@@ -2,25 +2,23 @@ import prismaClient from "../../prisma"
 
 interface lojaDataRequest {
     lojaID: string,
-    ativo: boolean,
-    logo: object,
+    statusGuia: boolean,
+    avatar: object,
     nome: string,
-    whatsapp: string,
     bio: string,
     endereco: string,
     bairro: string,
     referencia: string,
     latlng: object,
-    entrega: string
+    entrega: boolean
 }
 
 class AtualizarLojaService {
     async execute({
         lojaID,
-        ativo,
-        logo,
+        statusGuia,
+        avatar,
         nome,
-        whatsapp,
         bio,
         endereco,
         bairro,
@@ -46,10 +44,9 @@ class AtualizarLojaService {
                 id: lojaID
             },
             data: {
-                ativo,
+                statusGuia,
                 nome,
-                logo,
-                whatsapp,
+                avatar,
                 bio,
                 endereco,
                 bairro,

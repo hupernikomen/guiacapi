@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UpdateProductService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class UpdateProductService {
-    execute({ nome, descricao, preco, oferta, tamanho, cor, categoriaID, produtoID }) {
+    execute({ nome, descricao, preco, oferta, tamanho, categoriaID, produtoID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const today = new Date();
             const produto = yield prisma_1.default.produto.update({
@@ -28,7 +28,6 @@ class UpdateProductService {
                     preco,
                     oferta,
                     tamanho,
-                    cor,
                     categoriaID,
                     updatedAt: today
                 }
