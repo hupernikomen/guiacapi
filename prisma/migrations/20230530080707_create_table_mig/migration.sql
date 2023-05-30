@@ -1,19 +1,8 @@
 -- CreateTable
 CREATE TABLE "servicos" (
     "id" TEXT NOT NULL,
-    "nomeServico" TEXT NOT NULL DEFAULT '',
-    "nome" TEXT NOT NULL DEFAULT '',
-    "foto" JSONB[],
-    "arrPortfolio" JSONB[],
-    "listaServicos" TEXT[],
-    "whatsapp" TEXT NOT NULL DEFAULT '',
-    "email" TEXT NOT NULL DEFAULT '',
-    "domicilio" BOOLEAN NOT NULL DEFAULT false,
-    "endereco" TEXT NOT NULL DEFAULT '',
-    "bio" TEXT NOT NULL DEFAULT '',
-    "ativo" BOOLEAN NOT NULL DEFAULT false,
-    "categoria" TEXT NOT NULL DEFAULT '',
-    "regiaoID" TEXT,
+    "nome" TEXT NOT NULL,
+    "regiaoID" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
 
@@ -21,21 +10,40 @@ CREATE TABLE "servicos" (
 );
 
 -- CreateTable
+CREATE TABLE "profissionais" (
+    "id" TEXT NOT NULL,
+    "nome" TEXT NOT NULL,
+    "avatar" JSONB NOT NULL,
+    "portfolio" JSONB[],
+    "listaServicos" TEXT[],
+    "whatsapp" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "aDomicilio" BOOLEAN NOT NULL DEFAULT false,
+    "endereco" TEXT NOT NULL,
+    "bio" TEXT NOT NULL,
+    "statusGuia" BOOLEAN NOT NULL DEFAULT false,
+    "servicoID" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "profissionais_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "lojas" (
     "id" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "senha" TEXT NOT NULL,
-    "logo" JSONB[],
-    "ativo" BOOLEAN NOT NULL DEFAULT false,
-    "nome" TEXT DEFAULT '',
-    "whatsapp" TEXT DEFAULT '',
-    "bio" TEXT DEFAULT '',
-    "endereco" TEXT DEFAULT '',
-    "bairro" TEXT DEFAULT '',
-    "referencia" TEXT DEFAULT '',
+    "avatar" JSONB,
+    "statusGuia" BOOLEAN NOT NULL DEFAULT false,
+    "nome" TEXT,
+    "bio" TEXT,
+    "endereco" TEXT,
+    "bairro" TEXT,
+    "referencia" TEXT,
     "latlng" JSONB,
-    "entrega" TEXT NOT NULL DEFAULT '',
-    "regiaoID" TEXT,
+    "entrega" BOOLEAN NOT NULL DEFAULT false,
+    "regiaoID" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
 
@@ -45,9 +53,10 @@ CREATE TABLE "lojas" (
 -- CreateTable
 CREATE TABLE "vendedores" (
     "id" TEXT NOT NULL,
-    "nome" TEXT NOT NULL DEFAULT '',
-    "whatsapp" TEXT NOT NULL DEFAULT '',
-    "setor" TEXT NOT NULL DEFAULT '',
+    "avatar" JSONB NOT NULL,
+    "nome" TEXT NOT NULL,
+    "whatsapp" TEXT NOT NULL,
+    "setor" TEXT NOT NULL,
     "lojaID" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
@@ -58,13 +67,12 @@ CREATE TABLE "vendedores" (
 -- CreateTable
 CREATE TABLE "produtos" (
     "id" TEXT NOT NULL,
-    "cod" TEXT DEFAULT '',
-    "nome" TEXT NOT NULL DEFAULT '',
-    "descricao" TEXT NOT NULL DEFAULT '',
-    "preco" TEXT NOT NULL DEFAULT '',
-    "oferta" TEXT NOT NULL DEFAULT '',
+    "cod" TEXT,
+    "nome" TEXT NOT NULL,
+    "descricao" TEXT NOT NULL,
+    "preco" TEXT NOT NULL,
+    "oferta" TEXT,
     "tamanho" TEXT[],
-    "cor" TEXT[],
     "imagens" JSONB[],
     "lojaID" TEXT NOT NULL,
     "categoriaID" TEXT NOT NULL,
@@ -90,11 +98,26 @@ CREATE TABLE "regioes" (
     CONSTRAINT "regioes_pkey" PRIMARY KEY ("id")
 );
 
--- AddForeignKey
-ALTER TABLE "servicos" ADD CONSTRAINT "servicos_regiaoID_fkey" FOREIGN KEY ("regiaoID") REFERENCES "regioes"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+-- CreateIndex
+CREATE UNIQUE INDEX "profissionais_whatsapp_key" ON "profissionais"("whatsapp");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "profissionais_email_key" ON "profissionais"("email");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "lojas_email_key" ON "lojas"("email");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "vendedores_whatsapp_key" ON "vendedores"("whatsapp");
 
 -- AddForeignKey
-ALTER TABLE "lojas" ADD CONSTRAINT "lojas_regiaoID_fkey" FOREIGN KEY ("regiaoID") REFERENCES "regioes"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "servicos" ADD CONSTRAINT "servicos_regiaoID_fkey" FOREIGN KEY ("regiaoID") REFERENCES "regioes"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "profissionais" ADD CONSTRAINT "profissionais_servicoID_fkey" FOREIGN KEY ("servicoID") REFERENCES "servicos"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "lojas" ADD CONSTRAINT "lojas_regiaoID_fkey" FOREIGN KEY ("regiaoID") REFERENCES "regioes"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "vendedores" ADD CONSTRAINT "vendedores_lojaID_fkey" FOREIGN KEY ("lojaID") REFERENCES "lojas"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
