@@ -66,8 +66,8 @@ model Loja {
   produtos   Produto[]
   vendedores Vendedor[]
 
-  tema   Temas  @relation(fields: [temaID], references: [id])
-  temaID String @default("#a82424")
+  tema   Temas?  @relation(fields: [temaID], references: [id])
+  temaID String?
 
   regiao   Regiao @relation(fields: [regiaoID], references: [id])
   regiaoID String
