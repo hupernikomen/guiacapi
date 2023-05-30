@@ -78,6 +78,7 @@ model Loja {
   @@map("lojas")
 }
 
+
 model Vendedor {
   id String @id @default(uuid())
 
