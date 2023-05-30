@@ -54,14 +54,14 @@ model Loja {
   email      String  @unique
   senha      String
   avatar     Json?
-  statusGuia Boolean @default(false)
+  statusGuia Boolean? @default(false)
   nome       String?
   bio        String?
   endereco   String?
   bairro     String?
   referencia String?
   latlng     Json?
-  entrega    Boolean @default(false)
+  entrega    Boolean? @default(false)
 
   produtos   Produto[]
   vendedores Vendedor[]
@@ -101,8 +101,8 @@ model Produto {
   cod       String?
   nome      String
   descricao String
-  preco     String
-  oferta    String?
+  preco     Float
+  oferta    Float?
   tamanho   String[]
   imagens   Json[]
 
