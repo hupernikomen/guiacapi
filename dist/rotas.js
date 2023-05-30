@@ -49,7 +49,7 @@ rotas.get('/loja', new UnicaLjController_1.UnicaLjController().handle); //Front
 rotas.post('/login', new AutenticaController_1.AutenticaController().handle); //Front
 rotas.post('/esquecisenha', new EsqueciSenhaController_1.EsqueciSenhaController().handle);
 rotas.post('/loja', new CriaLjController_1.CriaLjController().handle);
-rotas.put('/loja', authenticator_1.Authenticator, uploadUser.single('logo'), new AtualizaLjController_1.AtualizaLjController().handle);
+rotas.put('/loja', authenticator_1.Authenticator, uploadUser.single('avatar'), new AtualizaLjController_1.AtualizaLjController().handle);
 rotas.get('/me', authenticator_1.Authenticator, new AutenticadaLjController_1.AutenticadaLjController().handle); // Rota para Controle
 //Vendedor
 rotas.post('/vendedor', authenticator_1.Authenticator, uploadUser.single('avatar'), new CriaVddController_1.CriaVddController().handle);

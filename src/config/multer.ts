@@ -4,6 +4,7 @@ import path from 'path';
 import multerS3 from 'multer-s3'
 import AWS from 'aws-sdk';
 import { resolve } from 'path'
+import { S3Client } from "@aws-sdk/client-s3";
 
 import 'dotenv/config';
 
@@ -34,7 +35,7 @@ export default{
 // fazer um filtro de tipos antes de enviar:
 export function fileFilter (req, file, callback) {
   let errorMessage = '';
-  const ext = path.extname(file.originalname);
+  // const ext = path.extname(file.originalname);
 
 
   // if(ext !== '.PNG' && ext !== '.JPG' && ext !== '.JPEG' && ext !== '.WEBP') {

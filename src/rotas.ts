@@ -57,7 +57,7 @@ rotas.post('/esquecisenha', new EsqueciSenhaController().handle)
 
 
 rotas.post('/loja', new CriaLjController().handle)
-rotas.put('/loja', Authenticator, uploadUser.single('logo'), new AtualizaLjController().handle)
+rotas.put('/loja', Authenticator, uploadUser.single('avatar'), new AtualizaLjController().handle)
 rotas.get('/me', Authenticator, new AutenticadaLjController().handle) // Rota para Controle
 
 //Vendedor
