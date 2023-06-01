@@ -26,6 +26,7 @@ class AutenticadaLjService {
                     nome: true,
                     latlng: true,
                     bio: true,
+                    vendedores: true,
                     bairro: true,
                     statusGuia: true,
                     produtos: true,
