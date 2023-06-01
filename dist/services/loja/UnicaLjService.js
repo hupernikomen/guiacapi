@@ -23,6 +23,7 @@ class UnicaLjService {
                 },
                 select: {
                     id: true,
+                    statusGuia: true,
                     bio: true,
                     latlng: true,
                     nome: true,

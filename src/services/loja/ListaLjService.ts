@@ -12,6 +12,7 @@ class ListaLjService {
             },
             select: {
                 id: true,
+                statusGuia: true,
                 nome:true,
                 avatar:true,
                 produtos: {

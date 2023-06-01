@@ -39,6 +39,7 @@ class AtualizaLjService {
 
         }
 
+
         const data = await prismaClient.loja.update({
             where: {
                 id: lojaID
