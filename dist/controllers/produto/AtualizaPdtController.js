@@ -17,11 +17,13 @@ class AtualizaPdtController {
             const produtoID = req.query.produtoID;
             const { nome, descricao, preco, oferta, tamanho, categoriaID, } = req.body;
             const atualizaPdtService = new AtualizaPdtService_1.AtualizaPdtService();
+            let precoNumber = parseFloat(preco);
+            let ofertaNumber = parseFloat(oferta);
             const produto = yield atualizaPdtService.execute({
                 nome,
                 descricao,
-                preco,
-                oferta,
+                preco: precoNumber,
+                oferta: ofertaNumber,
                 tamanho,
                 categoriaID,
                 produtoID
