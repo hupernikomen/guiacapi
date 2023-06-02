@@ -12,6 +12,7 @@ class AtualizaPdtController {
             oferta,
             tamanho,
             categoriaID,
+            campanhaID
         } = req.body
 
         const atualizaPdtService = new AtualizaPdtService();
@@ -26,6 +27,7 @@ class AtualizaPdtController {
             oferta: ofertaNumber,
             tamanho,
             categoriaID,
+            campanhaID,
             produtoID
         })
 

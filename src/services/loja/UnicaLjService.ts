@@ -32,6 +32,11 @@ class UnicaLjService {
                         nome: true,
                         preco: true,
                         imagens: true,
+                        campanha:{
+                            select:{
+                                nome:true
+                            }
+                        }
                       },
                 },
             }

@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AtualizaPdtService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class AtualizaPdtService {
-    execute({ nome, descricao, preco, oferta, tamanho, categoriaID, produtoID }) {
+    execute({ nome, descricao, preco, oferta, tamanho, categoriaID, campanhaID, produtoID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const today = new Date();
             const produto = yield prisma_1.default.produto.update({
@@ -29,6 +29,7 @@ class AtualizaPdtService {
                     oferta,
                     tamanho,
                     categoriaID,
+                    campanhaID,
                     updatedAt: today
                 }
             });

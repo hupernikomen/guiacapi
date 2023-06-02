@@ -7,6 +7,7 @@ interface productRequest {
     oferta: number,
     tamanho: string,
     categoriaID: string,
+    campanhaID: string,    
     produtoID: string,
 }
 
@@ -18,6 +19,7 @@ class AtualizaPdtService {
         oferta,
         tamanho,
         categoriaID,
+        campanhaID,
         produtoID
 
     }: productRequest) {
@@ -35,6 +37,7 @@ class AtualizaPdtService {
                 oferta,
                 tamanho,
                 categoriaID,
+                campanhaID,
                 updatedAt: today
             }
         })
