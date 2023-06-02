@@ -79,5 +79,5 @@ rotas.get('/regioes', new ListaRgController_1.ListaRgController().handle); //Fro
 rotas.post('/regiao', new CriaRgController_1.CriaRgController().handle);
 // Campanha
 rotas.get('/campanhas', new ListaCampController_1.ListaCampController().handle); //Front
-rotas.post('/campanha', authenticator_1.Authenticator, new CriaCampController_1.CriaCampController().handle);
+rotas.post('/campanha', new CriaCampController_1.CriaCampController().handle);
 rotas.put('/campanha', new AtualizaCampController_1.AtualizaCampController().handle);

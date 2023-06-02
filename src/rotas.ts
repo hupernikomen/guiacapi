@@ -96,7 +96,7 @@ rotas.post('/regiao', new CriaRgController().handle)
 
 // Campanha
 rotas.get('/campanhas', new ListaCampController().handle) //Front
-rotas.post('/campanha', Authenticator, new CriaCampController().handle)
+rotas.post('/campanha', new CriaCampController().handle)
 rotas.put('/campanha', new AtualizaCampController().handle)
 
 
