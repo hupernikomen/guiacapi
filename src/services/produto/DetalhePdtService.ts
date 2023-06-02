@@ -18,22 +18,25 @@ class DetalhePdtService {
         oferta: true,
         tamanho: true,
         imagens: true,
-        createdAt:true,
         loja: {
-          select:{
-            id:true,
-            nome:true,
-            avatar:true
+          select: {
+            id: true,
+            nome: true,
+            avatar: true
           }
         },
         categoria: {
           select: {
             id: true,
             nome: true,
-          
           },
-          
         },
+        campanha: {
+          select: {
+            id: true,
+            nome: true
+          }
+        }
       },
     });
 

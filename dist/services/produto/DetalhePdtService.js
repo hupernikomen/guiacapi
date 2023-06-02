@@ -29,7 +29,6 @@ class DetalhePdtService {
                     oferta: true,
                     tamanho: true,
                     imagens: true,
-                    createdAt: true,
                     loja: {
                         select: {
                             id: true,
@@ -43,6 +42,12 @@ class DetalhePdtService {
                             nome: true,
                         },
                     },
+                    campanha: {
+                        select: {
+                            id: true,
+                            nome: true
+                        }
+                    }
                 },
             });
             return produto;

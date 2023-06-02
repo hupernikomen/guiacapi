@@ -31,19 +31,6 @@ class AtualizaPdtService {
                     categoriaID,
                     campanhaID,
                 },
-                select: {
-                    nome: true,
-                    descricao: true,
-                    preco: true,
-                    oferta: true,
-                    campanha: {
-                        select: {
-                            id: true,
-                            nome: true
-                        }
-                    },
-                    tamanho: true
-                }
             });
             return produto;
         });
