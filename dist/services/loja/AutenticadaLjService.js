@@ -29,7 +29,6 @@ class AutenticadaLjService {
                     vendedores: true,
                     bairro: true,
                     statusGuia: true,
-                    produtos: true,
                     referencia: true,
                     avatar: true,
                     endereco: true,
@@ -37,6 +36,21 @@ class AutenticadaLjService {
                     regiao: {
                         select: {
                             nome: true,
+                        }
+                    },
+                    produtos: {
+                        select: {
+                            nome: true,
+                            descricao: true,
+                            preco: true,
+                            oferta: true,
+                            campanha: {
+                                select: {
+                                    id: true,
+                                    nome: true
+                                }
+                            },
+                            tamanho: true
                         }
                     },
                 }
