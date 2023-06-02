@@ -126,6 +126,7 @@ model Campanha {
   id   String @id @default(uuid())
   nome String
   tema String
+  status Boolean @default(false)
 
   Produto Produto[]
   Loja    Loja[]
