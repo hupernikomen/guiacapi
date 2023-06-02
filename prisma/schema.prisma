@@ -50,8 +50,8 @@ model Profissional {
 }
 
 model Loja {
-  id         String  @id @default(uuid())
-  email      String  @unique
+  id         String   @id @default(uuid())
+  email      String   @unique
   senha      String
   avatar     Json?
   statusGuia Boolean? @default(false)
@@ -72,12 +72,13 @@ model Loja {
   regiao   Regiao @relation(fields: [regiaoID], references: [id])
   regiaoID String
 
-  createdAt DateTime? @default(now())
-  updatedAt DateTime? @default(now())
+  createdAt  DateTime? @default(now())
+  updatedAt  DateTime? @default(now())
+  Campanha   Campanha? @relation(fields: [campanhaId], references: [id])
+  campanhaId String?
 
   @@map("lojas")
 }
-
 
 model Vendedor {
   id String @id @default(uuid())
@@ -112,10 +113,24 @@ model Produto {
   categoria   Categoria @relation(fields: [categoriaID], references: [id])
   categoriaID String
 
+  campanha   Campanha? @relation(fields: [campanhaID], references: [id])
+  campanhaID String?
+
   createdAt DateTime? @default(now())
   updatedAt DateTime? @default(now())
 
   @@map("produtos")
+}
+
+model Campanha {
+  id   String @id @default(uuid())
+  nome String
+  tema String
+
+  Produto Produto[]
+  Loja    Loja[]
+
+  @@map("campanhas")
 }
 
 model Categoria {
