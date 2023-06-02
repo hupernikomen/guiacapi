@@ -36,7 +36,11 @@ import { AtualizaSrvController } from './controllers/servico/AtualizaSrvControll
 import { CriaSrvController } from './controllers/servico/CriaSrvController';
 import { ListaSrvController } from './controllers/servico/ListaSrvController';
 
-import { AutenticaController } from './controllers/autentica/AutenticaController'
+import { AutenticaController } from './controllers/autentica/AutenticaController';
+
+import { CriaCampController } from './controllers/campanha/CriaCampController';
+import { ListaCampController } from './controllers/campanha/ListaCampController';
+import { AtualizaCampController } from './controllers/campanha/AtualizaCampController';
 
 
 const uploadUser = multer({
@@ -74,7 +78,7 @@ rotas.get('/servicos', new ListaSrvController().handle)
 rotas.get('/categorias', new ListaCtController().handle)  //Front
 rotas.post('/categoria', new CriaCtController().handle)
 rotas.delete('/categoria', Authenticator, new DeletaCtController().handle)
-rotas.put('/categoria', Authenticator,new AtualizaCtController().handle)
+rotas.put('/categoria', Authenticator, new AtualizaCtController().handle)
 
 
 // Produto
@@ -89,6 +93,11 @@ rotas.put('/produto', Authenticator, new AtualizaPdtController().handle)
 // Region
 rotas.get('/regioes', new ListaRgController().handle) //Front
 rotas.post('/regiao', new CriaRgController().handle)
+
+// Campanha
+rotas.get('/campanhas', new ListaCampController().handle) //Front
+rotas.post('/campanha', Authenticator, new CriaCampController().handle)
+rotas.put('/campanha', new AtualizaCampController().handle)
 
 
 export { rotas };
