@@ -3,8 +3,8 @@ import prismaClient from "../../prisma"
 interface productRequest {
     nome: string,
     descricao: string,
-    preco: number,
-    oferta: number,
+    preco: string,
+    oferta: string,
     tamanho: string,
     categoriaID: string,
     campanhaID: string,    
@@ -23,8 +23,6 @@ class AtualizaPdtService {
         produtoID
 
     }: productRequest) {
-
-        const today = new Date()
 
         const produto = await prismaClient.produto.update({
             where: {

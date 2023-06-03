@@ -22,7 +22,7 @@ class CriaPdtController {
       const produto = await criaPdtService.execute({
         nome,
         descricao,
-        preco: parseFloat(preco.toFixed(2)),
+        preco,
         tamanho,
         imagens: files,
         categoriaID,

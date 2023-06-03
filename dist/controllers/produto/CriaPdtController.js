@@ -25,7 +25,7 @@ class CriaPdtController {
                 const produto = yield criaPdtService.execute({
                     nome,
                     descricao,
-                    preco: parseFloat(preco.toFixed(2)),
+                    preco,
                     tamanho,
                     imagens: files,
                     categoriaID,
