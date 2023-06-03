@@ -16,18 +16,16 @@ class CriaPdtController {
         return __awaiter(this, void 0, void 0, function* () {
             const criaPdtService = new CriaPdtService_1.CriaPdtService();
             const lojaID = req.loja_ID;
-            // const lojaID = req.query.lojaID as string
             const { nome, descricao, preco, tamanho, categoriaID, } = req.body;
             if (!req.files) {
                 throw new Error("Ops.. algo deu errado!");
             }
             else {
                 const files = req.files;
-                let precoNumber = parseFloat(preco);
                 const produto = yield criaPdtService.execute({
                     nome,
                     descricao,
-                    preco: precoNumber,
+                    preco: parseFloat(preco.toFixed(2)),
                     tamanho,
                     imagens: files,
                     categoriaID,

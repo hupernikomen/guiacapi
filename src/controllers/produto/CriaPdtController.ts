@@ -5,7 +5,6 @@ class CriaPdtController {
   async handle(req: Request, res: Response) {
     const criaPdtService = new CriaPdtService();
     const lojaID = req.loja_ID
-    // const lojaID = req.query.lojaID as string
     const {
       nome,
       descricao,
@@ -20,12 +19,10 @@ class CriaPdtController {
     } else {
       const files = req.files;
 
-      let precoNumber = parseFloat(preco)
-
       const produto = await criaPdtService.execute({
         nome,
         descricao,
-        preco: precoNumber,
+        preco: parseFloat(preco.toFixed(2)),
         tamanho,
         imagens: files,
         categoriaID,
