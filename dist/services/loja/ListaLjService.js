@@ -50,7 +50,6 @@ class ListaLjService {
                     endereco: true,
                     entrega: true,
                     latlng: true,
-                    createdAt: true,
                     bairro: true,
                     referencia: true,
                 }
