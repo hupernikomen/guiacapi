@@ -14,7 +14,7 @@ const AtualizaLjService_1 = require("../../services/loja/AtualizaLjService");
 class AtualizaLjController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const lojaID = req.query.lojaID;
+            const lojaID = req.loja_ID;
             const { statusGuia, nome, bio, endereco, bairro, referencia, latlng, entrega } = req.body;
             const file = req.file;
             const atualizaLjService = new AtualizaLjService_1.AtualizaLjService();
