@@ -17,14 +17,11 @@ class AtualizaPdtController {
 
         const atualizaPdtService = new AtualizaPdtService();
 
-        let precoNumber = parseFloat(preco)
-        let ofertaNumber = parseFloat(oferta)
-
         const produto = await atualizaPdtService.execute({
             nome,
             descricao,
-            preco: precoNumber,
-            oferta: ofertaNumber,
+            preco: parseFloat(preco.toFixed(2)),
+            oferta: parseFloat(oferta.toFixed(2)),
             tamanho,
             categoriaID,
             campanhaID,
