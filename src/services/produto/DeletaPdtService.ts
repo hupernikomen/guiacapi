@@ -1,7 +1,7 @@
 import prismaClient from "../../prisma";
 
 interface DeleteProdutoRequest {
-    produtoID: string
+    produtoID: string,
 }
 
 class DeletaPdtService {
@@ -16,7 +16,10 @@ class DeletaPdtService {
             }
         })
 
-        console.log(produto, "DeletaPdt API")
+        produto.imagens.forEach((item) => {
+            console.log(item, "DeletaPdt API");
+            
+        })
 
         if(!produto) {
             throw new Error("Produto não existe");

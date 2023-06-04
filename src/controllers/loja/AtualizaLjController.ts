@@ -30,7 +30,7 @@ class AtualizaLjController {
             endereco,
             bairro,
             referencia,
-            latlng: latlng || {},
+            latlng: latlng || undefined,
             entrega
 
         })
