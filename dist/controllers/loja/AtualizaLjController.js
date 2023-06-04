@@ -27,7 +27,7 @@ class AtualizaLjController {
                 endereco,
                 bairro,
                 referencia,
-                latlng,
+                latlng: latlng || {},
                 entrega
             });
             return res.json(data);

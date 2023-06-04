@@ -19,6 +19,8 @@ class AtualizaLjController {
 
         const atualizaLjService = new AtualizaLjService();
 
+
+
         const data = await atualizaLjService.execute({
             lojaID,
             statusGuia,
@@ -28,7 +30,7 @@ class AtualizaLjController {
             endereco,
             bairro,
             referencia,
-            latlng,
+            latlng: latlng || {},
             entrega
 
         })

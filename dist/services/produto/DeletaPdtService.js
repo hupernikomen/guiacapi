@@ -22,6 +22,7 @@ class DeletaPdtService {
                     id: produtoID
                 }
             });
+            console.log(produto, "DeletaPdt API");
             if (!produto) {
                 throw new Error("Produto não existe");
             }
