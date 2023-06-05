@@ -102,8 +102,8 @@ model Produto {
   cod       String?
   nome      String
   descricao String
-  preco     String
-  oferta    String?
+  preco     Float
+  oferta    Float?
   tamanho   String[]
   imagens   Json[]
 
