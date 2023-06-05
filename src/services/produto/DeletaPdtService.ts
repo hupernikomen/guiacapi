@@ -24,10 +24,10 @@ class DeletaPdtService {
         })
 
         produto.imagens?.forEach((item:any) => {
-console.log("okkkkk");
 
+            const params=item
             // console.log(item, "DeletaPdt API");
-            s3.deleteObject(item)
+            s3.deleteObject(params,()=>{})
         })
 
         if (!produto) {

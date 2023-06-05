@@ -30,9 +30,9 @@ class DeletaPdtService {
                 }
             });
             (_a = produto.imagens) === null || _a === void 0 ? void 0 : _a.forEach((item) => {
-                console.log("okkkkk");
+                const params = item;
                 // console.log(item, "DeletaPdt API");
-                s3.deleteObject(item);
+                s3.deleteObject(params, () => { });
             });
             if (!produto) {
                 throw new Error("Produto não existe");
