@@ -31,6 +31,7 @@ class CriaPdtController {
                     categoriaID,
                     lojaID,
                 });
+                console.log(typeof produto.preco, "type");
                 return res.status(200).json(produto);
             }
         });
