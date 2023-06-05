@@ -35,7 +35,8 @@ class DetalhePdtService {
         campanha: {
           select: {
             id: true,
-            nome: true
+            nome: true,
+            tema:true
           }
         }
       },

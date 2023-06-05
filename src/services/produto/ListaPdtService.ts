@@ -22,7 +22,8 @@ class ListaPdtService {
         campanha:{
           select:{
             id:true,
-            nome:true
+            nome:true,
+            tema:true
           }
         },
         loja: {
