@@ -22,18 +22,17 @@ let s3 = new aws_sdk_1.default.S3({
 });
 class DeletaPdtService {
     execute({ produtoID }) {
-        var _a;
         return __awaiter(this, void 0, void 0, function* () {
             const produto = yield prisma_1.default.produto.findUnique({
                 where: {
                     id: produtoID
                 }
             });
-            (_a = produto.imagens) === null || _a === void 0 ? void 0 : _a.forEach((item) => {
-                const params = item;
-                // console.log(item, "DeletaPdt API");
-                s3.deleteObject(params, () => { });
-            });
+            // produto.imagens?.forEach((item:any) => {
+            //     const params=item
+            //     // console.log(item, "DeletaPdt API");
+            //     s3.deleteObject(params,()=>{})
+            // })
             if (!produto) {
                 throw new Error("Produto não existe");
             }

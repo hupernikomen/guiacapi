@@ -34,6 +34,7 @@ class ListaPdtService {
                     tamanho: true,
                     oferta: true,
                     imagens: true,
+                    campanhaID: true,
                     loja: {
                         select: {
                             id: true,
