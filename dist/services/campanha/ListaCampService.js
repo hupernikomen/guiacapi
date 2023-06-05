@@ -18,6 +18,9 @@ class ListaCampService {
     execute() {
         return __awaiter(this, void 0, void 0, function* () {
             const campanha = yield prisma_1.default.campanha.findMany({
+                where: {
+                    status: true
+                },
                 select: {
                     id: true,
                     nome: true,

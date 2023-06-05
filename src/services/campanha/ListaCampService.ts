@@ -4,6 +4,9 @@ class ListaCampService {
     async execute() {
 
         const campanha = await prismaClient.campanha.findMany({
+            where:{
+                status:true
+            },
             select:{
                 id: true,
                 nome: true,
