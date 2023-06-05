@@ -102,8 +102,8 @@ model Produto {
   cod       String?
   nome      String
   descricao String
-  preco     Float
-  oferta    Float?
+  preco     Float    @default(0)
+  oferta    Float?   @default(0)
   tamanho   String[]
   imagens   Json[]
 
@@ -123,9 +123,9 @@ model Produto {
 }
 
 model Campanha {
-  id   String @id @default(uuid())
-  nome String
-  tema String
+  id     String  @id @default(uuid())
+  nome   String
+  tema   String
   status Boolean @default(false)
 
   Produto Produto[]

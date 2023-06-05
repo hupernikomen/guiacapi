@@ -35,7 +35,7 @@ class AtualizaPdtService {
                 oferta,
                 tamanho,
                 categoriaID,
-                campanhaID: oferta != null ? campanhaID : null,
+                campanhaID: oferta != 0 ? campanhaID : null,
             },
         })
 
