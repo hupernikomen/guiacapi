@@ -10,6 +10,7 @@ interface ProductRequest {
   lojaID: string,
 }
 
+
 class CriaPdtService {
   async execute({
     nome,
@@ -21,6 +22,9 @@ class CriaPdtService {
     lojaID,
   }: ProductRequest) {
     try {
+
+console.log(typeof preco, "typeoffffff")
+
 
       const produto = await prismaClient.produto.create({
         data: {
