@@ -41,6 +41,7 @@ import { AutenticaController } from './controllers/autentica/AutenticaController
 import { CriaCampController } from './controllers/campanha/CriaCampController';
 import { ListaCampController } from './controllers/campanha/ListaCampController';
 import { AtualizaCampController } from './controllers/campanha/AtualizaCampController';
+import { ListaCampInatController } from './controllers/campanha/ListaCampInatController';
 
 
 const uploadUser = multer({
@@ -96,9 +97,10 @@ rotas.get('/regioes', new ListaRgController().handle) //Front
 rotas.post('/regiao', new CriaRgController().handle)
 
 // Campanha
-rotas.get('/campanhas', new ListaCampController().handle) //Front
+rotas.get('/campanhas/ativas', new ListaCampController().handle) //Front
 rotas.post('/campanha', new CriaCampController().handle)
 rotas.put('/campanha', new AtualizaCampController().handle)
+rotas.get('/campanhas', new ListaCampInatController().handle)
 
 
 export { rotas };

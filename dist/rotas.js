@@ -37,6 +37,7 @@ const AutenticaController_1 = require("./controllers/autentica/AutenticaControll
 const CriaCampController_1 = require("./controllers/campanha/CriaCampController");
 const ListaCampController_1 = require("./controllers/campanha/ListaCampController");
 const AtualizaCampController_1 = require("./controllers/campanha/AtualizaCampController");
+const ListaCampInatController_1 = require("./controllers/campanha/ListaCampInatController");
 const uploadUser = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageTypes.s3 : multer_2.storageTypes.local,
@@ -78,6 +79,7 @@ rotas.put('/produto', authenticator_1.Authenticator, new AtualizaPdtController_1
 rotas.get('/regioes', new ListaRgController_1.ListaRgController().handle); //Front
 rotas.post('/regiao', new CriaRgController_1.CriaRgController().handle);
 // Campanha
-rotas.get('/campanhas', new ListaCampController_1.ListaCampController().handle); //Front
+rotas.get('/campanhas/ativas', new ListaCampController_1.ListaCampController().handle); //Front
 rotas.post('/campanha', new CriaCampController_1.CriaCampController().handle);
 rotas.put('/campanha', new AtualizaCampController_1.AtualizaCampController().handle);
+rotas.get('/campanhas', new ListaCampInatController_1.ListaCampInatController().handle);
