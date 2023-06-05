@@ -7,6 +7,7 @@ interface ProductRequest {
   tamanho: string,
   imagens: object,
   categoriaID: string,
+  campanhaID: string,
   lojaID: string,
 }
 
@@ -18,6 +19,7 @@ class CriaPdtService {
     tamanho,
     imagens,
     categoriaID,
+    campanhaID,
     lojaID,
   }: ProductRequest) {
     try {
@@ -30,6 +32,7 @@ class CriaPdtService {
           tamanho,
           imagens,
           categoriaID,
+          campanhaID,
           lojaID,
         },
       });

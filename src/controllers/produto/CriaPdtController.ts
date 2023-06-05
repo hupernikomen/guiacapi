@@ -11,6 +11,7 @@ class CriaPdtController {
       preco,
       tamanho,
       categoriaID,
+      campanhaID
     } =
       req.body;
 
@@ -26,6 +27,7 @@ class CriaPdtController {
         tamanho,
         imagens: files,
         categoriaID,
+        campanhaID,
         lojaID,
       })
 
