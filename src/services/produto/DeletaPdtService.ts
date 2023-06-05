@@ -1,4 +1,11 @@
 import prismaClient from "../../prisma";
+import AWS from 'aws-sdk';
+
+let s3 = new AWS.S3({
+    accessKeyId: process.env.ACCESS_KEY_ID,
+    secretAccessKey: process.env.SECRET_ACCESS_KEY,
+    region: 'us-east-1',
+});
 
 interface DeleteProdutoRequest {
     produtoID: string,
@@ -16,12 +23,14 @@ class DeletaPdtService {
             }
         })
 
-        produto.imagens.forEach((item) => {
-            console.log(item, "DeletaPdt API");
-            
+        produto.imagens?.forEach((item:any) => {
+console.log("okkkkk");
+
+            // console.log(item, "DeletaPdt API");
+            s3.deleteObject(item)
         })
 
-        if(!produto) {
+        if (!produto) {
             throw new Error("Produto não existe");
         }
 
@@ -36,4 +45,4 @@ class DeletaPdtService {
     }
 }
 
-export { DeletaPdtService  }
+export { DeletaPdtService }

@@ -14,16 +14,25 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DeletaPdtService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
+const aws_sdk_1 = __importDefault(require("aws-sdk"));
+let s3 = new aws_sdk_1.default.S3({
+    accessKeyId: process.env.ACCESS_KEY_ID,
+    secretAccessKey: process.env.SECRET_ACCESS_KEY,
+    region: 'us-east-1',
+});
 class DeletaPdtService {
     execute({ produtoID }) {
+        var _a;
         return __awaiter(this, void 0, void 0, function* () {
             const produto = yield prisma_1.default.produto.findUnique({
                 where: {
                     id: produtoID
                 }
             });
-            produto.imagens.forEach((item) => {
-                console.log(item, "DeletaPdt API");
+            (_a = produto.imagens) === null || _a === void 0 ? void 0 : _a.forEach((item) => {
+                console.log("okkkkk");
+                // console.log(item, "DeletaPdt API");
+                s3.deleteObject(item);
             });
             if (!produto) {
                 throw new Error("Produto não existe");

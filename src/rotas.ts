@@ -51,6 +51,7 @@ const uploadUser = multer({
   }
 })
 
+
 const rotas = Router();
 
 // Loja

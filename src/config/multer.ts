@@ -32,6 +32,8 @@ export default{
   }
 }
 
+
+
 // fazer um filtro de tipos antes de enviar:
 export function fileFilter (req, file, callback) {
   let errorMessage = '';
