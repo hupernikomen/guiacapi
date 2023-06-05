@@ -16,7 +16,7 @@ class CriaPdtController {
         return __awaiter(this, void 0, void 0, function* () {
             const criaPdtService = new CriaPdtService_1.CriaPdtService();
             const lojaID = req.loja_ID;
-            const { nome, descricao, preco, tamanho, categoriaID, campanhaID } = req.body;
+            const { nome, descricao, preco, tamanho, categoriaID, } = req.body;
             if (!req.files) {
                 throw new Error("Ops.. algo deu errado!");
             }
@@ -29,7 +29,6 @@ class CriaPdtController {
                     tamanho,
                     imagens: files,
                     categoriaID,
-                    campanhaID,
                     lojaID,
                 });
                 return res.status(200).json(produto);

@@ -28,7 +28,7 @@ class AtualizaPdtService {
                     oferta,
                     tamanho,
                     categoriaID,
-                    campanhaID,
+                    campanhaID: oferta != null ? campanhaID : null,
                 },
             });
             return produto;
