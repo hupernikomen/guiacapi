@@ -23,14 +23,13 @@ class CriaPdtService {
   }: ProductRequest) {
     try {
 
-console.log(typeof preco, "typeoffffff")
 
 
       const produto = await prismaClient.produto.create({
         data: {
           nome,
           descricao,
-          preco,
+          preco: Number(preco),
           tamanho,
           imagens,
           categoriaID,

@@ -18,12 +18,11 @@ class CriaPdtService {
     execute({ nome, descricao, preco, tamanho, imagens, categoriaID, lojaID, }) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                console.log(typeof preco, "typeoffffff");
                 const produto = yield prisma_1.default.produto.create({
                     data: {
                         nome,
                         descricao,
-                        preco,
+                        preco: Number(preco),
                         tamanho,
                         imagens,
                         categoriaID,
