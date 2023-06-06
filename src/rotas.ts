@@ -72,7 +72,7 @@ rotas.delete('/vendedor', Authenticator, new DeletaVddController().handle)
 rotas.get('/vendedores', new ListaVddController().handle)
 
 //Servicos
-rotas.post('/servico', uploadUser.single('foto'), uploadUser.array('imagens'), new CriaSrvController().handle)
+rotas.post('/servico', uploadUser.single('foto'), new CriaSrvController().handle)
 rotas.put('/servico', new AtualizaSrvController().handle)
 rotas.get('/servicos', new ListaSrvController().handle)
 

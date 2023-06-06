@@ -33,6 +33,13 @@ class PorCategoriaPdtService {
                     preco: true,
                     oferta: true,
                     imagens: true,
+                    campanha: {
+                        select: {
+                            id: true,
+                            nome: true,
+                            tema: true
+                        }
+                    },
                     loja: {
                         select: {
                             id: true,

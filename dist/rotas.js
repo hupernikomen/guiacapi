@@ -60,7 +60,7 @@ rotas.post('/vendedor', authenticator_1.Authenticator, uploadUser.single('avatar
 rotas.delete('/vendedor', authenticator_1.Authenticator, new DeletaVddController_1.DeletaVddController().handle);
 rotas.get('/vendedores', new ListaVddController_1.ListaVddController().handle);
 //Servicos
-rotas.post('/servico', uploadUser.single('foto'), uploadUser.array('imagens'), new CriaSrvController_1.CriaSrvController().handle);
+rotas.post('/servico', uploadUser.single('foto'), new CriaSrvController_1.CriaSrvController().handle);
 rotas.put('/servico', new AtualizaSrvController_1.AtualizaSrvController().handle);
 rotas.get('/servicos', new ListaSrvController_1.ListaSrvController().handle);
 // Categoria
