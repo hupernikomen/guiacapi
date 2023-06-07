@@ -23,7 +23,24 @@ class AutenticadaLjService {
                         nome:true,
                     }
                 },
-                produtos: true,
+                produtos: {
+                    select:{
+                        id: true,
+                        nome: true,
+                        preco: true,
+                        descricao: true,
+                        tamanho: true,
+                        oferta: true,
+                        imagens: true,
+                        campanha:{
+                          select:{
+                            id:true,
+                            nome:true,
+                            tema:true
+                          }
+                        }
+                    }
+                },
 
             }
         })
