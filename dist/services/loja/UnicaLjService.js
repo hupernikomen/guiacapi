@@ -42,7 +42,9 @@ class UnicaLjService {
                             imagens: true,
                             campanha: {
                                 select: {
-                                    nome: true
+                                    nome: true,
+                                    id: true,
+                                    tema: true
                                 }
                             }
                         },
