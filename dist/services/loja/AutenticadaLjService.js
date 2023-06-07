@@ -47,6 +47,7 @@ class AutenticadaLjService {
                             tamanho: true,
                             oferta: true,
                             imagens: true,
+                            campanhaID: true,
                             campanha: {
                                 select: {
                                     id: true,
