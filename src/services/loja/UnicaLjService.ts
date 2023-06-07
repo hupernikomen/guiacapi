@@ -31,6 +31,7 @@ class UnicaLjService {
                         id: true,
                         nome: true,
                         preco: true,
+                        oferta:true,
                         imagens: true,
                         campanha:{
                             select:{
