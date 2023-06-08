@@ -18,6 +18,7 @@ class ListaVddService {
             select: {
                 lojaID: true,
                 id: true,
+                avatar:true,
                 nome: true,
                 whatsapp: true,
                 setor: true
