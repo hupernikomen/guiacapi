@@ -23,7 +23,7 @@ const CriaPdtController_1 = require("./controllers/produto/CriaPdtController");
 const AtualizaPdtController_1 = require("./controllers/produto/AtualizaPdtController");
 const DetalhePdtController_1 = require("./controllers/produto/DetalhePdtController");
 const DeletaPdtController_1 = require("./controllers/produto/DeletaPdtController");
-const ListaPdtController_1 = require("./controllers/produto/ListaPdtController");
+const FeedProdutosController_1 = require("./controllers/produto/FeedProdutosController");
 const PorCategoriaPdtController_1 = require("./controllers/produto/PorCategoriaPdtController");
 const CriaRgController_1 = require("./controllers/regiao/CriaRgController");
 const ListaRgController_1 = require("./controllers/regiao/ListaRgController");
@@ -69,7 +69,7 @@ rotas.post('/categoria', new CriaCtController_1.CriaCtController().handle);
 rotas.delete('/categoria', authenticator_1.Authenticator, new DeletaCtController_1.DeletaCtController().handle);
 rotas.put('/categoria', authenticator_1.Authenticator, new AtualizaCtController_1.AtualizaCtController().handle);
 // Produto
-rotas.get('/produtos', new ListaPdtController_1.ListaPdtController().handle); //Front [com filtro de regiao]
+rotas.get('/feed', new FeedProdutosController_1.FeedProdutosControlller().handle); //Front [com filtro de regiao]
 rotas.post('/produto', authenticator_1.Authenticator, uploadUser.array('files', 5), new CriaPdtController_1.CriaPdtController().handle);
 rotas.get('/porcategoria', new PorCategoriaPdtController_1.PorCategoriaPdtController().handle); //Front [com filtro de regiao]
 rotas.get('/detalhe', new DetalhePdtController_1.DetalhePdtController().handle);

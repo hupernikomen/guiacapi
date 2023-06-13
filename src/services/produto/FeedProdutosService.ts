@@ -1,14 +1,14 @@
 import prismaClient from "../../prisma";
 
-class ListaPdtService {
+class FeedProdutosService {
   async execute() {
     const produto = await prismaClient.produto.findMany({
       where: {
         loja: {
           statusGuia: true,
-          // regiao: {
-          //   nome: "Dirceu", // Logica de alteração de REGIAO no FrontEnd
-          // },
+          regiao: {
+            nome: "Dirceu", // Logica de alteração de REGIAO no FrontEnd
+          },
         },
       },
       select: {
@@ -42,4 +42,4 @@ class ListaPdtService {
   }
 }
 
-export { ListaPdtService };
+export { FeedProdutosService };

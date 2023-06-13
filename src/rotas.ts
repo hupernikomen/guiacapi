@@ -22,7 +22,7 @@ import { CriaPdtController } from './controllers/produto/CriaPdtController';
 import { AtualizaPdtController } from './controllers/produto/AtualizaPdtController';
 import { DetalhePdtController } from './controllers/produto/DetalhePdtController';
 import { DeletaPdtController } from './controllers/produto/DeletaPdtController';
-import { ListaPdtController } from './controllers/produto/ListaPdtController';
+import { FeedProdutosControlller } from './controllers/produto/FeedProdutosController';
 import { PorCategoriaPdtController } from './controllers/produto/PorCategoriaPdtController';
 
 import { CriaRgController } from './controllers/regiao/CriaRgController';
@@ -84,7 +84,7 @@ rotas.put('/categoria', Authenticator, new AtualizaCtController().handle)
 
 
 // Produto
-rotas.get('/produtos', new ListaPdtController().handle)  //Front [com filtro de regiao]
+rotas.get('/feed', new FeedProdutosControlller().handle)  //Front [com filtro de regiao]
 rotas.post('/produto', Authenticator, uploadUser.array('files', 5), new CriaPdtController().handle)
 rotas.get('/porcategoria', new PorCategoriaPdtController().handle)  //Front [com filtro de regiao]
 rotas.get('/detalhe', new DetalhePdtController().handle)
