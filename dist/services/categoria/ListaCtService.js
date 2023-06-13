@@ -21,7 +21,10 @@ class ListaCtService {
                 select: {
                     id: true,
                     nome: true,
-                    _count: true
+                    _count: true,
+                    produto: {
+                        select: { loja: { select: { statusGuia: true } } }
+                    }
                 }
             });
             return categoria;
