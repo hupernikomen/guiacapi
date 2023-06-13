@@ -21,7 +21,7 @@ const DeletaCtController_1 = require("./controllers/categoria/DeletaCtController
 const AtualizaCtController_1 = require("./controllers/categoria/AtualizaCtController");
 const CriaPdtController_1 = require("./controllers/produto/CriaPdtController");
 const AtualizaPdtController_1 = require("./controllers/produto/AtualizaPdtController");
-const DetalhePdtController_1 = require("./controllers/produto/DetalhePdtController");
+const DetalheProdutoController_1 = require("./controllers/produto/DetalheProdutoController");
 const DeletaPdtController_1 = require("./controllers/produto/DeletaPdtController");
 const FeedProdutosController_1 = require("./controllers/produto/FeedProdutosController");
 const PorCategoriaPdtController_1 = require("./controllers/produto/PorCategoriaPdtController");
@@ -72,7 +72,7 @@ rotas.put('/categoria', authenticator_1.Authenticator, new AtualizaCtController_
 rotas.get('/feed', new FeedProdutosController_1.FeedProdutosControlller().handle); //Front [com filtro de regiao]
 rotas.post('/produto', authenticator_1.Authenticator, uploadUser.array('files', 5), new CriaPdtController_1.CriaPdtController().handle);
 rotas.get('/porcategoria', new PorCategoriaPdtController_1.PorCategoriaPdtController().handle); //Front [com filtro de regiao]
-rotas.get('/detalhe', new DetalhePdtController_1.DetalhePdtController().handle);
+rotas.get('/detalhe', new DetalheProdutoController_1.DetalheProdutoController().handle);
 rotas.delete('/produto', authenticator_1.Authenticator, new DeletaPdtController_1.DeletaPdtController().handle);
 rotas.put('/produto', authenticator_1.Authenticator, new AtualizaPdtController_1.AtualizaPdtController().handle);
 // Region

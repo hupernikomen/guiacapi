@@ -1,11 +1,11 @@
 import prismaClient from "../../prisma";
 
-interface detailProductRequest {
+interface DetalheRequest {
   produtoID: string;
 }
 
-class DetalhePdtService {
-  async execute({ produtoID }: detailProductRequest) {
+class DetalheProdutoService {
+  async execute({ produtoID }: DetalheRequest) {
     const produto = await prismaClient.produto.findUnique({
       where: {
         id: produtoID,
@@ -31,7 +31,6 @@ class DetalhePdtService {
             nome: true,
           },
         },
-        categoriaID:true,
         campanha: {
           select: {
             id: true,
@@ -46,4 +45,4 @@ class DetalhePdtService {
   }
 }
 
-export { DetalhePdtService };
+export { DetalheProdutoService };

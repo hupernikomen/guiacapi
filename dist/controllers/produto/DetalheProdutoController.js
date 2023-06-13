@@ -10,13 +10,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DetalheProdutoController = void 0;
-const DetalhePdtService_1 = require("../../services/produto/DetalhePdtService");
+const DetalheProdutoService_1 = require("../../services/produto/DetalheProdutoService");
 class DetalheProdutoController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const produtoID = req.query.produtoID;
-            const detalhePdtService = new DetalhePdtService_1.DetalhePdtService();
-            const produto = yield detalhePdtService.execute({
+            const detalheProdutoService = new DetalheProdutoService_1.DetalheProdutoService();
+            const produto = yield detalheProdutoService.execute({
                 produtoID
             });
             return res.json(produto);

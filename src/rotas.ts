@@ -20,7 +20,7 @@ import { AtualizaCtController } from './controllers/categoria/AtualizaCtControll
 
 import { CriaPdtController } from './controllers/produto/CriaPdtController';
 import { AtualizaPdtController } from './controllers/produto/AtualizaPdtController';
-import { DetalhePdtController } from './controllers/produto/DetalhePdtController';
+import { DetalheProdutoController } from './controllers/produto/DetalheProdutoController';
 import { DeletaPdtController } from './controllers/produto/DeletaPdtController';
 import { FeedProdutosControlller } from './controllers/produto/FeedProdutosController';
 import { PorCategoriaPdtController } from './controllers/produto/PorCategoriaPdtController';
@@ -87,7 +87,7 @@ rotas.put('/categoria', Authenticator, new AtualizaCtController().handle)
 rotas.get('/feed', new FeedProdutosControlller().handle)  //Front [com filtro de regiao]
 rotas.post('/produto', Authenticator, uploadUser.array('files', 5), new CriaPdtController().handle)
 rotas.get('/porcategoria', new PorCategoriaPdtController().handle)  //Front [com filtro de regiao]
-rotas.get('/detalhe', new DetalhePdtController().handle)
+rotas.get('/detalhe', new DetalheProdutoController().handle)
 rotas.delete('/produto', Authenticator, new DeletaPdtController().handle)
 rotas.put('/produto', Authenticator, new AtualizaPdtController().handle)
 
