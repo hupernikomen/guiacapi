@@ -14,7 +14,7 @@ const EsqueciSenhaService_1 = require("../../services/loja/EsqueciSenhaService")
 class EsqueciSenhaController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const lojaID = req.query.lojaID;
+            const lojaID = req.loja_ID;
             const { novasenha } = req.body;
             const criarLojaService = new EsqueciSenhaService_1.EsqueciSenhaService();
             const loja = yield criarLojaService.execute({

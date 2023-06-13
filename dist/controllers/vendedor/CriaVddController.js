@@ -15,7 +15,7 @@ class CriaVddController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { nome, whatsapp, setor } = req.body;
-            const lojaID = req.query.lojaID;
+            const lojaID = req.loja_ID;
             const criaVddService = new CriaVddService_1.CriaVddService();
             if (!req.file) {
                 throw new Error("Ops.. algo deu errado!");

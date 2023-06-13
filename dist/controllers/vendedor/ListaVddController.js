@@ -14,7 +14,7 @@ const ListaVddService_1 = require("../../services/vendedor/ListaVddService");
 class ListaVddController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const lojaID = req.query.lojaID;
+            const lojaID = req.loja_ID;
             const listaVddService = new ListaVddService_1.ListaVddService();
             const vendedores = yield listaVddService.execute({
                 lojaID
