@@ -14,9 +14,11 @@ const UnicaLjService_1 = require("../../services/loja/UnicaLjService");
 class UnicaLjController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const loja_ID = req.loja_ID;
+            const lojaID = req.query.lojaID;
             const unicaLjService = new UnicaLjService_1.UnicaLjService();
-            const loja = yield unicaLjService.execute(loja_ID);
+            const loja = yield unicaLjService.execute({
+                lojaID
+            });
             return res.json(loja);
         });
     }

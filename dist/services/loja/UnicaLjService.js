@@ -15,11 +15,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UnicaLjService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class UnicaLjService {
-    execute(loja_ID) {
+    execute({ lojaID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const loja = yield prisma_1.default.loja.findUnique({
                 where: {
-                    id: loja_ID,
+                    id: lojaID,
                 },
                 select: {
                     id: true,
