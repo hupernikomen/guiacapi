@@ -4,7 +4,7 @@ import { CriaVddService } from '../../services/vendedor/CriaVddService';
 class CriaVddController {
     async handle(req: Request, res: Response) {
         const { nome, whatsapp, setor } = req.body
-        const lojaID = req.query.lojaID as string
+        const lojaID = req.loja_ID 
 
 
         const criaVddService = new CriaVddService();

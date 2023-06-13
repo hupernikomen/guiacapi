@@ -3,7 +3,7 @@ import { EsqueciSenhaService } from '../../services/loja/EsqueciSenhaService';
 
 class EsqueciSenhaController {
     async handle(req: Request, res: Response) {
-        const lojaID = req.query.lojaID as string
+        const lojaID = req.loja_ID
         const { novasenha } = req.body
 
         const criarLojaService = new EsqueciSenhaService();
