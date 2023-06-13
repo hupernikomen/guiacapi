@@ -6,9 +6,9 @@ class FeedProdutosService {
       where: {
         loja: {
           statusGuia: true,
-          regiao: {
-            nome: "Dirceu", // Logica de alteração de REGIAO no FrontEnd
-          },
+          // regiao: {
+          //   nome: "Dirceu", // Logica de alteração de REGIAO no FrontEnd
+          // },
         },
       },
       select: {
