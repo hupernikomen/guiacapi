@@ -30,8 +30,6 @@ class FeedProdutosService {
                     id: true,
                     nome: true,
                     preco: true,
-                    descricao: true,
-                    tamanho: true,
                     oferta: true,
                     imagens: true,
                     campanha: {
@@ -47,7 +45,7 @@ class FeedProdutosService {
                             nome: true,
                             entrega: true
                         }
-                    },
+                    }
                 },
             });
             return produto;
