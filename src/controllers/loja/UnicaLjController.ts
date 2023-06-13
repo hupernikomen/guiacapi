@@ -5,13 +5,11 @@ import { UnicaLjService } from '../../services/loja/UnicaLjService'
 class UnicaLjController {
     async handle(req: Request, res: Response) {
 
-        const lojaID = req.loja_ID
+        const loja_ID = req.loja_ID
 
         const unicaLjService = new UnicaLjService()
 
-        const loja = await unicaLjService.execute({
-            lojaID
-        })
+        const loja = await unicaLjService.execute(loja_ID)
         return res.json(loja)
 
     }

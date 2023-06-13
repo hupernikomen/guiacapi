@@ -1,17 +1,12 @@
 import prismaClient from "../../prisma";
 
-interface userRequest {
-    lojaID: string
-}
 
 class UnicaLjService {
-    async execute({
-        lojaID
-    }: userRequest) {
+    async execute(loja_ID: string) {
 
         const loja = await prismaClient.loja.findUnique({
             where: {
-                id: lojaID,
+                id: loja_ID,
             },
             select: {
                 id: true,
