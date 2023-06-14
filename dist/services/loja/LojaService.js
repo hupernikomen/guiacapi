@@ -25,7 +25,7 @@ class LojaService {
                     id: true,
                     statusGuia: true,
                     endereco: true,
-                    bairro: true,
+                    referencia: true,
                     bio: true,
                     nome: true,
                     avatar: true,
