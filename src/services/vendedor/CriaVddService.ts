@@ -1,11 +1,12 @@
 import prismaClient from "../../prisma";
 
 interface vendedorRequest {
-    avatar:object,
+    avatar: object,
     nome: string,
     whatsapp: string,
     setor: string,
-    lojaID:string
+    horario: object,
+    lojaID: string
 }
 
 class CriaVddService {
@@ -14,6 +15,7 @@ class CriaVddService {
         nome,
         whatsapp,
         setor,
+        horario,
         lojaID
     }: vendedorRequest) {
 
@@ -25,7 +27,7 @@ class CriaVddService {
 
         if (vendedorExiste) {
             throw new Error("Vendedor já cadastrado");
-            
+
         }
 
         const vendedor = await prismaClient.vendedor.create({
@@ -34,6 +36,7 @@ class CriaVddService {
                 nome,
                 whatsapp,
                 setor,
+                horario,
                 lojaID
             }
         })

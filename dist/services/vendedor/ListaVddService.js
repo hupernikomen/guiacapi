@@ -26,7 +26,8 @@ class ListaVddService {
                     avatar: true,
                     nome: true,
                     whatsapp: true,
-                    setor: true
+                    horario: true,
+                    setor: true,
                 }
             });
             return vendedores;

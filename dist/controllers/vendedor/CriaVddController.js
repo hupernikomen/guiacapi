@@ -14,7 +14,7 @@ const CriaVddService_1 = require("../../services/vendedor/CriaVddService");
 class CriaVddController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { nome, whatsapp, setor } = req.body;
+            const { nome, whatsapp, setor, horario } = req.body;
             const lojaID = req.loja_ID;
             const criaVddService = new CriaVddService_1.CriaVddService();
             if (!req.file) {
@@ -27,6 +27,7 @@ class CriaVddController {
                     nome,
                     whatsapp,
                     setor,
+                    horario,
                     lojaID
                 });
                 return res.json(vendedor);

@@ -3,7 +3,7 @@ import { CriaVddService } from '../../services/vendedor/CriaVddService';
 
 class CriaVddController {
     async handle(req: Request, res: Response) {
-        const { nome, whatsapp, setor } = req.body
+        const { nome, whatsapp, setor,horario } = req.body
         const lojaID = req.loja_ID 
 
 
@@ -21,6 +21,7 @@ class CriaVddController {
                 nome,
                 whatsapp,
                 setor,
+                horario,
                 lojaID
             })
 
