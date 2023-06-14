@@ -16,7 +16,7 @@ class ListaVddService {
 
             select: {
                 id: true,
-                avatar:true,
+                avatar: true,
                 nome: true,
                 whatsapp: true,
                 setor: true
