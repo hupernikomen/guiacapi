@@ -72,7 +72,7 @@ rotas.put('/categoria', authenticator_1.Authenticator, new AtualizaCtController_
 rotas.get('/feed', new FeedProdutosController_1.FeedProdutosControlller().handle); //Front [com filtro de regiao]
 rotas.post('/produto', authenticator_1.Authenticator, uploadUser.array('files', 5), new CriaPdtController_1.CriaPdtController().handle);
 rotas.get('/porcategoria', new PorCategoriaPdtController_1.PorCategoriaPdtController().handle); //Front [com filtro de regiao]
-rotas.get('/detalhe', new DetalheProdutoController_1.DetalheProdutoController().handle);
+rotas.get('/detalhe/produto', new DetalheProdutoController_1.DetalheProdutoController().handle);
 rotas.delete('/produto', authenticator_1.Authenticator, new DeletaPdtController_1.DeletaPdtController().handle);
 rotas.put('/produto', authenticator_1.Authenticator, new AtualizaPdtController_1.AtualizaPdtController().handle);
 // Region

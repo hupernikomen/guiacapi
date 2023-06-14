@@ -87,7 +87,7 @@ rotas.put('/categoria', Authenticator, new AtualizaCtController().handle)
 rotas.get('/feed', new FeedProdutosControlller().handle)  //Front [com filtro de regiao]
 rotas.post('/produto', Authenticator, uploadUser.array('files', 5), new CriaPdtController().handle)
 rotas.get('/porcategoria', new PorCategoriaPdtController().handle)  //Front [com filtro de regiao]
-rotas.get('/detalhe', new DetalheProdutoController().handle)
+rotas.get('/detalhe/produto', new DetalheProdutoController().handle)
 rotas.delete('/produto', Authenticator, new DeletaPdtController().handle)
 rotas.put('/produto', Authenticator, new AtualizaPdtController().handle)
 
