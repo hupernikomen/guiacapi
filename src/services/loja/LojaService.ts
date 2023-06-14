@@ -15,33 +15,27 @@ class LojaService {
             },
             select: {
                 id: true,
-                statusGuia:true,
+                statusGuia: true,
                 bio: true,
-                latlng:true,
-                nome:true,
-                endereco:true,
-                bairro: true,
-                referencia:true,
+                nome: true,
                 avatar: true,
-                vendedores:true,
-                regiao: true,
-                entrega:true,
+                entrega: true,
                 produtos: {
                     select: {
                         id: true,
                         nome: true,
                         preco: true,
-                        oferta:true,
+                        oferta: true,
                         imagens: true,
-                        campanha:{
-                            select:{
-                                nome:true,
-                                id:true,
-                                tema:true
+                        campanha: {
+                            select: {
+                                nome: true,
+                                id: true,
+                                tema: true
                             }
                         }
-                      },
-                },
+                    }
+                }
             }
         })
 

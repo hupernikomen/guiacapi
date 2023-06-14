@@ -25,14 +25,8 @@ class LojaService {
                     id: true,
                     statusGuia: true,
                     bio: true,
-                    latlng: true,
                     nome: true,
-                    endereco: true,
-                    bairro: true,
-                    referencia: true,
                     avatar: true,
-                    vendedores: true,
-                    regiao: true,
                     entrega: true,
                     produtos: {
                         select: {
@@ -48,8 +42,8 @@ class LojaService {
                                     tema: true
                                 }
                             }
-                        },
-                    },
+                        }
+                    }
                 }
             });
             return loja;
