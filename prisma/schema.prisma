@@ -87,6 +87,7 @@ model Vendedor {
   nome     String
   whatsapp String @unique
   setor    String
+  horario  Json?
 
   loja   Loja   @relation(fields: [lojaID], references: [id])
   lojaID String
