@@ -10,7 +10,7 @@ import { CriaLjController } from './controllers/loja/CriaLjController'
 import { AutenticadaLjController } from './controllers/loja/AutenticadaLjController';
 import { AtualizaLjController } from './controllers/loja/AtualizaLjController';
 import { ListaLjController } from './controllers/loja/ListaLjController';
-import { UnicaLjController } from './controllers/loja/UnicaLjController';
+import { LojaController } from './controllers/loja/LojaController';
 import { EsqueciSenhaController } from './controllers/loja/EsqueciSenhaController';
 
 import { ListaCtController } from './controllers/categoria/ListaCtController';
@@ -57,7 +57,7 @@ const rotas = Router();
 
 // Loja
 rotas.get('/lojas', new ListaLjController().handle)  //Front [com filtro de regiao]
-rotas.get('/loja', new UnicaLjController().handle)  //Front
+rotas.get('/loja', new LojaController().handle)  //Front
 rotas.post('/login', new AutenticaController().handle)  //Front
 rotas.post('/esquecisenha', new EsqueciSenhaController().handle)
 

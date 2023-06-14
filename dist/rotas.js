@@ -13,7 +13,7 @@ const CriaLjController_1 = require("./controllers/loja/CriaLjController");
 const AutenticadaLjController_1 = require("./controllers/loja/AutenticadaLjController");
 const AtualizaLjController_1 = require("./controllers/loja/AtualizaLjController");
 const ListaLjController_1 = require("./controllers/loja/ListaLjController");
-const UnicaLjController_1 = require("./controllers/loja/UnicaLjController");
+const LojaController_1 = require("./controllers/loja/LojaController");
 const EsqueciSenhaController_1 = require("./controllers/loja/EsqueciSenhaController");
 const ListaCtController_1 = require("./controllers/categoria/ListaCtController");
 const CriaCtController_1 = require("./controllers/categoria/CriaCtController");
@@ -49,7 +49,7 @@ const rotas = (0, express_1.Router)();
 exports.rotas = rotas;
 // Loja
 rotas.get('/lojas', new ListaLjController_1.ListaLjController().handle); //Front [com filtro de regiao]
-rotas.get('/loja', new UnicaLjController_1.UnicaLjController().handle); //Front
+rotas.get('/loja', new LojaController_1.LojaController().handle); //Front
 rotas.post('/login', new AutenticaController_1.AutenticaController().handle); //Front
 rotas.post('/esquecisenha', new EsqueciSenhaController_1.EsqueciSenhaController().handle);
 rotas.post('/loja', new CriaLjController_1.CriaLjController().handle);

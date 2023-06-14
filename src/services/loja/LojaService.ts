@@ -4,7 +4,7 @@ interface userRequest {
     lojaID: string
 }
 
-class UnicaLjService {
+class LojaService {
     async execute({
         lojaID
     }: userRequest) {
@@ -49,4 +49,4 @@ class UnicaLjService {
     }
 }
 
-export { UnicaLjService }
+export { LojaService }
