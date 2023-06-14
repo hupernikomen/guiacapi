@@ -28,6 +28,7 @@ class LojaService {
                     nome: true,
                     avatar: true,
                     entrega: true,
+                    latlng: true,
                     produtos: {
                         select: {
                             id: true,
