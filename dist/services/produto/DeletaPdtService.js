@@ -22,22 +22,23 @@ let s3 = new aws_sdk_1.default.S3({
 });
 class DeletaPdtService {
     execute({ produtoID }) {
+        var _a;
         return __awaiter(this, void 0, void 0, function* () {
             const produto = yield prisma_1.default.produto.findUnique({
                 where: {
                     id: produtoID
                 }
             });
-            // produto.imagens?.forEach((item: any) => {
-            var params = { Bucket: 'guiaapi-s3bucket', Key: 'public/42d5b2ea6584a6f96acc245caf9a1e82-598935c3-cc1f-4364-9d11-4e94ada3233d.JPEG' };
-            s3.deleteObject(params, function (err, data) {
-                if (err)
-                    console.log(err, err.stack); // error
-                else
-                    console.log(); // deleted
-                console.log("DeletaPdt API");
+            (_a = produto.imagens) === null || _a === void 0 ? void 0 : _a.forEach((item) => {
+                console.log("DeletaPdt API", item);
+                var params = { Bucket: 'guiaapi-s3bucket', Key: 'public/3afd31ce3e19df7ecda409954c3a3998-530da3c2-b3d6-4d13-89a0-0e39cf32a515.JPEG' };
+                s3.deleteObject(params, function (err, data) {
+                    if (err)
+                        console.log(err, err.stack); // error
+                    else
+                        console.log(); // deleted
+                });
             });
-            // })
             if (!produto) {
                 throw new Error("Produto não existe");
             }
