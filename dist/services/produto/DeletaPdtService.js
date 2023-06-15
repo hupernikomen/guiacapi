@@ -31,7 +31,7 @@ class DeletaPdtService {
             });
             (_a = produto.imagens) === null || _a === void 0 ? void 0 : _a.forEach((item) => {
                 console.log(item, "DeletaPdt API");
-                var params = { Bucket: 'guiaapi-s3bucket', Key: `public/${item.key}` };
+                var params = { Bucket: 'guiaapi-s3bucket', Key: item.key };
                 s3.deleteObject(params, function (err, data) {
                     if (err)
                         console.log(err, err.stack); // error
