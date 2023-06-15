@@ -29,7 +29,7 @@ app.use((error: Error, request: Request, response: Response, next: NextFunction)
     })
 })
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 3333, () => {
     console.log('Rodando na porta : ', process.env.PORT)
 
 })

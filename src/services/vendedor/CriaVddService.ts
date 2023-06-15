@@ -30,6 +30,7 @@ class CriaVddService {
 
         }
 
+
         const vendedor = await prismaClient.vendedor.create({
             data: {
                 avatar,

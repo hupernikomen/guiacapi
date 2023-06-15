@@ -25,6 +25,6 @@ app.use((error, request, response, next) => {
         message: 'Erro Interno do Servidor'
     });
 });
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 3333, () => {
     console.log('Rodando na porta : ', process.env.PORT);
 });
