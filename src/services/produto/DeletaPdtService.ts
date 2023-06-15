@@ -23,9 +23,9 @@ class DeletaPdtService {
             }
         })
 
+        // Apagar imagens do S3 da Amazon
         produto.imagens?.forEach((item: any) => {
-            console.log(item.key,"DeletaPdt API");
-            var params = { Bucket: 'guiaapi-s3bucket', Key: item.key };
+            var params = { Bucket: process.env.BUCKETEER_BUCKET_NAME, Key: item.key };
             s3.deleteObject(params, function (err, data) {
                 if (err) console.log(err, err.stack);  // error
                 else console.log();                 // deleted
