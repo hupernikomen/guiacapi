@@ -24,8 +24,8 @@ class DeletaPdtService {
         })
 
         produto.imagens?.forEach((item: any) => {
-            console.log("DeletaPdt API",item);
-            var params = { Bucket: 'guiaapi-s3bucket', Key: 'public/3afd31ce3e19df7ecda409954c3a3998-530da3c2-b3d6-4d13-89a0-0e39cf32a515.JPEG' };
+            console.log(item,"DeletaPdt API");
+            var params = { Bucket: 'guiaapi-s3bucket', Key: 'public/569992bf0546a1bcbc0125d7dad134f3-54ef6968-f274-4cf8-9a97-d5a065e3c261.JPEG' };
             s3.deleteObject(params, function (err, data) {
                 if (err) console.log(err, err.stack);  // error
                 else console.log();                 // deleted
