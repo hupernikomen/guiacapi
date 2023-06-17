@@ -33,10 +33,10 @@ exports.default = {
 // fazer um filtro de tipos antes de enviar:
 function fileFilter(req, file, callback) {
     let errorMessage = '';
-    // const ext = path.extname(file.originalname);
-    // if(ext !== '.PNG' && ext !== '.JPG' && ext !== '.JPEG' && ext !== '.WEBP') {
-    //     return callback(new Error('Formato de arquivo não aceito'))
-    // }
+    const ext = path_1.default.extname(file.originalname);
+    if (ext !== '.PNG' && ext !== '.JPG' && ext !== '.JPEG' && ext !== '.WEBP') {
+        return callback(new Error('Formato de arquivo não aceito'));
+    }
     if (errorMessage) {
         console.log(errorMessage);
         return callback({ errorMessage: errorMessage, code: 'LIMIT_FILE_TYPE' }, false);

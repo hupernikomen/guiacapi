@@ -11,10 +11,11 @@ class ListaVddService {
 
         const vendedores = await prismaClient.vendedor.findMany({
             where: {
-                lojaID
+                lojaID:lojaID
             },
 
             select: {
+                
                 id: true,
                 avatar: true,
                 nome: true,
