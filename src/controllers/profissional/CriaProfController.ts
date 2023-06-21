@@ -10,28 +10,26 @@ class CriaProfController {
 
     const { nome, listaServicos, whatsapp, email, aDomicilio, endereco, bio, statusGuia } = req.body;
 
-    // if (!req.file || !req.files) {
-    //   throw new Error("Ops.. algo deu errado!");
-    // } else {
-    const file = req.file;
+    if (!req.file) {
+      throw new Error("Ops.. algo deu errado!");
+    } else {
+      const file = req.file;
 
-    console.log(req.file, "Arquivos")
-
-    const profissional = await criaProfService.execute({
-      nome,
-      avatar: file,
-      listaServicos,
-      whatsapp,
-      email,
-      aDomicilio,
-      endereco,
-      bio,
-      statusGuia,
-      regiaoID,
-      servicoID
-    })
-    return res.status(200).json(profissional);
-    // }
+      const profissional = await criaProfService.execute({
+        nome,
+        avatar: file,
+        listaServicos,
+        whatsapp,
+        email,
+        aDomicilio,
+        endereco,
+        bio,
+        statusGuia,
+        regiaoID,
+        servicoID
+      })
+      return res.status(200).json(profissional);
+    }
 
 
   }
