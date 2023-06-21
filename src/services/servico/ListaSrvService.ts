@@ -7,7 +7,7 @@ class ListaSrvService {
             select:{
                 id: true,
                 nome: true,
-
+                icone:true
             }
         })
 

@@ -2,6 +2,7 @@ import prismaClient from "../../prisma";
 
 interface servicoRequest {
     nome: string,
+    icone:string
 }
 
 class CriaSrvService {
@@ -9,6 +10,7 @@ class CriaSrvService {
     async execute({
 
         nome,
+        icone
 
     }: servicoRequest) {
 
@@ -16,6 +18,7 @@ class CriaSrvService {
             data: {
                
                 nome,
+                icone
             }
         })
 

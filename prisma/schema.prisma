@@ -15,6 +15,7 @@ datasource db {
 model Servico {
   id   String @id @default(uuid())
   nome String
+  icone String?
 
   profissional Profissional[]
 

@@ -8,12 +8,14 @@ class AtualizaSrvController {
     const servicoID = req.query.servicoID as string 
 
     const {
-        nome
+        nome,
+        icone
      } =
       req.body;
 
       const servico = await atualizaSrvService.execute({
         nome,
+        icone,
         servicoID
       })
 

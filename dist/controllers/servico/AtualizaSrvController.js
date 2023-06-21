@@ -16,9 +16,10 @@ class AtualizaSrvController {
         return __awaiter(this, void 0, void 0, function* () {
             const atualizaSrvService = new AtualizaSrvService_1.AtualizaSrvService();
             const servicoID = req.query.servicoID;
-            const { nome } = req.body;
+            const { nome, icone } = req.body;
             const servico = yield atualizaSrvService.execute({
                 nome,
+                icone,
                 servicoID
             });
             return res.status(200).json(servico);

@@ -15,9 +15,10 @@ class CriaSrvController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const criaSrvService = new CriaSrvService_1.CriaSrvService();
-            const { nome } = req.body;
+            const { nome, icone } = req.body;
             const servico = yield criaSrvService.execute({
                 nome,
+                icone
             });
             return res.status(200).json(servico);
         });
