@@ -16,7 +16,8 @@ class CriaProfController {
         return __awaiter(this, void 0, void 0, function* () {
             const criaProfService = new CriaProfService_1.CriaProfService();
             const regiaoID = req.query.regiaoID;
-            const { nome, listaServicos, whatsapp, email, aDomicilio, endereco, bio, statusGuia, servicoID } = req.body;
+            const servicoID = req.query.servicoID;
+            const { nome, listaServicos, whatsapp, email, aDomicilio, endereco, bio, statusGuia } = req.body;
             // if (!req.file || !req.files) {
             //   throw new Error("Ops.. algo deu errado!");
             // } else {

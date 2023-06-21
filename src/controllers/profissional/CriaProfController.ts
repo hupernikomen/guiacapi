@@ -6,7 +6,9 @@ class CriaProfController {
     const criaProfService = new CriaProfService();
 
     const regiaoID = req.query.regiaoID as string
-    const { nome, listaServicos, whatsapp, email, aDomicilio, endereco, bio, statusGuia, servicoID } = req.body;
+    const servicoID = req.query.servicoID as string
+    
+    const { nome, listaServicos, whatsapp, email, aDomicilio, endereco, bio, statusGuia } = req.body;
 
     // if (!req.file || !req.files) {
     //   throw new Error("Ops.. algo deu errado!");
@@ -16,21 +18,21 @@ class CriaProfController {
 
     //   console.log(avatar, portfolio, "Arquivos")
 
-      const profissional = await criaProfService.execute({
-        nome,
-        // avatar,
-        // portfolio,
-        listaServicos,
-        whatsapp,
-        email,
-        aDomicilio,
-        endereco,
-        bio,
-        statusGuia,
-        regiaoID,
-        servicoID
-      })
-      return res.status(200).json(profissional);
+    const profissional = await criaProfService.execute({
+      nome,
+      // avatar,
+      // portfolio,
+      listaServicos,
+      whatsapp,
+      email,
+      aDomicilio,
+      endereco,
+      bio,
+      statusGuia,
+      regiaoID,
+      servicoID
+    })
+    return res.status(200).json(profissional);
     // }
 
 

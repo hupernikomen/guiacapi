@@ -37,13 +37,14 @@ model Profissional {
   endereco      String
   bio           String?
   statusGuia    Boolean  @default(false)
-  regiaoID String
-  servicoID String
+  regiaoID      String?
+  servicoID     String
 
   createdAt DateTime? @default(now())
   updatedAt DateTime? @default(now())
-  regiao   Regiao @relation(fields: [regiaoID], references: [id])
-  servico   Servico @relation(fields: [servicoID], references: [id])
+
+  regiao  Regiao?  @relation(fields: [regiaoID], references: [id])
+  servico Servico @relation(fields: [servicoID], references: [id])
 
   @@map("profissionais")
 }
