@@ -14,7 +14,6 @@ interface profissionalRequest {
 class CriaProfService {
 
   async execute({
-
     nome,
     avatar,
     listaServicos,
@@ -23,13 +22,10 @@ class CriaProfService {
     endereco,
     regiaoID,
     servicoID
-
-
   }: profissionalRequest) {
 
     const servico = await prismaClient.profissional.create({
       data: {
-
         nome,
         avatar,
         listaServicos,

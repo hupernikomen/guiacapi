@@ -45,6 +45,7 @@ import { AtualizaCampController } from './controllers/campanha/AtualizaCampContr
 import { ListaCampInatController } from './controllers/campanha/ListaCampInatController';
 
 import { CriaProfController } from './controllers/profissional/CriaProfController';
+import { ListaProfController } from './controllers/profissional/ListaProfController';
 
 
 const uploadUser = multer({
@@ -76,6 +77,7 @@ rotas.get('/vendedores', new ListaVddController().handle)
 
 //Profissionais
 rotas.post('/profissional', uploadUser.single('avatar'), new CriaProfController().handle)
+rotas.get('/profissionais', new ListaProfController().handle)
 
 //Servicos
 rotas.post('/servico', new CriaSrvController().handle)
