@@ -5,7 +5,8 @@ class CriaProfController {
   async handle(req: Request, res: Response) {
     const criaProfService = new CriaProfService();
 
-    const { nome, listaServicos, whatsapp, email, aDomicilio, endereco, bio, statusGuia, regiaoID, servicoID } = req.body;
+    const regiaoID = req.query.regiaoID as string
+    const { nome, listaServicos, whatsapp, email, aDomicilio, endereco, bio, statusGuia, servicoID } = req.body;
 
     // if (!req.file || !req.files) {
     //   throw new Error("Ops.. algo deu errado!");
