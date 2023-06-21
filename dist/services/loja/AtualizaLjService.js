@@ -14,12 +14,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AtualizaLjService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
-const aws_sdk_1 = __importDefault(require("aws-sdk"));
-let s3 = new aws_sdk_1.default.S3({
-    accessKeyId: process.env.ACCESS_KEY_ID,
-    secretAccessKey: process.env.SECRET_ACCESS_KEY,
-    region: 'us-east-1',
-});
 class AtualizaLjService {
     execute({ lojaID, statusGuia, avatar, nome, bio, endereco, bairro, referencia, latlng, entrega }) {
         return __awaiter(this, void 0, void 0, function* () {

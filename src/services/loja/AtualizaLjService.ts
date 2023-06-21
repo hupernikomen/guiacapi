@@ -1,11 +1,4 @@
 import prismaClient from "../../prisma"
-import AWS from 'aws-sdk';
-
-let s3 = new AWS.S3({
-    accessKeyId: process.env.ACCESS_KEY_ID,
-    secretAccessKey: process.env.SECRET_ACCESS_KEY,
-    region: 'us-east-1',
-});
 
 interface lojaDataRequest {
     lojaID: string,
