@@ -28,8 +28,8 @@ model Servico {
 model Profissional {
   id            String   @id @default(uuid())
   nome          String?
-  // avatar        Json?
-  // portfolio     Json[]
+  avatar        Json?
+  portfolio     Json[]
   listaServicos String[]
   whatsapp      String   @unique
   email         String   @unique

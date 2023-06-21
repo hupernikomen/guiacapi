@@ -2,8 +2,8 @@ import prismaClient from "../../prisma";
 
 interface profissionalRequest {
   nome: string,
-  // avatar: object,
-  // portfolio: object,
+  avatar: object,
+  portfolio: object,
   listaServicos: string,
   whatsapp: string,
   email: string,
@@ -20,8 +20,8 @@ class CriaProfService {
   async execute({
 
     nome,
-    // avatar,
-    // portfolio,
+    avatar,
+    portfolio,
     listaServicos,
     whatsapp,
     email,
@@ -39,8 +39,8 @@ class CriaProfService {
       data: {
 
         nome,
-        // avatar,
-        // portfolio,
+        avatar,
+        portfolio,
         listaServicos,
         whatsapp,
         email,
