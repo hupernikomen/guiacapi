@@ -46,14 +46,6 @@ class AtualizaLjService {
 
         }
 
-        console.log(loja, "lojaaaaaaaaaa")
-          // Apagar imagens do S3 da Amazon
-            // var params = { Bucket: process.env.BUCKETEER_BUCKET_NAME, Key: loja.avatar?.key };
-            // s3.deleteObject(params, function (err, data) {
-            //     if (err) console.log(err, err.stack);  // error
-            //     else console.log();                 // deleted
-            // })
-
 
         const data = await prismaClient.loja.update({
             where: {

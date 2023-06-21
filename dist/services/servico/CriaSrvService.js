@@ -15,12 +15,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CriaSrvService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class CriaSrvService {
-    execute({ nome, regiaoID }) {
+    execute({ nome, }) {
         return __awaiter(this, void 0, void 0, function* () {
             const servico = yield prisma_1.default.servico.create({
                 data: {
                     nome,
-                    regiaoID
                 }
             });
             return servico;

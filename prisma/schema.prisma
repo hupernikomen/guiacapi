@@ -16,9 +16,6 @@ model Servico {
   id   String @id @default(uuid())
   nome String
 
-  regiao   Regiao @relation(fields: [regiaoID], references: [id])
-  regiaoID String
-
   profissional Profissional[]
 
   createdAt DateTime? @default(now())
@@ -39,6 +36,9 @@ model Profissional {
   endereco      String
   bio           String
   statusGuia    Boolean  @default(false)
+
+  regiao   Regiao @relation(fields: [regiaoID], references: [id])
+  regiaoID String
 
   servico   Servico @relation(fields: [servicoID], references: [id])
   servicoID String
@@ -152,10 +152,10 @@ model Regiao {
   nome String
 
   loja    Loja[]
-  servico Servico[]
+  Profissional Profissional[]
 
-  createdAt DateTime? @default(now())
-  updatedAt DateTime? @default(now())
+  createdAt    DateTime?      @default(now())
+  updatedAt    DateTime?      @default(now())
 
   @@map("regioes")
 }
