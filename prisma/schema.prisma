@@ -13,8 +13,8 @@ datasource db {
 // yarn prisma migrate dev
 
 model Servico {
-  id   String @id @default(uuid())
-  nome String
+  id    String  @id @default(uuid())
+  nome  String
   icone String?
 
   profissional Profissional[]
@@ -37,15 +37,13 @@ model Profissional {
   endereco      String
   bio           String?
   statusGuia    Boolean  @default(false)
-
-  regiao Regiao @relation(fields: [regiaoID],references: [id])
   regiaoID String
-
-  servico   Servico @relation(fields: [servicoID], references: [id])
   servicoID String
 
   createdAt DateTime? @default(now())
   updatedAt DateTime? @default(now())
+  regiao   Regiao @relation(fields: [regiaoID], references: [id])
+  servico   Servico @relation(fields: [servicoID], references: [id])
 
   @@map("profissionais")
 }
@@ -152,11 +150,11 @@ model Regiao {
   id   String @id @default(uuid())
   nome String
 
-  loja    Loja[]
+  loja         Loja[]
   Profissional Profissional[]
 
-  createdAt    DateTime?      @default(now())
-  updatedAt    DateTime?      @default(now())
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @default(now())
 
   @@map("regioes")
 }
