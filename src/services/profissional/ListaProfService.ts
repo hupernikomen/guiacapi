@@ -24,7 +24,12 @@ class ListaProfService {
         aDomicilio:true,
         endereco:true,
         bio:true,
-        servicoID:true
+        servico:{
+          select:{
+            id:true,
+            nome:true
+          }
+        }
       }
     })
 
