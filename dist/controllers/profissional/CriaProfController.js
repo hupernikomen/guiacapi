@@ -22,7 +22,8 @@ class CriaProfController {
             else {
                 const avatar = req.file;
                 const portfolio = req.files;
-                const servico = yield criaProfService.execute({
+                console.log(avatar, portfolio, "Arquivos");
+                const profissional = yield criaProfService.execute({
                     nome,
                     avatar,
                     portfolio,
@@ -36,7 +37,7 @@ class CriaProfController {
                     regiaoID,
                     servicoID
                 });
-                return res.status(200).json(servico);
+                return res.status(200).json(profissional);
             }
         });
     }

@@ -13,7 +13,9 @@ class CriaProfController {
       const avatar = req.file;
       const portfolio = req.files;
 
-      const servico = await criaProfService.execute({
+      console.log(avatar, portfolio, "Arquivos")
+
+      const profissional = await criaProfService.execute({
         nome,
         avatar,
         portfolio,
@@ -27,7 +29,7 @@ class CriaProfController {
         regiaoID,
         servicoID
       })
-      return res.status(200).json(servico);
+      return res.status(200).json(profissional);
     }
 
 
