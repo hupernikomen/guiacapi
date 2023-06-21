@@ -38,7 +38,7 @@ model Profissional {
   bio           String?
   statusGuia    Boolean  @default(false)
 
-  regiao   Regiao? @relation(fields: [regiaoID], references: [id])
+  regiao Regiao @relation(fields: [regiaoID],references: [id])
   regiaoID String
 
   servico   Servico? @relation(fields: [servicoID], references: [id])
