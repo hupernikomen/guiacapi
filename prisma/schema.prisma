@@ -41,7 +41,7 @@ model Profissional {
   regiao Regiao @relation(fields: [regiaoID],references: [id])
   regiaoID String
 
-  servico   Servico? @relation(fields: [servicoID], references: [id])
+  servico   Servico @relation(fields: [servicoID], references: [id])
   servicoID String
 
   createdAt DateTime? @default(now())
