@@ -75,7 +75,7 @@ rotas.delete('/vendedor', Authenticator, new DeletaVddController().handle)
 rotas.get('/vendedores', new ListaVddController().handle)
 
 //Profissionais
-rotas.post('/profissional', new CriaProfController().handle)
+rotas.post('/profissional', uploadUser.single('avatar'), uploadUser.array('portfolio', 10), new CriaProfController().handle)
 
 //Servicos
 rotas.post('/servico', new CriaSrvController().handle)
