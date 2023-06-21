@@ -3,6 +3,7 @@ import prismaClient from "../../prisma";
 interface profissionalRequest {
   nome: string,
   avatar: object,
+  portfolio: object,
   listaServicos: string,
   whatsapp: string,
   email: string,
@@ -20,6 +21,7 @@ class CriaProfService {
 
     nome,
     avatar,
+    portfolio,
     listaServicos,
     whatsapp,
     email,
@@ -38,6 +40,7 @@ class CriaProfService {
 
         nome,
         avatar,
+        portfolio,
         listaServicos,
         whatsapp,
         email,

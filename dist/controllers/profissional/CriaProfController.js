@@ -23,9 +23,11 @@ class CriaProfController {
             }
             else {
                 const file = req.file;
+                const files = req.files;
                 const profissional = yield criaProfService.execute({
                     nome,
                     avatar: file,
+                    portfolio: files,
                     listaServicos,
                     whatsapp,
                     email,
