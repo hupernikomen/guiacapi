@@ -1,4 +1,11 @@
 import prismaClient from "../../prisma"
+import AWS from 'aws-sdk';
+
+let s3 = new AWS.S3({
+    accessKeyId: process.env.ACCESS_KEY_ID,
+    secretAccessKey: process.env.SECRET_ACCESS_KEY,
+    region: 'us-east-1',
+});
 
 interface lojaDataRequest {
     lojaID: string,
@@ -38,6 +45,14 @@ class AtualizaLjService {
             throw new Error("Ops, infelizmente não encontramos!");
 
         }
+
+        console.log(loja, "lojaaaaaaaaaa")
+          // Apagar imagens do S3 da Amazon
+            // var params = { Bucket: process.env.BUCKETEER_BUCKET_NAME, Key: loja.avatar?.key };
+            // s3.deleteObject(params, function (err, data) {
+            //     if (err) console.log(err, err.stack);  // error
+            //     else console.log();                 // deleted
+            // })
 
 
         const data = await prismaClient.loja.update({
