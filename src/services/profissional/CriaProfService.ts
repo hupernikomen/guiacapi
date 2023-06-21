@@ -3,14 +3,10 @@ import prismaClient from "../../prisma";
 interface profissionalRequest {
   nome: string,
   avatar: object,
-  portfolio: object,
   listaServicos: string,
   whatsapp: string,
   email: string,
-  aDomicilio: boolean,
   endereco: string,
-  bio: string,
-  statusGuia: boolean,
   regiaoID: string,
   servicoID: string
 }
@@ -21,14 +17,10 @@ class CriaProfService {
 
     nome,
     avatar,
-    portfolio,
     listaServicos,
     whatsapp,
     email,
-    aDomicilio,
     endereco,
-    bio,
-    statusGuia,
     regiaoID,
     servicoID
 
@@ -40,14 +32,10 @@ class CriaProfService {
 
         nome,
         avatar,
-        portfolio,
         listaServicos,
         whatsapp,
         email,
-        aDomicilio,
         endereco,
-        bio,
-        statusGuia,
         regiaoID,
         servicoID
       }

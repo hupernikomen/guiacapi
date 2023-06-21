@@ -17,24 +17,19 @@ class CriaProfController {
             const criaProfService = new CriaProfService_1.CriaProfService();
             const regiaoID = req.query.regiaoID;
             const servicoID = req.query.servicoID;
-            const { nome, listaServicos, whatsapp, email, aDomicilio, endereco, bio, statusGuia } = req.body;
+            const { nome, listaServicos, whatsapp, email, endereco } = req.body;
             if (!req.file) {
                 throw new Error("Ops.. algo deu errado!");
             }
             else {
                 const file = req.file;
-                const files = req.files;
                 const profissional = yield criaProfService.execute({
                     nome,
                     avatar: file,
-                    portfolio: files,
                     listaServicos,
                     whatsapp,
                     email,
-                    aDomicilio,
                     endereco,
-                    bio,
-                    statusGuia,
                     regiaoID,
                     servicoID
                 });

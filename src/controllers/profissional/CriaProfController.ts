@@ -8,25 +8,21 @@ class CriaProfController {
     const regiaoID = req.query.regiaoID as string
     const servicoID = req.query.servicoID as string
 
-    const { nome, listaServicos, whatsapp, email, aDomicilio, endereco, bio, statusGuia } = req.body;
+    const { nome, listaServicos, whatsapp, email, endereco} = req.body;
 
-    if (!req.file) {
+
+    if (!req.file ) {
       throw new Error("Ops.. algo deu errado!");
     } else {
       const file = req.file;
-      const files = req.files;
 
       const profissional = await criaProfService.execute({
         nome,
         avatar: file,
-        portfolio: files,
         listaServicos,
         whatsapp,
         email,
-        aDomicilio,
         endereco,
-        bio,
-        statusGuia,
         regiaoID,
         servicoID
       })
