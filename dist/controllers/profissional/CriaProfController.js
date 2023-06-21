@@ -22,12 +22,10 @@ class CriaProfController {
             //   throw new Error("Ops.. algo deu errado!");
             // } else {
             const file = req.file;
-            const files = req.files;
-            console.log(req.file, req.files, "Arquivos");
+            console.log(req.file, "Arquivos");
             const profissional = yield criaProfService.execute({
                 nome,
                 avatar: file,
-                portfolio: files,
                 listaServicos,
                 whatsapp,
                 email,
