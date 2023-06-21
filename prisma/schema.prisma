@@ -27,15 +27,15 @@ model Servico {
 
 model Profissional {
   id            String   @id @default(uuid())
-  nome          String
-  avatar        Json
+  nome          String?
+  avatar        Json?
   portfolio     Json[]
   listaServicos String[]
   whatsapp      String   @unique
   email         String   @unique
   aDomicilio    Boolean  @default(false)
   endereco      String
-  bio           String
+  bio           String?
   statusGuia    Boolean  @default(false)
 
   regiao   Regiao @relation(fields: [regiaoID], references: [id])

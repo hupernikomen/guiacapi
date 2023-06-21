@@ -16,29 +16,28 @@ class CriaProfController {
         return __awaiter(this, void 0, void 0, function* () {
             const criaProfService = new CriaProfService_1.CriaProfService();
             const { nome, listaServicos, whatsapp, email, aDomicilio, endereco, bio, statusGuia, regiaoID, servicoID } = req.body;
-            if (!req.file || !req.files) {
-                throw new Error("Ops.. algo deu errado!");
-            }
-            else {
-                const avatar = req.file;
-                const portfolio = req.files;
-                console.log(avatar, portfolio, "Arquivos");
-                const profissional = yield criaProfService.execute({
-                    nome,
-                    avatar,
-                    portfolio,
-                    listaServicos,
-                    whatsapp,
-                    email,
-                    aDomicilio,
-                    endereco,
-                    bio,
-                    statusGuia,
-                    regiaoID,
-                    servicoID
-                });
-                return res.status(200).json(profissional);
-            }
+            // if (!req.file || !req.files) {
+            //   throw new Error("Ops.. algo deu errado!");
+            // } else {
+            //   const avatar = req.file;
+            //   const portfolio = req.files;
+            //   console.log(avatar, portfolio, "Arquivos")
+            const profissional = yield criaProfService.execute({
+                nome,
+                // avatar,
+                // portfolio,
+                listaServicos,
+                whatsapp,
+                email,
+                aDomicilio,
+                endereco,
+                bio,
+                statusGuia,
+                regiaoID,
+                servicoID
+            });
+            return res.status(200).json(profissional);
+            // }
         });
     }
 }

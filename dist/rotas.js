@@ -61,7 +61,7 @@ rotas.post('/vendedor', authenticator_1.Authenticator, uploadUser.single('avatar
 rotas.delete('/vendedor', authenticator_1.Authenticator, new DeletaVddController_1.DeletaVddController().handle);
 rotas.get('/vendedores', new ListaVddController_1.ListaVddController().handle);
 //Profissionais
-rotas.post('/profissional', uploadUser.single('avatar'), uploadUser.array('portfolio', 10), new CriaProfController_1.CriaProfController().handle);
+rotas.post('/profissional', new CriaProfController_1.CriaProfController().handle);
 //Servicos
 rotas.post('/servico', new CriaSrvController_1.CriaSrvController().handle);
 rotas.put('/servico', new AtualizaSrvController_1.AtualizaSrvController().handle);
