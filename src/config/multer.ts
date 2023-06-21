@@ -9,16 +9,16 @@ import { S3Client } from "@aws-sdk/client-s3";
 import 'dotenv/config';
 
 
-let s3  = new AWS.S3({
+let s3 = new AWS.S3({
   accessKeyId: process.env.ACCESS_KEY_ID,
   secretAccessKey: process.env.SECRET_ACCESS_KEY,
   region: 'us-east-1',
 });
 
 
-export default{
-  upload(folder: string){
-    return{
+export default {
+  upload(folder: string) {
+    return {
       storage: multer.diskStorage({
         destination: resolve(__dirname, '..', '..', folder),
         filename: (request, file, callback) => {
@@ -35,23 +35,29 @@ export default{
 
 
 // fazer um filtro de tipos antes de enviar:
-export function fileFilter (req, file, callback) {
+export function fileFilter(req, file, callback) {
   let errorMessage = '';
   const ext = path.extname(file.originalname);
 
-  console.log(ext,"Extensao ...............");
-  
+  console.log(ext, "Extensao ...............");
 
-  if(ext !== '.PNG' && ext !== '.JPG' && ext !== '.JPEG' && ext !== '.WEBP') {
-      return callback(new Error('Formato de arquivo não aceito'))
+
+  if (
+    ext !== '.PNG' &&
+    ext !== '.JPG' &&
+    ext !== '.jpg' &&
+    ext !== '.JPEG' &&
+    ext !== '.WEBP'
+  ) {
+    return callback(new Error('Formato de arquivo não aceito'))
   }
-  
 
-  if(errorMessage) {
+
+  if (errorMessage) {
     console.log(errorMessage);
-    return callback({errorMessage: errorMessage, code: 'LIMIT_FILE_TYPE'}, false);
+    return callback({ errorMessage: errorMessage, code: 'LIMIT_FILE_TYPE' }, false);
   }
-  
+
   callback(null, true);
 }
 
@@ -63,7 +69,7 @@ export const storageTypes = {
     filename: (request, file, callback) => {
       const fileHash = crypto.randomBytes(16).toString("hex");
       const fileName = `${fileHash}-${file.originalname}`
-  
+
       return callback(null, fileName)
     },
   }),
@@ -75,7 +81,7 @@ export const storageTypes = {
     key: (req, file, cb) => {
       crypto.randomBytes(16, (err, hash) => {
         if (err) cb(err);
-        const fileHash = crypto.randomBytes(16).toString("hex");   
+        const fileHash = crypto.randomBytes(16).toString("hex");
         const fileName = `public/${fileHash}-${file.originalname}`;
 
         cb(null, fileName);
