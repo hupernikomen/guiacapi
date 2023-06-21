@@ -18,6 +18,7 @@ import { CriaCtController } from './controllers/categoria/CriaCtController';
 import { DeletaCtController } from './controllers/categoria/DeletaCtController';
 import { AtualizaCtController } from './controllers/categoria/AtualizaCtController';
 
+
 import { CriaPdtController } from './controllers/produto/CriaPdtController';
 import { AtualizaPdtController } from './controllers/produto/AtualizaPdtController';
 import { DetalheProdutoController } from './controllers/produto/DetalheProdutoController';
@@ -42,6 +43,8 @@ import { CriaCampController } from './controllers/campanha/CriaCampController';
 import { ListaCampController } from './controllers/campanha/ListaCampController';
 import { AtualizaCampController } from './controllers/campanha/AtualizaCampController';
 import { ListaCampInatController } from './controllers/campanha/ListaCampInatController';
+
+import { CriaProfController } from './controllers/profissional/CriaProfController';
 
 
 const uploadUser = multer({
@@ -70,6 +73,9 @@ rotas.get('/me', Authenticator, new AutenticadaLjController().handle) // Rota pa
 rotas.post('/vendedor', Authenticator, uploadUser.single('avatar'), new CriaVddController().handle)
 rotas.delete('/vendedor', Authenticator, new DeletaVddController().handle)
 rotas.get('/vendedores', new ListaVddController().handle)
+
+//Profissionais
+rotas.post('/profissional', uploadUser.single('avatar'), uploadUser.array('portfolio', 10), new CriaProfController().handle)
 
 //Servicos
 rotas.post('/servico', new CriaSrvController().handle)

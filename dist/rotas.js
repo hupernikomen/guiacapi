@@ -38,6 +38,7 @@ const CriaCampController_1 = require("./controllers/campanha/CriaCampController"
 const ListaCampController_1 = require("./controllers/campanha/ListaCampController");
 const AtualizaCampController_1 = require("./controllers/campanha/AtualizaCampController");
 const ListaCampInatController_1 = require("./controllers/campanha/ListaCampInatController");
+const CriaProfController_1 = require("./controllers/profissional/CriaProfController");
 const uploadUser = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageTypes.s3 : multer_2.storageTypes.local,
@@ -59,6 +60,8 @@ rotas.get('/me', authenticator_1.Authenticator, new AutenticadaLjController_1.Au
 rotas.post('/vendedor', authenticator_1.Authenticator, uploadUser.single('avatar'), new CriaVddController_1.CriaVddController().handle);
 rotas.delete('/vendedor', authenticator_1.Authenticator, new DeletaVddController_1.DeletaVddController().handle);
 rotas.get('/vendedores', new ListaVddController_1.ListaVddController().handle);
+//Profissionais
+rotas.post('/profissional', uploadUser.single('avatar'), uploadUser.array('portfolio', 10), new CriaProfController_1.CriaProfController().handle);
 //Servicos
 rotas.post('/servico', new CriaSrvController_1.CriaSrvController().handle);
 rotas.put('/servico', new AtualizaSrvController_1.AtualizaSrvController().handle);
