@@ -1,14 +1,14 @@
 import prismaClient from "../../prisma";
 
 interface ProductRequest {
-  profissaoID: string;
+  servicoID: string;
 }
 
 class PorProfissaoService {
-  async execute({ profissaoID }: ProductRequest) {
+  async execute({ servicoID }: ProductRequest) {
     const categoria = await prismaClient.profissional.findMany({
       where: {
-        id: profissaoID,
+        servicoID,
         statusGuia: true,
         // regiao: {
         //   nome: "Dirceu", // Logica de alteração de REGIAO no FrontEnd
