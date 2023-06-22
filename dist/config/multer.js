@@ -39,7 +39,7 @@ function fileFilter(req, file, callback) {
         ext !== '.JPG' &&
         ext !== '.jpg' &&
         ext !== '.JPEG' &&
-        ext !== '.jped' &&
+        ext !== '.jpeg' &&
         ext !== '.WEBP' &&
         ext !== '.webp') {
         return callback(new Error('Formato de arquivo não aceito'));
