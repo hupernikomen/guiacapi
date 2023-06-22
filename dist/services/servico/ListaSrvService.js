@@ -22,7 +22,12 @@ class ListaSrvService {
                     id: true,
                     nome: true,
                     icone: true,
-                    _count: true
+                    _count: true,
+                    profissional: {
+                        select: {
+                            statusGuia: true
+                        }
+                    }
                 }
             });
             return servico;
