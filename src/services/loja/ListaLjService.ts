@@ -38,7 +38,7 @@ class ListaLjService {
                 latlng:true,
                 bairro:true,
                 referencia:true,
-
+                
             }
         })
 
