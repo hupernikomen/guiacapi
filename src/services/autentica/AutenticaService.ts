@@ -17,12 +17,12 @@ class AutenticaService {
         })
 
         if (!loja) {
-            throw new Error("Email não cadastrado");
+            throw new Error("não cadastrado");
         }
 
         const comparePassword = await compare(senha, loja.senha)
         if (!comparePassword) {
-            throw new Error("Email ou senha incorreta");
+            throw new Error("informações incorretas");
         }
 
 

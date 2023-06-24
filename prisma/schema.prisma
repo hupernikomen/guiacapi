@@ -12,17 +12,14 @@ datasource db {
 
 // yarn prisma migrate dev
 
-model Servico {
-  id    String  @id @default(uuid())
-  nome  String
-  icone String?
+model Posto {
+  id     String @id @default(uuid())
+  conta  String
+  nome   String
+  tabela Json?
+  latlng Json?
 
-  profissional Profissional[]
-
-  createdAt DateTime? @default(now())
-  updatedAt DateTime? @default(now())
-
-  @@map("servicos")
+  @@map("postos")
 }
 
 model Profissional {
@@ -80,6 +77,19 @@ model Loja {
   campanhaId String?
 
   @@map("lojas")
+}
+
+model Servico {
+  id    String  @id @default(uuid())
+  nome  String
+  icone String?
+
+  profissional Profissional[]
+
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @default(now())
+
+  @@map("servicos")
 }
 
 model Vendedor {
@@ -162,15 +172,7 @@ model Regiao {
   @@map("regioes")
 }
 
-model Posto {
-  id     String @id @default(uuid())
-  conta String
-  nome   String
-  tabela Json?
-  latlng Json?
 
-  @@map("postos")
-}
 
 model Temas {
   id    String   @id @default(uuid())
