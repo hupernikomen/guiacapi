@@ -28,6 +28,7 @@ model Servico {
 model Profissional {
   id            String   @id @default(uuid())
   nome          String?
+  conta         String?
   avatar        Json?
   portfolio     Json[]
   listaServicos String[]
@@ -43,7 +44,7 @@ model Profissional {
   createdAt DateTime? @default(now())
   updatedAt DateTime? @default(now())
 
-  regiao  Regiao?  @relation(fields: [regiaoID], references: [id])
+  regiao  Regiao? @relation(fields: [regiaoID], references: [id])
   servico Servico @relation(fields: [servicoID], references: [id])
 
   @@map("profissionais")
@@ -53,6 +54,7 @@ model Loja {
   id         String   @id @default(uuid())
   email      String   @unique
   senha      String
+  conta      String?
   avatar     Json?
   statusGuia Boolean? @default(false)
   nome       String?
@@ -158,6 +160,16 @@ model Regiao {
   updatedAt DateTime? @default(now())
 
   @@map("regioes")
+}
+
+model Posto {
+  id     String @id @default(uuid())
+  conta String
+  nome   String
+  tabela Json?
+  latlng Json?
+
+  @@map("postos")
 }
 
 model Temas {
