@@ -18,8 +18,15 @@ class LojaLogadaService {
                 id: usuarioID
             },
             select: {
-                id: true,
-                loja: true
+                loja: {
+                    select:{
+                        id:true,
+                        avatar:true,
+                        nome:true,
+                        produtos:true
+                    },
+                    
+                }
                 
 
             }
