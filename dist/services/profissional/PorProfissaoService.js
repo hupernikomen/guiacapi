@@ -15,32 +15,23 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PorProfissaoService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class PorProfissaoService {
-    execute({ servicoID }) {
+    execute({ profissaoID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const categoria = yield prisma_1.default.profissional.findMany({
                 where: {
-                    servicoID,
-                    statusGuia: true,
-                    // regiao: {
-                    //   nome: "Dirceu", // Logica de alteração de REGIAO no FrontEnd
-                    // },
+                    usuario: {
+                        status: true
+                    },
+                    profissaoID,
                 },
                 select: {
                     id: true,
                     avatar: true,
                     nome: true,
-                    whatsapp: true,
-                    portfolio: true,
-                    listaServicos: true,
-                    aDomicilio: true,
+                    album: true,
+                    lista_servicos: true,
                     endereco: true,
                     bio: true,
-                    servico: {
-                        select: {
-                            id: true,
-                            nome: true
-                        }
-                    }
                 }
             });
             return categoria;

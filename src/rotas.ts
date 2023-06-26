@@ -6,47 +6,36 @@ import { Authenticator } from './middlewares/authenticator';
 
 import { fileFilter, storageTypes } from './config/multer'
 
-import { CriaLjController } from './controllers/loja/CriaLjController'
-import { AutenticadaLjController } from './controllers/loja/AutenticadaLjController';
-import { AtualizaLjController } from './controllers/loja/AtualizaLjController';
-import { ListaLjController } from './controllers/loja/ListaLjController';
-import { LojaController } from './controllers/loja/LojaController';
-import { EsqueciSenhaController } from './controllers/loja/EsqueciSenhaController';
-
-import { ListaCtController } from './controllers/categoria/ListaCtController';
-import { CriaCtController } from './controllers/categoria/CriaCtController';
-import { DeletaCtController } from './controllers/categoria/DeletaCtController';
-import { AtualizaCtController } from './controllers/categoria/AtualizaCtController';
-
-
-import { CriaPdtController } from './controllers/produto/CriaPdtController';
-import { AtualizaPdtController } from './controllers/produto/AtualizaPdtController';
+import { LojaLogadaController } from './controllers/loja/LojaLogadaController';
+import { AutenticaUsuarioController } from './controllers/usuario/AutenticaUsuarioController';
+import { BuscaLojaController } from './controllers/loja/BuscaLojaController';
 import { DetalheProdutoController } from './controllers/produto/DetalheProdutoController';
-import { DeletaPdtController } from './controllers/produto/DeletaPdtController';
-import { FeedProdutosControlller } from './controllers/produto/FeedProdutosController';
-import { PorCategoriaPdtController } from './controllers/produto/PorCategoriaPdtController';
-
-import { CriaRgController } from './controllers/regiao/CriaRgController';
-import { ListaRgController } from './controllers/regiao/ListaRgController';
-
-import { CriaVddController } from './controllers/vendedor/CriaVddController';
-import { ListaVddController } from './controllers/vendedor/ListaVddController';
-import { DeletaVddController } from './controllers/vendedor/DeletaVddController';
-
-import { AtualizaSrvController } from './controllers/servico/AtualizaSrvController';
-import { CriaSrvController } from './controllers/servico/CriaSrvController';
-import { ListaSrvController } from './controllers/servico/ListaSrvController';
-
-import { AutenticaController } from './controllers/autentica/AutenticaController';
-
-import { CriaCampController } from './controllers/campanha/CriaCampController';
-import { ListaCampController } from './controllers/campanha/ListaCampController';
-import { AtualizaCampController } from './controllers/campanha/AtualizaCampController';
-import { ListaCampInatController } from './controllers/campanha/ListaCampInatController';
-
-import { CriaProfController } from './controllers/profissional/CriaProfController';
-import { ListaProfController } from './controllers/profissional/ListaProfController';
+import { AtualizaUsuarioController } from './controllers/usuario/AtualizaUsuarioController';
+import { AtualizaLojaController } from './controllers/loja/AtualizaLojaController';
+import { AtualizaCategoriaController } from './controllers/categoria/AtualizaCategoriaController';
+import { AtualizaCampanhaController } from './controllers/campanha/AtualizaCampanhaController';
+import { AtualizarProfissionalController } from './controllers/profissional/AtualizarProfissionalController';
+import { AtualizaProdutoController } from './controllers/produto/AtualizaProdutoController';
+import { CriaUsuarioController } from './controllers/usuario/CriaUsuarioController';
+import { CriaRegiaoController } from './controllers/regiao/CriaRegiaoController';
+import { CriaProfissaoController } from './controllers/profissao/CriaProfissaoController';
+import { CriaCategoriaController } from './controllers/categoria/CriaCategoriaController';
+import { CriaCampanhaController } from './controllers/campanha/CriaCampanhaController';
+import { CriaProdutoController } from './controllers/produto/CriaProdutoController';
+import { ListarRegioesController } from './controllers/regiao/ListarRegioesController';
+import { ListarProdutosController } from './controllers/produto/ListarProdutosController';
+import { ListarProfissionalController } from './controllers/profissional/ListarProfissionalController';
+import { ListaCampanhasInativasController } from './controllers/campanha/ListaCampanhasInativasController';
+import { ListaCampanhaController } from './controllers/campanha/ListaCampanhaController';
+import { ListaLojasController } from './controllers/loja/ListaLojasController';
+import { PorCategoriaProdutoController } from './controllers/produto/PorCategoriaProdutoController';
 import { PorProfissaoController } from './controllers/profissional/PorProfissaoController';
+import { DeletaProdutoController } from './controllers/produto/DeletaProdutoController';
+
+import { ListaProfissaoController } from './controllers/profissao/ListaProfissaoController';
+import { AtualizaProfissaoController } from './controllers/profissao/AtualizaProfissaoController';
+import { DeletaCategoriaController } from './controllers/categoria/DeletaCategoriaController';
+import { ListaCategoriaController } from './controllers/categoria/ListaCategoriaController';
 
 
 const uploadUser = multer({
@@ -60,57 +49,50 @@ const uploadUser = multer({
 
 const rotas = Router();
 
-// Loja
-rotas.get('/lojas', new ListaLjController().handle)  //Front [com filtro de regiao]
-rotas.get('/loja', new LojaController().handle)  //Front
-rotas.post('/login', new AutenticaController().handle)  //Front
-rotas.post('/esquecisenha', new EsqueciSenhaController().handle)
+//Admin
+rotas.post('/usuario', new CriaUsuarioController().handle)
+rotas.post('/profissao', new CriaProfissaoController().handle)
+rotas.post('/regiao', new CriaRegiaoController().handle)
+rotas.post('/categoria', new CriaCategoriaController().handle)
+rotas.post('/campanha', new CriaCampanhaController().handle)
+rotas.get('/campanhas', new ListaCampanhasInativasController().handle)
+rotas.put('/campanha', new AtualizaCampanhaController().handle)
+rotas.put('/categoria', new AtualizaCategoriaController().handle)
+rotas.delete('/categoria', new DeletaCategoriaController().handle)
+rotas.put('/profissao', new AtualizaProfissaoController().handle)
+rotas.get('/profissoes', new ListaProfissaoController().handle)
+rotas.put('/usuario', new AtualizaUsuarioController().handle)
 
 
-rotas.post('/loja', new CriaLjController().handle)
-rotas.put('/loja', Authenticator, uploadUser.single('avatar'), new AtualizaLjController().handle)
-rotas.get('/me', Authenticator, new AutenticadaLjController().handle) // Rota para Controle
 
-//Vendedor
-rotas.post('/vendedor', Authenticator, uploadUser.single('avatar'), new CriaVddController().handle)
-rotas.delete('/vendedor', Authenticator, new DeletaVddController().handle)
-rotas.get('/vendedores', new ListaVddController().handle)
+//Usuario
+rotas.post('/login', new AutenticaUsuarioController().handle)
 
-//Profissionais
-rotas.post('/profissional', uploadUser.single('avatar'), new CriaProfController().handle)
-rotas.get('/profissionais', new ListaProfController().handle)
-rotas.get('/porprofissao', new PorProfissaoController().handle)
+rotas.get('/loja/logado', Authenticator, new LojaLogadaController().handle)
+rotas.put('/loja', Authenticator, new AtualizaLojaController().handle) 
 
-//Servicos
-rotas.post('/servico', new CriaSrvController().handle)
-rotas.put('/servico', new AtualizaSrvController().handle)
-rotas.get('/servicos', new ListaSrvController().handle)
-
-// Categoria
-rotas.get('/categorias', new ListaCtController().handle)  //Front
-rotas.post('/categoria', new CriaCtController().handle)
-rotas.delete('/categoria', Authenticator, new DeletaCtController().handle)
-rotas.put('/categoria', Authenticator, new AtualizaCtController().handle)
+rotas.post('/produto', Authenticator, uploadUser.array('files', 5), new CriaProdutoController().handle)
+rotas.put('/produto', Authenticator, new AtualizaProdutoController().handle)
+rotas.delete('/produto', Authenticator, new DeletaProdutoController().handle)
+rotas.put('/profissional',Authenticator, new AtualizarProfissionalController().handle)
 
 
-// Produto
-rotas.get('/feed', new FeedProdutosControlller().handle)  //Front [com filtro de regiao]
-rotas.post('/produto', Authenticator, uploadUser.array('files', 5), new CriaPdtController().handle)
-rotas.get('/porcategoria', new PorCategoriaPdtController().handle)  //Front [com filtro de regiao]
+//App
+rotas.get('/lojas', new ListaLojasController().handle)
+rotas.get('/loja', new BuscaLojaController().handle)
+
 rotas.get('/detalhe/produto', new DetalheProdutoController().handle)
-rotas.delete('/produto', Authenticator, new DeletaPdtController().handle)
-rotas.put('/produto', Authenticator, new AtualizaPdtController().handle)
+rotas.get('/produtos', new ListarProdutosController().handle)
+rotas.get('/produtos/categoria', new PorCategoriaProdutoController().handle)
+
+rotas.get('/profissionais', new ListarProfissionalController().handle)
+rotas.get('/profissao/profissionais', new PorProfissaoController().handle)
 
 
-// Region
-rotas.get('/regioes', new ListaRgController().handle) //Front
-rotas.post('/regiao', new CriaRgController().handle)
-
-// Campanha
-rotas.get('/campanhas/ativas', new ListaCampController().handle) //Front
-rotas.post('/campanha', new CriaCampController().handle)
-rotas.put('/campanha', new AtualizaCampController().handle)
-rotas.get('/campanhas', new ListaCampInatController().handle)
+// Ambos
+rotas.get('/regioes', new ListarRegioesController().handle)
+rotas.get('/campanhas/ativas', new ListaCampanhaController().handle)
+rotas.get('/categorias', new ListaCategoriaController().handle) 
 
 
 export { rotas };

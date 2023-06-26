@@ -3,12 +3,12 @@ import { PorProfissaoService } from '../../services/profissional/PorProfissaoSer
 
 class PorProfissaoController {
     async handle(req: Request, res: Response) {
-        const servicoID = req.query.servicoID as string
+        const profissaoID = req.query.profissaoID as string
 
         const porProfissaoService = new PorProfissaoService()
 
         const produto = await porProfissaoService.execute({
-          servicoID
+          profissaoID
         })
 
         return res.json(produto)

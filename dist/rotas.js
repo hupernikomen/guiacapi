@@ -9,38 +9,35 @@ const multer_1 = __importDefault(require("multer"));
 require("dotenv/config");
 const authenticator_1 = require("./middlewares/authenticator");
 const multer_2 = require("./config/multer");
-const CriaLjController_1 = require("./controllers/loja/CriaLjController");
-const AutenticadaLjController_1 = require("./controllers/loja/AutenticadaLjController");
-const AtualizaLjController_1 = require("./controllers/loja/AtualizaLjController");
-const ListaLjController_1 = require("./controllers/loja/ListaLjController");
-const LojaController_1 = require("./controllers/loja/LojaController");
-const EsqueciSenhaController_1 = require("./controllers/loja/EsqueciSenhaController");
-const ListaCtController_1 = require("./controllers/categoria/ListaCtController");
-const CriaCtController_1 = require("./controllers/categoria/CriaCtController");
-const DeletaCtController_1 = require("./controllers/categoria/DeletaCtController");
-const AtualizaCtController_1 = require("./controllers/categoria/AtualizaCtController");
-const CriaPdtController_1 = require("./controllers/produto/CriaPdtController");
-const AtualizaPdtController_1 = require("./controllers/produto/AtualizaPdtController");
+const LojaLogadaController_1 = require("./controllers/loja/LojaLogadaController");
+const AutenticaUsuarioController_1 = require("./controllers/usuario/AutenticaUsuarioController");
+const BuscaLojaController_1 = require("./controllers/loja/BuscaLojaController");
 const DetalheProdutoController_1 = require("./controllers/produto/DetalheProdutoController");
-const DeletaPdtController_1 = require("./controllers/produto/DeletaPdtController");
-const FeedProdutosController_1 = require("./controllers/produto/FeedProdutosController");
-const PorCategoriaPdtController_1 = require("./controllers/produto/PorCategoriaPdtController");
-const CriaRgController_1 = require("./controllers/regiao/CriaRgController");
-const ListaRgController_1 = require("./controllers/regiao/ListaRgController");
-const CriaVddController_1 = require("./controllers/vendedor/CriaVddController");
-const ListaVddController_1 = require("./controllers/vendedor/ListaVddController");
-const DeletaVddController_1 = require("./controllers/vendedor/DeletaVddController");
-const AtualizaSrvController_1 = require("./controllers/servico/AtualizaSrvController");
-const CriaSrvController_1 = require("./controllers/servico/CriaSrvController");
-const ListaSrvController_1 = require("./controllers/servico/ListaSrvController");
-const AutenticaController_1 = require("./controllers/autentica/AutenticaController");
-const CriaCampController_1 = require("./controllers/campanha/CriaCampController");
-const ListaCampController_1 = require("./controllers/campanha/ListaCampController");
-const AtualizaCampController_1 = require("./controllers/campanha/AtualizaCampController");
-const ListaCampInatController_1 = require("./controllers/campanha/ListaCampInatController");
-const CriaProfController_1 = require("./controllers/profissional/CriaProfController");
-const ListaProfController_1 = require("./controllers/profissional/ListaProfController");
+const AtualizaUsuarioController_1 = require("./controllers/usuario/AtualizaUsuarioController");
+const AtualizaLojaController_1 = require("./controllers/loja/AtualizaLojaController");
+const AtualizaCategoriaController_1 = require("./controllers/categoria/AtualizaCategoriaController");
+const AtualizaCampanhaController_1 = require("./controllers/campanha/AtualizaCampanhaController");
+const AtualizarProfissionalController_1 = require("./controllers/profissional/AtualizarProfissionalController");
+const AtualizaProdutoController_1 = require("./controllers/produto/AtualizaProdutoController");
+const CriaUsuarioController_1 = require("./controllers/usuario/CriaUsuarioController");
+const CriaRegiaoController_1 = require("./controllers/regiao/CriaRegiaoController");
+const CriaProfissaoController_1 = require("./controllers/profissao/CriaProfissaoController");
+const CriaCategoriaController_1 = require("./controllers/categoria/CriaCategoriaController");
+const CriaCampanhaController_1 = require("./controllers/campanha/CriaCampanhaController");
+const CriaProdutoController_1 = require("./controllers/produto/CriaProdutoController");
+const ListarRegioesController_1 = require("./controllers/regiao/ListarRegioesController");
+const ListarProdutosController_1 = require("./controllers/produto/ListarProdutosController");
+const ListarProfissionalController_1 = require("./controllers/profissional/ListarProfissionalController");
+const ListaCampanhasInativasController_1 = require("./controllers/campanha/ListaCampanhasInativasController");
+const ListaCampanhaController_1 = require("./controllers/campanha/ListaCampanhaController");
+const ListaLojasController_1 = require("./controllers/loja/ListaLojasController");
+const PorCategoriaProdutoController_1 = require("./controllers/produto/PorCategoriaProdutoController");
 const PorProfissaoController_1 = require("./controllers/profissional/PorProfissaoController");
+const DeletaProdutoController_1 = require("./controllers/produto/DeletaProdutoController");
+const ListaProfissaoController_1 = require("./controllers/profissao/ListaProfissaoController");
+const AtualizaProfissaoController_1 = require("./controllers/profissao/AtualizaProfissaoController");
+const DeletaCategoriaController_1 = require("./controllers/categoria/DeletaCategoriaController");
+const ListaCategoriaController_1 = require("./controllers/categoria/ListaCategoriaController");
 const uploadUser = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageTypes.s3 : multer_2.storageTypes.local,
@@ -50,43 +47,36 @@ const uploadUser = (0, multer_1.default)({
 });
 const rotas = (0, express_1.Router)();
 exports.rotas = rotas;
-// Loja
-rotas.get('/lojas', new ListaLjController_1.ListaLjController().handle); //Front [com filtro de regiao]
-rotas.get('/loja', new LojaController_1.LojaController().handle); //Front
-rotas.post('/login', new AutenticaController_1.AutenticaController().handle); //Front
-rotas.post('/esquecisenha', new EsqueciSenhaController_1.EsqueciSenhaController().handle);
-rotas.post('/loja', new CriaLjController_1.CriaLjController().handle);
-rotas.put('/loja', authenticator_1.Authenticator, uploadUser.single('avatar'), new AtualizaLjController_1.AtualizaLjController().handle);
-rotas.get('/me', authenticator_1.Authenticator, new AutenticadaLjController_1.AutenticadaLjController().handle); // Rota para Controle
-//Vendedor
-rotas.post('/vendedor', authenticator_1.Authenticator, uploadUser.single('avatar'), new CriaVddController_1.CriaVddController().handle);
-rotas.delete('/vendedor', authenticator_1.Authenticator, new DeletaVddController_1.DeletaVddController().handle);
-rotas.get('/vendedores', new ListaVddController_1.ListaVddController().handle);
-//Profissionais
-rotas.post('/profissional', uploadUser.single('avatar'), new CriaProfController_1.CriaProfController().handle);
-rotas.get('/profissionais', new ListaProfController_1.ListaProfController().handle);
-rotas.get('/porprofissao', new PorProfissaoController_1.PorProfissaoController().handle);
-//Servicos
-rotas.post('/servico', new CriaSrvController_1.CriaSrvController().handle);
-rotas.put('/servico', new AtualizaSrvController_1.AtualizaSrvController().handle);
-rotas.get('/servicos', new ListaSrvController_1.ListaSrvController().handle);
-// Categoria
-rotas.get('/categorias', new ListaCtController_1.ListaCtController().handle); //Front
-rotas.post('/categoria', new CriaCtController_1.CriaCtController().handle);
-rotas.delete('/categoria', authenticator_1.Authenticator, new DeletaCtController_1.DeletaCtController().handle);
-rotas.put('/categoria', authenticator_1.Authenticator, new AtualizaCtController_1.AtualizaCtController().handle);
-// Produto
-rotas.get('/feed', new FeedProdutosController_1.FeedProdutosControlller().handle); //Front [com filtro de regiao]
-rotas.post('/produto', authenticator_1.Authenticator, uploadUser.array('files', 5), new CriaPdtController_1.CriaPdtController().handle);
-rotas.get('/porcategoria', new PorCategoriaPdtController_1.PorCategoriaPdtController().handle); //Front [com filtro de regiao]
+//Admin
+rotas.post('/usuario', new CriaUsuarioController_1.CriaUsuarioController().handle);
+rotas.post('/profissao', new CriaProfissaoController_1.CriaProfissaoController().handle);
+rotas.post('/regiao', new CriaRegiaoController_1.CriaRegiaoController().handle);
+rotas.post('/categoria', new CriaCategoriaController_1.CriaCategoriaController().handle);
+rotas.post('/campanha', new CriaCampanhaController_1.CriaCampanhaController().handle);
+rotas.get('/campanhas', new ListaCampanhasInativasController_1.ListaCampanhasInativasController().handle);
+rotas.put('/campanha', new AtualizaCampanhaController_1.AtualizaCampanhaController().handle);
+rotas.put('/categoria', new AtualizaCategoriaController_1.AtualizaCategoriaController().handle);
+rotas.delete('/categoria', new DeletaCategoriaController_1.DeletaCategoriaController().handle);
+rotas.put('/profissao', new AtualizaProfissaoController_1.AtualizaProfissaoController().handle);
+rotas.get('/profissoes', new ListaProfissaoController_1.ListaProfissaoController().handle);
+rotas.put('/usuario', new AtualizaUsuarioController_1.AtualizaUsuarioController().handle);
+//Usuario
+rotas.post('/login', new AutenticaUsuarioController_1.AutenticaUsuarioController().handle);
+rotas.get('/loja/logado', authenticator_1.Authenticator, new LojaLogadaController_1.LojaLogadaController().handle);
+rotas.put('/loja', authenticator_1.Authenticator, new AtualizaLojaController_1.AtualizaLojaController().handle);
+rotas.post('/produto', authenticator_1.Authenticator, uploadUser.array('files', 5), new CriaProdutoController_1.CriaProdutoController().handle);
+rotas.put('/produto', authenticator_1.Authenticator, new AtualizaProdutoController_1.AtualizaProdutoController().handle);
+rotas.delete('/produto', authenticator_1.Authenticator, new DeletaProdutoController_1.DeletaProdutoController().handle);
+rotas.put('/profissional', authenticator_1.Authenticator, new AtualizarProfissionalController_1.AtualizarProfissionalController().handle);
+//App
+rotas.get('/lojas', new ListaLojasController_1.ListaLojasController().handle);
+rotas.get('/loja', new BuscaLojaController_1.BuscaLojaController().handle);
 rotas.get('/detalhe/produto', new DetalheProdutoController_1.DetalheProdutoController().handle);
-rotas.delete('/produto', authenticator_1.Authenticator, new DeletaPdtController_1.DeletaPdtController().handle);
-rotas.put('/produto', authenticator_1.Authenticator, new AtualizaPdtController_1.AtualizaPdtController().handle);
-// Region
-rotas.get('/regioes', new ListaRgController_1.ListaRgController().handle); //Front
-rotas.post('/regiao', new CriaRgController_1.CriaRgController().handle);
-// Campanha
-rotas.get('/campanhas/ativas', new ListaCampController_1.ListaCampController().handle); //Front
-rotas.post('/campanha', new CriaCampController_1.CriaCampController().handle);
-rotas.put('/campanha', new AtualizaCampController_1.AtualizaCampController().handle);
-rotas.get('/campanhas', new ListaCampInatController_1.ListaCampInatController().handle);
+rotas.get('/produtos', new ListarProdutosController_1.ListarProdutosController().handle);
+rotas.get('/produtos/categoria', new PorCategoriaProdutoController_1.PorCategoriaProdutoController().handle);
+rotas.get('/profissionais', new ListarProfissionalController_1.ListarProfissionalController().handle);
+rotas.get('/profissao/profissionais', new PorProfissaoController_1.PorProfissaoController().handle);
+// Ambos
+rotas.get('/regioes', new ListarRegioesController_1.ListarRegioesController().handle);
+rotas.get('/campanhas/ativas', new ListaCampanhaController_1.ListaCampanhaController().handle);
+rotas.get('/categorias', new ListaCategoriaController_1.ListaCategoriaController().handle);

@@ -14,10 +14,10 @@ const PorProfissaoService_1 = require("../../services/profissional/PorProfissaoS
 class PorProfissaoController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const servicoID = req.query.servicoID;
+            const profissaoID = req.query.profissaoID;
             const porProfissaoService = new PorProfissaoService_1.PorProfissaoService();
             const produto = yield porProfissaoService.execute({
-                servicoID
+                profissaoID
             });
             return res.json(produto);
         });

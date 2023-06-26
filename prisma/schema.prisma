@@ -12,107 +12,120 @@ datasource db {
 
 // yarn prisma migrate dev
 
+model Usuario {
+  id     String  @id @default(uuid())
+  tipo   String
+  email  String  @unique
+  senha  String
+  status Boolean @default(false)
+
+  regiaoID String
+  regiao   Regiao @relation(fields: [regiaoID], references: [id])
+
+  posto        Posto[]
+  profissional Profissional[]
+  loja         Loja[]
+  mapa         Mapa[]
+  contato      Contato[]
+
+  @@map("usuarios")
+}
+
 model Posto {
-  id     String @id @default(uuid())
-  conta  String
-  nome   String
+  id     String  @id @default(uuid())
+  avatar Json?
+  nome   String?
   tabela Json?
-  latlng Json?
+  bairro String?
+
+  usuarioID String?
+  usuario   Usuario? @relation(fields: [usuarioID], references: [id])
+
+  createdAt DateTime? @default(now())
 
   @@map("postos")
 }
 
 model Profissional {
-  id            String   @id @default(uuid())
-  nome          String?
-  conta         String?
-  avatar        Json?
-  portfolio     Json[]
-  listaServicos String[]
-  whatsapp      String   @unique
-  email         String   @unique
-  aDomicilio    Boolean  @default(false)
-  endereco      String
-  bio           String?
-  statusGuia    Boolean  @default(false)
-  regiaoID      String?
-  servicoID     String
+  id             String   @id @default(uuid())
+  avatar         Json?
+  nome           String?
+  bairro         String?
+  album          Json[]
+  endereco       String?
+  bio            String?
+  lista_servicos String[]
+  profissaoID   String?
+  usuarioID      String?
+
+  usuario    Usuario?    @relation(fields: [usuarioID], references: [id])
+  profissao Profissao? @relation(fields: [profissaoID], references: [id])
 
   createdAt DateTime? @default(now())
-  updatedAt DateTime? @default(now())
-
-  regiao  Regiao? @relation(fields: [regiaoID], references: [id])
-  servico Servico @relation(fields: [servicoID], references: [id])
 
   @@map("profissionais")
 }
 
+model Contato {
+  id String @id @default(uuid())
+
+  nome     String?
+  avatar   Json?
+  whatsapp String?
+  horario  Json?
+
+  usuarioID String?
+  usuario   Usuario? @relation(fields: [usuarioID], references: [id])
+
+  @@map("contatos")
+}
+
+model Mapa {
+  id     String @id @default(uuid())
+  latlng Json?
+
+  usuarioID String?
+  usuario   Usuario? @relation(fields: [usuarioID], references: [id])
+
+  @@map("mapas")
+}
+
 model Loja {
-  id         String   @id @default(uuid())
-  email      String   @unique
-  senha      String
-  conta      String?
-  avatar     Json?
-  statusGuia Boolean? @default(false)
-  nome       String?
-  bio        String?
-  endereco   String?
-  bairro     String?
-  referencia String?
-  latlng     Json?
-  entrega    Boolean? @default(false)
+  id        String   @id @default(uuid())
+  avatar    Json?
+  nome      String?
+  endereco  String?
+  delivery  Boolean? @default(false)
+  bairro    String?
+  bio       String?
+  ponto_ref String?
+  tema      Json?
+  usuarioID String
 
-  produtos   Produto[]
-  vendedores Vendedor[]
+  produtos Produto[]
 
-  tema   Temas?  @relation(fields: [temaID], references: [id])
-  temaID String?
+  usuario Usuario @relation(fields: [usuarioID], references: [id])
 
-  regiao   Regiao @relation(fields: [regiaoID], references: [id])
-  regiaoID String
-
-  createdAt  DateTime? @default(now())
-  updatedAt  DateTime? @default(now())
-  Campanha   Campanha? @relation(fields: [campanhaId], references: [id])
-  campanhaId String?
+  createdAt DateTime? @default(now())
 
   @@map("lojas")
 }
 
-model Servico {
-  id    String  @id @default(uuid())
-  nome  String
-  icone String?
+model Profissao {
+  id     String  @id @default(uuid())
+  nome   String
+  avatar String?
 
   profissional Profissional[]
 
   createdAt DateTime? @default(now())
-  updatedAt DateTime? @default(now())
 
-  @@map("servicos")
-}
-
-model Vendedor {
-  id String @id @default(uuid())
-
-  avatar   Json
-  nome     String
-  whatsapp String @unique
-  setor    String
-  horario  Json?
-
-  loja   Loja   @relation(fields: [lojaID], references: [id])
-  lojaID String
-
-  createdAt DateTime? @default(now())
-  updatedAt DateTime? @default(now())
-
-  @@map("vendedores")
+  @@map("profissoes")
 }
 
 model Produto {
   id        String   @id @default(uuid())
-  cod       String?
+  codigo    String?
   nome      String
   descricao String
   preco     Float    @default(0)
@@ -142,7 +155,6 @@ model Campanha {
   status Boolean @default(false)
 
   Produto Produto[]
-  Loja    Loja[]
 
   @@map("campanhas")
 }
@@ -154,7 +166,6 @@ model Categoria {
   produto Produto[]
 
   createdAt DateTime? @default(now())
-  updatedAt DateTime? @default(now())
 
   @@map("categorias")
 }
@@ -163,22 +174,8 @@ model Regiao {
   id   String @id @default(uuid())
   nome String
 
-  loja         Loja[]
-  Profissional Profissional[]
-
+  usuario   Usuario[]
   createdAt DateTime? @default(now())
-  updatedAt DateTime? @default(now())
 
   @@map("regioes")
-}
-
-
-
-model Temas {
-  id    String   @id @default(uuid())
-  cores String[]
-
-  loja Loja[]
-
-  @@map("temas")
 }

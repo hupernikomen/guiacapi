@@ -30,7 +30,7 @@ export function Authenticator(
 
         
 
-        req.loja_ID = sub
+        req.usuario_ID = sub
 
         return next()
 

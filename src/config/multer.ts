@@ -4,7 +4,6 @@ import path from 'path';
 import multerS3 from 'multer-s3'
 import AWS from 'aws-sdk';
 import { resolve } from 'path'
-import { S3Client } from "@aws-sdk/client-s3";
 
 import 'dotenv/config';
 

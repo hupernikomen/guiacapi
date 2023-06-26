@@ -11,7 +11,7 @@ function Authenticator(req, res, next) {
     const [, token] = authToken.split(" ");
     try {
         const { sub } = (0, jsonwebtoken_1.verify)(token, process.env.JWT_SECRET);
-        req.loja_ID = sub;
+        req.usuario_ID = sub;
         return next();
     }
     catch (error) {
