@@ -25,6 +25,9 @@ class AutenticaService {
             const usuario = yield prisma_1.default.usuario.findFirst({
                 where: { email: email }
             });
+            if (!usuario.status) {
+                throw new Error("Conta Bloqueada");
+            }
             const comparePassword = yield (0, bcryptjs_1.compare)(senha, usuario.senha);
             if (!comparePassword) {
                 throw new Error("informações incorretas");

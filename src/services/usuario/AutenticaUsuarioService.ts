@@ -20,6 +20,10 @@ class AutenticaService {
             where: { email: email }
         })
 
+        if (!usuario.status) {
+            throw new Error("Conta Bloqueada");
+        }
+
         const comparePassword = await compare(senha, usuario.senha)
         if (!comparePassword) {
             throw new Error("informações incorretas");
