@@ -19,7 +19,12 @@ class LojaLogadaService {
             },
             select: {
                 id: true,
-                loja: true
+                loja: {
+                    select:{
+                        id:true,
+                        nome:true
+                    }
+                }
 
             }
         })
