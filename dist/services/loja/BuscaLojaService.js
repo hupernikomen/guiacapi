@@ -21,23 +21,17 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class BuscaLojaService {
     execute({ usuarioID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const loja = yield prisma_1.default.usuario.findFirst({
+            const loja = yield prisma_1.default.loja.findFirst({
                 where: {
-                    status: true,
+                    usuario: {
+                        status: true,
+                    },
                     id: usuarioID,
                 },
                 select: {
                     id: true,
-                    email: true,
-                    loja: {
-                        select: {
-                            id: true,
-                            nome: true,
-                            produtos: true
-                        }
-                    },
-                    contato: true,
-                    mapa: true,
+                    nome: true,
+                    produtos: true
                 }
             });
             return loja;

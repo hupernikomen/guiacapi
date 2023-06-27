@@ -21,19 +21,15 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class LojaLogadaService {
     execute({ usuarioID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const loja = yield prisma_1.default.usuario.findUnique({
+            const loja = yield prisma_1.default.loja.findFirst({
                 where: {
-                    id: usuarioID
+                    usuarioID
                 },
                 select: {
-                    loja: {
-                        select: {
-                            id: true,
-                            avatar: true,
-                            nome: true,
-                            produtos: true
-                        },
-                    }
+                    id: true,
+                    avatar: true,
+                    nome: true,
+                    produtos: true
                 }
             });
             return loja;

@@ -13,22 +13,15 @@ class LojaLogadaService {
     async execute({
         usuarioID
     }: lojaRequest) {
-        const loja = await prismaClient.usuario.findUnique({
+        const loja = await prismaClient.loja.findFirst({
             where: {
-                id: usuarioID
+                usuarioID
             },
             select: {
-                loja: {
-                    select:{
-                        id:true,
-                        avatar:true,
-                        nome:true,
-                        produtos:true
-                    },
-                    
-                }
-                
-
+                id: true,
+                avatar: true,
+                nome: true,
+                produtos: true
             }
         })
 
