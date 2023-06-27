@@ -30,16 +30,17 @@ const CriaProdutoController_1 = require("./controllers/produto/CriaProdutoContro
 const ListarRegioesController_1 = require("./controllers/regiao/ListarRegioesController");
 const ListarProdutosController_1 = require("./controllers/produto/ListarProdutosController");
 const ListarProfissionalController_1 = require("./controllers/profissional/ListarProfissionalController");
+const ListaProfissaoController_1 = require("./controllers/profissao/ListaProfissaoController");
+const ListaContatosController_1 = require("./controllers/contato/ListaContatosController");
+const ListaCategoriaController_1 = require("./controllers/categoria/ListaCategoriaController");
 const ListaCampanhasInativasController_1 = require("./controllers/campanha/ListaCampanhasInativasController");
 const ListaCampanhaController_1 = require("./controllers/campanha/ListaCampanhaController");
 const ListaLojasController_1 = require("./controllers/loja/ListaLojasController");
 const PorCategoriaProdutoController_1 = require("./controllers/produto/PorCategoriaProdutoController");
 const PorProfissaoController_1 = require("./controllers/profissional/PorProfissaoController");
 const DeletaProdutoController_1 = require("./controllers/produto/DeletaProdutoController");
-const ListaProfissaoController_1 = require("./controllers/profissao/ListaProfissaoController");
 const AtualizaProfissaoController_1 = require("./controllers/profissao/AtualizaProfissaoController");
 const DeletaCategoriaController_1 = require("./controllers/categoria/DeletaCategoriaController");
-const ListaCategoriaController_1 = require("./controllers/categoria/ListaCategoriaController");
 const uploadUser = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageTypes.s3 : multer_2.storageTypes.local,
@@ -84,3 +85,4 @@ rotas.get('/profissao/profissionais', new PorProfissaoController_1.PorProfissaoC
 rotas.get('/regioes', new ListarRegioesController_1.ListarRegioesController().handle);
 rotas.get('/campanhas/ativas', new ListaCampanhaController_1.ListaCampanhaController().handle);
 rotas.get('/categorias', new ListaCategoriaController_1.ListaCategoriaController().handle);
+rotas.get('/contatos', new ListaContatosController_1.ListaContatosController().handle);

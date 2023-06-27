@@ -27,6 +27,9 @@ import { CriaProdutoController } from './controllers/produto/CriaProdutoControll
 import { ListarRegioesController } from './controllers/regiao/ListarRegioesController';
 import { ListarProdutosController } from './controllers/produto/ListarProdutosController';
 import { ListarProfissionalController } from './controllers/profissional/ListarProfissionalController';
+import { ListaProfissaoController } from './controllers/profissao/ListaProfissaoController';
+import { ListaContatosController } from './controllers/contato/ListaContatosController';
+import { ListaCategoriaController } from './controllers/categoria/ListaCategoriaController';
 import { ListaCampanhasInativasController } from './controllers/campanha/ListaCampanhasInativasController';
 import { ListaCampanhaController } from './controllers/campanha/ListaCampanhaController';
 import { ListaLojasController } from './controllers/loja/ListaLojasController';
@@ -34,10 +37,8 @@ import { PorCategoriaProdutoController } from './controllers/produto/PorCategori
 import { PorProfissaoController } from './controllers/profissional/PorProfissaoController';
 import { DeletaProdutoController } from './controllers/produto/DeletaProdutoController';
 
-import { ListaProfissaoController } from './controllers/profissao/ListaProfissaoController';
 import { AtualizaProfissaoController } from './controllers/profissao/AtualizaProfissaoController';
 import { DeletaCategoriaController } from './controllers/categoria/DeletaCategoriaController';
-import { ListaCategoriaController } from './controllers/categoria/ListaCategoriaController';
 
 
 const uploadUser = multer({
@@ -96,6 +97,7 @@ rotas.get('/profissao/profissionais', new PorProfissaoController().handle)
 rotas.get('/regioes', new ListarRegioesController().handle)
 rotas.get('/campanhas/ativas', new ListaCampanhaController().handle)
 rotas.get('/categorias', new ListaCategoriaController().handle) 
+rotas.get('/contatos', new ListaContatosController().handle)
 
 
 export { rotas };
