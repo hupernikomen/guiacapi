@@ -6,7 +6,11 @@ class ListaContatosController {
     async handle(req: Request, res: Response) {
         const listaContatosService = new ListaContatosService()
 
-        const contatos = await listaContatosService.execute()
+        const usuarioID = req.query.usuarioID as string
+
+        const contatos = await listaContatosService.execute({
+            usuarioID
+        })
         return res.json(contatos)
 
     }

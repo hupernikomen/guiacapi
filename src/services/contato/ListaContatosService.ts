@@ -1,9 +1,18 @@
 import prismaClient from "../../prisma";
 
+interface contatoRequest {
+  usuarioID: string
+}
+
 class ListaContatosService {
-  async execute() {
+  async execute({
+    usuarioID
+}: contatoRequest) {
 
     const contato = await prismaClient.contato.findMany({
+      where:{
+        usuarioID
+      },
       select: {
         id: true,
         nome: true,

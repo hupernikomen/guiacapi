@@ -15,7 +15,10 @@ class ListaContatosController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const listaContatosService = new ListaContatosService_1.ListaContatosService();
-            const contatos = yield listaContatosService.execute();
+            const usuarioID = req.query.usuarioID;
+            const contatos = yield listaContatosService.execute({
+                usuarioID
+            });
             return res.json(contatos);
         });
     }
