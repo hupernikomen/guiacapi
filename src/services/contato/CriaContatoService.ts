@@ -22,6 +22,8 @@ class CriaContatoService {
 
     }: contatoRequest) {
 
+        
+
         const contato = await prismaClient.contato.create({
             data: {
                
@@ -33,6 +35,7 @@ class CriaContatoService {
                 usuarioID
             }
         })
+        
 
         return contato
     }
