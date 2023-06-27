@@ -21,7 +21,12 @@ class LojaLogadaService {
                 id: true,
                 avatar: true,
                 nome: true,
+                endereco:true,
+                bairro:true,
+                ponto_ref:true,
+                bio:true,
                 produtos: true,
+                delivery:true,
                 usuario:{
                     select:{
                         status:true
