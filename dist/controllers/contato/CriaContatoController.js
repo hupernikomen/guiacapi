@@ -16,15 +16,21 @@ class CriaContatoController {
         return __awaiter(this, void 0, void 0, function* () {
             const criaContatoService = new CriaContatoService_1.CriaContatoService();
             const usuarioID = req.query.usuarioID;
-            const { nome, avatar, whatsapp, horario } = req.body;
-            const contato = yield criaContatoService.execute({
-                nome,
-                avatar,
-                whatsapp,
-                horario,
-                usuarioID
-            });
-            return res.status(200).json(contato);
+            const { nome, whatsapp, horario } = req.body;
+            if (!req.file) {
+                throw new Error("Ops.. algo deu errado!");
+            }
+            else {
+                const file = req.file;
+                const contato = yield criaContatoService.execute({
+                    nome,
+                    avatar: file,
+                    whatsapp,
+                    horario,
+                    usuarioID
+                });
+                return res.status(200).json(contato);
+            }
         });
     }
 }

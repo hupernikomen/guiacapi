@@ -2,7 +2,7 @@ import prismaClient from "../../prisma";
 
 interface contatoRequest {
     nome: string,
-    avatar:string,
+    avatar:object,
     whatsapp:string,
     horario:object,
     usuarioID:string
