@@ -22,7 +22,8 @@ class DetalheProdutoService {
           select: {
             id: true,
             nome: true,
-            avatar: true
+            avatar: true,
+            usuarioID:true
           }
         },
         categoria: {
