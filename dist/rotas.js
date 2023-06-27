@@ -24,6 +24,7 @@ const CriaUsuarioController_1 = require("./controllers/usuario/CriaUsuarioContro
 const CriaRegiaoController_1 = require("./controllers/regiao/CriaRegiaoController");
 const CriaProfissaoController_1 = require("./controllers/profissao/CriaProfissaoController");
 const CriaCategoriaController_1 = require("./controllers/categoria/CriaCategoriaController");
+const CriaContatoController_1 = require("./controllers/contato/CriaContatoController");
 const CriaCampanhaController_1 = require("./controllers/campanha/CriaCampanhaController");
 const CriaProdutoController_1 = require("./controllers/produto/CriaProdutoController");
 const ListarRegioesController_1 = require("./controllers/regiao/ListarRegioesController");
@@ -65,6 +66,7 @@ rotas.delete('/categoria', new DeletaCategoriaController_1.DeletaCategoriaContro
 //Usuario
 rotas.post('/login', new AutenticaUsuarioController_1.AutenticaUsuarioController().handle);
 rotas.post('/produto', authenticator_1.Authenticator, uploadUser.array('files', 5), new CriaProdutoController_1.CriaProdutoController().handle);
+rotas.post('/contato', authenticator_1.Authenticator, uploadUser.single('avatar'), new CriaContatoController_1.CriaContatoController().handle);
 rotas.get('/loja/logado', authenticator_1.Authenticator, new LojaLogadaController_1.LojaLogadaController().handle);
 rotas.put('/loja', authenticator_1.Authenticator, uploadUser.single('avatar'), new AtualizaLojaController_1.AtualizaLojaController().handle);
 rotas.put('/profissional', authenticator_1.Authenticator, new AtualizarProfissionalController_1.AtualizarProfissionalController().handle);

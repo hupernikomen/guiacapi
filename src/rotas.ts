@@ -21,6 +21,7 @@ import { CriaUsuarioController } from './controllers/usuario/CriaUsuarioControll
 import { CriaRegiaoController } from './controllers/regiao/CriaRegiaoController';
 import { CriaProfissaoController } from './controllers/profissao/CriaProfissaoController';
 import { CriaCategoriaController } from './controllers/categoria/CriaCategoriaController';
+import { CriaContatoController } from './controllers/contato/CriaContatoController';
 import { CriaCampanhaController } from './controllers/campanha/CriaCampanhaController';
 import { CriaProdutoController } from './controllers/produto/CriaProdutoController';
 import { ListarRegioesController } from './controllers/regiao/ListarRegioesController';
@@ -69,6 +70,7 @@ rotas.delete('/categoria', new DeletaCategoriaController().handle)
 //Usuario
 rotas.post('/login', new AutenticaUsuarioController().handle)
 rotas.post('/produto', Authenticator, uploadUser.array('files', 5), new CriaProdutoController().handle)
+rotas.post('/contato', Authenticator, uploadUser.single('avatar'), new CriaContatoController().handle)
 
 rotas.get('/loja/logado', Authenticator, new LojaLogadaController().handle)
 rotas.put('/loja', Authenticator, uploadUser.single('avatar'), new AtualizaLojaController().handle) 
