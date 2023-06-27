@@ -15,6 +15,9 @@ class LojaLogadaService {
     }: lojaRequest) {
         const loja = await prismaClient.loja.findFirst({
             where: {
+                usuario:{
+                    status:true
+                },
                 usuarioID
             },
             select: {
@@ -34,6 +37,7 @@ class LojaLogadaService {
                 }
             }
         })
+        
 
         return loja
     }

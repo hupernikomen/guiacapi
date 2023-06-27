@@ -30,6 +30,8 @@ class BuscaLojaService {
             }
         })
 
+        
+
         return loja
     }
 }

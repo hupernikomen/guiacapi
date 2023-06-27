@@ -28,6 +28,7 @@ class AtualizaLojaService {
 
         const loja_existe = await prismaClient.loja.findFirst({
             where: {
+                
                 usuarioID
             }
         })

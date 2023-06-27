@@ -23,6 +23,9 @@ class LojaLogadaService {
         return __awaiter(this, void 0, void 0, function* () {
             const loja = yield prisma_1.default.loja.findFirst({
                 where: {
+                    usuario: {
+                        status: true
+                    },
                     usuarioID
                 },
                 select: {
