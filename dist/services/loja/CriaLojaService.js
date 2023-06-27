@@ -8,27 +8,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CriaUsuarioController = void 0;
-const CriaUsuarioService_1 = require("../../services/usuario/CriaUsuarioService");
-class CriaUsuarioController {
-    handle(req, res) {
+exports.CriaLojaService = void 0;
+const prisma_1 = __importDefault(require("../../prisma"));
+class CriaLojaService {
+    execute({ usuarioID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const regiaoID = req.query.regiaoID;
-            const { email, senha } = req.body;
-            const criaUsuarioService = new CriaUsuarioService_1.CriaUsuarioService();
-            const loja = yield criaUsuarioService.execute({
-                email,
-                senha,
-                regiaoID
+            const loja = yield prisma_1.default.loja.create({
+                data: {
+                    usuarioID
+                }
             });
-            if (!loja) {
-                throw new Error("Ops, algo deu errado!");
-            }
-            return res.status(200).json({
-                message: "Cadastrado com Sucesso"
-            });
+            return loja;
         });
     }
 }
-exports.CriaUsuarioController = CriaUsuarioController;
+exports.CriaLojaService = CriaLojaService;

@@ -23,14 +23,17 @@ class AutenticaService {
                 throw new Error("não cadastrado");
             }
             const usuario = yield prisma_1.default.usuario.findFirst({
-                where: { email: email }
+                where: { email }
             });
+            if (!usuario) {
+                throw new Error("Informações incorretas");
+            }
             if (!usuario.status) {
                 throw new Error("Conta Bloqueada");
             }
             const comparePassword = yield (0, bcryptjs_1.compare)(senha, usuario.senha);
             if (!comparePassword) {
-                throw new Error("informações incorretas");
+                throw new Error("senha incorreta");
             }
             const token = (0, jsonwebtoken_1.sign)({ email: usuario.email }, process.env.JWT_SECRET, { subject: usuario.id });
             return {

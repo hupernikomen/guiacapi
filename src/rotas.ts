@@ -16,6 +16,7 @@ import { AtualizaCategoriaController } from './controllers/categoria/AtualizaCat
 import { AtualizaCampanhaController } from './controllers/campanha/AtualizaCampanhaController';
 import { AtualizarProfissionalController } from './controllers/profissional/AtualizarProfissionalController';
 import { AtualizaProdutoController } from './controllers/produto/AtualizaProdutoController';
+import { CriaLojaController } from './controllers/loja/CriaLojaController';
 import { CriaUsuarioController } from './controllers/usuario/CriaUsuarioController';
 import { CriaRegiaoController } from './controllers/regiao/CriaRegiaoController';
 import { CriaProfissaoController } from './controllers/profissao/CriaProfissaoController';
@@ -51,18 +52,18 @@ const rotas = Router();
 
 //Admin
 rotas.post('/usuario', new CriaUsuarioController().handle)
+rotas.post('/loja',new CriaLojaController().handle)
 rotas.post('/profissao', new CriaProfissaoController().handle)
 rotas.post('/regiao', new CriaRegiaoController().handle)
 rotas.post('/categoria', new CriaCategoriaController().handle)
 rotas.post('/campanha', new CriaCampanhaController().handle)
+rotas.get('/profissoes', new ListaProfissaoController().handle)
 rotas.get('/campanhas', new ListaCampanhasInativasController().handle)
+rotas.put('/usuario', new AtualizaUsuarioController().handle)
 rotas.put('/campanha', new AtualizaCampanhaController().handle)
 rotas.put('/categoria', new AtualizaCategoriaController().handle)
-rotas.delete('/categoria', new DeletaCategoriaController().handle)
 rotas.put('/profissao', new AtualizaProfissaoController().handle)
-rotas.get('/profissoes', new ListaProfissaoController().handle)
-rotas.put('/usuario', new AtualizaUsuarioController().handle)
-
+rotas.delete('/categoria', new DeletaCategoriaController().handle)
 
 
 //Usuario

@@ -5,12 +5,11 @@ class CriaUsuarioController {
     async handle(req: Request, res: Response) {
 
         const regiaoID = req.query.regiaoID as string
-        const { tipo, email, senha } = req.body
+        const { email, senha } = req.body
 
         const criaUsuarioService = new CriaUsuarioService();
 
         const loja = await criaUsuarioService.execute({
-            tipo,
             email,
             senha,
             regiaoID

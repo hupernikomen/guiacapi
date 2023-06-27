@@ -19,6 +19,7 @@ const AtualizaCategoriaController_1 = require("./controllers/categoria/AtualizaC
 const AtualizaCampanhaController_1 = require("./controllers/campanha/AtualizaCampanhaController");
 const AtualizarProfissionalController_1 = require("./controllers/profissional/AtualizarProfissionalController");
 const AtualizaProdutoController_1 = require("./controllers/produto/AtualizaProdutoController");
+const CriaLojaController_1 = require("./controllers/loja/CriaLojaController");
 const CriaUsuarioController_1 = require("./controllers/usuario/CriaUsuarioController");
 const CriaRegiaoController_1 = require("./controllers/regiao/CriaRegiaoController");
 const CriaProfissaoController_1 = require("./controllers/profissao/CriaProfissaoController");
@@ -49,17 +50,18 @@ const rotas = (0, express_1.Router)();
 exports.rotas = rotas;
 //Admin
 rotas.post('/usuario', new CriaUsuarioController_1.CriaUsuarioController().handle);
+rotas.post('/loja', new CriaLojaController_1.CriaLojaController().handle);
 rotas.post('/profissao', new CriaProfissaoController_1.CriaProfissaoController().handle);
 rotas.post('/regiao', new CriaRegiaoController_1.CriaRegiaoController().handle);
 rotas.post('/categoria', new CriaCategoriaController_1.CriaCategoriaController().handle);
 rotas.post('/campanha', new CriaCampanhaController_1.CriaCampanhaController().handle);
+rotas.get('/profissoes', new ListaProfissaoController_1.ListaProfissaoController().handle);
 rotas.get('/campanhas', new ListaCampanhasInativasController_1.ListaCampanhasInativasController().handle);
+rotas.put('/usuario', new AtualizaUsuarioController_1.AtualizaUsuarioController().handle);
 rotas.put('/campanha', new AtualizaCampanhaController_1.AtualizaCampanhaController().handle);
 rotas.put('/categoria', new AtualizaCategoriaController_1.AtualizaCategoriaController().handle);
-rotas.delete('/categoria', new DeletaCategoriaController_1.DeletaCategoriaController().handle);
 rotas.put('/profissao', new AtualizaProfissaoController_1.AtualizaProfissaoController().handle);
-rotas.get('/profissoes', new ListaProfissaoController_1.ListaProfissaoController().handle);
-rotas.put('/usuario', new AtualizaUsuarioController_1.AtualizaUsuarioController().handle);
+rotas.delete('/categoria', new DeletaCategoriaController_1.DeletaCategoriaController().handle);
 //Usuario
 rotas.post('/login', new AutenticaUsuarioController_1.AutenticaUsuarioController().handle);
 rotas.get('/loja/logado', authenticator_1.Authenticator, new LojaLogadaController_1.LojaLogadaController().handle);

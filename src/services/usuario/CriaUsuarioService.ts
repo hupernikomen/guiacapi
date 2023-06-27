@@ -2,7 +2,6 @@ import prismaClient from '../../prisma';
 import { hash } from 'bcryptjs'
 
 interface usuarioRequest {
-    tipo: string,
     email: string,
     senha: string,
     regiaoID: string,
@@ -10,14 +9,13 @@ interface usuarioRequest {
 
 class CriaUsuarioService {
     async execute({
-        tipo,
         email,
         senha,
         regiaoID
     }: usuarioRequest) {
 
         if (!email) {
-            throw new Error("usuario Incorreto");
+            throw new Error("informe seu email");
         }
 
         const usuarioExiste = await prismaClient.usuario.findFirst({
@@ -34,7 +32,6 @@ class CriaUsuarioService {
 
         const usuario = await prismaClient.usuario.create({
             data: {
-                tipo,
                 email,
                 senha: passwordCripto,
                 regiaoID
@@ -56,33 +53,33 @@ class CriaUsuarioService {
                 }
             })
 
-            switch (usuario.tipo) {
-                case 'loja':
-                    await prismaClient.loja.create({
-                        data: {
-                            usuarioID: usuario.id
-                        }
-                    })
-                    break;
-                case 'profissional':
-                    await prismaClient.profissional.create({
-                        data: {
-                            usuarioID: usuario.id
-                        }
-                    })
-                    break;
-                case 'posto':
+            // switch (usuario.tipo) {
+            //     case 'loja':
+            //         await prismaClient.loja.create({
+            //             data: {
+            //                 usuarioID: usuario.id
+            //             }
+            //         })
+            //         break;
+            //     case 'profissional':
+            //         await prismaClient.profissional.create({
+            //             data: {
+            //                 usuarioID: usuario.id
+            //             }
+            //         })
+            //         break;
+            //     case 'posto':
 
-                    await prismaClient.posto.create({
-                        data: {
-                            usuarioID: usuario.id
-                        }
-                    })
-                    break;
+            //         await prismaClient.posto.create({
+            //             data: {
+            //                 usuarioID: usuario.id
+            //             }
+            //         })
+            //         break;
 
-                default:
-                    break;
-            }
+            //     default:
+            //         break;
+            // }
         }
 
         return usuario

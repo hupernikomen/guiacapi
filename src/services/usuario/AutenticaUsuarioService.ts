@@ -17,8 +17,13 @@ class AutenticaService {
         }
 
         const usuario = await prismaClient.usuario.findFirst({
-            where: { email: email }
+            where: { email }
         })
+
+        if (!usuario) {
+            throw new Error("Informações incorretas");
+        }
+        
 
         if (!usuario.status) {
             throw new Error("Conta Bloqueada");
@@ -26,7 +31,7 @@ class AutenticaService {
 
         const comparePassword = await compare(senha, usuario.senha)
         if (!comparePassword) {
-            throw new Error("informações incorretas");
+            throw new Error("senha incorreta");
         }
 
 

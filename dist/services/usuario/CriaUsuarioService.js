@@ -16,10 +16,10 @@ exports.CriaUsuarioService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 const bcryptjs_1 = require("bcryptjs");
 class CriaUsuarioService {
-    execute({ tipo, email, senha, regiaoID }) {
+    execute({ email, senha, regiaoID }) {
         return __awaiter(this, void 0, void 0, function* () {
             if (!email) {
-                throw new Error("usuario Incorreto");
+                throw new Error("informe seu email");
             }
             const usuarioExiste = yield prisma_1.default.usuario.findFirst({
                 where: {
@@ -32,7 +32,6 @@ class CriaUsuarioService {
             const passwordCripto = yield (0, bcryptjs_1.hash)(senha, 8);
             const usuario = yield prisma_1.default.usuario.create({
                 data: {
-                    tipo,
                     email,
                     senha: passwordCripto,
                     regiaoID
@@ -49,31 +48,31 @@ class CriaUsuarioService {
                         usuarioID: usuario.id
                     }
                 });
-                switch (usuario.tipo) {
-                    case 'loja':
-                        yield prisma_1.default.loja.create({
-                            data: {
-                                usuarioID: usuario.id
-                            }
-                        });
-                        break;
-                    case 'profissional':
-                        yield prisma_1.default.profissional.create({
-                            data: {
-                                usuarioID: usuario.id
-                            }
-                        });
-                        break;
-                    case 'posto':
-                        yield prisma_1.default.posto.create({
-                            data: {
-                                usuarioID: usuario.id
-                            }
-                        });
-                        break;
-                    default:
-                        break;
-                }
+                // switch (usuario.tipo) {
+                //     case 'loja':
+                //         await prismaClient.loja.create({
+                //             data: {
+                //                 usuarioID: usuario.id
+                //             }
+                //         })
+                //         break;
+                //     case 'profissional':
+                //         await prismaClient.profissional.create({
+                //             data: {
+                //                 usuarioID: usuario.id
+                //             }
+                //         })
+                //         break;
+                //     case 'posto':
+                //         await prismaClient.posto.create({
+                //             data: {
+                //                 usuarioID: usuario.id
+                //             }
+                //         })
+                //         break;
+                //     default:
+                //         break;
+                // }
             }
             return usuario;
         });
