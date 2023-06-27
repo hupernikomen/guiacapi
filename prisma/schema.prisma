@@ -54,10 +54,10 @@ model Profissional {
   endereco       String?
   bio            String?
   lista_servicos String[]
-  profissaoID   String?
+  profissaoID    String?
   usuarioID      String?
 
-  usuario    Usuario?    @relation(fields: [usuarioID], references: [id])
+  usuario   Usuario?   @relation(fields: [usuarioID], references: [id])
   profissao Profissao? @relation(fields: [profissaoID], references: [id])
 
   createdAt DateTime? @default(now())
@@ -72,6 +72,7 @@ model Contato {
   avatar   Json?
   whatsapp String?
   horario  Json?
+  setor    String?
 
   usuarioID String?
   usuario   Usuario? @relation(fields: [usuarioID], references: [id])

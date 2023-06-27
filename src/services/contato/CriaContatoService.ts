@@ -4,6 +4,7 @@ interface contatoRequest {
     nome: string,
     avatar:object,
     whatsapp:string,
+    setor:string,
     horario:object,
     usuarioID:string
 }
@@ -15,6 +16,7 @@ class CriaContatoService {
         nome,
         avatar,
         whatsapp,
+        setor,
         horario,
         usuarioID
 
@@ -26,6 +28,7 @@ class CriaContatoService {
                 nome,
                 avatar,
                 whatsapp,
+                setor,
                 horario,
                 usuarioID
             }

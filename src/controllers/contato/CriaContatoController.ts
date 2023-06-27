@@ -7,7 +7,7 @@ class CriaContatoController {
 
     const usuarioID = req.query.usuarioID as string
 
-    const { nome, whatsapp, horario } = req.body;
+    const { nome, whatsapp,setor, horario } = req.body;
 
     if (!req.file) {
       throw new Error("Ops.. algo deu errado!");
@@ -17,6 +17,7 @@ class CriaContatoController {
       const contato = await criaContatoService.execute({
         nome,
         avatar: file,
+        setor,
         whatsapp,
         horario,
         usuarioID
