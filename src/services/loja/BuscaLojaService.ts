@@ -20,7 +20,7 @@ class BuscaLojaService {
                 usuario: {
                     status: true,
                 },
-                id: usuarioID,
+                usuarioID,
 
             },
             select: {

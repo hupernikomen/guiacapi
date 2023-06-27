@@ -29,7 +29,12 @@ class LojaLogadaService {
                     id: true,
                     avatar: true,
                     nome: true,
-                    produtos: true
+                    produtos: true,
+                    usuario: {
+                        select: {
+                            status: true
+                        }
+                    }
                 }
             });
             return loja;
