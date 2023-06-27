@@ -68,14 +68,14 @@ rotas.delete('/categoria', new DeletaCategoriaController().handle)
 
 //Usuario
 rotas.post('/login', new AutenticaUsuarioController().handle)
+rotas.post('/produto', Authenticator, uploadUser.array('files', 5), new CriaProdutoController().handle)
 
 rotas.get('/loja/logado', Authenticator, new LojaLogadaController().handle)
-rotas.put('/loja', Authenticator, new AtualizaLojaController().handle) 
-
-rotas.post('/produto', Authenticator, uploadUser.array('files', 5), new CriaProdutoController().handle)
-rotas.put('/produto', Authenticator, new AtualizaProdutoController().handle)
-rotas.delete('/produto', Authenticator, new DeletaProdutoController().handle)
+rotas.put('/loja', Authenticator, uploadUser.single('avatar'), new AtualizaLojaController().handle) 
 rotas.put('/profissional',Authenticator, new AtualizarProfissionalController().handle)
+rotas.put('/produto', Authenticator, new AtualizaProdutoController().handle)
+
+rotas.delete('/produto', Authenticator, new DeletaProdutoController().handle)
 
 
 //App

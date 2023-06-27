@@ -65,7 +65,7 @@ rotas.delete('/categoria', new DeletaCategoriaController_1.DeletaCategoriaContro
 //Usuario
 rotas.post('/login', new AutenticaUsuarioController_1.AutenticaUsuarioController().handle);
 rotas.get('/loja/logado', authenticator_1.Authenticator, new LojaLogadaController_1.LojaLogadaController().handle);
-rotas.put('/loja', authenticator_1.Authenticator, new AtualizaLojaController_1.AtualizaLojaController().handle);
+rotas.put('/loja', authenticator_1.Authenticator, uploadUser.single('avatar'), new AtualizaLojaController_1.AtualizaLojaController().handle);
 rotas.post('/produto', authenticator_1.Authenticator, uploadUser.array('files', 5), new CriaProdutoController_1.CriaProdutoController().handle);
 rotas.put('/produto', authenticator_1.Authenticator, new AtualizaProdutoController_1.AtualizaProdutoController().handle);
 rotas.delete('/produto', authenticator_1.Authenticator, new DeletaProdutoController_1.DeletaProdutoController().handle);
