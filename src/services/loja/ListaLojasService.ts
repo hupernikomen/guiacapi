@@ -13,6 +13,13 @@ class ListaLojasService {
                 usuario:{
                     status: true
                 }
+            },
+            select:{
+                produtos:true,
+                id:true,
+                nome:true,
+                avatar:true,
+                delivery:true,
             }
         })
 
