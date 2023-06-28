@@ -33,6 +33,7 @@ class ListaLojasService {
                     nome: true,
                     avatar: true,
                     delivery: true,
+                    usuarioID: true
                 }
             });
             return loja;

@@ -25,6 +25,7 @@ class ListaContatosService {
                     id: true,
                     nome: true,
                     avatar: true,
+                    setor: true,
                     whatsapp: true,
                     horario: true
                 }
