@@ -25,6 +25,15 @@ class AutenticaService {
             const usuario = yield prisma_1.default.usuario.findFirst({
                 where: { email }
             });
+            const loja = yield prisma_1.default.loja.findFirst({
+                where: { usuarioID: usuario.id }
+            });
+            const profissional = yield prisma_1.default.profissional.findFirst({
+                where: { usuarioID: usuario.id }
+            });
+            const posto = yield prisma_1.default.posto.findFirst({
+                where: { usuarioID: usuario.id }
+            });
             if (!usuario) {
                 throw new Error("Informações incorretas");
             }
@@ -39,7 +48,8 @@ class AutenticaService {
             return {
                 id: usuario.id,
                 email: usuario.email,
-                token: token
+                token: token,
+                conta: { loja: !!loja, profissional: !!profissional, posto: !!posto },
             };
         });
     }

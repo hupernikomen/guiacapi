@@ -12,6 +12,8 @@ class AutenticaService {
         senha
     }: AuthRequest) {
 
+
+
         if (!email) {
             throw new Error("não cadastrado");
         }
@@ -20,10 +22,21 @@ class AutenticaService {
             where: { email }
         })
 
+        const loja = await prismaClient.loja.findFirst({
+            where: { usuarioID: usuario.id }
+        })
+        const profissional = await prismaClient.profissional.findFirst({
+            where: { usuarioID: usuario.id }
+        })
+        const posto = await prismaClient.posto.findFirst({
+            where: { usuarioID: usuario.id }
+        })
+
+
         if (!usuario) {
             throw new Error("Informações incorretas");
         }
-        
+
 
         if (!usuario.status) {
             throw new Error("Conta Bloqueada");
@@ -44,7 +57,8 @@ class AutenticaService {
         return {
             id: usuario.id,
             email: usuario.email,
-            token: token
+            token: token,
+            conta: { loja: !!loja, profissional: !!profissional, posto: !!posto },
         }
     }
 }
