@@ -25,6 +25,7 @@ const CriaRegiaoController_1 = require("./controllers/regiao/CriaRegiaoControlle
 const CriaProfissaoController_1 = require("./controllers/profissao/CriaProfissaoController");
 const CriaCategoriaController_1 = require("./controllers/categoria/CriaCategoriaController");
 const CriaContatoController_1 = require("./controllers/contato/CriaContatoController");
+const CriaProfissionalController_1 = require("./controllers/profissional/CriaProfissionalController");
 const CriaCampanhaController_1 = require("./controllers/campanha/CriaCampanhaController");
 const CriaProdutoController_1 = require("./controllers/produto/CriaProdutoController");
 const ListarRegioesController_1 = require("./controllers/regiao/ListarRegioesController");
@@ -55,6 +56,7 @@ rotas.post('/usuario', new CriaUsuarioController_1.CriaUsuarioController().handl
 rotas.post('/loja', new CriaLojaController_1.CriaLojaController().handle);
 rotas.post('/profissao', new CriaProfissaoController_1.CriaProfissaoController().handle);
 rotas.post('/regiao', new CriaRegiaoController_1.CriaRegiaoController().handle);
+rotas.post('/profissional', new CriaProfissionalController_1.CriaProfissionalController().handle);
 rotas.post('/categoria', new CriaCategoriaController_1.CriaCategoriaController().handle);
 rotas.post('/campanha', new CriaCampanhaController_1.CriaCampanhaController().handle);
 rotas.get('/profissoes', new ListaProfissaoController_1.ListaProfissaoController().handle);
