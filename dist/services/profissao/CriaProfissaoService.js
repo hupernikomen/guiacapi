@@ -17,13 +17,13 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class CriaProfissaoService {
     execute({ nome, avatar }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const servico = yield prisma_1.default.profissao.create({
+            const profissao = yield prisma_1.default.profissao.create({
                 data: {
                     nome,
                     avatar
                 }
             });
-            return servico;
+            return profissao;
         });
     }
 }

@@ -1,6 +1,6 @@
 import prismaClient from "../../prisma";
 
-interface servicoRequest {
+interface profissaoRequest {
     nome: string,
     avatar:string
 }
@@ -12,9 +12,9 @@ class CriaProfissaoService {
         nome,
         avatar
 
-    }: servicoRequest) {
+    }: profissaoRequest) {
 
-        const servico = await prismaClient.profissao.create({
+        const profissao = await prismaClient.profissao.create({
             data: {
                
                 nome,
@@ -22,7 +22,7 @@ class CriaProfissaoService {
             }
         })
 
-        return servico
+        return profissao
     }
 }
 

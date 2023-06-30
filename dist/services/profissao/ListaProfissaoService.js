@@ -17,7 +17,7 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class ListaProfissaoService {
     execute() {
         return __awaiter(this, void 0, void 0, function* () {
-            const servico = yield prisma_1.default.profissao.findMany({
+            const profissao = yield prisma_1.default.profissao.findMany({
                 select: {
                     id: true,
                     nome: true,
@@ -25,7 +25,7 @@ class ListaProfissaoService {
                     _count: true,
                 }
             });
-            return servico;
+            return profissao;
         });
     }
 }

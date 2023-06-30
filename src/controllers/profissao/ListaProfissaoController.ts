@@ -6,8 +6,8 @@ class ListaProfissaoController {
     async handle(req: Request, res: Response) {
         const listaProfissaoService = new ListaProfissaoService()
 
-        const servicos = await listaProfissaoService.execute()
-        return res.json(servicos)
+        const profissoes = await listaProfissaoService.execute()
+        return res.json(profissoes)
 
     }
 }

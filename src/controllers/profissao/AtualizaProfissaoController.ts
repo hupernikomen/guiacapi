@@ -5,7 +5,7 @@ class AtualizaProfissaoController {
   async handle(req: Request, res: Response) {
     const atualizaProfissaoService = new AtualizaProfissaoService();
 
-    const servicoID = req.query.servicoID as string 
+    const profissaoID = req.query.profissaoID as string 
 
     const {
         nome,
@@ -13,13 +13,13 @@ class AtualizaProfissaoController {
      } =
       req.body;
 
-      const servico = await atualizaProfissaoService.execute({
+      const profissao = await atualizaProfissaoService.execute({
         nome,
         avatar,
-        servicoID
+        profissaoID
       })
 
-      return res.status(200).json(servico);
+      return res.status(200).json(profissao);
 
 
     }

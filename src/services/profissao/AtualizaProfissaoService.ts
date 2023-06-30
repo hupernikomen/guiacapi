@@ -1,9 +1,9 @@
 import prismaClient from "../../prisma";
 
-interface servicoRequest {
+interface profissaoRequest {
     nome: string,
     avatar: string,
-    servicoID: string
+    profissaoID: string
 }
 
 class AtualizaProfissaoService {
@@ -11,12 +11,12 @@ class AtualizaProfissaoService {
     async execute({
         nome,
         avatar,
-        servicoID
-    }: servicoRequest) {
+        profissaoID
+    }: profissaoRequest) {
 
-        const servico = await prismaClient.profissao.update({
+        const profissao = await prismaClient.profissao.update({
             where: {
-                id: servicoID
+                id: profissaoID
             },
             data: {
                 nome,
@@ -24,7 +24,7 @@ class AtualizaProfissaoService {
             }
         })
 
-        return servico
+        return profissao
     }
 }
 

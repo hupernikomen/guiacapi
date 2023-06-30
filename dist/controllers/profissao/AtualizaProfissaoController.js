@@ -15,14 +15,14 @@ class AtualizaProfissaoController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const atualizaProfissaoService = new AtualizaProfissaoService_1.AtualizaProfissaoService();
-            const servicoID = req.query.servicoID;
+            const profissaoID = req.query.profissaoID;
             const { nome, avatar } = req.body;
-            const servico = yield atualizaProfissaoService.execute({
+            const profissao = yield atualizaProfissaoService.execute({
                 nome,
                 avatar,
-                servicoID
+                profissaoID
             });
-            return res.status(200).json(servico);
+            return res.status(200).json(profissao);
         });
     }
 }

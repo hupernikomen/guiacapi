@@ -15,8 +15,8 @@ class ListaProfissaoController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const listaProfissaoService = new ListaProfissaoService_1.ListaProfissaoService();
-            const servicos = yield listaProfissaoService.execute();
-            return res.json(servicos);
+            const profissoes = yield listaProfissaoService.execute();
+            return res.json(profissoes);
         });
     }
 }
