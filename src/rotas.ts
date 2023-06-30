@@ -78,7 +78,7 @@ rotas.post('/contato', Authenticator, uploadUser.single('avatar'), new CriaConta
 
 rotas.get('/loja/logado', Authenticator, new LojaLogadaController().handle)
 rotas.put('/loja', Authenticator, uploadUser.single('avatar'), new AtualizaLojaController().handle) 
-rotas.put('/profissional',Authenticator, new AtualizarProfissionalController().handle)
+rotas.put('/profissional',Authenticator, uploadUser.single('avatar'), new AtualizarProfissionalController().handle)
 rotas.put('/produto', Authenticator, new AtualizaProdutoController().handle)
 
 rotas.delete('/produto', Authenticator, new DeletaProdutoController().handle)

@@ -73,7 +73,7 @@ rotas.post('/produto', authenticator_1.Authenticator, uploadUser.array('files', 
 rotas.post('/contato', authenticator_1.Authenticator, uploadUser.single('avatar'), new CriaContatoController_1.CriaContatoController().handle);
 rotas.get('/loja/logado', authenticator_1.Authenticator, new LojaLogadaController_1.LojaLogadaController().handle);
 rotas.put('/loja', authenticator_1.Authenticator, uploadUser.single('avatar'), new AtualizaLojaController_1.AtualizaLojaController().handle);
-rotas.put('/profissional', authenticator_1.Authenticator, new AtualizarProfissionalController_1.AtualizarProfissionalController().handle);
+rotas.put('/profissional', authenticator_1.Authenticator, uploadUser.single('avatar'), new AtualizarProfissionalController_1.AtualizarProfissionalController().handle);
 rotas.put('/produto', authenticator_1.Authenticator, new AtualizaProdutoController_1.AtualizaProdutoController().handle);
 rotas.delete('/produto', authenticator_1.Authenticator, new DeletaProdutoController_1.DeletaProdutoController().handle);
 //App
