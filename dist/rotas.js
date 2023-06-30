@@ -12,6 +12,7 @@ const multer_2 = require("./config/multer");
 const LojaLogadaController_1 = require("./controllers/loja/LojaLogadaController");
 const AutenticaUsuarioController_1 = require("./controllers/usuario/AutenticaUsuarioController");
 const BucaProfissionalController_1 = require("./controllers/profissional/BucaProfissionalController");
+const BuscaMapaController_1 = require("./controllers/mapa/BuscaMapaController");
 const BuscaLojaController_1 = require("./controllers/loja/BuscaLojaController");
 const DetalheProdutoController_1 = require("./controllers/produto/DetalheProdutoController");
 const AtualizaUsuarioController_1 = require("./controllers/usuario/AtualizaUsuarioController");
@@ -69,6 +70,7 @@ rotas.put('/campanha', new AtualizaCampanhaController_1.AtualizaCampanhaControll
 rotas.put('/categoria', new AtualizaCategoriaController_1.AtualizaCategoriaController().handle);
 rotas.put('/profissao', new AtualizaProfissaoController_1.AtualizaProfissaoController().handle);
 rotas.delete('/categoria', new DeletaCategoriaController_1.DeletaCategoriaController().handle);
+rotas.get('/mapa', new BuscaMapaController_1.BuscaMapaController().handle);
 //Usuario
 rotas.post('/login', new AutenticaUsuarioController_1.AutenticaUsuarioController().handle);
 rotas.post('/produto', authenticator_1.Authenticator, uploadUser.array('files', 5), new CriaProdutoController_1.CriaProdutoController().handle);

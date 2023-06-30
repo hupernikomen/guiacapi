@@ -9,6 +9,7 @@ import { fileFilter, storageTypes } from './config/multer'
 import { LojaLogadaController } from './controllers/loja/LojaLogadaController';
 import { AutenticaUsuarioController } from './controllers/usuario/AutenticaUsuarioController';
 import { BuscaProfissionalController } from './controllers/profissional/BucaProfissionalController';
+import { BuscaMapaController } from './controllers/mapa/BuscaMapaController';
 import { BuscaLojaController } from './controllers/loja/BuscaLojaController';
 import { DetalheProdutoController } from './controllers/produto/DetalheProdutoController';
 import { AtualizaUsuarioController } from './controllers/usuario/AtualizaUsuarioController';
@@ -43,6 +44,7 @@ import { DeletaProdutoController } from './controllers/produto/DeletaProdutoCont
 import { AtualizaProfissaoController } from './controllers/profissao/AtualizaProfissaoController';
 import { DeletaCategoriaController } from './controllers/categoria/DeletaCategoriaController';
 
+
 const uploadUser = multer({
   fileFilter: fileFilter,
   storage: process.env.TYPE_STORAGE === 'S3' ? storageTypes.s3 : storageTypes.local,
@@ -70,6 +72,7 @@ rotas.put('/campanha', new AtualizaCampanhaController().handle)
 rotas.put('/categoria', new AtualizaCategoriaController().handle)
 rotas.put('/profissao', new AtualizaProfissaoController().handle)
 rotas.delete('/categoria', new DeletaCategoriaController().handle)
+rotas.get('/mapa', new BuscaMapaController().handle)
 
 //Usuario
 rotas.post('/login', new AutenticaUsuarioController().handle)
