@@ -7,12 +7,12 @@ class CriaProfissaoController {
 
     const { nome, avatar } = req.body;
 
-    const servico = await criaProfissaoService.execute({
+    const profissao = await criaProfissaoService.execute({
       nome,
       avatar
     })
 
-    return res.status(200).json(servico);
+    return res.status(200).json(profissao);
 
 
 

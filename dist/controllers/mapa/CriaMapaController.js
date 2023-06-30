@@ -9,19 +9,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CriaProfissaoController = void 0;
-const CriaProfissaoService_1 = require("../../services/profissao/CriaProfissaoService");
-class CriaProfissaoController {
+exports.CriaMapaController = void 0;
+const CriaMapaService_1 = require("../../services/mapa/CriaMapaService");
+class CriaMapaController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const criaProfissaoService = new CriaProfissaoService_1.CriaProfissaoService();
-            const { nome, avatar } = req.body;
-            const profissao = yield criaProfissaoService.execute({
-                nome,
-                avatar
+            const usuarioID = req.query.usuarioID;
+            const { latlng } = req.body;
+            const criaMapaService = new CriaMapaService_1.CriaMapaService();
+            const mapa = yield criaMapaService.execute({
+                latlng,
+                usuarioID
             });
-            return res.status(200).json(profissao);
+            return res.json(mapa);
         });
     }
 }
-exports.CriaProfissaoController = CriaProfissaoController;
+exports.CriaMapaController = CriaMapaController;

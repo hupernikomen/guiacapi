@@ -17,6 +17,7 @@ import { AtualizaCategoriaController } from './controllers/categoria/AtualizaCat
 import { AtualizaCampanhaController } from './controllers/campanha/AtualizaCampanhaController';
 import { AtualizarProfissionalController } from './controllers/profissional/AtualizarProfissionalController';
 import { AtualizaProdutoController } from './controllers/produto/AtualizaProdutoController';
+import { CriaMapaController } from './controllers/mapa/CriaMapaController';
 import { CriaLojaController } from './controllers/loja/CriaLojaController';
 import { CriaUsuarioController } from './controllers/usuario/CriaUsuarioController';
 import { CriaRegiaoController } from './controllers/regiao/CriaRegiaoController';
@@ -42,7 +43,6 @@ import { DeletaProdutoController } from './controllers/produto/DeletaProdutoCont
 import { AtualizaProfissaoController } from './controllers/profissao/AtualizaProfissaoController';
 import { DeletaCategoriaController } from './controllers/categoria/DeletaCategoriaController';
 
-
 const uploadUser = multer({
   fileFilter: fileFilter,
   storage: process.env.TYPE_STORAGE === 'S3' ? storageTypes.s3 : storageTypes.local,
@@ -61,6 +61,7 @@ rotas.post('/profissao', new CriaProfissaoController().handle)
 rotas.post('/regiao', new CriaRegiaoController().handle)
 rotas.post('/profissional', new CriaProfissionalController().handle)
 rotas.post('/categoria', new CriaCategoriaController().handle)
+rotas.post('/mapa', new CriaMapaController().handle)
 rotas.post('/campanha', new CriaCampanhaController().handle)
 rotas.get('/profissoes', new ListaProfissaoController().handle)
 rotas.get('/campanhas', new ListaCampanhasInativasController().handle)
@@ -69,7 +70,6 @@ rotas.put('/campanha', new AtualizaCampanhaController().handle)
 rotas.put('/categoria', new AtualizaCategoriaController().handle)
 rotas.put('/profissao', new AtualizaProfissaoController().handle)
 rotas.delete('/categoria', new DeletaCategoriaController().handle)
-
 
 //Usuario
 rotas.post('/login', new AutenticaUsuarioController().handle)

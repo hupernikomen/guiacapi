@@ -20,6 +20,7 @@ const AtualizaCategoriaController_1 = require("./controllers/categoria/AtualizaC
 const AtualizaCampanhaController_1 = require("./controllers/campanha/AtualizaCampanhaController");
 const AtualizarProfissionalController_1 = require("./controllers/profissional/AtualizarProfissionalController");
 const AtualizaProdutoController_1 = require("./controllers/produto/AtualizaProdutoController");
+const CriaMapaController_1 = require("./controllers/mapa/CriaMapaController");
 const CriaLojaController_1 = require("./controllers/loja/CriaLojaController");
 const CriaUsuarioController_1 = require("./controllers/usuario/CriaUsuarioController");
 const CriaRegiaoController_1 = require("./controllers/regiao/CriaRegiaoController");
@@ -59,6 +60,7 @@ rotas.post('/profissao', new CriaProfissaoController_1.CriaProfissaoController()
 rotas.post('/regiao', new CriaRegiaoController_1.CriaRegiaoController().handle);
 rotas.post('/profissional', new CriaProfissionalController_1.CriaProfissionalController().handle);
 rotas.post('/categoria', new CriaCategoriaController_1.CriaCategoriaController().handle);
+rotas.post('/mapa', new CriaMapaController_1.CriaMapaController().handle);
 rotas.post('/campanha', new CriaCampanhaController_1.CriaCampanhaController().handle);
 rotas.get('/profissoes', new ListaProfissaoController_1.ListaProfissaoController().handle);
 rotas.get('/campanhas', new ListaCampanhasInativasController_1.ListaCampanhasInativasController().handle);

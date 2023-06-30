@@ -8,20 +8,31 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CriaProfissaoController = void 0;
-const CriaProfissaoService_1 = require("../../services/profissao/CriaProfissaoService");
-class CriaProfissaoController {
-    handle(req, res) {
+exports.CriaMapaService = void 0;
+const prisma_1 = __importDefault(require("../../prisma"));
+class CriaMapaService {
+    execute({ latlng, usuarioID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const criaProfissaoService = new CriaProfissaoService_1.CriaProfissaoService();
-            const { nome, avatar } = req.body;
-            const profissao = yield criaProfissaoService.execute({
-                nome,
-                avatar
+            const usuarioExiste = yield prisma_1.default.mapa.findFirst({
+                where: {
+                    usuarioID
+                }
             });
-            return res.status(200).json(profissao);
+            if (!usuarioExiste) {
+                throw new Error("Usuario informado não existe");
+            }
+            const mapa = yield prisma_1.default.mapa.create({
+                data: {
+                    latlng,
+                    usuarioID
+                }
+            });
+            return mapa;
         });
     }
 }
-exports.CriaProfissaoController = CriaProfissaoController;
+exports.CriaMapaService = CriaMapaService;
