@@ -17,13 +17,13 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class CriaMapaService {
     execute({ latlng, usuarioID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const usuarioExiste = yield prisma_1.default.mapa.findFirst({
+            const mapaExiste = yield prisma_1.default.mapa.findFirst({
                 where: {
                     usuarioID
                 }
             });
-            if (!usuarioExiste) {
-                throw new Error("Usuario informado não existe");
+            if (mapaExiste) {
+                throw new Error("Mapa ja registrado");
             }
             const mapa = yield prisma_1.default.mapa.create({
                 data: {

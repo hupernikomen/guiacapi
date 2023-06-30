@@ -11,14 +11,14 @@ class CriaMapaService{
       usuarioID
     }: mapaRequest) {
 
-        const usuarioExiste = await prismaClient.mapa.findFirst({
+        const mapaExiste = await prismaClient.mapa.findFirst({
             where: {
               usuarioID
             }
         })
 
-        if (!usuarioExiste) {
-            throw new Error("Usuario informado não existe");
+        if (mapaExiste) {
+            throw new Error("Mapa ja registrado");
             
         }
 
