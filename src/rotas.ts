@@ -8,6 +8,7 @@ import { fileFilter, storageTypes } from './config/multer'
 
 import { LojaLogadaController } from './controllers/loja/LojaLogadaController';
 import { AutenticaUsuarioController } from './controllers/usuario/AutenticaUsuarioController';
+import { BuscaProfissionalController } from './controllers/profissional/BucaProfissionalController';
 import { BuscaLojaController } from './controllers/loja/BuscaLojaController';
 import { DetalheProdutoController } from './controllers/produto/DetalheProdutoController';
 import { AtualizaUsuarioController } from './controllers/usuario/AtualizaUsuarioController';
@@ -100,6 +101,6 @@ rotas.get('/regioes', new ListarRegioesController().handle)
 rotas.get('/campanhas/ativas', new ListaCampanhaController().handle)
 rotas.get('/categorias', new ListaCategoriaController().handle) 
 rotas.get('/contatos', new ListaContatosController().handle)
-
+rotas.get('/profissional',new BuscaProfissionalController().handle)
 
 export { rotas };

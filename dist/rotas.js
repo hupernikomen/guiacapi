@@ -11,6 +11,7 @@ const authenticator_1 = require("./middlewares/authenticator");
 const multer_2 = require("./config/multer");
 const LojaLogadaController_1 = require("./controllers/loja/LojaLogadaController");
 const AutenticaUsuarioController_1 = require("./controllers/usuario/AutenticaUsuarioController");
+const BucaProfissionalController_1 = require("./controllers/profissional/BucaProfissionalController");
 const BuscaLojaController_1 = require("./controllers/loja/BuscaLojaController");
 const DetalheProdutoController_1 = require("./controllers/produto/DetalheProdutoController");
 const AtualizaUsuarioController_1 = require("./controllers/usuario/AtualizaUsuarioController");
@@ -88,3 +89,4 @@ rotas.get('/regioes', new ListarRegioesController_1.ListarRegioesController().ha
 rotas.get('/campanhas/ativas', new ListaCampanhaController_1.ListaCampanhaController().handle);
 rotas.get('/categorias', new ListaCategoriaController_1.ListaCategoriaController().handle);
 rotas.get('/contatos', new ListaContatosController_1.ListaContatosController().handle);
+rotas.get('/profissional', new BucaProfissionalController_1.BuscaProfissionalController().handle);
