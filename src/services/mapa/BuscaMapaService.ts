@@ -14,7 +14,6 @@ class BuscaMapaService {
 
       where: {
         usuarioID,
-
       },
       select: {
         id: true,
