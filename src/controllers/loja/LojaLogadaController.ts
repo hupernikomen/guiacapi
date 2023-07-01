@@ -1,6 +1,9 @@
 import { Request, Response } from 'express'
 import { LojaLogadaService } from '../../services/loja/LojaLogadaService'
 
+// OK
+
+
 class LojaLogadaController {
 
     async handle(req: Request, res: Response) {

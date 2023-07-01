@@ -37,43 +37,43 @@ class CriaUsuarioService {
                     regiaoID
                 }
             });
-            if (usuario) {
-                yield prisma_1.default.mapa.create({
-                    data: {
-                        usuarioID: usuario.id
-                    }
-                });
-                yield prisma_1.default.contato.create({
-                    data: {
-                        usuarioID: usuario.id
-                    }
-                });
-                // switch (usuario.tipo) {
-                //     case 'loja':
-                //         await prismaClient.loja.create({
-                //             data: {
-                //                 usuarioID: usuario.id
-                //             }
-                //         })
-                //         break;
-                //     case 'profissional':
-                //         await prismaClient.profissional.create({
-                //             data: {
-                //                 usuarioID: usuario.id
-                //             }
-                //         })
-                //         break;
-                //     case 'posto':
-                //         await prismaClient.posto.create({
-                //             data: {
-                //                 usuarioID: usuario.id
-                //             }
-                //         })
-                //         break;
-                //     default:
-                //         break;
-                // }
-            }
+            // if (usuario) {
+            // await prismaClient.mapa.create({
+            //     data: {
+            //         usuarioID: usuario.id
+            //     }
+            // })
+            // await prismaClient.contato.create({
+            //     data: {
+            //         usuarioID: usuario.id
+            //     }
+            // })
+            // switch (usuario.tipo) {
+            //     case 'loja':
+            //         await prismaClient.loja.create({
+            //             data: {
+            //                 usuarioID: usuario.id
+            //             }
+            //         })
+            //         break;
+            //     case 'profissional':
+            //         await prismaClient.profissional.create({
+            //             data: {
+            //                 usuarioID: usuario.id
+            //             }
+            //         })
+            //         break;
+            //     case 'posto':
+            //         await prismaClient.posto.create({
+            //             data: {
+            //                 usuarioID: usuario.id
+            //             }
+            //         })
+            //         break;
+            //     default:
+            //         break;
+            // }
+            // }
             return usuario;
         });
     }

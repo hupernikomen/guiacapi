@@ -4,10 +4,6 @@ interface lojaRequest {
     usuarioID: string
 }
 
-/**
- * Busca a loja selecionada
- * Deverá ser exibida quando o usuario do app solicitar pagina da loja
- */
 
 class BuscaLojaService {
     async execute({
@@ -18,7 +14,6 @@ class BuscaLojaService {
 
             where: {
                 usuarioID
-
             },
             select: {
                 id: true,

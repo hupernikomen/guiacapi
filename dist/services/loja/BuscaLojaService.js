@@ -14,10 +14,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BuscaLojaService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
-/**
- * Busca a loja selecionada
- * Deverá ser exibida quando o usuario do app solicitar pagina da loja
- */
 class BuscaLojaService {
     execute({ usuarioID }) {
         return __awaiter(this, void 0, void 0, function* () {

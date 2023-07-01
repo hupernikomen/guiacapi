@@ -39,19 +39,19 @@ class CriaUsuarioService {
 
         })
 
-        if (usuario) {
+        // if (usuario) {
 
-            await prismaClient.mapa.create({
-                data: {
-                    usuarioID: usuario.id
-                }
-            })
+            // await prismaClient.mapa.create({
+            //     data: {
+            //         usuarioID: usuario.id
+            //     }
+            // })
 
-            await prismaClient.contato.create({
-                data: {
-                    usuarioID: usuario.id
-                }
-            })
+            // await prismaClient.contato.create({
+            //     data: {
+            //         usuarioID: usuario.id
+            //     }
+            // })
 
             // switch (usuario.tipo) {
             //     case 'loja':
@@ -80,7 +80,7 @@ class CriaUsuarioService {
             //     default:
             //         break;
             // }
-        }
+        // }
 
         return usuario
 

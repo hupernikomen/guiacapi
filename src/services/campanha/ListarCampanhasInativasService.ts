@@ -4,6 +4,9 @@ class ListarCampanhasInativasService {
     async execute() {
 
         const campanha = await prismaClient.campanha.findMany({
+            where: {
+                status:false
+            },
             select:{
                 id: true,
                 nome: true,
