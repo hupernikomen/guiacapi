@@ -31,6 +31,7 @@ class BuscaLojaService {
                     produtos: true,
                     usuario: {
                         select: {
+                            id: true,
                             mapa: true
                         }
                     }
