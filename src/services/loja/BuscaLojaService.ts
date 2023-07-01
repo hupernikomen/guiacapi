@@ -14,24 +14,36 @@ class BuscaLojaService {
         usuarioID
     }: lojaRequest) {
 
-        const loja = await prismaClient.loja.findFirst({
+        const loja = await prismaClient.usuario.findFirst({
 
             where: {
-                usuario: {
-                    status: true,
-                },
-                usuarioID,
+                id: usuarioID
 
             },
             select: {
-                usuarioID:true,
                 id: true,
-                nome: true,
-                produtos: true
+                // loja:true,
+                loja:{
+                    select:{
+                        id:true,
+                        nome:true,
+                        produtos:{
+                            select:{
+                                nome:true,
+                                preco:true,
+                                oferta:true,
+                                campanha:true
+                            }
+                        }
+                    }
+                },
+                mapa:true,
+                contato:true
+
             }
         })
 
-        
+
 
         return loja
     }
