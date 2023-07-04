@@ -21,6 +21,7 @@ class CriaUsuarioController {
         }
 
         return res.status(200).json({
+            loja,
             message: "Cadastrado com Sucesso"
         })
     }

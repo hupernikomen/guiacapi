@@ -26,6 +26,7 @@ class CriaUsuarioController {
                 throw new Error("Ops, algo deu errado!");
             }
             return res.status(200).json({
+                loja,
                 message: "Cadastrado com Sucesso"
             });
         });
