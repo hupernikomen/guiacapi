@@ -29,6 +29,7 @@ const CriaProfissaoController_1 = require("./controllers/profissao/CriaProfissao
 const CriaCategoriaController_1 = require("./controllers/categoria/CriaCategoriaController");
 const CriaContatoController_1 = require("./controllers/contato/CriaContatoController");
 const CriaProfissionalController_1 = require("./controllers/profissional/CriaProfissionalController");
+const CriaPostoController_1 = require("./controllers/posto/CriaPostoController");
 const CriaCampanhaController_1 = require("./controllers/campanha/CriaCampanhaController");
 const CriaProdutoController_1 = require("./controllers/produto/CriaProdutoController");
 const ListarRegioesController_1 = require("./controllers/regiao/ListarRegioesController");
@@ -71,6 +72,7 @@ rotas.put('/categoria', new AtualizaCategoriaController_1.AtualizaCategoriaContr
 rotas.put('/profissao', new AtualizaProfissaoController_1.AtualizaProfissaoController().handle);
 rotas.delete('/categoria', new DeletaCategoriaController_1.DeletaCategoriaController().handle);
 rotas.get('/mapa', new BuscaMapaController_1.BuscaMapaController().handle);
+rotas.post('/posto', new CriaPostoController_1.CriaPostoController().handle);
 //Usuario
 rotas.post('/login', new AutenticaUsuarioController_1.AutenticaUsuarioController().handle);
 rotas.post('/produto', authenticator_1.Authenticator, uploadUser.array('files', 5), new CriaProdutoController_1.CriaProdutoController().handle);

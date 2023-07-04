@@ -26,6 +26,7 @@ import { CriaProfissaoController } from './controllers/profissao/CriaProfissaoCo
 import { CriaCategoriaController } from './controllers/categoria/CriaCategoriaController';
 import { CriaContatoController } from './controllers/contato/CriaContatoController';
 import { CriaProfissionalController } from './controllers/profissional/CriaProfissionalController';
+import { CriaPostoController } from './controllers/posto/CriaPostoController';
 import { CriaCampanhaController } from './controllers/campanha/CriaCampanhaController';
 import { CriaProdutoController } from './controllers/produto/CriaProdutoController';
 import { ListarRegioesController } from './controllers/regiao/ListarRegioesController';
@@ -73,6 +74,7 @@ rotas.put('/categoria', new AtualizaCategoriaController().handle)
 rotas.put('/profissao', new AtualizaProfissaoController().handle)
 rotas.delete('/categoria', new DeletaCategoriaController().handle)
 rotas.get('/mapa', new BuscaMapaController().handle)
+rotas.post('/posto', new CriaPostoController().handle)
 
 //Usuario
 rotas.post('/login', new AutenticaUsuarioController().handle)
