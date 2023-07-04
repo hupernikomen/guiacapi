@@ -18,6 +18,7 @@ import { AtualizaCategoriaController } from './controllers/categoria/AtualizaCat
 import { AtualizaCampanhaController } from './controllers/campanha/AtualizaCampanhaController';
 import { AtualizarProfissionalController } from './controllers/profissional/AtualizarProfissionalController';
 import { AtualizaProdutoController } from './controllers/produto/AtualizaProdutoController';
+import { AtualizaPostoController } from './controllers/posto/AtualizaPostoController';
 import { CriaMapaController } from './controllers/mapa/CriaMapaController';
 import { CriaLojaController } from './controllers/loja/CriaLojaController';
 import { CriaUsuarioController } from './controllers/usuario/CriaUsuarioController';
@@ -44,7 +45,6 @@ import { DeletaProdutoController } from './controllers/produto/DeletaProdutoCont
 
 import { AtualizaProfissaoController } from './controllers/profissao/AtualizaProfissaoController';
 import { DeletaCategoriaController } from './controllers/categoria/DeletaCategoriaController';
-
 
 const uploadUser = multer({
   fileFilter: fileFilter,
@@ -75,6 +75,7 @@ rotas.put('/profissao', new AtualizaProfissaoController().handle)
 rotas.delete('/categoria', new DeletaCategoriaController().handle)
 rotas.get('/mapa', new BuscaMapaController().handle)
 rotas.post('/posto', new CriaPostoController().handle)
+rotas.put('/posto', new AtualizaPostoController().handle)
 
 //Usuario
 rotas.post('/login', new AutenticaUsuarioController().handle)

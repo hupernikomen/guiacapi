@@ -21,6 +21,7 @@ const AtualizaCategoriaController_1 = require("./controllers/categoria/AtualizaC
 const AtualizaCampanhaController_1 = require("./controllers/campanha/AtualizaCampanhaController");
 const AtualizarProfissionalController_1 = require("./controllers/profissional/AtualizarProfissionalController");
 const AtualizaProdutoController_1 = require("./controllers/produto/AtualizaProdutoController");
+const AtualizaPostoController_1 = require("./controllers/posto/AtualizaPostoController");
 const CriaMapaController_1 = require("./controllers/mapa/CriaMapaController");
 const CriaLojaController_1 = require("./controllers/loja/CriaLojaController");
 const CriaUsuarioController_1 = require("./controllers/usuario/CriaUsuarioController");
@@ -73,6 +74,7 @@ rotas.put('/profissao', new AtualizaProfissaoController_1.AtualizaProfissaoContr
 rotas.delete('/categoria', new DeletaCategoriaController_1.DeletaCategoriaController().handle);
 rotas.get('/mapa', new BuscaMapaController_1.BuscaMapaController().handle);
 rotas.post('/posto', new CriaPostoController_1.CriaPostoController().handle);
+rotas.put('/posto', new AtualizaPostoController_1.AtualizaPostoController().handle);
 //Usuario
 rotas.post('/login', new AutenticaUsuarioController_1.AutenticaUsuarioController().handle);
 rotas.post('/produto', authenticator_1.Authenticator, uploadUser.array('files', 5), new CriaProdutoController_1.CriaProdutoController().handle);
