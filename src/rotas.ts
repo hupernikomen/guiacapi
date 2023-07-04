@@ -75,7 +75,7 @@ rotas.put('/profissao', new AtualizaProfissaoController().handle)
 rotas.delete('/categoria', new DeletaCategoriaController().handle)
 rotas.get('/mapa', new BuscaMapaController().handle)
 rotas.post('/posto', new CriaPostoController().handle)
-rotas.put('/posto', new AtualizaPostoController().handle)
+rotas.put('/posto', uploadUser.single('avatar'), new AtualizaPostoController().handle)
 
 //Usuario
 rotas.post('/login', new AutenticaUsuarioController().handle)

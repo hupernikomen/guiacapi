@@ -5,20 +5,24 @@ class AtualizaPostoController {
   async handle(req: Request, res: Response) {
     const atualizaPostoService = new AtualizaPostoService();
 
-    const postoID = req.query.postoID as string 
+    const postoID = req.query.postoID as string
 
     const {
-        nome,
-        avatar,
-        tabela,
-        bairro
-     } =
+      nome,
+      tabela,
+      bairro
+    } =
       req.body;
+
+    if (!req.file) {
+      throw new Error("Ops.. algo deu errado!");
+    } else {
+      const file = req.file;
 
       const posto = await atualizaPostoService.execute({
 
         nome,
-        avatar,
+        avatar: file,
         tabela,
         bairro,
         postoID
@@ -29,7 +33,7 @@ class AtualizaPostoController {
 
     }
 
-
   }
+}
 
 export { AtualizaPostoController };

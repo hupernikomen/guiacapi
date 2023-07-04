@@ -2,7 +2,7 @@ import prismaClient from "../../prisma";
 
 interface postoRequest {
     nome: string,
-    avatar: string,
+    avatar: object,
     tabela: object,
     bairro:string,
     postoID: string
