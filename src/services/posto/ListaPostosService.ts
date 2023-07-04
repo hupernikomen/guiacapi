@@ -10,7 +10,11 @@ class ListaPostosService {
         avatar: true,
         tabela:true,
         bairro:true,
-        usuarioID:true
+        usuario: {
+          select:{
+            mapa:true
+          }
+        }
 
       }
     })
