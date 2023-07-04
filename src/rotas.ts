@@ -38,6 +38,7 @@ import { ListaContatosController } from './controllers/contato/ListaContatosCont
 import { ListaCategoriaController } from './controllers/categoria/ListaCategoriaController';
 import { ListaCampanhasInativasController } from './controllers/campanha/ListaCampanhasInativasController';
 import { ListaCampanhaController } from './controllers/campanha/ListaCampanhaController';
+import { ListarPostosController } from './controllers/posto/ListaPostosController';
 import { ListaLojasController } from './controllers/loja/ListaLojasController';
 import { PorCategoriaProdutoController } from './controllers/produto/PorCategoriaProdutoController';
 import { PorProfissaoController } from './controllers/profissional/PorProfissaoController';
@@ -45,6 +46,7 @@ import { DeletaProdutoController } from './controllers/produto/DeletaProdutoCont
 
 import { AtualizaProfissaoController } from './controllers/profissao/AtualizaProfissaoController';
 import { DeletaCategoriaController } from './controllers/categoria/DeletaCategoriaController';
+
 
 const uploadUser = multer({
   fileFilter: fileFilter,
@@ -108,5 +110,6 @@ rotas.get('/campanhas/ativas', new ListaCampanhaController().handle)
 rotas.get('/categorias', new ListaCategoriaController().handle) 
 rotas.get('/contatos', new ListaContatosController().handle)
 rotas.get('/profissional',new BuscaProfissionalController().handle)
+rotas.get('/postos', new ListarPostosController().handle)
 
 export { rotas };

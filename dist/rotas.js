@@ -41,6 +41,7 @@ const ListaContatosController_1 = require("./controllers/contato/ListaContatosCo
 const ListaCategoriaController_1 = require("./controllers/categoria/ListaCategoriaController");
 const ListaCampanhasInativasController_1 = require("./controllers/campanha/ListaCampanhasInativasController");
 const ListaCampanhaController_1 = require("./controllers/campanha/ListaCampanhaController");
+const ListaPostosController_1 = require("./controllers/posto/ListaPostosController");
 const ListaLojasController_1 = require("./controllers/loja/ListaLojasController");
 const PorCategoriaProdutoController_1 = require("./controllers/produto/PorCategoriaProdutoController");
 const PorProfissaoController_1 = require("./controllers/profissional/PorProfissaoController");
@@ -98,3 +99,4 @@ rotas.get('/campanhas/ativas', new ListaCampanhaController_1.ListaCampanhaContro
 rotas.get('/categorias', new ListaCategoriaController_1.ListaCategoriaController().handle);
 rotas.get('/contatos', new ListaContatosController_1.ListaContatosController().handle);
 rotas.get('/profissional', new BucaProfissionalController_1.BuscaProfissionalController().handle);
+rotas.get('/postos', new ListaPostosController_1.ListarPostosController().handle);
