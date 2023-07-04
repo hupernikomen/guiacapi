@@ -17,16 +17,16 @@ class CriaUsuarioController {
             const regiaoID = req.query.regiaoID;
             const { email, senha } = req.body;
             const criaUsuarioService = new CriaUsuarioService_1.CriaUsuarioService();
-            const loja = yield criaUsuarioService.execute({
+            const usuario = yield criaUsuarioService.execute({
                 email,
                 senha,
                 regiaoID
             });
-            if (!loja) {
+            if (!usuario) {
                 throw new Error("Ops, algo deu errado!");
             }
             return res.status(200).json({
-                loja,
+                usuario,
                 message: "Cadastrado com Sucesso"
             });
         });

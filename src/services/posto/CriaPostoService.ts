@@ -12,6 +12,16 @@ class CriaPostoService {
 
   }: postoRequest) {
 
+    const postoExiste = await prismaClient.posto.findFirst({
+      where: {
+        usuarioID
+      }
+    })
+
+    if (postoExiste) {
+      throw new Error("Posto já cadastrado!");
+    }
+
     const posto = await prismaClient.posto.create({
       data: {
         usuarioID

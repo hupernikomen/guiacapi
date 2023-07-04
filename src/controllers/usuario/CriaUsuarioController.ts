@@ -9,19 +9,19 @@ class CriaUsuarioController {
 
         const criaUsuarioService = new CriaUsuarioService();
 
-        const loja = await criaUsuarioService.execute({
+        const usuario = await criaUsuarioService.execute({
             email,
             senha,
             regiaoID
         })
 
-        if(!loja) {
+        if(!usuario) {
             throw new Error("Ops, algo deu errado!");
             
         }
 
         return res.status(200).json({
-            loja,
+            usuario,
             message: "Cadastrado com Sucesso"
         })
     }

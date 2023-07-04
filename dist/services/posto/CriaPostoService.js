@@ -17,6 +17,14 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class CriaPostoService {
     execute({ usuarioID }) {
         return __awaiter(this, void 0, void 0, function* () {
+            const postoExiste = yield prisma_1.default.posto.findFirst({
+                where: {
+                    usuarioID
+                }
+            });
+            if (postoExiste) {
+                throw new Error("Posto já cadastrado!");
+            }
             const posto = yield prisma_1.default.posto.create({
                 data: {
                     usuarioID
