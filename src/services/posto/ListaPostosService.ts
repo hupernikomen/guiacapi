@@ -4,16 +4,21 @@ class ListaPostosService {
   async execute() {
 
     const postos = await prismaClient.posto.findMany({
+      where: {
+        usuario: {
+          status: true
+        }
+      },
       select: {
         id: true,
         nome: true,
         avatar: true,
-        tabela:true,
-        bairro:true,
-        usuarioID:true,
+        tabela: true,
+        bairro: true,
+        usuarioID: true,
         usuario: {
-          select:{
-            mapa:true
+          select: {
+            mapa: true
           }
         }
 

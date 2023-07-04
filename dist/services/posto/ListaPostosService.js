@@ -18,6 +18,11 @@ class ListaPostosService {
     execute() {
         return __awaiter(this, void 0, void 0, function* () {
             const postos = yield prisma_1.default.posto.findMany({
+                where: {
+                    usuario: {
+                        status: true
+                    }
+                },
                 select: {
                     id: true,
                     nome: true,
