@@ -36,13 +36,26 @@ class LojaLogadaService {
                     bairro: true,
                     ponto_ref: true,
                     bio: true,
-                    produtos: true,
+                    produtos: {
+                        select: {
+                            id: true,
+                            categoriaID: true,
+                            campanha: true,
+                            nome: true,
+                            preco: true,
+                            oferta: true,
+                            descricao: true,
+                            tamanho: true,
+                            codigo: true,
+                            imagens: true
+                        }
+                    },
                     delivery: true,
                     usuario: {
                         select: {
-                            status: true
-                        }
-                    }
+                            status: true,
+                        },
+                    },
                 }
             });
             return loja;
