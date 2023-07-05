@@ -17,20 +17,15 @@ class AtualizaPostoController {
             const atualizaPostoService = new AtualizarPostoService_1.AtualizaPostoService();
             const postoID = req.query.postoID;
             const { nome, tabela, bairro } = req.body;
-            if (!req.file) {
-                throw new Error("Ops.. algo deu errado!");
-            }
-            else {
-                const file = req.file;
-                const posto = yield atualizaPostoService.execute({
-                    nome,
-                    avatar: file,
-                    tabela,
-                    bairro,
-                    postoID
-                });
-                return res.status(200).json(posto);
-            }
+            const file = req.file;
+            const posto = yield atualizaPostoService.execute({
+                nome,
+                avatar: file,
+                tabela,
+                bairro,
+                postoID
+            });
+            return res.status(200).json(posto);
         });
     }
 }

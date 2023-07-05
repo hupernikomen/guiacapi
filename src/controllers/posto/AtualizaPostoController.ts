@@ -14,26 +14,22 @@ class AtualizaPostoController {
     } =
       req.body;
 
-    if (!req.file) {
-      throw new Error("Ops.. algo deu errado!");
-    } else {
-      const file = req.file;
+    const file = req.file;
 
-      const posto = await atualizaPostoService.execute({
+    const posto = await atualizaPostoService.execute({
 
-        nome,
-        avatar: file,
-        tabela,
-        bairro,
-        postoID
-      })
+      nome,
+      avatar: file,
+      tabela,
+      bairro,
+      postoID
+    })
 
-      return res.status(200).json(posto);
+    return res.status(200).json(posto);
 
-
-    }
 
   }
+
 }
 
 export { AtualizaPostoController };
