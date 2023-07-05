@@ -12,24 +12,29 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AtualizaPostoService = void 0;
+exports.BuscaPostoService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
-class AtualizaPostoService {
-    execute({ nome, avatar, tabela, bairro, postoID }) {
+class BuscaPostoService {
+    execute({ usuarioID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const posto = yield prisma_1.default.posto.updateMany({
+            const posto = yield prisma_1.default.posto.findFirst({
                 where: {
-                    id: postoID
+                    usuario: {
+                        id: usuarioID,
+                        status: true
+                    }
                 },
-                data: {
-                    nome,
-                    avatar,
-                    tabela,
-                    bairro
+                select: {
+                    usuarioID: true,
+                    id: true,
+                    nome: true,
+                    tabela: true,
+                    avatar: true,
+                    bairro: true,
                 }
             });
             return posto;
         });
     }
 }
-exports.AtualizaPostoService = AtualizaPostoService;
+exports.BuscaPostoService = BuscaPostoService;

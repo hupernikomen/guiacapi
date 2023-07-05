@@ -14,6 +14,7 @@ const AutenticaUsuarioController_1 = require("./controllers/usuario/AutenticaUsu
 const BucaProfissionalController_1 = require("./controllers/profissional/BucaProfissionalController");
 const BuscaMapaController_1 = require("./controllers/mapa/BuscaMapaController");
 const BuscaLojaController_1 = require("./controllers/loja/BuscaLojaController");
+const BuscaPostoController_1 = require("./controllers/posto/BuscaPostoController");
 const DetalheProdutoController_1 = require("./controllers/produto/DetalheProdutoController");
 const AtualizaUsuarioController_1 = require("./controllers/usuario/AtualizaUsuarioController");
 const AtualizaLojaController_1 = require("./controllers/loja/AtualizaLojaController");
@@ -100,3 +101,4 @@ rotas.get('/categorias', new ListaCategoriaController_1.ListaCategoriaController
 rotas.get('/contatos', new ListaContatosController_1.ListaContatosController().handle);
 rotas.get('/profissional', new BucaProfissionalController_1.BuscaProfissionalController().handle);
 rotas.get('/postos', new ListaPostosController_1.ListarPostosController().handle);
+rotas.get('/posto', new BuscaPostoController_1.BuscaPostoController().handle);

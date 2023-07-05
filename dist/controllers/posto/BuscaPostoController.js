@@ -8,28 +8,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AtualizaPostoService = void 0;
-const prisma_1 = __importDefault(require("../../prisma"));
-class AtualizaPostoService {
-    execute({ nome, avatar, tabela, bairro, postoID }) {
+exports.BuscaPostoController = void 0;
+const BuscaPostoService_1 = require("../../services/posto/BuscaPostoService");
+class BuscaPostoController {
+    handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const posto = yield prisma_1.default.posto.updateMany({
-                where: {
-                    id: postoID
-                },
-                data: {
-                    nome,
-                    avatar,
-                    tabela,
-                    bairro
-                }
+            const usuarioID = req.query.usuarioID;
+            const buscaPostoService = new BuscaPostoService_1.BuscaPostoService();
+            const posto = yield buscaPostoService.execute({
+                usuarioID
             });
-            return posto;
+            return res.json(posto);
         });
     }
 }
-exports.AtualizaPostoService = AtualizaPostoService;
+exports.BuscaPostoController = BuscaPostoController;

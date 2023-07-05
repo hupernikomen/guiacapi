@@ -18,7 +18,7 @@ class AtualizaPostoService {
         postoID
     }: postoRequest) {
 
-        const posto = await prismaClient.posto.update({
+        const posto = await prismaClient.posto.updateMany({
             where: {
                 id: postoID
             },
