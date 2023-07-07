@@ -30,7 +30,7 @@ exports.default = {
         };
     }
 };
-// fazer um filtro de tipos antes de enviar:
+// Filtro de tipos
 function fileFilter(req, file, callback) {
     let errorMessage = '';
     const ext = path_1.default.extname(file.originalname);

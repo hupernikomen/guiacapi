@@ -9,8 +9,7 @@ class AtualizaCategoriaController {
 
     const {
         nome
-     } =
-      req.body;
+     } = req.body;
 
       const categoria = await atualizaCategoriaService.execute({
         nome,
@@ -18,11 +17,7 @@ class AtualizaCategoriaController {
       })
 
       return res.status(200).json(categoria);
-
-
     }
-
-
   }
 
 export { AtualizaCategoriaController };

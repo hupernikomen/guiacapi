@@ -33,7 +33,7 @@ export default {
 
 
 
-// fazer um filtro de tipos antes de enviar:
+// Filtro de tipos
 export function fileFilter(req, file, callback) {
   let errorMessage = '';
   const ext = path.extname(file.originalname);

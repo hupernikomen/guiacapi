@@ -17,6 +17,7 @@ class BuscaLojaService {
             },
             select: {
                 id: true,
+                avatar:true,
                 nome: true,
                 produtos: true,
                 usuario:{

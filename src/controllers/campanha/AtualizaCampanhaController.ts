@@ -18,10 +18,7 @@ class AtualizaCampanhaController {
 
         return res.status(200).json(campanha);
 
-
     }
-
-
 }
 
 export { AtualizaCampanhaController };
