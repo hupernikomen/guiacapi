@@ -32,6 +32,7 @@ class BuscaPostoService {
                     tabela_anterior: true,
                     avatar: true,
                     bairro: true,
+                    updatedAt: true
                 }
             });
             return posto;

@@ -35,7 +35,8 @@ class ListaPostosService {
                         select: {
                             mapa: true
                         }
-                    }
+                    },
+                    updatedAt: true
                 }
             });
             return postos;
