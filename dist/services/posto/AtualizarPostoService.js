@@ -22,7 +22,6 @@ class AtualizaPostoService {
                     id: postoID
                 }
             });
-            console.log(_posto.tabela);
             const posto = yield prisma_1.default.posto.updateMany({
                 where: {
                     id: postoID
@@ -32,7 +31,8 @@ class AtualizaPostoService {
                     avatar,
                     tabela,
                     tabela_anterior: _posto.tabela,
-                    bairro
+                    bairro,
+                    updatedAt: new Date().toLocaleDateString('pt-BR')
                 }
             });
             return posto;

@@ -24,8 +24,6 @@ class AtualizaPostoService {
             }
         })
 
-        console.log(_posto.tabela);
-
 
         const posto = await prismaClient.posto.updateMany({
             where: {
@@ -36,7 +34,8 @@ class AtualizaPostoService {
                 avatar,
                 tabela,
                 tabela_anterior: _posto.tabela,
-                bairro
+                bairro,
+                updatedAt: new Date().toLocaleDateString('pt-BR')
             }
         })
 

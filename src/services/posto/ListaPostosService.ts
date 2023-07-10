@@ -22,6 +22,7 @@ class ListaPostosService {
             mapa: true
           }
         }
+        
 
       }
     })
