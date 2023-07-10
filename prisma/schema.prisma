@@ -35,6 +35,7 @@ model Posto {
   avatar Json?
   nome   String?
   tabela Json?
+  tabela_anterior Json?
   bairro String?
 
   usuarioID String?

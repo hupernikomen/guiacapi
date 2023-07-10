@@ -4,6 +4,7 @@ interface postoRequest {
     nome: string,
     avatar: object,
     tabela: object,
+    tabela_anterior: object,
     bairro:string,
     postoID: string
 }
@@ -14,6 +15,7 @@ class AtualizaPostoService {
         nome,
         avatar,
         tabela,
+        tabela_anterior,
         bairro,
         postoID
     }: postoRequest) {
@@ -26,6 +28,7 @@ class AtualizaPostoService {
                 nome,
                 avatar,
                 tabela,
+                tabela_anterior,
                 bairro
             }
         })

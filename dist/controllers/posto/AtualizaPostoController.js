@@ -22,6 +22,7 @@ class AtualizaPostoController {
                 nome,
                 avatar: file,
                 tabela,
+                tabela_anterior: tabela,
                 bairro,
                 postoID
             });
