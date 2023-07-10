@@ -4,8 +4,7 @@ interface postoRequest {
     nome: string,
     avatar: object,
     tabela: object,
-    tabela_anterior: object,
-    bairro:string,
+    bairro: string,
     postoID: string
 }
 
@@ -15,7 +14,6 @@ class AtualizaPostoService {
         nome,
         avatar,
         tabela,
-        tabela_anterior,
         bairro,
         postoID
     }: postoRequest) {
@@ -27,7 +25,7 @@ class AtualizaPostoService {
         })
 
         console.log(_posto.tabela);
-        
+
 
         const posto = await prismaClient.posto.updateMany({
             where: {
@@ -37,7 +35,7 @@ class AtualizaPostoService {
                 nome,
                 avatar,
                 tabela,
-                tabela_anterior,
+                tabela_anterior: _posto.tabela,
                 bairro
             }
         })

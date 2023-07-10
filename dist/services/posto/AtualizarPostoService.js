@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AtualizaPostoService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class AtualizaPostoService {
-    execute({ nome, avatar, tabela, tabela_anterior, bairro, postoID }) {
+    execute({ nome, avatar, tabela, bairro, postoID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const _posto = yield prisma_1.default.posto.findFirst({
                 where: {
@@ -31,7 +31,7 @@ class AtualizaPostoService {
                     nome,
                     avatar,
                     tabela,
-                    tabela_anterior,
+                    tabela_anterior: _posto.tabela,
                     bairro
                 }
             });
