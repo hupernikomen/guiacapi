@@ -24,6 +24,7 @@ class BuscaPostoService {
         id: true,
         nome: true,
         tabela: true,
+        tabela_anterior:true,
         avatar: true,
         bairro: true,
       }

@@ -14,6 +14,7 @@ class ListaPostosService {
         nome: true,
         avatar: true,
         tabela: true,
+        tabela_anterior:true,
         bairro: true,
         usuarioID: true,
         usuario: {
