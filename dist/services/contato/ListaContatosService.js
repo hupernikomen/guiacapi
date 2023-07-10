@@ -27,7 +27,9 @@ class ListaContatosService {
                     avatar: true,
                     setor: true,
                     whatsapp: true,
-                    horario: true
+                    horario: true,
+                    sabado: true,
+                    domingo: true
                 }
             });
             return contato;

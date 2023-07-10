@@ -6,6 +6,8 @@ interface contatoRequest {
     whatsapp:string,
     setor:string,
     horario:object,
+    sabado: boolean,
+    domingo: boolean,
     usuarioID:string
 }
 
@@ -18,6 +20,8 @@ class CriaContatoService {
         whatsapp,
         setor,
         horario,
+        sabado,
+        domingo,
         usuarioID
 
     }: contatoRequest) {
@@ -32,6 +36,8 @@ class CriaContatoService {
                 whatsapp,
                 setor,
                 horario,
+                sabado,
+                domingo,
                 usuarioID
             }
         })

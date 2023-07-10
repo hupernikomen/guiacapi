@@ -73,6 +73,8 @@ model Contato {
   whatsapp String?
   horario  Json?
   setor    String?
+  sabado   Boolean?
+  domingo  Boolean?
 
   usuarioID String?
   usuario   Usuario? @relation(fields: [usuarioID], references: [id])

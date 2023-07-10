@@ -16,7 +16,7 @@ class CriaContatoController {
         return __awaiter(this, void 0, void 0, function* () {
             const criaContatoService = new CriaContatoService_1.CriaContatoService();
             const usuarioID = req.query.usuarioID;
-            const { nome, whatsapp, setor, horario } = req.body;
+            const { nome, whatsapp, setor, horario, sabado, domingo } = req.body;
             if (!req.file) {
                 throw new Error("Ops.. algo deu errado!");
             }
@@ -28,6 +28,8 @@ class CriaContatoController {
                     setor,
                     whatsapp,
                     horario,
+                    sabado,
+                    domingo,
                     usuarioID
                 });
                 return res.status(200).json(contato);
