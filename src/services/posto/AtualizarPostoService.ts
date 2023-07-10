@@ -20,6 +20,15 @@ class AtualizaPostoService {
         postoID
     }: postoRequest) {
 
+        const _posto = await prismaClient.posto.findFirst({
+            where: {
+                id: postoID
+            }
+        })
+
+        console.log(_posto.tabela);
+        
+
         const posto = await prismaClient.posto.updateMany({
             where: {
                 id: postoID

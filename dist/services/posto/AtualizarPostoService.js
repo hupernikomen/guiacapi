@@ -17,6 +17,12 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class AtualizaPostoService {
     execute({ nome, avatar, tabela, tabela_anterior, bairro, postoID }) {
         return __awaiter(this, void 0, void 0, function* () {
+            const _posto = yield prisma_1.default.posto.findFirst({
+                where: {
+                    id: postoID
+                }
+            });
+            console.log(_posto.tabela);
             const posto = yield prisma_1.default.posto.updateMany({
                 where: {
                     id: postoID
