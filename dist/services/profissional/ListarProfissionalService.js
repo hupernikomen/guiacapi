@@ -31,6 +31,11 @@ class ListarProfissionalService {
                     lista_servicos: true,
                     endereco: true,
                     bio: true,
+                    profissao: {
+                        select: {
+                            nome: true
+                        }
+                    }
                 }
             });
             return profissional;

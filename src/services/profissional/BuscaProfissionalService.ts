@@ -14,26 +14,31 @@ class BuscaProfissionalService {
 
             where: {
                 usuario: {
-                  id:usuarioID,
-                  status:true
+                    id: usuarioID,
+                    status: true
                 }
 
             },
             select: {
-                usuarioID:true,
+                usuarioID: true,
                 id: true,
                 nome: true,
-                avatar:true,
-                bio:true,
-                bairro:true,
-                album:true,
-                endereco:true,
-                profissaoID:true,
-                lista_servicos:true
+                avatar: true,
+                bio: true,
+                bairro: true,
+                album: true,
+                endereco: true,
+                profissaoID: true,
+                lista_servicos: true,
+                profissao: {
+                    select: {
+                        nome: true
+                    }
+                }
             }
         })
 
-        
+
 
         return profissional
     }
