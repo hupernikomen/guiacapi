@@ -7,6 +7,7 @@ interface profissionalRequest {
     nome: string,
     bio: string,
     endereco: string,
+    lista_servicos: string,
     bairro: string,
 }
 
@@ -18,6 +19,7 @@ class AtualizarProfissionalService {
         nome,
         bio,
         endereco,
+        lista_servicos,
         bairro,
 
     }: profissionalRequest) {
@@ -41,6 +43,7 @@ class AtualizarProfissionalService {
                 avatar,
                 bio,
                 endereco,
+                lista_servicos,
                 bairro,
                 profissaoID
             },

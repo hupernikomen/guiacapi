@@ -8,6 +8,7 @@ class AtualizarProfissionalController {
             nome,
             bio,
             endereco,
+            lista_servicos,
             bairro,
             profissaoID
         } = req.body
@@ -22,6 +23,7 @@ class AtualizarProfissionalController {
             nome,
             bio,
             endereco,
+            lista_servicos,
             bairro,
             profissaoID
 
