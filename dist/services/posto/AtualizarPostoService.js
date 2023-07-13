@@ -32,7 +32,7 @@ class AtualizaPostoService {
                     tabela,
                     tabela_anterior: _posto.tabela,
                     bairro,
-                    updatedAt: new Date().toLocaleDateString('pt-BR')
+                    updatedAt: new Date()
                 }
             });
             return posto;
