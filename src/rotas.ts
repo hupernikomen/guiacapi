@@ -46,8 +46,10 @@ import { PorCategoriaProdutoController } from './controllers/produto/PorCategori
 import { PorProfissaoController } from './controllers/profissional/PorProfissaoController';
 import { DeletaProdutoController } from './controllers/produto/DeletaProdutoController';
 
+
 import { AtualizaProfissaoController } from './controllers/profissao/AtualizaProfissaoController';
 import { DeletaCategoriaController } from './controllers/categoria/DeletaCategoriaController';
+import { ListarBannersController } from './controllers/banner/ListarBannersController';
 
 const uploadUser = multer({
   fileFilter: fileFilter,
@@ -81,6 +83,7 @@ rotas.post('/posto', new CriaPostoController().handle)
 rotas.put('/posto', uploadUser.single('avatar'), new AtualizaPostoController().handle)
 
 rotas.post('/banner', uploadUser.single('imagem'), new CriaBannerController().handle)
+rotas.get('/banners', new ListarBannersController().handle)
 
 //Usuario
 rotas.post('/login', new AutenticaUsuarioController().handle)
