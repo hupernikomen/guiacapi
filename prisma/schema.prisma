@@ -30,41 +30,24 @@ model Usuario {
   @@map("usuarios")
 }
 
-model Posto {
-  id     String  @id @default(uuid())
-  avatar Json?
-  nome   String?
-  tabela Json?
-  tabela_anterior Json?
-  bairro String?
+model Mapa {
+  id     String @id @default(uuid())
+  latlng Json?
 
   usuarioID String?
   usuario   Usuario? @relation(fields: [usuarioID], references: [id])
 
-  createdAt DateTime? @default(now())
-  updatedAt DateTime? @default(now())
-
-  @@map("postos")
+  @@map("mapas")
 }
 
-model Profissional {
-  id             String   @id @default(uuid())
-  avatar         Json?
-  nome           String?
-  bairro         String?
-  album          Json[]
-  endereco       String?
-  bio            String?
-  lista_servicos String[]
-  profissaoID    String?
-  usuarioID      String?
+model Regiao {
+  id   String @id @default(uuid())
+  nome String
 
-  usuario   Usuario?   @relation(fields: [usuarioID], references: [id])
-  profissao Profissao? @relation(fields: [profissaoID], references: [id])
-
+  usuario   Usuario[]
   createdAt DateTime? @default(now())
 
-  @@map("profissionais")
+  @@map("regioes")
 }
 
 model Contato {
@@ -84,15 +67,20 @@ model Contato {
   @@map("contatos")
 }
 
-model Mapa {
-  id     String @id @default(uuid())
-  latlng Json?
+model Banner {
+  id String @id @default(uuid())
 
-  usuarioID String?
-  usuario   Usuario? @relation(fields: [usuarioID], references: [id])
+  rota    String
+  id_rota String
+  uri     String
+  lojaID  String  @unique
+  loja    Loja    @relation(fields: [lojaID], references: [id])
+  status  Boolean @default(false)
 
-  @@map("mapas")
+  @@map("banners")
 }
+
+// ___________________________________
 
 model Loja {
   id        String   @id @default(uuid())
@@ -105,6 +93,7 @@ model Loja {
   ponto_ref String?
   tema      Json?
   usuarioID String
+  banner    Banner?
 
   produtos Produto[]
 
@@ -113,18 +102,6 @@ model Loja {
   createdAt DateTime? @default(now())
 
   @@map("lojas")
-}
-
-model Profissao {
-  id     String  @id @default(uuid())
-  nome   String
-  avatar String?
-
-  profissional Profissional[]
-
-  createdAt DateTime? @default(now())
-
-  @@map("profissoes")
 }
 
 model Produto {
@@ -152,17 +129,6 @@ model Produto {
   @@map("produtos")
 }
 
-model Campanha {
-  id     String  @id @default(uuid())
-  nome   String
-  tema   String
-  status Boolean @default(false)
-
-  Produto Produto[]
-
-  @@map("campanhas")
-}
-
 model Categoria {
   id   String @id @default(uuid())
   nome String
@@ -174,12 +140,66 @@ model Categoria {
   @@map("categorias")
 }
 
-model Regiao {
-  id   String @id @default(uuid())
-  nome String
+model Campanha {
+  id     String  @id @default(uuid())
+  nome   String
+  tema   String
+  status Boolean @default(false)
 
-  usuario   Usuario[]
+  Produto Produto[]
+
+  @@map("campanhas")
+}
+
+// ___________________________________
+
+model Profissional {
+  id             String   @id @default(uuid())
+  avatar         Json?
+  nome           String?
+  bairro         String?
+  album          Json[]
+  endereco       String?
+  bio            String?
+  lista_servicos String[]
+  profissaoID    String?
+  usuarioID      String?
+
+  usuario   Usuario?   @relation(fields: [usuarioID], references: [id])
+  profissao Profissao? @relation(fields: [profissaoID], references: [id])
+
   createdAt DateTime? @default(now())
 
-  @@map("regioes")
+  @@map("profissionais")
+}
+
+model Profissao {
+  id     String  @id @default(uuid())
+  nome   String
+  avatar String?
+
+  profissional Profissional[]
+
+  createdAt DateTime? @default(now())
+
+  @@map("profissoes")
+}
+
+// ___________________________________
+
+model Posto {
+  id              String  @id @default(uuid())
+  avatar          Json?
+  nome            String?
+  tabela          Json?
+  tabela_anterior Json?
+  bairro          String?
+
+  usuarioID String?
+  usuario   Usuario? @relation(fields: [usuarioID], references: [id])
+
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @default(now())
+
+  @@map("postos")
 }

@@ -37,7 +37,8 @@ class CriaUsuarioService {
                 regiaoID
             },
             select:{
-                id:true
+                id:true,
+                
             }
 
         })

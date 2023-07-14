@@ -9,27 +9,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CriaUsuarioController = void 0;
-const CriaUsuarioService_1 = require("../../services/usuario/CriaUsuarioService");
-class CriaUsuarioController {
+exports.CriaBannerController = void 0;
+const CriaBannerService_1 = require("../../services/banner/CriaBannerService");
+class CriaBannerController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const regiaoID = req.query.regiaoID;
-            const { email, senha } = req.body;
-            const criaUsuarioService = new CriaUsuarioService_1.CriaUsuarioService();
-            const usuario = yield criaUsuarioService.execute({
-                email,
-                senha,
-                regiaoID
+            const lojaID = req.query.lojaID;
+            const { rota, id_rota, uri, } = req.body;
+            const criaBannerService = new CriaBannerService_1.CriaBannerService();
+            const banner = yield criaBannerService.execute({
+                rota, id_rota, uri, lojaID
             });
-            if (!usuario) {
-                throw new Error("Ops, algo deu errado!");
-            }
-            return res.status(200).json({
-                message: "Cadastrado com Sucesso",
-                usuario,
-            });
+            return res.json(banner);
         });
     }
 }
-exports.CriaUsuarioController = CriaUsuarioController;
+exports.CriaBannerController = CriaBannerController;

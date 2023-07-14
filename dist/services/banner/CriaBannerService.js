@@ -12,36 +12,30 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CriaUsuarioService = void 0;
+exports.CriaBannerService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
-const bcryptjs_1 = require("bcryptjs");
-class CriaUsuarioService {
-    execute({ email, senha, regiaoID }) {
+class CriaBannerService {
+    execute({ rota, id_rota, uri, lojaID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            if (!email) {
-                throw new Error("informe seu email");
-            }
-            const usuarioExiste = yield prisma_1.default.usuario.findFirst({
+            const bannerAtivo = yield prisma_1.default.banner.findFirst({
                 where: {
-                    email
+                    lojaID,
+                    status: true
                 }
             });
-            if (usuarioExiste) {
-                throw new Error("Usuário já cadastrado!");
+            if (bannerAtivo) {
+                throw new Error("Loja já possui um banner ativo");
             }
-            const passwordCripto = yield (0, bcryptjs_1.hash)(senha, 8);
-            const usuario = yield prisma_1.default.usuario.create({
+            const banner = yield prisma_1.default.banner.create({
                 data: {
-                    email,
-                    senha: passwordCripto,
-                    regiaoID
-                },
-                select: {
-                    id: true,
+                    rota,
+                    id_rota,
+                    uri,
+                    lojaID
                 }
             });
-            return usuario;
+            return banner;
         });
     }
 }
-exports.CriaUsuarioService = CriaUsuarioService;
+exports.CriaBannerService = CriaBannerService;
