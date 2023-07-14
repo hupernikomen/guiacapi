@@ -78,7 +78,7 @@ rotas.delete('/categoria', new DeletaCategoriaController_1.DeletaCategoriaContro
 rotas.get('/mapa', new BuscaMapaController_1.BuscaMapaController().handle);
 rotas.post('/posto', new CriaPostoController_1.CriaPostoController().handle);
 rotas.put('/posto', uploadUser.single('avatar'), new AtualizaPostoController_1.AtualizaPostoController().handle);
-rotas.post('/banner', new CriaBannerController_1.CriaBannerController().handle);
+rotas.post('/banner', uploadUser.single('imagem'), new CriaBannerController_1.CriaBannerController().handle);
 //Usuario
 rotas.post('/login', new AutenticaUsuarioController_1.AutenticaUsuarioController().handle);
 rotas.post('/produto', authenticator_1.Authenticator, uploadUser.array('files', 5), new CriaProdutoController_1.CriaProdutoController().handle);

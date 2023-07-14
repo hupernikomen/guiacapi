@@ -3,7 +3,7 @@ import prismaClient from "../../prisma";
 interface bannerRequest {
     rota: string,
     id_rota: string,
-    uri: string,
+    imagem: object,
     lojaID: string
 
 }
@@ -12,7 +12,7 @@ class CriaBannerService {
     async execute({
         rota,
         id_rota,
-        uri,
+        imagem,
         lojaID
     }: bannerRequest) {
 
@@ -32,7 +32,7 @@ class CriaBannerService {
             data: {
                 rota,
                 id_rota,
-                uri,
+                imagem,
                 lojaID
             }
         })

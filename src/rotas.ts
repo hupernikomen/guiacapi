@@ -80,7 +80,7 @@ rotas.get('/mapa', new BuscaMapaController().handle)
 rotas.post('/posto', new CriaPostoController().handle)
 rotas.put('/posto', uploadUser.single('avatar'), new AtualizaPostoController().handle)
 
-rotas.post('/banner', new CriaBannerController().handle)
+rotas.post('/banner', uploadUser.single('imagem'), new CriaBannerController().handle)
 
 //Usuario
 rotas.post('/login', new AutenticaUsuarioController().handle)

@@ -72,7 +72,7 @@ model Banner {
 
   rota    String
   id_rota String
-  uri     String
+  imagem  Json
   lojaID  String  @unique
   loja    Loja    @relation(fields: [lojaID], references: [id])
   status  Boolean @default(false)

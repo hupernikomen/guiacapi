@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CriaBannerService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class CriaBannerService {
-    execute({ rota, id_rota, uri, lojaID }) {
+    execute({ rota, id_rota, imagem, lojaID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const bannerAtivo = yield prisma_1.default.banner.findFirst({
                 where: {
@@ -30,7 +30,7 @@ class CriaBannerService {
                 data: {
                     rota,
                     id_rota,
-                    uri,
+                    imagem,
                     lojaID
                 }
             });

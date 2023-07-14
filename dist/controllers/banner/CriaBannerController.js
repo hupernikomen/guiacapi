@@ -15,12 +15,21 @@ class CriaBannerController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const lojaID = req.query.lojaID;
-            const { rota, id_rota, uri, } = req.body;
+            const { rota, id_rota } = req.body;
             const criaBannerService = new CriaBannerService_1.CriaBannerService();
-            const banner = yield criaBannerService.execute({
-                rota, id_rota, uri, lojaID
-            });
-            return res.json(banner);
+            if (!req.file) {
+                throw new Error("Ops.. algo deu errado!");
+            }
+            else {
+                const file = req.file;
+                const banner = yield criaBannerService.execute({
+                    rota,
+                    id_rota,
+                    imagem: file,
+                    lojaID
+                });
+                return res.json(banner);
+            }
         });
     }
 }
