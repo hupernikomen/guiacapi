@@ -97,7 +97,7 @@ rotas.get('/lojas', new ListaLojasController_1.ListaLojasController().handle);
 rotas.get('/loja', new BuscaLojaController_1.BuscaLojaController().handle);
 rotas.post('/loja', new CriaLojaController_1.CriaLojaController().handle);
 rotas.post('/albumprofissional', uploadUser.array('imagem', 15), new CriaAlbumController_1.CriaAlbumController().handle);
-rotas.get('albuns', new ListarAlbumController_1.ListarAlbumController().handle);
+rotas.get('/albuns', new ListarAlbumController_1.ListarAlbumController().handle);
 rotas.post('/profissional', new CriaProfissionalController_1.CriaProfissionalController().handle);
 rotas.post('/profissao', new CriaProfissaoController_1.CriaProfissaoController().handle);
 rotas.get('/profissoes', new ListaProfissaoController_1.ListaProfissaoController().handle);
