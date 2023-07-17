@@ -16,11 +16,10 @@ class AtualizaLojaController {
         return __awaiter(this, void 0, void 0, function* () {
             const usuarioID = req.query.usuarioID;
             const { nome, bio, endereco, bairro, ponto_ref, delivery, tema } = req.body;
-            const file = req.file;
             const atualizaLojaService = new AtualizaLojaService_1.AtualizaLojaService();
             const data = yield atualizaLojaService.execute({
                 usuarioID,
-                avatar: file,
+                avatar: req.file,
                 nome,
                 bio,
                 endereco,

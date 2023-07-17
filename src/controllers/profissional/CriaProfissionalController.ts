@@ -5,10 +5,11 @@ class CriaProfissionalController {
   async handle(req: Request, res: Response) {
     const criaProfissionalService = new CriaProfissionalService();
 
-    const { usuarioID } = req.body;
+    const { usuarioID, profissaoID } = req.body;
 
     const profissional = await criaProfissionalService.execute({
-      usuarioID
+      usuarioID,
+      profissaoID
     })
 
     return res.status(200).json(profissional);

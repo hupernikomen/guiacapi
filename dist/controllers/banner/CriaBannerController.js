@@ -18,18 +18,15 @@ class CriaBannerController {
             const { rota, id_rota } = req.body;
             const criaBannerService = new CriaBannerService_1.CriaBannerService();
             if (!req.file) {
-                throw new Error("Ops.. algo deu errado!");
+                throw new Error("Falha ao enviar baanner");
             }
-            else {
-                const file = req.file;
-                const banner = yield criaBannerService.execute({
-                    rota,
-                    id_rota,
-                    imagem: file,
-                    lojaID
-                });
-                return res.json(banner);
-            }
+            const banner = yield criaBannerService.execute({
+                rota,
+                id_rota,
+                imagem: req.file,
+                lojaID
+            });
+            return res.json(banner);
         });
     }
 }

@@ -20,20 +20,17 @@ class CriaContatoController {
             if (!req.file) {
                 throw new Error("Ops.. algo deu errado!");
             }
-            else {
-                const file = req.file;
-                const contato = yield criaContatoService.execute({
-                    nome,
-                    avatar: file,
-                    setor,
-                    whatsapp,
-                    horario,
-                    sabado,
-                    domingo,
-                    usuarioID
-                });
-                return res.status(200).json(contato);
-            }
+            const contato = yield criaContatoService.execute({
+                nome,
+                avatar: req.file,
+                setor,
+                whatsapp,
+                horario,
+                sabado,
+                domingo,
+                usuarioID
+            });
+            return res.status(200).json(contato);
         });
     }
 }

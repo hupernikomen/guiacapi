@@ -15,9 +15,10 @@ class CriaProfissionalController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const criaProfissionalService = new CriaProfissionalService_1.CriaProfissionalService();
-            const { usuarioID } = req.body;
+            const { usuarioID, profissaoID } = req.body;
             const profissional = yield criaProfissionalService.execute({
-                usuarioID
+                usuarioID,
+                profissaoID
             });
             return res.status(200).json(profissional);
         });

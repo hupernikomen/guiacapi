@@ -20,20 +20,17 @@ class CriaProdutoController {
             if (!req.files) {
                 throw new Error("Ops.. algo deu errado!");
             }
-            else {
-                const files = req.files;
-                const produto = yield criaProdutoService.execute({
-                    codigo,
-                    nome,
-                    descricao,
-                    preco,
-                    tamanho,
-                    imagens: files,
-                    categoriaID,
-                    lojaID,
-                });
-                return res.status(200).json(produto);
-            }
+            const produto = yield criaProdutoService.execute({
+                codigo,
+                nome,
+                descricao,
+                preco,
+                tamanho,
+                imagens: req.files,
+                categoriaID,
+                lojaID,
+            });
+            return res.status(200).json(produto);
         });
     }
 }
