@@ -50,6 +50,7 @@ import { DeletaCategoriaController } from './controllers/categoria/DeletaCategor
 import { ListarBannersController } from './controllers/banner/ListarBannersController';
 import { CriaAlbumController } from './controllers/album/CriaAlbumController';
 import { ListarAlbumController } from './controllers/album/ListarAlbumController';
+import { DeletarAlbumController } from './controllers/album/DeletarAlbumController';
 
 
 const uploadUser = multer({
@@ -111,6 +112,7 @@ rotas.post('/loja', new CriaLojaController().handle)
 
 rotas.post('/albumprofissional', uploadUser.array('imagem', 15), new CriaAlbumController().handle)
 rotas.get('/albuns', new ListarAlbumController().handle)
+rotas.delete('/album', new DeletarAlbumController().handle)
 
 rotas.post('/profissional', new CriaProfissionalController().handle)
 rotas.post('/profissao', new CriaProfissaoController().handle)
