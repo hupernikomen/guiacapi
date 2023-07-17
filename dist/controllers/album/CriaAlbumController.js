@@ -16,11 +16,11 @@ class CriaAlbumController {
         return __awaiter(this, void 0, void 0, function* () {
             const criaAlbumService = new CriaAlbumService_1.CriaAlbumService();
             const profissionalID = req.query.profissionalID;
-            if (!req.file) {
+            if (!req.files) {
                 throw new Error("Ops.. algo deu errado!");
             }
             const album = yield criaAlbumService.execute({
-                imagem: req.file,
+                imagem: req.files,
                 profissionalID
             });
             return res.status(200).json(album);

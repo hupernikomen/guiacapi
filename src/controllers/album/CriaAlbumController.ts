@@ -7,12 +7,12 @@ class CriaAlbumController {
 
     const profissionalID = req.query.profissionalID as string
 
-    if (!req.file) {
+    if (!req.files) {
       throw new Error("Ops.. algo deu errado!");
     }
     
     const album = await criaAlbumService.execute({
-      imagem: req.file,
+      imagem: req.files,
       profissionalID
     })
 
