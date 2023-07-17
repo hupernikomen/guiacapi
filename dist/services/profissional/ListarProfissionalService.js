@@ -29,6 +29,7 @@ class ListarProfissionalService {
                     nome: true,
                     lista_servicos: true,
                     endereco: true,
+                    album: true,
                     bio: true,
                     profissao: {
                         select: {
