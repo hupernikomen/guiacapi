@@ -21,6 +21,7 @@ const AtualizaLojaController_1 = require("./controllers/loja/AtualizaLojaControl
 const AtualizaCategoriaController_1 = require("./controllers/categoria/AtualizaCategoriaController");
 const AtualizaCampanhaController_1 = require("./controllers/campanha/AtualizaCampanhaController");
 const AtualizarProfissionalController_1 = require("./controllers/profissional/AtualizarProfissionalController");
+const AtualizaProdutoController_1 = require("./controllers/produto/AtualizaProdutoController");
 const AtualizaPostoController_1 = require("./controllers/posto/AtualizaPostoController");
 const CriaMapaController_1 = require("./controllers/mapa/CriaMapaController");
 const CriaLojaController_1 = require("./controllers/loja/CriaLojaController");
@@ -34,11 +35,14 @@ const CriaProfissionalController_1 = require("./controllers/profissional/CriaPro
 const CriaPostoController_1 = require("./controllers/posto/CriaPostoController");
 const CriaCampanhaController_1 = require("./controllers/campanha/CriaCampanhaController");
 const CriaProdutoController_1 = require("./controllers/produto/CriaProdutoController");
+const ListarRegioesController_1 = require("./controllers/regiao/ListarRegioesController");
 const ListarProdutosController_1 = require("./controllers/produto/ListarProdutosController");
 const ListarProfissionalController_1 = require("./controllers/profissional/ListarProfissionalController");
+const ListaProfissaoController_1 = require("./controllers/profissao/ListaProfissaoController");
 const ListaContatosController_1 = require("./controllers/contato/ListaContatosController");
 const ListaCategoriaController_1 = require("./controllers/categoria/ListaCategoriaController");
 const ListaCampanhasInativasController_1 = require("./controllers/campanha/ListaCampanhasInativasController");
+const ListaCampanhaController_1 = require("./controllers/campanha/ListaCampanhaController");
 const ListaPostosController_1 = require("./controllers/posto/ListaPostosController");
 const ListaLojasController_1 = require("./controllers/loja/ListaLojasController");
 const PorCategoriaProdutoController_1 = require("./controllers/produto/PorCategoriaProdutoController");
@@ -68,13 +72,13 @@ rotas.post('/regiao', new CriaRegiaoController_1.CriaRegiaoController().handle);
 rotas.post('/profissional', new CriaProfissionalController_1.CriaProfissionalController().handle);
 rotas.post('/mapa', new CriaMapaController_1.CriaMapaController().handle);
 rotas.post('/campanha', new CriaCampanhaController_1.CriaCampanhaController().handle);
-// rotas.get('/profissoes', new ListaProfissaoController().handle)
+rotas.get('/profissoes', new ListaProfissaoController_1.ListaProfissaoController().handle);
 rotas.put('/campanha', new AtualizaCampanhaController_1.AtualizaCampanhaController().handle);
 rotas.put('/profissao', new AtualizaProfissaoController_1.AtualizaProfissaoController().handle);
 rotas.post('/posto', new CriaPostoController_1.CriaPostoController().handle);
-// rotas.put('/produto', Authenticator, new AtualizaProdutoController().handle)
-// rotas.get('/campanhas/ativas', new ListaCampanhaController().handle)
-// rotas.get('/regioes', new ListarRegioesController().handle)
+rotas.put('/produto', authenticator_1.Authenticator, new AtualizaProdutoController_1.AtualizaProdutoController().handle);
+rotas.get('/campanhas/ativas', new ListaCampanhaController_1.ListaCampanhaController().handle);
+rotas.get('/regioes', new ListarRegioesController_1.ListarRegioesController().handle);
 rotas.get('/mapa', new BuscaMapaController_1.BuscaMapaController().handle);
 rotas.get('/banners', new ListarBannersController_1.ListarBannersController().handle);
 rotas.post('/login', new AutenticaUsuarioController_1.AutenticaUsuarioController().handle);
