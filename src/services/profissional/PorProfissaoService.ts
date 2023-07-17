@@ -21,7 +21,6 @@ class PorProfissaoService {
         id: true,
         avatar: true,
         nome: true,
-        album: true,
         lista_servicos: true,
         endereco: true,
         bio: true,

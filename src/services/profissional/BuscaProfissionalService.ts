@@ -26,7 +26,6 @@ class BuscaProfissionalService {
                 avatar: true,
                 bio: true,
                 bairro: true,
-                album: true,
                 endereco: true,
                 profissaoID: true,
                 lista_servicos: true,

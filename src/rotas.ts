@@ -48,8 +48,7 @@ import { DeletaProdutoController } from './controllers/produto/DeletaProdutoCont
 import { AtualizaProfissaoController } from './controllers/profissao/AtualizaProfissaoController';
 import { DeletaCategoriaController } from './controllers/categoria/DeletaCategoriaController';
 import { ListarBannersController } from './controllers/banner/ListarBannersController';
-import { AlbumProfissionalController } from './controllers/profissional/AlbumProfissionalController';
-
+import { CriaAlbumController } from './controllers/album/CriaAlbumController';
 
 const uploadUser = multer({
   fileFilter: fileFilter,
@@ -108,11 +107,12 @@ rotas.get('/loja', new BuscaLojaController().handle)
 rotas.post('/loja', new CriaLojaController().handle)
 
 
+rotas.post('/albumprofissional', uploadUser.array('imagem', 15), new CriaAlbumController().handle)
+
 rotas.post('/profissional', new CriaProfissionalController().handle)
 rotas.post('/profissao', new CriaProfissaoController().handle)
 rotas.get('/profissoes', new ListaProfissaoController().handle)
 rotas.put('/profissao', new AtualizaProfissaoController().handle)
-rotas.put('/albumprofissional', Authenticator, uploadUser.array('album', 15), new AlbumProfissionalController().handle)
 rotas.put('/profissional', Authenticator, uploadUser.single('avatar'), new AtualizarProfissionalController().handle)
 rotas.get('/profissional', new BuscaProfissionalController().handle)
 rotas.get('/profissionais', new ListarProfissionalController().handle)

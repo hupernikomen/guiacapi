@@ -12,29 +12,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PorProfissaoService = void 0;
+exports.CriaAlbumService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
-class PorProfissaoService {
-    execute({ profissaoID }) {
+class CriaAlbumService {
+    execute({ imagem, profissionalID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const categoria = yield prisma_1.default.profissional.findMany({
-                where: {
-                    usuario: {
-                        status: true
-                    },
-                    profissaoID,
-                },
-                select: {
-                    id: true,
-                    avatar: true,
-                    nome: true,
-                    lista_servicos: true,
-                    endereco: true,
-                    bio: true,
+            const album = yield prisma_1.default.album.create({
+                data: {
+                    imagem,
+                    profissionalID
                 }
             });
-            return categoria;
+            return album;
         });
     }
 }
-exports.PorProfissaoService = PorProfissaoService;
+exports.CriaAlbumService = CriaAlbumService;
