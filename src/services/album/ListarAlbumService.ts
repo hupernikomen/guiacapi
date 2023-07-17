@@ -13,6 +13,9 @@ class ListaAlbumService {
       where:{
         profissionalID
       },
+      select:{
+        imagem:true
+      }
     })
 
     return album
