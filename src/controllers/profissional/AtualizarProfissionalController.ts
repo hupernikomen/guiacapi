@@ -9,11 +9,13 @@ class AtualizarProfissionalController {
             bio,
             endereco,
             lista_servicos,
+            album,
             bairro,
             profissaoID
         } = req.body
 
         const file = req.file
+        const files = req.files
 
         const atualizarProfissionalService = new AtualizarProfissionalService();
 
@@ -24,6 +26,7 @@ class AtualizarProfissionalController {
             bio,
             endereco,
             lista_servicos,
+            album: files,
             bairro,
             profissaoID
 
