@@ -34,6 +34,7 @@ class BuscaProfissionalService {
                     endereco: true,
                     profissaoID: true,
                     lista_servicos: true,
+                    album: true,
                     profissao: {
                         select: {
                             nome: true
