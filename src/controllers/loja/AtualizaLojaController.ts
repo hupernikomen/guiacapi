@@ -14,13 +14,11 @@ class AtualizaLojaController {
             tema
         } = req.body
 
-        const file = req.file
-
         const atualizaLojaService = new AtualizaLojaService();
 
         const data = await atualizaLojaService.execute({
             usuarioID,
-            avatar: file,
+            avatar: req.file,
             nome,
             bio,
             endereco,

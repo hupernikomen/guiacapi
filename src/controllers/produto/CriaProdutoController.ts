@@ -4,7 +4,7 @@ import { CriaProdutoService } from "../../services/produto/CriaProdutoService";
 class CriaProdutoController {
   async handle(req: Request, res: Response) {
     const criaProdutoService = new CriaProdutoService();
-    
+
     const lojaID = req.query.lojaID as string
     const {
       codigo,
@@ -14,32 +14,25 @@ class CriaProdutoController {
       tamanho,
       categoriaID,
     } =
-    req.body;
+      req.body;
 
-    
+
     if (!req.files) {
       throw new Error("Ops.. algo deu errado!");
-    } else {
-      const files = req.files;
-      
-
-      const produto = await criaProdutoService.execute({
-        codigo,
-        nome,
-        descricao,
-        preco,
-        tamanho,
-        imagens: files,
-        categoriaID,
-        lojaID,
-      })
-
-      
-      return res.status(200).json(produto);
-
-
     }
 
+    const produto = await criaProdutoService.execute({
+      codigo,
+      nome,
+      descricao,
+      preco,
+      tamanho,
+      imagens: req.files,
+      categoriaID,
+      lojaID,
+    })
+
+    return res.status(200).json(produto);
 
   }
 }
