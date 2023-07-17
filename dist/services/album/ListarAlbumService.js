@@ -22,7 +22,8 @@ class ListaAlbumService {
                     profissionalID
                 },
                 select: {
-                    imagem: true
+                    imagem: true,
+                    id: true
                 }
             });
             return album;
