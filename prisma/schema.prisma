@@ -158,12 +158,12 @@ model Profissional {
   avatar         Json?
   nome           String?
   bairro         String?
-  album          Json[]
   endereco       String?
   bio            String?
   lista_servicos String[]
   profissaoID    String?
   usuarioID      String?
+  Album     Album[]
 
   usuario   Usuario?   @relation(fields: [usuarioID], references: [id])
   profissao Profissao? @relation(fields: [profissaoID], references: [id])
@@ -171,6 +171,15 @@ model Profissional {
   createdAt DateTime? @default(now())
 
   @@map("profissionais")
+}
+
+model Album {
+  id             String       @id @default(uuid())
+  imagem         Json
+  profissional   Profissional @relation(fields: [profissionalId], references: [id])
+  profissionalId String
+
+  @@map("albuns")
 }
 
 model Profissao {
