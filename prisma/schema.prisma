@@ -163,7 +163,7 @@ model Profissional {
   lista_servicos String[]
   profissaoID    String?
   usuarioID      String?
-  Album     Album[]
+  album     Album[]
 
   usuario   Usuario?   @relation(fields: [usuarioID], references: [id])
   profissao Profissao? @relation(fields: [profissaoID], references: [id])
