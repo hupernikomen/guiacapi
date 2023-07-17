@@ -48,6 +48,8 @@ import { DeletaProdutoController } from './controllers/produto/DeletaProdutoCont
 import { AtualizaProfissaoController } from './controllers/profissao/AtualizaProfissaoController';
 import { DeletaCategoriaController } from './controllers/categoria/DeletaCategoriaController';
 import { ListarBannersController } from './controllers/banner/ListarBannersController';
+import { AlbumProfissionalController } from './controllers/profissional/AlbumProfissionalController';
+
 
 const uploadUser = multer({
   fileFilter: fileFilter,
@@ -67,7 +69,7 @@ rotas.post('/login', new AutenticaUsuarioController().handle)
 rotas.get('/banners', new ListarBannersController().handle)
 rotas.post('/banner', uploadUser.single('imagem'), new CriaBannerController().handle)
 
-rotas.get('/categorias', new ListaCategoriaController().handle) 
+rotas.get('/categorias', new ListaCategoriaController().handle)
 rotas.post('/categoria', new CriaCategoriaController().handle)
 rotas.delete('/categoria', new DeletaCategoriaController().handle)
 rotas.put('/categoria', new AtualizaCategoriaController().handle)
@@ -100,18 +102,19 @@ rotas.post('/contato', Authenticator, uploadUser.single('avatar'), new CriaConta
 rotas.get('/contatos', new ListaContatosController().handle)
 
 rotas.get('/loja/logado', Authenticator, new LojaLogadaController().handle)
-rotas.put('/loja', Authenticator, uploadUser.single('avatar'), new AtualizaLojaController().handle) 
+rotas.put('/loja', Authenticator, uploadUser.single('avatar'), new AtualizaLojaController().handle)
 rotas.get('/lojas', new ListaLojasController().handle)
 rotas.get('/loja', new BuscaLojaController().handle)
-rotas.post('/loja',new CriaLojaController().handle)
+rotas.post('/loja', new CriaLojaController().handle)
 
 
 rotas.post('/profissional', new CriaProfissionalController().handle)
 rotas.post('/profissao', new CriaProfissaoController().handle)
 rotas.get('/profissoes', new ListaProfissaoController().handle)
 rotas.put('/profissao', new AtualizaProfissaoController().handle)
-rotas.put('/profissional',Authenticator, uploadUser.single('avatar'), uploadUser.array('album', 15), new AtualizarProfissionalController().handle)
-rotas.get('/profissional',new BuscaProfissionalController().handle)
+rotas.put('/albumprofissional', Authenticator, uploadUser.array('album', 15), new AlbumProfissionalController().handle)
+rotas.put('/profissional', Authenticator, uploadUser.single('avatar'), new AtualizarProfissionalController().handle)
+rotas.get('/profissional', new BuscaProfissionalController().handle)
 rotas.get('/profissionais', new ListarProfissionalController().handle)
 rotas.get('/profissao/profissionais', new PorProfissaoController().handle)
 

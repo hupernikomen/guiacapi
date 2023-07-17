@@ -9,28 +9,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AtualizarProfissionalController = void 0;
-const AtualizarProfissionalService_1 = require("../../services/profissional/AtualizarProfissionalService");
-class AtualizarProfissionalController {
+exports.AlbumProfissionalController = void 0;
+const AlbumProfissionalService_1 = require("../../services/profissional/AlbumProfissionalService");
+class AlbumProfissionalController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const usuarioID = req.query.usuarioID;
-            const { nome, bio, endereco, lista_servicos, bairro, profissaoID } = req.body;
-            const file = req.file;
             const files = req.files;
-            const atualizarProfissionalService = new AtualizarProfissionalService_1.AtualizarProfissionalService();
-            const profissional = yield atualizarProfissionalService.execute({
+            const albumProfissionalService = new AlbumProfissionalService_1.AlbumProfissionalService();
+            const profissional = yield albumProfissionalService.execute({
                 usuarioID,
-                avatar: file,
-                nome,
-                bio,
-                endereco,
-                lista_servicos,
-                bairro,
-                profissaoID
+                album: files,
             });
             return res.json(profissional);
         });
     }
 }
-exports.AtualizarProfissionalController = AtualizarProfissionalController;
+exports.AlbumProfissionalController = AlbumProfissionalController;

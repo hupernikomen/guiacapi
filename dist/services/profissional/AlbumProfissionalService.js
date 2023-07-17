@@ -12,35 +12,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AtualizarProfissionalService = void 0;
+exports.AlbumProfissionalService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
-class AtualizarProfissionalService {
-    execute({ usuarioID, profissaoID, avatar, nome, bio, endereco, lista_servicos, bairro, }) {
+class AlbumProfissionalService {
+    execute({ usuarioID, album, }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const profissional_existe = yield prisma_1.default.profissional.findFirst({
-                where: {
-                    usuarioID
-                }
-            });
-            if (!profissional_existe) {
-                throw new Error("Ops, infelizmente não encontramos!");
-            }
             const profissional = yield prisma_1.default.profissional.updateMany({
                 where: {
                     usuarioID
                 },
                 data: {
-                    nome,
-                    avatar,
-                    bio,
-                    endereco,
-                    lista_servicos,
-                    bairro,
-                    profissaoID
+                    album,
                 },
             });
             return profissional;
         });
     }
 }
-exports.AtualizarProfissionalService = AtualizarProfissionalService;
+exports.AlbumProfissionalService = AlbumProfissionalService;

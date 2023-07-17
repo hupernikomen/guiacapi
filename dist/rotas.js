@@ -51,6 +51,7 @@ const DeletaProdutoController_1 = require("./controllers/produto/DeletaProdutoCo
 const AtualizaProfissaoController_1 = require("./controllers/profissao/AtualizaProfissaoController");
 const DeletaCategoriaController_1 = require("./controllers/categoria/DeletaCategoriaController");
 const ListarBannersController_1 = require("./controllers/banner/ListarBannersController");
+const AlbumProfissionalController_1 = require("./controllers/profissional/AlbumProfissionalController");
 const uploadUser = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageTypes.s3 : multer_2.storageTypes.local,
@@ -98,7 +99,8 @@ rotas.post('/profissional', new CriaProfissionalController_1.CriaProfissionalCon
 rotas.post('/profissao', new CriaProfissaoController_1.CriaProfissaoController().handle);
 rotas.get('/profissoes', new ListaProfissaoController_1.ListaProfissaoController().handle);
 rotas.put('/profissao', new AtualizaProfissaoController_1.AtualizaProfissaoController().handle);
-rotas.put('/profissional', authenticator_1.Authenticator, uploadUser.single('avatar'), uploadUser.array('album', 15), new AtualizarProfissionalController_1.AtualizarProfissionalController().handle);
+rotas.put('/albumprofissional', authenticator_1.Authenticator, uploadUser.array('album', 15), new AlbumProfissionalController_1.AlbumProfissionalController().handle);
+rotas.put('/profissional', authenticator_1.Authenticator, uploadUser.single('avatar'), new AtualizarProfissionalController_1.AtualizarProfissionalController().handle);
 rotas.get('/profissional', new BucaProfissionalController_1.BuscaProfissionalController().handle);
 rotas.get('/profissionais', new ListarProfissionalController_1.ListarProfissionalController().handle);
 rotas.get('/profissao/profissionais', new PorProfissaoController_1.PorProfissaoController().handle);

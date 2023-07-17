@@ -9,7 +9,6 @@ class AtualizarProfissionalController {
             bio,
             endereco,
             lista_servicos,
-            album,
             bairro,
             profissaoID
         } = req.body
@@ -26,7 +25,6 @@ class AtualizarProfissionalController {
             bio,
             endereco,
             lista_servicos,
-            album: files,
             bairro,
             profissaoID
 
