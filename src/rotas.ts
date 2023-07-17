@@ -49,6 +49,8 @@ import { AtualizaProfissaoController } from './controllers/profissao/AtualizaPro
 import { DeletaCategoriaController } from './controllers/categoria/DeletaCategoriaController';
 import { ListarBannersController } from './controllers/banner/ListarBannersController';
 import { CriaAlbumController } from './controllers/album/CriaAlbumController';
+import { ListarAlbumController } from './controllers/album/ListarAlbumController';
+
 
 const uploadUser = multer({
   fileFilter: fileFilter,
@@ -108,6 +110,7 @@ rotas.post('/loja', new CriaLojaController().handle)
 
 
 rotas.post('/albumprofissional', uploadUser.array('imagem', 15), new CriaAlbumController().handle)
+rotas.get('albuns', new ListarAlbumController().handle)
 
 rotas.post('/profissional', new CriaProfissionalController().handle)
 rotas.post('/profissao', new CriaProfissaoController().handle)

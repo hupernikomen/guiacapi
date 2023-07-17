@@ -52,6 +52,7 @@ const AtualizaProfissaoController_1 = require("./controllers/profissao/AtualizaP
 const DeletaCategoriaController_1 = require("./controllers/categoria/DeletaCategoriaController");
 const ListarBannersController_1 = require("./controllers/banner/ListarBannersController");
 const CriaAlbumController_1 = require("./controllers/album/CriaAlbumController");
+const ListarAlbumController_1 = require("./controllers/album/ListarAlbumController");
 const uploadUser = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageTypes.s3 : multer_2.storageTypes.local,
@@ -96,6 +97,7 @@ rotas.get('/lojas', new ListaLojasController_1.ListaLojasController().handle);
 rotas.get('/loja', new BuscaLojaController_1.BuscaLojaController().handle);
 rotas.post('/loja', new CriaLojaController_1.CriaLojaController().handle);
 rotas.post('/albumprofissional', uploadUser.array('imagem', 15), new CriaAlbumController_1.CriaAlbumController().handle);
+rotas.get('albuns', new ListarAlbumController_1.ListarAlbumController().handle);
 rotas.post('/profissional', new CriaProfissionalController_1.CriaProfissionalController().handle);
 rotas.post('/profissao', new CriaProfissaoController_1.CriaProfissaoController().handle);
 rotas.get('/profissoes', new ListaProfissaoController_1.ListaProfissaoController().handle);
