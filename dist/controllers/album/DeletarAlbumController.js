@@ -14,10 +14,10 @@ const DeletaAlbumService_1 = require("../../services/album/DeletaAlbumService");
 class DeletarAlbumController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const profissionalID = req.query.profissionalID;
+            const albumID = req.query.albumID;
             const deletaAlbumService = new DeletaAlbumService_1.DeletaAlbumService();
             yield deletaAlbumService.execute({
-                profissionalID
+                albumID
             });
             return res.status(200).json({
                 message: "Fique tranquilo! Já excluimos "

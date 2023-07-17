@@ -21,11 +21,11 @@ let s3 = new aws_sdk_1.default.S3({
     region: 'us-east-1',
 });
 class DeletaAlbumService {
-    execute({ profissionalID }) {
+    execute({ albumID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const imagem = yield prisma_1.default.album.findUnique({
                 where: {
-                    id: profissionalID
+                    id: albumID
                 }
             });
             console.log(imagem, "DELETAAAAAAADO");
@@ -40,7 +40,7 @@ class DeletaAlbumService {
             }
             const imagemDelete = yield prisma_1.default.album.delete({
                 where: {
-                    id: profissionalID
+                    id: albumID
                 }
             });
             return imagemDelete;

@@ -8,18 +8,18 @@ let s3 = new AWS.S3({
 });
 
 interface DeleteAlbumRequest {
-  profissionalID: string,
+  albumID: string,
 }
 
 class DeletaAlbumService {
 
   async execute({
-    profissionalID
+    albumID
   }: DeleteAlbumRequest) {
 
     const imagem = await prismaClient.album.findUnique({
       where: {
-        id: profissionalID
+        id: albumID
       }
     })
 
@@ -40,7 +40,7 @@ class DeletaAlbumService {
 
     const imagemDelete = await prismaClient.album.delete({
       where: {
-        id: profissionalID
+        id: albumID
       }
     })
 
