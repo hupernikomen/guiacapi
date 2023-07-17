@@ -61,49 +61,60 @@ const uploadUser = multer({
 const rotas = Router();
 
 rotas.post('/usuario', new CriaUsuarioController().handle)
-rotas.post('/banner', uploadUser.single('imagem'), new CriaBannerController().handle)
 rotas.put('/usuario', new AtualizaUsuarioController().handle)
+rotas.post('/login', new AutenticaUsuarioController().handle)
+
+rotas.get('/banners', new ListarBannersController().handle)
+rotas.post('/banner', uploadUser.single('imagem'), new CriaBannerController().handle)
+
+rotas.get('/categorias', new ListaCategoriaController().handle) 
 rotas.post('/categoria', new CriaCategoriaController().handle)
 rotas.delete('/categoria', new DeletaCategoriaController().handle)
 rotas.put('/categoria', new AtualizaCategoriaController().handle)
-rotas.post('/profissao', new CriaProfissaoController().handle)
-rotas.post('/loja',new CriaLojaController().handle)
+
 rotas.post('/regiao', new CriaRegiaoController().handle)
-rotas.post('/profissional', new CriaProfissionalController().handle)
-rotas.post('/mapa', new CriaMapaController().handle)
-rotas.post('/campanha', new CriaCampanhaController().handle)
-rotas.get('/profissoes', new ListaProfissaoController().handle)
-rotas.put('/campanha', new AtualizaCampanhaController().handle)
-rotas.put('/profissao', new AtualizaProfissaoController().handle)
-rotas.post('/posto', new CriaPostoController().handle)
-rotas.put('/produto', Authenticator, new AtualizaProdutoController().handle)
-rotas.get('/campanhas/ativas', new ListaCampanhaController().handle)
 rotas.get('/regioes', new ListarRegioesController().handle)
 
 
-rotas.get('/mapa', new BuscaMapaController().handle)
-rotas.get('/banners', new ListarBannersController().handle)
-rotas.post('/login', new AutenticaUsuarioController().handle)
+rotas.get('/campanhas/ativas', new ListaCampanhaController().handle)
+rotas.post('/campanha', new CriaCampanhaController().handle)
+rotas.put('/campanha', new AtualizaCampanhaController().handle)
+rotas.get('/campanhas', new ListaCampanhasInativasController().handle)
+
+rotas.post('/posto', new CriaPostoController().handle)
+rotas.put('/posto', uploadUser.single('avatar'), new AtualizaPostoController().handle)
+rotas.get('/posto', new BuscaPostoController().handle)
+rotas.get('/postos', new ListarPostosController().handle)
+
+rotas.put('/produto', Authenticator, new AtualizaProdutoController().handle)
 rotas.post('/produto', Authenticator, uploadUser.array('files', 5), new CriaProdutoController().handle)
 rotas.get('/produtos', new ListarProdutosController().handle)
 rotas.get('/produtos/categoria', new PorCategoriaProdutoController().handle)
 rotas.delete('/produto', Authenticator, new DeletaProdutoController().handle)
 rotas.get('/detalhe/produto', new DetalheProdutoController().handle)
+
+rotas.post('/mapa', new CriaMapaController().handle)
+rotas.get('/mapa', new BuscaMapaController().handle)
+
 rotas.post('/contato', Authenticator, uploadUser.single('avatar'), new CriaContatoController().handle)
+rotas.get('/contatos', new ListaContatosController().handle)
+
 rotas.get('/loja/logado', Authenticator, new LojaLogadaController().handle)
 rotas.put('/loja', Authenticator, uploadUser.single('avatar'), new AtualizaLojaController().handle) 
 rotas.get('/lojas', new ListaLojasController().handle)
 rotas.get('/loja', new BuscaLojaController().handle)
-rotas.put('/posto', uploadUser.single('avatar'), new AtualizaPostoController().handle)
-rotas.get('/posto', new BuscaPostoController().handle)
-rotas.get('/postos', new ListarPostosController().handle)
-rotas.get('/campanhas', new ListaCampanhasInativasController().handle)
+rotas.post('/loja',new CriaLojaController().handle)
+
+
+rotas.post('/profissional', new CriaProfissionalController().handle)
+rotas.post('/profissao', new CriaProfissaoController().handle)
+rotas.get('/profissoes', new ListaProfissaoController().handle)
+rotas.put('/profissao', new AtualizaProfissaoController().handle)
 rotas.put('/profissional',Authenticator, uploadUser.single('avatar'), new AtualizarProfissionalController().handle)
 rotas.get('/profissional',new BuscaProfissionalController().handle)
 rotas.get('/profissionais', new ListarProfissionalController().handle)
 rotas.get('/profissao/profissionais', new PorProfissaoController().handle)
-rotas.get('/categorias', new ListaCategoriaController().handle) 
-rotas.get('/contatos', new ListaContatosController().handle)
+
 
 
 

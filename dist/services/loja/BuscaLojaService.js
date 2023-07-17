@@ -25,7 +25,20 @@ class BuscaLojaService {
                     id: true,
                     avatar: true,
                     nome: true,
-                    produtos: true,
+                    produtos: {
+                        select: {
+                            id: true,
+                            categoriaID: true,
+                            campanha: true,
+                            nome: true,
+                            preco: true,
+                            oferta: true,
+                            descricao: true,
+                            tamanho: true,
+                            codigo: true,
+                            imagens: true
+                        }
+                    },
                     usuario: {
                         select: {
                             id: true,
