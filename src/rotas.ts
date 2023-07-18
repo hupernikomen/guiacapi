@@ -110,7 +110,7 @@ rotas.get('/loja', new BuscaLojaController().handle)
 rotas.post('/loja', new CriaLojaController().handle)
 
 
-rotas.post('/albumprofissional', uploadUser.array('imagem', 15), new CriaAlbumController().handle)
+rotas.post('/albumprofissional', uploadUser.single('imagem'), new CriaAlbumController().handle)
 rotas.get('/albuns', new ListarAlbumController().handle)
 rotas.delete('/album', new DeletarAlbumController().handle)
 
