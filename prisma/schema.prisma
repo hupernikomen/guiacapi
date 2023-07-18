@@ -175,7 +175,7 @@ model Profissional {
 
 model Album {
   id             String       @id @default(uuid())
-  imagem         Json
+  imagem         Json[]
   profissional   Profissional @relation(fields: [profissionalID], references: [id])
   profissionalID String
 

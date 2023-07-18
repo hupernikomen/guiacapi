@@ -24,6 +24,7 @@ class PorProfissaoService {
         lista_servicos: true,
         endereco: true,
         bio: true,
+        album:true
 
       }
     });
