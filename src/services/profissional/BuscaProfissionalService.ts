@@ -20,7 +20,7 @@ class BuscaProfissionalService {
 
             },
             select: {
-                usuarioID: true,
+                usuario: true,
                 id: true,
                 nome: true,
                 avatar: true,
