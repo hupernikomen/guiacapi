@@ -20,6 +20,7 @@ class ListarProfissionalService {
         endereco:true,
         album:true,
         bio:true,
+        usuarioID:true,
         profissao: {
           select:{
             nome:true
