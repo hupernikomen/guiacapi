@@ -25,6 +25,7 @@ class BuscaLojaService {
                     id: true,
                     avatar: true,
                     nome: true,
+                    endereco: true,
                     produtos: {
                         select: {
                             id: true,
@@ -39,12 +40,7 @@ class BuscaLojaService {
                             imagens: true
                         }
                     },
-                    usuario: {
-                        select: {
-                            id: true,
-                            mapa: true
-                        }
-                    }
+                    usuarioID: true,
                 }
             });
             return loja;
