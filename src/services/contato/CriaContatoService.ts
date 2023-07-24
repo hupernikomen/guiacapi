@@ -26,9 +26,9 @@ class CriaContatoService {
 
     }: contatoRequest) {
 
-        const contatoExiste = await prismaClient.contato.findMany({
+        const contatoExiste = await prismaClient.contato.findFirst({
             where: {
-                whatsapp: whatsapp
+                whatsapp
             }
         })
 
