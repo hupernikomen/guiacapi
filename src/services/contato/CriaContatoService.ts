@@ -32,15 +32,10 @@ class CriaContatoService {
             }
         })
 
-        console.log(contatoExiste, "contato Existe")
-
-        if (contatoExiste) {
-            throw new Error("Contato já cadastrado");
-        }
+        if (contatoExiste) throw new Error("Erro: Contato em uso");
 
         const contato = await prismaClient.contato.create({
             data: {
-
                 nome,
                 avatar,
                 whatsapp,

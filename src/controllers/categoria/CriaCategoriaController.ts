@@ -7,9 +7,7 @@ class CriaCategoriaController {
 
         const criaCategoriaService = new CriaCategoriaService();
 
-        const categoria = await criaCategoriaService.execute({
-            nome: nome
-        })
+        const categoria = await criaCategoriaService.execute({ nome })
 
         return res.json(categoria)
     }

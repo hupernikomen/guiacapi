@@ -9,9 +9,7 @@ class CriaContatoController {
 
     const { nome, whatsapp, setor, horario, sabado, domingo } = req.body;
 
-    if (!req.file) {
-      throw new Error("Ops.. algo deu errado!");
-    }
+    if (!req.file) throw new Error("Ops.. algo deu errado!");
     
     const contato = await criaContatoService.execute({
       nome,

@@ -8,12 +8,10 @@ class DeletarAlbumController {
 
     const deletaAlbumService = new DeletaAlbumService()
 
-    await deletaAlbumService.execute({
-      albumID
-    })
+    await deletaAlbumService.execute({ albumID })
 
     return res.status(200).json({
-      message: "Fique tranquilo! Já excluimos "
+      message: "Album Excluido"
     })
 
   }

@@ -48,9 +48,8 @@ export function fileFilter(req, file, callback) {
     ext !== '.jpeg' &&
     ext !== '.WEBP' &&
     ext !== '.webp'
-  ) {
-    return callback(new Error('Formato de arquivo não aceito'))
-  }
+  ) return callback(new Error('Formato de arquivo não aceito'))
+  
 
 
   if (errorMessage) {

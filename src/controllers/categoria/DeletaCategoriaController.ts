@@ -8,9 +8,7 @@ class DeletaCategoriaController {
 
     const deletaCategoriaService = new DeletaCategoriaService()
 
-    await deletaCategoriaService.execute({
-        categoriaID
-    })
+    await deletaCategoriaService.execute({ categoriaID })
 
     return res.status(200).json({
       message: "Categoria Excluida"

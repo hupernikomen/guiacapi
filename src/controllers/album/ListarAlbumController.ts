@@ -7,9 +7,7 @@ class ListarAlbumController {
 
         const profissionalID = req.query.profissionalID as string
 
-        const albuns = await listaAlbumService.execute({
-            profissionalID
-        })
+        const albuns = await listaAlbumService.execute({ profissionalID })
         return res.json(albuns)
 
     }
