@@ -32,7 +32,7 @@ class CriaContatoService {
             }
         })
 
-        if (contatoExiste) {
+        if (!contatoExiste) {
             throw new Error("Contato já cadastrado");
         }
 
