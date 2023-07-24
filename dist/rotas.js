@@ -54,6 +54,7 @@ const ListarBannersController_1 = require("./controllers/banner/ListarBannersCon
 const CriaAlbumController_1 = require("./controllers/album/CriaAlbumController");
 const ListarAlbumController_1 = require("./controllers/album/ListarAlbumController");
 const DeletarAlbumController_1 = require("./controllers/album/DeletarAlbumController");
+const DeletaContatoController_1 = require("./controllers/contato/DeletaContatoController");
 const uploadUser = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageTypes.s3 : multer_2.storageTypes.local,
@@ -92,6 +93,7 @@ rotas.post('/mapa', new CriaMapaController_1.CriaMapaController().handle);
 rotas.get('/mapa', new BuscaMapaController_1.BuscaMapaController().handle);
 rotas.post('/contato', authenticator_1.Authenticator, uploadUser.single('avatar'), new CriaContatoController_1.CriaContatoController().handle);
 rotas.get('/contatos', new ListaContatosController_1.ListaContatosController().handle);
+rotas.delete('/contato', new DeletaContatoController_1.DeletarContatoController().handle);
 rotas.get('/loja/logado', authenticator_1.Authenticator, new LojaLogadaController_1.LojaLogadaController().handle);
 rotas.put('/loja', authenticator_1.Authenticator, uploadUser.single('avatar'), new AtualizaLojaController_1.AtualizaLojaController().handle);
 rotas.get('/lojas', new ListaLojasController_1.ListaLojasController().handle);

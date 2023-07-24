@@ -51,7 +51,7 @@ import { ListarBannersController } from './controllers/banner/ListarBannersContr
 import { CriaAlbumController } from './controllers/album/CriaAlbumController';
 import { ListarAlbumController } from './controllers/album/ListarAlbumController';
 import { DeletarAlbumController } from './controllers/album/DeletarAlbumController';
-
+import { DeletarContatoController } from './controllers/contato/DeletaContatoController';
 
 const uploadUser = multer({
   fileFilter: fileFilter,
@@ -102,6 +102,7 @@ rotas.get('/mapa', new BuscaMapaController().handle)
 
 rotas.post('/contato', Authenticator, uploadUser.single('avatar'), new CriaContatoController().handle)
 rotas.get('/contatos', new ListaContatosController().handle)
+rotas.delete('/contato', new DeletarContatoController().handle)
 
 rotas.get('/loja/logado', Authenticator, new LojaLogadaController().handle)
 rotas.put('/loja', Authenticator, uploadUser.single('avatar'), new AtualizaLojaController().handle)
