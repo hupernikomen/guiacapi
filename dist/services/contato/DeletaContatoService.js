@@ -23,7 +23,7 @@ let s3 = new aws_sdk_1.default.S3({
 class DeletaContatoService {
     execute({ contatoID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const imagem = yield prisma_1.default.contato.findUnique({
+            const contato = yield prisma_1.default.contato.findUnique({
                 where: {
                     id: contatoID
                 }
@@ -34,7 +34,7 @@ class DeletaContatoService {
             //   if (err) console.log(err, err.stack);  // error
             //   else console.log();                 // deleted
             // })
-            if (!imagem) {
+            if (!contato) {
                 throw new Error("Contato não existe");
             }
             const contatoDelete = yield prisma_1.default.contato.delete({

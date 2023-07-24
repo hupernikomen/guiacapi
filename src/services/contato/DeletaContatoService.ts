@@ -17,7 +17,7 @@ class DeletaContatoService {
     contatoID
   }: DeleteContatoRequest) {
 
-    const imagem = await prismaClient.contato.findUnique({
+    const contato = await prismaClient.contato.findUnique({
       where: {
         id: contatoID
       }
@@ -31,7 +31,7 @@ class DeletaContatoService {
     //   else console.log();                 // deleted
     // })
 
-    if (!imagem) {
+    if (!contato) {
       throw new Error("Contato não existe");
     }
 

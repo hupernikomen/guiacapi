@@ -34,7 +34,7 @@ class CriaContatoService {
 
         console.log(contatoExiste, "contato Existe")
 
-        if (!contatoExiste) {
+        if (contatoExiste) {
             throw new Error("Contato já cadastrado");
         }
 
