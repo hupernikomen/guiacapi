@@ -28,9 +28,11 @@ class CriaContatoService {
 
         const contatoExiste = await prismaClient.contato.findMany({
             where: {
-                whatsapp
+                whatsapp: whatsapp
             }
         })
+
+        console.log(contatoExiste, "contato Existe")
 
         if (!contatoExiste) {
             throw new Error("Contato já cadastrado");

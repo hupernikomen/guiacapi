@@ -19,9 +19,10 @@ class CriaContatoService {
         return __awaiter(this, void 0, void 0, function* () {
             const contatoExiste = yield prisma_1.default.contato.findMany({
                 where: {
-                    whatsapp
+                    whatsapp: whatsapp
                 }
             });
+            console.log(contatoExiste, "contato Existe");
             if (!contatoExiste) {
                 throw new Error("Contato já cadastrado");
             }

@@ -55,7 +55,7 @@ model Contato {
 
   nome     String?
   avatar   Json?
-  whatsapp String?
+  whatsapp String? @unique
   horario  Json?
   setor    String?
   sabado   Boolean?
