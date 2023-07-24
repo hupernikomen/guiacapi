@@ -2,13 +2,13 @@ import prismaClient from "../../prisma";
 
 interface contatoRequest {
     nome: string,
-    avatar:object,
-    whatsapp:string,
-    setor:string,
-    horario:object,
+    avatar: object,
+    whatsapp: string,
+    setor: string,
+    horario: object,
     sabado: boolean,
     domingo: boolean,
-    usuarioID:string
+    usuarioID: string
 }
 
 class CriaContatoService {
@@ -26,11 +26,19 @@ class CriaContatoService {
 
     }: contatoRequest) {
 
-        
+        const contatoExiste = await prismaClient.contato.findMany({
+            where: {
+                whatsapp
+            }
+        })
+
+        if (contatoExiste) {
+            throw new Error("Contato já cadastrado");
+        }
 
         const contato = await prismaClient.contato.create({
             data: {
-               
+
                 nome,
                 avatar,
                 whatsapp,
@@ -41,7 +49,7 @@ class CriaContatoService {
                 usuarioID
             }
         })
-        
+
 
         return contato
     }

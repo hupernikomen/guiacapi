@@ -17,6 +17,14 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class CriaContatoService {
     execute({ nome, avatar, whatsapp, setor, horario, sabado, domingo, usuarioID }) {
         return __awaiter(this, void 0, void 0, function* () {
+            const contatoExiste = yield prisma_1.default.contato.findMany({
+                where: {
+                    whatsapp
+                }
+            });
+            if (contatoExiste) {
+                throw new Error("Contato já cadastrado");
+            }
             const contato = yield prisma_1.default.contato.create({
                 data: {
                     nome,
