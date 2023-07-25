@@ -7,9 +7,7 @@ class CriaAlbumController {
 
     const profissionalID = req.query.profissionalID as string
 
-    if (!req.file) {
-      throw new Error("Ops.. algo deu errado!");
-    }
+    if (!req.file) throw new Error("Ops.. algo deu errado!");
     
     const album = await criaAlbumService.execute({
       imagem: req.file,

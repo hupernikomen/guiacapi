@@ -11,15 +11,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListaContatosController = void 0;
 const ListaContatosService_1 = require("../../services/contato/ListaContatosService");
-// OK
 class ListaContatosController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const listaContatosService = new ListaContatosService_1.ListaContatosService();
             const usuarioID = req.query.usuarioID;
-            const contatos = yield listaContatosService.execute({
-                usuarioID
-            });
+            const contatos = yield listaContatosService.execute({ usuarioID });
             return res.json(contatos);
         });
     }

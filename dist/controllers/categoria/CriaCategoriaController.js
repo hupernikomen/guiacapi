@@ -16,9 +16,7 @@ class CriaCategoriaController {
         return __awaiter(this, void 0, void 0, function* () {
             const { nome } = req.body;
             const criaCategoriaService = new CriaCategoriaService_1.CriaCategoriaService();
-            const categoria = yield criaCategoriaService.execute({
-                nome: nome
-            });
+            const categoria = yield criaCategoriaService.execute({ nome });
             return res.json(categoria);
         });
     }

@@ -41,9 +41,8 @@ function fileFilter(req, file, callback) {
         ext !== '.JPEG' &&
         ext !== '.jpeg' &&
         ext !== '.WEBP' &&
-        ext !== '.webp') {
+        ext !== '.webp')
         return callback(new Error('Formato de arquivo não aceito'));
-    }
     if (errorMessage) {
         console.log(errorMessage);
         return callback({ errorMessage: errorMessage, code: 'LIMIT_FILE_TYPE' }, false);

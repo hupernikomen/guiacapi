@@ -1,20 +1,20 @@
 import prismaClient from "../../prisma";
 
 interface profissionalRequest {
-    usuarioID: string
+    profissionalID: string
 }
 
 
 class BuscaProfissionalService {
     async execute({
-        usuarioID
+        profissionalID
     }: profissionalRequest) {
 
         const profissional = await prismaClient.profissional.findFirst({
 
             where: {
+                profissaoID: profissionalID,
                 usuario: {
-                    id: usuarioID,
                     status: true
                 }
 

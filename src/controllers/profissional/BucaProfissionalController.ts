@@ -5,12 +5,12 @@ import { BuscaProfissionalService } from '../../services/profissional/BuscaProfi
 class BuscaProfissionalController {
     async handle(req: Request, res: Response) {
 
-        const usuarioID = req.query.usuarioID as string
+        const profissionalID = req.query.profissionalID as string
 
         const buscaProfissionalService = new BuscaProfissionalService()
 
         const profissional = await buscaProfissionalService.execute({
-            usuarioID
+            profissionalID
         })
         return res.json(profissional)
 

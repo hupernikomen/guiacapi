@@ -16,9 +16,8 @@ class CriaAlbumController {
         return __awaiter(this, void 0, void 0, function* () {
             const criaAlbumService = new CriaAlbumService_1.CriaAlbumService();
             const profissionalID = req.query.profissionalID;
-            if (!req.file) {
+            if (!req.file)
                 throw new Error("Ops.. algo deu errado!");
-            }
             const album = yield criaAlbumService.execute({
                 imagem: req.file,
                 profissionalID

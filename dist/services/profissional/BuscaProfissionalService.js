@@ -15,12 +15,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.BuscaProfissionalService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class BuscaProfissionalService {
-    execute({ usuarioID }) {
+    execute({ profissionalID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const profissional = yield prisma_1.default.profissional.findFirst({
                 where: {
+                    profissaoID: profissionalID,
                     usuario: {
-                        id: usuarioID,
                         status: true
                     }
                 },

@@ -14,10 +14,10 @@ const BuscaProfissionalService_1 = require("../../services/profissional/BuscaPro
 class BuscaProfissionalController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const usuarioID = req.query.usuarioID;
+            const profissionalID = req.query.profissionalID;
             const buscaProfissionalService = new BuscaProfissionalService_1.BuscaProfissionalService();
             const profissional = yield buscaProfissionalService.execute({
-                usuarioID
+                profissionalID
             });
             return res.json(profissional);
         });

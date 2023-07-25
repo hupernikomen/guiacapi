@@ -16,9 +16,7 @@ class ListarAlbumController {
         return __awaiter(this, void 0, void 0, function* () {
             const listaAlbumService = new ListarAlbumService_1.ListaAlbumService();
             const profissionalID = req.query.profissionalID;
-            const albuns = yield listaAlbumService.execute({
-                profissionalID
-            });
+            const albuns = yield listaAlbumService.execute({ profissionalID });
             return res.json(albuns);
         });
     }

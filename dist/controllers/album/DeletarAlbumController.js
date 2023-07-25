@@ -16,11 +16,9 @@ class DeletarAlbumController {
         return __awaiter(this, void 0, void 0, function* () {
             const albumID = req.query.albumID;
             const deletaAlbumService = new DeletaAlbumService_1.DeletaAlbumService();
-            yield deletaAlbumService.execute({
-                albumID
-            });
+            yield deletaAlbumService.execute({ albumID });
             return res.status(200).json({
-                message: "Fique tranquilo! Já excluimos "
+                message: "Album Excluido"
             });
         });
     }
