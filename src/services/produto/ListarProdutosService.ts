@@ -16,7 +16,6 @@ class ListarProdutosService {
         preco: true,
         oferta: true,
         imagens: true,
-        descricao:true,
         campanha:{
           select:{
             id:true,
