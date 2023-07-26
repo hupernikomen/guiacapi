@@ -28,6 +28,7 @@ class DeletaAlbumService {
                     id: albumID
                 }
             });
+            console.log(imagem, "imagemmmmmm do albummmmm");
             // Apagar imagens do S3 da Amazon
             // var params = { Bucket: process.env.BUCKETEER_BUCKET_NAME, Key: imagem.imagem[0].key };
             // s3.deleteObject(params, function (err, data) {
