@@ -58,7 +58,8 @@ class AutenticaService {
             id: usuario.id,
             email: usuario.email,
             token: token,
-            conta: { loja: !!loja, profissional: !!profissional, posto: !!posto },
+            conta: { loja, profissional, posto },
+
         }
     }
 }
