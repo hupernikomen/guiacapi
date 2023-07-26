@@ -52,6 +52,7 @@ import { CriaAlbumController } from './controllers/album/CriaAlbumController';
 import { ListarAlbumController } from './controllers/album/ListarAlbumController';
 import { DeletarAlbumController } from './controllers/album/DeletarAlbumController';
 import { DeletarContatoController } from './controllers/contato/DeletaContatoController';
+import { CriaPlanoController } from './controllers/plano/CriaPlanoController';
 
 const uploadUser = multer({
   fileFilter: fileFilter,
@@ -124,6 +125,8 @@ rotas.get('/profissional', new BuscaProfissionalController().handle)
 rotas.get('/profissionais', new ListarProfissionalController().handle)
 rotas.get('/profissao/profissionais', new PorProfissaoController().handle)
 
+
+rotas.post('/plano', new CriaPlanoController().handle)
 
 
 

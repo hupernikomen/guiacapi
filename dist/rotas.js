@@ -55,6 +55,7 @@ const CriaAlbumController_1 = require("./controllers/album/CriaAlbumController")
 const ListarAlbumController_1 = require("./controllers/album/ListarAlbumController");
 const DeletarAlbumController_1 = require("./controllers/album/DeletarAlbumController");
 const DeletaContatoController_1 = require("./controllers/contato/DeletaContatoController");
+const CriaPlanoController_1 = require("./controllers/plano/CriaPlanoController");
 const uploadUser = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageTypes.s3 : multer_2.storageTypes.local,
@@ -110,3 +111,4 @@ rotas.put('/profissional', authenticator_1.Authenticator, uploadUser.single('ava
 rotas.get('/profissional', new BucaProfissionalController_1.BuscaProfissionalController().handle);
 rotas.get('/profissionais', new ListarProfissionalController_1.ListarProfissionalController().handle);
 rotas.get('/profissao/profissionais', new PorProfissaoController_1.PorProfissaoController().handle);
+rotas.post('/plano', new CriaPlanoController_1.CriaPlanoController().handle);
