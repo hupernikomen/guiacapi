@@ -3,7 +3,7 @@ import { AtualizarProfissionalService } from '../../services/profissional/Atuali
 
 class AtualizarProfissionalController {
     async handle(req: Request, res: Response) {
-        const usuarioID = req.query.usuarioID as string
+        const profissionalID = req.query.profissionalID as string
         const {
             nome,
             bio,
@@ -19,7 +19,7 @@ class AtualizarProfissionalController {
         const atualizarProfissionalService = new AtualizarProfissionalService();
 
         const profissional = await atualizarProfissionalService.execute({
-            usuarioID,
+            profissionalID,
             avatar: file,
             nome,
             bio,

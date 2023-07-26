@@ -1,7 +1,7 @@
 import prismaClient from "../../prisma"
 
 interface profissionalRequest {
-    usuarioID: string,
+    profissionalID: string,
     profissaoID:string,
     avatar: object,
     nome: string,
@@ -13,7 +13,7 @@ interface profissionalRequest {
 
 class AtualizarProfissionalService {
     async execute({
-        usuarioID,
+        profissionalID,
         profissaoID,
         avatar,
         nome,
@@ -26,17 +26,16 @@ class AtualizarProfissionalService {
 
         const profissional_existe = await prismaClient.profissional.findFirst({
             where: {
-                usuarioID
+                id: profissionalID
             }
         })
 
-        if (!profissional_existe) {
-            throw new Error("Ops, infelizmente não encontramos!");
-        }
+        if (!profissional_existe) throw new Error("Ops, infelizmente não encontramos!");
+
 
         const profissional = await prismaClient.profissional.updateMany({
             where: {
-                usuarioID
+                id: profissionalID
             },
             data: {
                 nome,

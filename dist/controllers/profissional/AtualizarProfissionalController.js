@@ -14,13 +14,13 @@ const AtualizarProfissionalService_1 = require("../../services/profissional/Atua
 class AtualizarProfissionalController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const usuarioID = req.query.usuarioID;
+            const profissionalID = req.query.profissionalID;
             const { nome, bio, endereco, lista_servicos, bairro, profissaoID } = req.body;
             const file = req.file;
             const files = req.files;
             const atualizarProfissionalService = new AtualizarProfissionalService_1.AtualizarProfissionalService();
             const profissional = yield atualizarProfissionalService.execute({
-                usuarioID,
+                profissionalID,
                 avatar: file,
                 nome,
                 bio,

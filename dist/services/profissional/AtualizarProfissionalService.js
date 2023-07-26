@@ -15,19 +15,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AtualizarProfissionalService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class AtualizarProfissionalService {
-    execute({ usuarioID, profissaoID, avatar, nome, bio, endereco, lista_servicos, bairro, }) {
+    execute({ profissionalID, profissaoID, avatar, nome, bio, endereco, lista_servicos, bairro, }) {
         return __awaiter(this, void 0, void 0, function* () {
             const profissional_existe = yield prisma_1.default.profissional.findFirst({
                 where: {
-                    usuarioID
+                    id: profissionalID
                 }
             });
-            if (!profissional_existe) {
+            if (!profissional_existe)
                 throw new Error("Ops, infelizmente não encontramos!");
-            }
             const profissional = yield prisma_1.default.profissional.updateMany({
                 where: {
-                    usuarioID
+                    id: profissionalID
                 },
                 data: {
                     nome,
