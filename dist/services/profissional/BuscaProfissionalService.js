@@ -17,15 +17,11 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class BuscaProfissionalService {
     execute({ profissionalID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const profissional = yield prisma_1.default.profissional.findFirst({
+            const profissional = yield prisma_1.default.profissional.findUnique({
                 where: {
-                    profissaoID: profissionalID,
-                    usuario: {
-                        status: true
-                    }
+                    id: profissionalID,
                 },
                 select: {
-                    usuario: true,
                     id: true,
                     nome: true,
                     avatar: true,

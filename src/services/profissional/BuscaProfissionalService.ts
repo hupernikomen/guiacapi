@@ -10,17 +10,12 @@ class BuscaProfissionalService {
         profissionalID
     }: profissionalRequest) {
 
-        const profissional = await prismaClient.profissional.findFirst({
+        const profissional = await prismaClient.profissional.findUnique({
 
             where: {
-                profissaoID: profissionalID,
-                usuario: {
-                    status: true
-                }
-
+                id: profissionalID,
             },
             select: {
-                usuario: true,
                 id: true,
                 nome: true,
                 avatar: true,
@@ -29,7 +24,7 @@ class BuscaProfissionalService {
                 endereco: true,
                 profissaoID: true,
                 lista_servicos: true,
-                album:true,
+                album: true,
                 profissao: {
                     select: {
                         nome: true
