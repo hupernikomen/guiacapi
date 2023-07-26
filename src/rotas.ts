@@ -48,9 +48,6 @@ import { DeletaProdutoController } from './controllers/produto/DeletaProdutoCont
 import { AtualizaProfissaoController } from './controllers/profissao/AtualizaProfissaoController';
 import { DeletaCategoriaController } from './controllers/categoria/DeletaCategoriaController';
 import { ListarBannersController } from './controllers/banner/ListarBannersController';
-import { CriaAlbumController } from './controllers/album/CriaAlbumController';
-import { ListarAlbumController } from './controllers/album/ListarAlbumController';
-import { DeletarAlbumController } from './controllers/album/DeletarAlbumController';
 import { DeletarContatoController } from './controllers/contato/DeletaContatoController';
 import { CriaPlanoController } from './controllers/plano/CriaPlanoController';
 
@@ -111,10 +108,6 @@ rotas.get('/lojas', new ListaLojasController().handle)
 rotas.get('/loja', new BuscaLojaController().handle)
 rotas.post('/loja', new CriaLojaController().handle)
 
-
-rotas.post('/albumprofissional', uploadUser.single('imagem'), new CriaAlbumController().handle)
-rotas.get('/albuns', new ListarAlbumController().handle)
-rotas.delete('/album', new DeletarAlbumController().handle)
 
 rotas.post('/profissional', new CriaProfissionalController().handle)
 rotas.post('/profissao', new CriaProfissaoController().handle)

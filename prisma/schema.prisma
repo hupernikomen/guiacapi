@@ -163,7 +163,6 @@ model Profissional {
   lista_servicos String[]
   profissaoID    String?
   usuarioID      String?
-  album          Album[]
 
   usuario   Usuario?   @relation(fields: [usuarioID], references: [id])
   profissao Profissao? @relation(fields: [profissaoID], references: [id])
@@ -173,14 +172,7 @@ model Profissional {
   @@map("profissionais")
 }
 
-model Album {
-  id             String       @id @default(uuid())
-  imagem         Json[]
-  profissional   Profissional @relation(fields: [profissionalID], references: [id])
-  profissionalID String
 
-  @@map("albuns")
-}
 
 model Profissao {
   id     String  @id @default(uuid())
