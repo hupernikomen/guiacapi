@@ -22,6 +22,7 @@ class DetalheProdutoService {
           select: {
             id: true,
             nome: true,
+            delivery:true,
             avatar: true,
             usuarioID:true
           }
