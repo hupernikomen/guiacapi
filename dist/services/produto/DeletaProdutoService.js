@@ -29,6 +29,9 @@ class DeletaProdutoService {
                     id: produtoID
                 }
             });
+            if (!produto) {
+                throw new Error("Produto não existe");
+            }
             // Apagar imagens do S3 da Amazon
             (_a = produto.imagens) === null || _a === void 0 ? void 0 : _a.forEach((item) => {
                 var params = { Bucket: process.env.BUCKETEER_BUCKET_NAME, Key: item.key };
@@ -39,9 +42,6 @@ class DeletaProdutoService {
                         console.log(); // deleted
                 });
             });
-            if (!produto) {
-                throw new Error("Produto não existe");
-            }
             const produtoDelete = yield prisma_1.default.produto.delete({
                 where: {
                     id: produtoID

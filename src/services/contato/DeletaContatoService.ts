@@ -1,11 +1,4 @@
 import prismaClient from "../../prisma";
-import AWS from 'aws-sdk';
-
-let s3 = new AWS.S3({
-  accessKeyId: process.env.ACCESS_KEY_ID,
-  secretAccessKey: process.env.SECRET_ACCESS_KEY,
-  region: 'us-east-1',
-});
 
 interface DeleteContatoRequest {
   contatoID: string,
@@ -23,25 +16,13 @@ class DeletaContatoService {
       }
     })
 
-    // Apagar imagens do S3 da Amazon
-    // var params = { Bucket: process.env.BUCKETEER_BUCKET_NAME, Key: contato.avatar.key };
-    // s3.deleteObject(params, function (err, data) {
-    //   if (err) console.log(err, err.stack);  // error
-    //   else console.log();                 // deleted
-    // })
-
-    if (!contato) {
-      throw new Error("Contato não existe");
-    }
+    if (!contato) throw new Error("Contato não existe");
 
     const contatoDelete = await prismaClient.contato.delete({
       where: {
         id: contatoID
       }
     })
-
-    console.log(contatoDelete, 'IMAGAGAGAGGAG');
-    
 
     return contatoDelete
 

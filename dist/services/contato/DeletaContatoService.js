@@ -14,12 +14,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DeletaContatoService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
-const aws_sdk_1 = __importDefault(require("aws-sdk"));
-let s3 = new aws_sdk_1.default.S3({
-    accessKeyId: process.env.ACCESS_KEY_ID,
-    secretAccessKey: process.env.SECRET_ACCESS_KEY,
-    region: 'us-east-1',
-});
 class DeletaContatoService {
     execute({ contatoID }) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -28,21 +22,13 @@ class DeletaContatoService {
                     id: contatoID
                 }
             });
-            // Apagar imagens do S3 da Amazon
-            // var params = { Bucket: process.env.BUCKETEER_BUCKET_NAME, Key: contato.avatar.key };
-            // s3.deleteObject(params, function (err, data) {
-            //   if (err) console.log(err, err.stack);  // error
-            //   else console.log();                 // deleted
-            // })
-            if (!contato) {
+            if (!contato)
                 throw new Error("Contato não existe");
-            }
             const contatoDelete = yield prisma_1.default.contato.delete({
                 where: {
                     id: contatoID
                 }
             });
-            console.log(contatoDelete, 'IMAGAGAGAGGAG');
             return contatoDelete;
         });
     }
