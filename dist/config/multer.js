@@ -71,7 +71,7 @@ exports.storageProdutos = {
                 if (err)
                     cb(err);
                 const fileHash = crypto_1.default.randomBytes(16).toString("hex");
-                const fileName = `public/${fileHash}-${file.originalname}`;
+                const fileName = `produtos/${fileHash}-${file.originalname}`;
                 cb(null, fileName);
             });
         },

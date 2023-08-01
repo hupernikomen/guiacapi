@@ -81,7 +81,7 @@ export const storageProdutos = {
       crypto.randomBytes(16, (err, hash) => {
         if (err) cb(err);
         const fileHash = crypto.randomBytes(16).toString("hex");
-        const fileName = `public/${fileHash}-${file.originalname}`;
+        const fileName = `produtos/${fileHash}-${file.originalname}`;
 
         cb(null, fileName);
       });
