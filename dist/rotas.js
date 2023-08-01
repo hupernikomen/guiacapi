@@ -53,9 +53,16 @@ const DeletaCategoriaController_1 = require("./controllers/categoria/DeletaCateg
 const ListarBannersController_1 = require("./controllers/banner/ListarBannersController");
 const DeletaContatoController_1 = require("./controllers/contato/DeletaContatoController");
 const CriaPlanoController_1 = require("./controllers/plano/CriaPlanoController");
-const uploadUser = (0, multer_1.default)({
+const uploadProdutos = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
-    storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageTypes.s3 : multer_2.storageTypes.local,
+    storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageProdutos.s3 : multer_2.storageProdutos.local,
+    limits: {
+        fileSize: 1 * 1024 * 1024, // MAX 1MB
+    }
+});
+const uploadAvatar = (0, multer_1.default)({
+    fileFilter: multer_2.fileFilter,
+    storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageAvatar.s3 : multer_2.storageAvatar.local,
     limits: {
         fileSize: 1 * 1024 * 1024, // MAX 1MB
     }
@@ -66,7 +73,7 @@ rotas.post('/usuario', new CriaUsuarioController_1.CriaUsuarioController().handl
 rotas.put('/usuario', new AtualizaUsuarioController_1.AtualizaUsuarioController().handle);
 rotas.post('/login', new AutenticaUsuarioController_1.AutenticaUsuarioController().handle);
 rotas.get('/banners', new ListarBannersController_1.ListarBannersController().handle);
-rotas.post('/banner', uploadUser.single('imagem'), new CriaBannerController_1.CriaBannerController().handle);
+rotas.post('/banner', uploadProdutos.single('imagem'), new CriaBannerController_1.CriaBannerController().handle);
 rotas.get('/categorias', new ListaCategoriaController_1.ListaCategoriaController().handle);
 rotas.post('/categoria', new CriaCategoriaController_1.CriaCategoriaController().handle);
 rotas.delete('/categoria', new DeletaCategoriaController_1.DeletaCategoriaController().handle);
@@ -78,22 +85,22 @@ rotas.post('/campanha', new CriaCampanhaController_1.CriaCampanhaController().ha
 rotas.put('/campanha', new AtualizaCampanhaController_1.AtualizaCampanhaController().handle);
 rotas.get('/campanhas', new ListaCampanhasInativasController_1.ListaCampanhasInativasController().handle);
 rotas.post('/posto', new CriaPostoController_1.CriaPostoController().handle);
-rotas.put('/posto', uploadUser.single('avatar'), new AtualizaPostoController_1.AtualizaPostoController().handle);
+rotas.put('/posto', uploadAvatar.single('avatar'), new AtualizaPostoController_1.AtualizaPostoController().handle);
 rotas.get('/posto', new BuscaPostoController_1.BuscaPostoController().handle);
 rotas.get('/postos', new ListaPostosController_1.ListarPostosController().handle);
 rotas.put('/produto', authenticator_1.Authenticator, new AtualizaProdutoController_1.AtualizaProdutoController().handle);
-rotas.post('/produto', authenticator_1.Authenticator, uploadUser.array('files', 5), new CriaProdutoController_1.CriaProdutoController().handle);
+rotas.post('/produto', authenticator_1.Authenticator, uploadProdutos.array('files', 5), new CriaProdutoController_1.CriaProdutoController().handle);
 rotas.get('/produtos', new ListarProdutosController_1.ListarProdutosController().handle);
 rotas.get('/produtos/categoria', new PorCategoriaProdutoController_1.PorCategoriaProdutoController().handle);
 rotas.delete('/produto', authenticator_1.Authenticator, new DeletaProdutoController_1.DeletaProdutoController().handle);
 rotas.get('/detalhe/produto', new DetalheProdutoController_1.DetalheProdutoController().handle);
 rotas.post('/mapa', new CriaMapaController_1.CriaMapaController().handle);
 rotas.get('/mapa', new BuscaMapaController_1.BuscaMapaController().handle);
-rotas.post('/contato', authenticator_1.Authenticator, uploadUser.single('avatar'), new CriaContatoController_1.CriaContatoController().handle);
+rotas.post('/contato', authenticator_1.Authenticator, uploadAvatar.single('avatar'), new CriaContatoController_1.CriaContatoController().handle);
 rotas.get('/contatos', new ListaContatosController_1.ListaContatosController().handle);
 rotas.delete('/contato', new DeletaContatoController_1.DeletarContatoController().handle);
 rotas.get('/loja/logado', authenticator_1.Authenticator, new LojaLogadaController_1.LojaLogadaController().handle);
-rotas.put('/loja', authenticator_1.Authenticator, uploadUser.single('avatar'), new AtualizaLojaController_1.AtualizaLojaController().handle);
+rotas.put('/loja', authenticator_1.Authenticator, uploadAvatar.single('avatar'), new AtualizaLojaController_1.AtualizaLojaController().handle);
 rotas.get('/lojas', new ListaLojasController_1.ListaLojasController().handle);
 rotas.get('/loja', new BuscaLojaController_1.BuscaLojaController().handle);
 rotas.post('/loja', new CriaLojaController_1.CriaLojaController().handle);
@@ -101,7 +108,7 @@ rotas.post('/profissional', new CriaProfissionalController_1.CriaProfissionalCon
 rotas.post('/profissao', new CriaProfissaoController_1.CriaProfissaoController().handle);
 rotas.get('/profissoes', new ListaProfissaoController_1.ListaProfissaoController().handle);
 rotas.put('/profissao', new AtualizaProfissaoController_1.AtualizaProfissaoController().handle);
-rotas.put('/profissional', authenticator_1.Authenticator, uploadUser.single('avatar'), new AtualizarProfissionalController_1.AtualizarProfissionalController().handle);
+rotas.put('/profissional', authenticator_1.Authenticator, uploadAvatar.single('avatar'), new AtualizarProfissionalController_1.AtualizarProfissionalController().handle);
 rotas.get('/profissional', new BucaProfissionalController_1.BuscaProfissionalController().handle);
 rotas.get('/profissionais', new ListarProfissionalController_1.ListarProfissionalController().handle);
 rotas.get('/profissao/profissionais', new PorProfissaoController_1.PorProfissaoController().handle);

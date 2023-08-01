@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.storageTypes = exports.fileFilter = void 0;
+exports.storageAvatar = exports.storageProdutos = exports.fileFilter = void 0;
 const multer_1 = __importDefault(require("multer"));
 const crypto_1 = __importDefault(require("crypto"));
 const path_1 = __importDefault(require("path"));
@@ -50,7 +50,7 @@ function fileFilter(req, file, callback) {
     callback(null, true);
 }
 exports.fileFilter = fileFilter;
-exports.storageTypes = {
+exports.storageProdutos = {
     local: multer_1.default.diskStorage({
         destination: (req, file, cb) => {
             cb(null, path_1.default.resolve(__dirname, '..', '..', 'files', 'users'));
@@ -72,6 +72,33 @@ exports.storageTypes = {
                     cb(err);
                 const fileHash = crypto_1.default.randomBytes(16).toString("hex");
                 const fileName = `public/${fileHash}-${file.originalname}`;
+                cb(null, fileName);
+            });
+        },
+    }),
+};
+exports.storageAvatar = {
+    local: multer_1.default.diskStorage({
+        destination: (req, file, cb) => {
+            cb(null, path_1.default.resolve(__dirname, '..', '..', 'files', 'users'));
+        },
+        filename: (request, file, callback) => {
+            const fileHash = crypto_1.default.randomBytes(16).toString("hex");
+            const fileName = `${fileHash}-${file.originalname}`;
+            return callback(null, fileName);
+        },
+    }),
+    s3: (0, multer_s3_1.default)({
+        s3: s3,
+        bucket: process.env.BUCKETEER_BUCKET_NAME,
+        contentType: multer_s3_1.default.AUTO_CONTENT_TYPE,
+        acl: "public-read",
+        key: (req, file, cb) => {
+            crypto_1.default.randomBytes(16, (err, hash) => {
+                if (err)
+                    cb(err);
+                const fileHash = crypto_1.default.randomBytes(16).toString("hex");
+                const fileName = `avatar/${fileHash}-${file.originalname}`;
                 cb(null, fileName);
             });
         },

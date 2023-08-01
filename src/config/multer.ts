@@ -60,7 +60,7 @@ export function fileFilter(req, file, callback) {
   callback(null, true);
 }
 
-export const storageTypes = {
+export const storageProdutos = {
   local: multer.diskStorage({
     destination: (req, file, cb) => {
       cb(null, path.resolve(__dirname, '..', '..', 'files', 'users'));
@@ -82,6 +82,35 @@ export const storageTypes = {
         if (err) cb(err);
         const fileHash = crypto.randomBytes(16).toString("hex");
         const fileName = `public/${fileHash}-${file.originalname}`;
+
+        cb(null, fileName);
+      });
+    },
+  }),
+};
+
+export const storageAvatar = {
+  local: multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, path.resolve(__dirname, '..', '..', 'files', 'users'));
+    },
+    filename: (request, file, callback) => {
+      const fileHash = crypto.randomBytes(16).toString("hex");
+      const fileName = `${fileHash}-${file.originalname}`
+
+      return callback(null, fileName)
+    },
+  }),
+  s3: multerS3({
+    s3: s3,
+    bucket: process.env.BUCKETEER_BUCKET_NAME,
+    contentType: multerS3.AUTO_CONTENT_TYPE,
+    acl: "public-read",
+    key: (req, file, cb) => {
+      crypto.randomBytes(16, (err, hash) => {
+        if (err) cb(err);
+        const fileHash = crypto.randomBytes(16).toString("hex");
+        const fileName = `avatar/${fileHash}-${file.originalname}`;
 
         cb(null, fileName);
       });

@@ -23,13 +23,11 @@ class AtualizaService {
                     id: usuarioID
                 }
             });
-            if (!usuario_existe) {
+            if (!usuario_existe)
                 throw new Error("Ops, infelizmente não encontramos!");
-            }
             let passwordCripto;
-            if (senha) {
+            if (senha)
                 passwordCripto = yield (0, bcryptjs_1.hash)(senha, 8);
-            }
             const usuario = yield prisma_1.default.usuario.update({
                 where: {
                     id: usuarioID

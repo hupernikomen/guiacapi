@@ -14,9 +14,8 @@ class CriaUsuarioService {
         regiaoID
     }: usuarioRequest) {
 
-        if (!email) {
-            throw new Error("informe seu email");
-        }
+        if (!email) throw new Error("informe seu email");
+        
 
         const usuarioExiste = await prismaClient.usuario.findFirst({
             where: {
@@ -24,9 +23,8 @@ class CriaUsuarioService {
             }
         })
 
-        if (usuarioExiste) {
-            throw new Error("Usuário já cadastrado!");
-        }
+        if (usuarioExiste) throw new Error("Usuário já cadastrado!");
+        
 
         const passwordCripto = await hash(senha, 8)
 
@@ -42,8 +40,6 @@ class CriaUsuarioService {
             }
 
         })
-
-
 
         return usuario
 

@@ -4,7 +4,7 @@ import 'dotenv/config';
 
 import { Authenticator } from './middlewares/authenticator';
 
-import { fileFilter, storageTypes } from './config/multer'
+import { fileFilter, storageProdutos, storageAvatar } from './config/multer'
 
 import { LojaLogadaController } from './controllers/loja/LojaLogadaController';
 import { AutenticaUsuarioController } from './controllers/usuario/AutenticaUsuarioController';
@@ -51,9 +51,17 @@ import { ListarBannersController } from './controllers/banner/ListarBannersContr
 import { DeletarContatoController } from './controllers/contato/DeletaContatoController';
 import { CriaPlanoController } from './controllers/plano/CriaPlanoController';
 
-const uploadUser = multer({
+const uploadProdutos = multer({
   fileFilter: fileFilter,
-  storage: process.env.TYPE_STORAGE === 'S3' ? storageTypes.s3 : storageTypes.local,
+  storage: process.env.TYPE_STORAGE === 'S3' ? storageProdutos.s3 : storageProdutos.local,
+  limits: {
+    fileSize: 1 * 1024 * 1024, // MAX 1MB
+  }
+})
+
+const uploadAvatar = multer({
+  fileFilter: fileFilter,
+  storage: process.env.TYPE_STORAGE === 'S3' ? storageAvatar.s3 : storageAvatar.local,
   limits: {
     fileSize: 1 * 1024 * 1024, // MAX 1MB
   }
@@ -67,7 +75,7 @@ rotas.put('/usuario', new AtualizaUsuarioController().handle)
 rotas.post('/login', new AutenticaUsuarioController().handle)
 
 rotas.get('/banners', new ListarBannersController().handle)
-rotas.post('/banner', uploadUser.single('imagem'), new CriaBannerController().handle)
+rotas.post('/banner', uploadProdutos.single('imagem'), new CriaBannerController().handle)
 
 rotas.get('/categorias', new ListaCategoriaController().handle)
 rotas.post('/categoria', new CriaCategoriaController().handle)
@@ -84,12 +92,12 @@ rotas.put('/campanha', new AtualizaCampanhaController().handle)
 rotas.get('/campanhas', new ListaCampanhasInativasController().handle)
 
 rotas.post('/posto', new CriaPostoController().handle)
-rotas.put('/posto', uploadUser.single('avatar'), new AtualizaPostoController().handle)
+rotas.put('/posto', uploadAvatar.single('avatar'), new AtualizaPostoController().handle)
 rotas.get('/posto', new BuscaPostoController().handle)
 rotas.get('/postos', new ListarPostosController().handle)
 
 rotas.put('/produto', Authenticator, new AtualizaProdutoController().handle)
-rotas.post('/produto', Authenticator, uploadUser.array('files', 5), new CriaProdutoController().handle)
+rotas.post('/produto', Authenticator, uploadProdutos.array('files', 5), new CriaProdutoController().handle)
 rotas.get('/produtos', new ListarProdutosController().handle)
 rotas.get('/produtos/categoria', new PorCategoriaProdutoController().handle)
 rotas.delete('/produto', Authenticator, new DeletaProdutoController().handle)
@@ -98,12 +106,12 @@ rotas.get('/detalhe/produto', new DetalheProdutoController().handle)
 rotas.post('/mapa', new CriaMapaController().handle)
 rotas.get('/mapa', new BuscaMapaController().handle)
 
-rotas.post('/contato', Authenticator, uploadUser.single('avatar'), new CriaContatoController().handle)
+rotas.post('/contato', Authenticator, uploadAvatar.single('avatar'), new CriaContatoController().handle)
 rotas.get('/contatos', new ListaContatosController().handle)
 rotas.delete('/contato', new DeletarContatoController().handle)
 
 rotas.get('/loja/logado', Authenticator, new LojaLogadaController().handle)
-rotas.put('/loja', Authenticator, uploadUser.single('avatar'), new AtualizaLojaController().handle)
+rotas.put('/loja', Authenticator, uploadAvatar.single('avatar'), new AtualizaLojaController().handle)
 rotas.get('/lojas', new ListaLojasController().handle)
 rotas.get('/loja', new BuscaLojaController().handle)
 rotas.post('/loja', new CriaLojaController().handle)
@@ -113,7 +121,7 @@ rotas.post('/profissional', new CriaProfissionalController().handle)
 rotas.post('/profissao', new CriaProfissaoController().handle)
 rotas.get('/profissoes', new ListaProfissaoController().handle)
 rotas.put('/profissao', new AtualizaProfissaoController().handle)
-rotas.put('/profissional', Authenticator, uploadUser.single('avatar'), new AtualizarProfissionalController().handle)
+rotas.put('/profissional', Authenticator, uploadAvatar.single('avatar'), new AtualizarProfissionalController().handle)
 rotas.get('/profissional', new BuscaProfissionalController().handle)
 rotas.get('/profissionais', new ListarProfissionalController().handle)
 rotas.get('/profissao/profissionais', new PorProfissaoController().handle)

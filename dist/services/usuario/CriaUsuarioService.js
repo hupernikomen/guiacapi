@@ -18,17 +18,15 @@ const bcryptjs_1 = require("bcryptjs");
 class CriaUsuarioService {
     execute({ email, senha, regiaoID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            if (!email) {
+            if (!email)
                 throw new Error("informe seu email");
-            }
             const usuarioExiste = yield prisma_1.default.usuario.findFirst({
                 where: {
                     email
                 }
             });
-            if (usuarioExiste) {
+            if (usuarioExiste)
                 throw new Error("Usuário já cadastrado!");
-            }
             const passwordCripto = yield (0, bcryptjs_1.hash)(senha, 8);
             const usuario = yield prisma_1.default.usuario.create({
                 data: {

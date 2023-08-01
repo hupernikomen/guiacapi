@@ -22,14 +22,11 @@ class AtualizaService {
         })
         
         
-        if (!usuario_existe) {
-            throw new Error("Ops, infelizmente não encontramos!");
-        }
+        if (!usuario_existe) throw new Error("Ops, infelizmente não encontramos!");
+        
         
         let passwordCripto: string
-        if (senha) {
-            passwordCripto = await hash(senha, 8)
-        }
+        if (senha) passwordCripto = await hash(senha, 8)
 
 
         const usuario = await prismaClient.usuario.update({

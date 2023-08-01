@@ -12,8 +12,6 @@ class AutenticaService {
         senha
     }: AuthRequest) {
 
-
-
         if (!email) {
             throw new Error("não cadastrado");
         }
