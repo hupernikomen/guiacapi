@@ -29,13 +29,11 @@ class DeletaContatoService {
                 }
             });
             // Apagar imagens do S3 da Amazon
-            var params = { Bucket: process.env.BUCKETEER_BUCKET_NAME, Key: contato.avatar[0].key };
-            s3.deleteObject(params, function (err, data) {
-                if (err)
-                    console.log(err, err.stack); // error
-                else
-                    console.log(); // deleted
-            });
+            // var params = { Bucket: process.env.BUCKETEER_BUCKET_NAME, Key: contato.avatar.key };
+            // s3.deleteObject(params, function (err, data) {
+            //   if (err) console.log(err, err.stack);  // error
+            //   else console.log();                 // deleted
+            // })
             if (!contato) {
                 throw new Error("Contato não existe");
             }
@@ -44,6 +42,7 @@ class DeletaContatoService {
                     id: contatoID
                 }
             });
+            console.log(contatoDelete, 'IMAGAGAGAGGAG');
             return contatoDelete;
         });
     }
