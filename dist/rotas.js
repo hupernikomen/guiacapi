@@ -53,6 +53,7 @@ const DeletaCategoriaController_1 = require("./controllers/categoria/DeletaCateg
 const ListarBannersController_1 = require("./controllers/banner/ListarBannersController");
 const DeletaContatoController_1 = require("./controllers/contato/DeletaContatoController");
 const CriaPlanoController_1 = require("./controllers/plano/CriaPlanoController");
+const ListarPlanosController_1 = require("./controllers/plano/ListarPlanosController");
 const uploadProdutos = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageProdutos.s3 : multer_2.storageProdutos.local,
@@ -113,3 +114,4 @@ rotas.get('/profissional', new BucaProfissionalController_1.BuscaProfissionalCon
 rotas.get('/profissionais', new ListarProfissionalController_1.ListarProfissionalController().handle);
 rotas.get('/profissao/profissionais', new PorProfissaoController_1.PorProfissaoController().handle);
 rotas.post('/plano', new CriaPlanoController_1.CriaPlanoController().handle);
+rotas.get('/planos', new ListarPlanosController_1.ListarPlanosController().handle);

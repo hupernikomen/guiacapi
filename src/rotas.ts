@@ -50,6 +50,7 @@ import { DeletaCategoriaController } from './controllers/categoria/DeletaCategor
 import { ListarBannersController } from './controllers/banner/ListarBannersController';
 import { DeletarContatoController } from './controllers/contato/DeletaContatoController';
 import { CriaPlanoController } from './controllers/plano/CriaPlanoController';
+import { ListarPlanosController } from './controllers/plano/ListarPlanosController';
 
 const uploadProdutos = multer({
   fileFilter: fileFilter,
@@ -128,6 +129,7 @@ rotas.get('/profissao/profissionais', new PorProfissaoController().handle)
 
 
 rotas.post('/plano', new CriaPlanoController().handle)
+rotas.get('/planos', new ListarPlanosController().handle)
 
 
 
