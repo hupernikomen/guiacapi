@@ -55,6 +55,7 @@ const DeletaContatoController_1 = require("./controllers/contato/DeletaContatoCo
 const CriaPlanoController_1 = require("./controllers/plano/CriaPlanoController");
 const ListarPlanosController_1 = require("./controllers/plano/ListarPlanosController");
 const CriaSubCategoriaController_1 = require("./controllers/subcategoria/CriaSubCategoriaController");
+const ListaSubCategoriasController_1 = require("./controllers/subcategoria/ListaSubCategoriasController");
 const uploadProdutos = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageProdutos.s3 : multer_2.storageProdutos.local,
@@ -81,6 +82,7 @@ rotas.post('/categoria', new CriaCategoriaController_1.CriaCategoriaController()
 rotas.delete('/categoria', new DeletaCategoriaController_1.DeletaCategoriaController().handle);
 rotas.put('/categoria', new AtualizaCategoriaController_1.AtualizaCategoriaController().handle);
 rotas.post('/subcategoria', new CriaSubCategoriaController_1.CriaSubCategoriaController().handle);
+rotas.get('/subcategorias', new ListaSubCategoriasController_1.ListaSubCategoriaController().handle);
 rotas.post('/regiao', new CriaRegiaoController_1.CriaRegiaoController().handle);
 rotas.get('/regioes', new ListarRegioesController_1.ListarRegioesController().handle);
 rotas.get('/campanhas/ativas', new ListaCampanhaController_1.ListaCampanhaController().handle);
