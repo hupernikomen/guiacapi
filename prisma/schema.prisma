@@ -134,10 +134,21 @@ model Categoria {
   nome String
 
   produto Produto[]
+  subCategoria SubCategoria[]
 
   createdAt DateTime? @default(now())
 
   @@map("categorias")
+}
+
+model SubCategoria {
+  id   String @id @default(uuid())
+  nome String
+
+  categoria Categoria @relation(fields: [categoriaID], references: [id])
+  categoriaID String
+
+  @@map("subcategorias")
 }
 
 model Campanha {
@@ -172,8 +183,6 @@ model Profissional {
   @@map("profissionais")
 }
 
-
-
 model Profissao {
   id     String  @id @default(uuid())
   nome   String
@@ -206,9 +215,9 @@ model Posto {
 }
 
 model Plano {
-  id String @id @default(uuid())
-  nome String
-  valor String
+  id     String   @id @default(uuid())
+  nome   String
+  valor  String
   oferta String
   pacote String[]
 
@@ -216,5 +225,4 @@ model Plano {
   updatedAt DateTime? @default(now())
 
   @@map("planos")
-
 }

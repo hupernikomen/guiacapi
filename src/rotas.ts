@@ -51,6 +51,7 @@ import { ListarBannersController } from './controllers/banner/ListarBannersContr
 import { DeletarContatoController } from './controllers/contato/DeletaContatoController';
 import { CriaPlanoController } from './controllers/plano/CriaPlanoController';
 import { ListarPlanosController } from './controllers/plano/ListarPlanosController';
+import { CriaSubCategoriaController } from './controllers/subcategoria/CriaSubCategoriaController';
 
 const uploadProdutos = multer({
   fileFilter: fileFilter,
@@ -82,6 +83,8 @@ rotas.get('/categorias', new ListaCategoriaController().handle)
 rotas.post('/categoria', new CriaCategoriaController().handle)
 rotas.delete('/categoria', new DeletaCategoriaController().handle)
 rotas.put('/categoria', new AtualizaCategoriaController().handle)
+
+rotas.post('/subcategoria', new CriaSubCategoriaController().handle)
 
 rotas.post('/regiao', new CriaRegiaoController().handle)
 rotas.get('/regioes', new ListarRegioesController().handle)
