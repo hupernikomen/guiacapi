@@ -22,23 +22,23 @@ class DetalheProdutoService {
           select: {
             id: true,
             nome: true,
-            delivery:true,
+            delivery: true,
             avatar: true,
-            usuarioID:true
+            usuarioID: true
           }
         },
         categoria: {
           select: {
             id: true,
             nome: true,
-            subCategoria:true
           },
         },
+        subcategoriaID: true,
         campanha: {
           select: {
             id: true,
             nome: true,
-            tema:true
+            tema: true
           }
         }
       },
