@@ -8,6 +8,7 @@ interface ProductRequest {
   tamanho: string,
   imagens: object,
   categoriaID: string,
+  subcategoriaID:string,
   lojaID: string,
 }
 
@@ -20,6 +21,7 @@ class CriaProdutoService {
     tamanho,
     imagens,
     categoriaID,
+    subcategoriaID,
     lojaID,
   }: ProductRequest) {
     try {
@@ -35,6 +37,7 @@ class CriaProdutoService {
           tamanho,
           imagens,
           categoriaID,
+          subcategoriaID,
           lojaID,
         },
       });

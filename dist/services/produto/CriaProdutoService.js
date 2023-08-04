@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CriaProdutoService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class CriaProdutoService {
-    execute({ codigo, nome, descricao, preco, tamanho, imagens, categoriaID, lojaID, }) {
+    execute({ codigo, nome, descricao, preco, tamanho, imagens, categoriaID, subcategoriaID, lojaID, }) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const produto = yield prisma_1.default.produto.create({
@@ -27,6 +27,7 @@ class CriaProdutoService {
                         tamanho,
                         imagens,
                         categoriaID,
+                        subcategoriaID,
                         lojaID,
                     },
                 });

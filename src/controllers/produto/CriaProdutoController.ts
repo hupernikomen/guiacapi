@@ -13,6 +13,7 @@ class CriaProdutoController {
       descricao,
       tamanho,
       categoriaID,
+      subcategoriaID
     } =
       req.body;
 
@@ -29,6 +30,7 @@ class CriaProdutoController {
       tamanho,
       imagens: req.files,
       categoriaID,
+      subcategoriaID,
       lojaID,
     })
 
