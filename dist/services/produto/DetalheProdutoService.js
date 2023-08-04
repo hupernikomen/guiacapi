@@ -42,6 +42,7 @@ class DetalheProdutoService {
                         select: {
                             id: true,
                             nome: true,
+                            subCategoria: true
                         },
                     },
                     campanha: {
