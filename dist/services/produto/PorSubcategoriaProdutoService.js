@@ -39,6 +39,13 @@ class PorSubcategoriaProdutoService {
                             tema: true
                         }
                     },
+                    subcategoria: {
+                        select: {
+                            _count: true,
+                            id: true,
+                            nome: true
+                        }
+                    },
                     loja: {
                         select: {
                             id: true,

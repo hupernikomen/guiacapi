@@ -10,7 +10,7 @@ class PorSubcategoriaProdutoService {
       where: {
         subcategoriaID,
         loja: {
-          usuario:{
+          usuario: {
             status: true,
           }
         },
@@ -21,18 +21,25 @@ class PorSubcategoriaProdutoService {
         preco: true,
         oferta: true,
         imagens: true,
-        campanha:{
-          select:{
-            id:true,
-            nome:true,
-            tema:true
+        campanha: {
+          select: {
+            id: true,
+            nome: true,
+            tema: true
           }
         },
-        loja:{
-          select:{
-            id:true,
-            nome:true,
-            delivery:true
+        subcategoria: {
+          select: {
+            _count: true,
+            id: true,
+            nome: true
+          }
+        },
+        loja: {
+          select: {
+            id: true,
+            nome: true,
+            delivery: true
           }
         },
       },

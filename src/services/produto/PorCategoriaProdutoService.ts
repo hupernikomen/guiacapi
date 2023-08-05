@@ -33,7 +33,6 @@ class PorCategoriaProdutoService {
            id:true,
            nome:true,
            _count:true,
-           subCategoria:true 
           }
         },
         subcategoriaID:true,
