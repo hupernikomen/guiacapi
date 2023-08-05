@@ -39,6 +39,7 @@ class PorCategoriaProdutoService {
                             tema: true
                         }
                     },
+                    subcategoriaID: true,
                     loja: {
                         select: {
                             id: true,
