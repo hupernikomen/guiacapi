@@ -26,9 +26,7 @@ class CriaProdutoService {
   }: ProductRequest) {
     try {
 
-
       const produto = await prismaClient.produto.create({
-
         data: {
           codigo,
           nome,

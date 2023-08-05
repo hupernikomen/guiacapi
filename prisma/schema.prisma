@@ -120,7 +120,7 @@ model Produto {
   categoria   Categoria @relation(fields: [categoriaID], references: [id])
   categoriaID String
 
-  subcategoria SubCategoria? @relation(fields: [subcategoriaID], references: [id])
+  subcategoria   SubCategoria? @relation(fields: [subcategoriaID], references: [id])
   subcategoriaID String?
 
   campanha   Campanha? @relation(fields: [campanhaID], references: [id])
@@ -136,7 +136,7 @@ model Categoria {
   id   String @id @default(uuid())
   nome String
 
-  produto Produto[]
+  produto      Produto[]
   subCategoria SubCategoria[]
 
   createdAt DateTime? @default(now())
@@ -148,9 +148,9 @@ model SubCategoria {
   id   String @id @default(uuid())
   nome String
 
-    produto Produto[]
+  produto Produto[]
 
-  categoria Categoria @relation(fields: [categoriaID], references: [id])
+  categoria   Categoria @relation(fields: [categoriaID], references: [id])
   categoriaID String
 
   @@map("subcategorias")
