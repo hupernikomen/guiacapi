@@ -57,6 +57,7 @@ const ListarPlanosController_1 = require("./controllers/plano/ListarPlanosContro
 const CriaSubCategoriaController_1 = require("./controllers/subcategoria/CriaSubCategoriaController");
 const ListaSubCategoriasController_1 = require("./controllers/subcategoria/ListaSubCategoriasController");
 const BuscaSubcategoriaController_1 = require("./controllers/subcategoria/BuscaSubcategoriaController");
+const PorSubcategoriaProdutoController_1 = require("./controllers/produto/PorSubcategoriaProdutoController");
 const uploadProdutos = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageProdutos.s3 : multer_2.storageProdutos.local,
@@ -99,6 +100,7 @@ rotas.put('/produto', authenticator_1.Authenticator, new AtualizaProdutoControll
 rotas.post('/produto', authenticator_1.Authenticator, uploadProdutos.array('files', 5), new CriaProdutoController_1.CriaProdutoController().handle);
 rotas.get('/produtos', new ListarProdutosController_1.ListarProdutosController().handle);
 rotas.get('/produtos/categoria', new PorCategoriaProdutoController_1.PorCategoriaProdutoController().handle);
+rotas.get('/produtos/subcategoria', new PorSubcategoriaProdutoController_1.PorSubcategoriaProdutoController().handle);
 rotas.delete('/produto', authenticator_1.Authenticator, new DeletaProdutoController_1.DeletaProdutoController().handle);
 rotas.get('/detalhe/produto', new DetalheProdutoController_1.DetalheProdutoController().handle);
 rotas.post('/mapa', new CriaMapaController_1.CriaMapaController().handle);

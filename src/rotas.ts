@@ -54,6 +54,7 @@ import { ListarPlanosController } from './controllers/plano/ListarPlanosControll
 import { CriaSubCategoriaController } from './controllers/subcategoria/CriaSubCategoriaController';
 import { ListaSubCategoriaController } from './controllers/subcategoria/ListaSubCategoriasController';
 import { BuscaSubcategoriaController } from './controllers/subcategoria/BuscaSubcategoriaController';
+import { PorSubcategoriaProdutoController } from './controllers/produto/PorSubcategoriaProdutoController';
 
 const uploadProdutos = multer({
   fileFilter: fileFilter,
@@ -108,6 +109,7 @@ rotas.put('/produto', Authenticator, new AtualizaProdutoController().handle)
 rotas.post('/produto', Authenticator, uploadProdutos.array('files', 5), new CriaProdutoController().handle)
 rotas.get('/produtos', new ListarProdutosController().handle)
 rotas.get('/produtos/categoria', new PorCategoriaProdutoController().handle)
+rotas.get('/produtos/subcategoria', new PorSubcategoriaProdutoController().handle)
 rotas.delete('/produto', Authenticator, new DeletaProdutoController().handle)
 rotas.get('/detalhe/produto', new DetalheProdutoController().handle)
 
