@@ -113,13 +113,15 @@ model Produto {
   oferta    Float?   @default(0)
   tamanho   String[]
   imagens   Json[]
-  subcategoriaID String?
 
   loja   Loja   @relation(fields: [lojaID], references: [id])
   lojaID String
 
   categoria   Categoria @relation(fields: [categoriaID], references: [id])
   categoriaID String
+
+  subcategoria SubCategoria? @relation(fields: [subcategoriaID], references: [id])
+  subcategoriaID String?
 
   campanha   Campanha? @relation(fields: [campanhaID], references: [id])
   campanhaID String?
@@ -145,6 +147,8 @@ model Categoria {
 model SubCategoria {
   id   String @id @default(uuid())
   nome String
+
+    produto Produto[]
 
   categoria Categoria @relation(fields: [categoriaID], references: [id])
   categoriaID String
