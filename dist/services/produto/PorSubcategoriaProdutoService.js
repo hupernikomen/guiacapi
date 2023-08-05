@@ -36,14 +36,19 @@ class PorSubcategoriaProdutoService {
                         select: {
                             id: true,
                             nome: true,
-                            tema: true
+                            tema: true,
                         }
                     },
                     subcategoria: {
                         select: {
                             _count: true,
                             id: true,
-                            nome: true
+                            nome: true,
+                            categoria: {
+                                select: {
+                                    nome: true
+                                }
+                            }
                         }
                     },
                     loja: {
