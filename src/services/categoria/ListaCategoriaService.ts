@@ -7,7 +7,6 @@ class ListaCategoriaService {
             select: {
                 id: true,
                 nome: true,
-                subCategoria:true,
                 _count:true,
             }
         })

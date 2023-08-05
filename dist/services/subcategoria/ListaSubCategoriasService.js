@@ -21,6 +21,11 @@ class ListaSubCategoriasService {
                 where: {
                     categoriaID,
                 },
+                select: {
+                    id: true,
+                    nome: true,
+                    _count: true,
+                }
             });
             return subcatgoria;
         });
