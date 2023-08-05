@@ -18,6 +18,11 @@ class ListaSubCategoriasService {
                 id: true,
                 nome: true,
                 _count:true,
+                categoria: {
+                    select:{
+                        nome:true
+                    }
+                }
             }
           
         })
