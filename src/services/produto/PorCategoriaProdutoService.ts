@@ -28,7 +28,14 @@ class PorCategoriaProdutoService {
             tema:true
           }
         },
-        categoria:true,
+        categoria:{
+          select: {
+           id:true,
+           nome:true,
+           _count:true,
+           subCategoria:true 
+          }
+        },
         loja:{
           select:{
             id:true,
