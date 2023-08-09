@@ -27,6 +27,8 @@ model Usuario {
   mapa         Mapa[]
   contato      Contato[]
 
+  createdAt DateTime? @default(now())
+  
   @@map("usuarios")
 }
 
@@ -191,7 +193,6 @@ model Profissional {
 model Profissao {
   id     String  @id @default(uuid())
   nome   String
-  avatar String?
 
   profissional Profissional[]
 
