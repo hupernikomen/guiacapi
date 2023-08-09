@@ -9,7 +9,7 @@ class ListaCategoriaService {
                 nome: true,
                 _count: true,
                 subCategoria: {
-                    select: { nome: true }
+                    select: { nome: true, _count:true }
                 }
             }
         })
