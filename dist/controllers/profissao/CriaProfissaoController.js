@@ -15,10 +15,9 @@ class CriaProfissaoController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const criaProfissaoService = new CriaProfissaoService_1.CriaProfissaoService();
-            const { nome, avatar } = req.body;
+            const { nome } = req.body;
             const profissao = yield criaProfissaoService.execute({
                 nome,
-                avatar
             });
             return res.status(200).json(profissao);
         });

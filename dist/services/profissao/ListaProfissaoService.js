@@ -21,7 +21,6 @@ class ListaProfissaoService {
                 select: {
                     id: true,
                     nome: true,
-                    avatar: true,
                     _count: true,
                 }
             });

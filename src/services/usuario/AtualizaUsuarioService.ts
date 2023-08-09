@@ -36,6 +36,14 @@ class AtualizaService {
             data: {
                 status,
                 senha: passwordCripto
+            },
+            select:{
+                status:true,
+                loja:true,
+                posto:true,
+                profissional:true,
+                email:true
+
             }
         })
 

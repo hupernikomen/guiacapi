@@ -2,7 +2,6 @@ import prismaClient from "../../prisma";
 
 interface profissaoRequest {
     nome: string,
-    avatar:string
 }
 
 class CriaProfissaoService {
@@ -10,15 +9,12 @@ class CriaProfissaoService {
     async execute({
 
         nome,
-        avatar
 
     }: profissaoRequest) {
 
         const profissao = await prismaClient.profissao.create({
             data: {
-               
                 nome,
-                avatar
             }
         })
 

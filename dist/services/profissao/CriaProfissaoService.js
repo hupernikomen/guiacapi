@@ -15,12 +15,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CriaProfissaoService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class CriaProfissaoService {
-    execute({ nome, avatar }) {
+    execute({ nome, }) {
         return __awaiter(this, void 0, void 0, function* () {
             const profissao = yield prisma_1.default.profissao.create({
                 data: {
                     nome,
-                    avatar
                 }
             });
             return profissao;

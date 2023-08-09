@@ -9,13 +9,11 @@ class AtualizaProfissaoController {
 
     const {
         nome,
-        avatar
      } =
       req.body;
 
       const profissao = await atualizaProfissaoService.execute({
         nome,
-        avatar,
         profissaoID
       })
 

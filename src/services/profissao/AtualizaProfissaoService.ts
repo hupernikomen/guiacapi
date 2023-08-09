@@ -2,7 +2,6 @@ import prismaClient from "../../prisma";
 
 interface profissaoRequest {
     nome: string,
-    avatar: string,
     profissaoID: string
 }
 
@@ -10,7 +9,6 @@ class AtualizaProfissaoService {
 
     async execute({
         nome,
-        avatar,
         profissaoID
     }: profissaoRequest) {
 
@@ -20,7 +18,6 @@ class AtualizaProfissaoService {
             },
             data: {
                 nome,
-                avatar
             }
         })
 

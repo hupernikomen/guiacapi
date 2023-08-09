@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AtualizaProfissaoService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class AtualizaProfissaoService {
-    execute({ nome, avatar, profissaoID }) {
+    execute({ nome, profissaoID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const profissao = yield prisma_1.default.profissao.update({
                 where: {
@@ -23,7 +23,6 @@ class AtualizaProfissaoService {
                 },
                 data: {
                     nome,
-                    avatar
                 }
             });
             return profissao;
