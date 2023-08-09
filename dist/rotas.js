@@ -58,6 +58,7 @@ const CriaSubCategoriaController_1 = require("./controllers/subcategoria/CriaSub
 const ListaSubCategoriasController_1 = require("./controllers/subcategoria/ListaSubCategoriasController");
 const BuscaSubcategoriaController_1 = require("./controllers/subcategoria/BuscaSubcategoriaController");
 const PorSubcategoriaProdutoController_1 = require("./controllers/produto/PorSubcategoriaProdutoController");
+const ListarUsuariosController_1 = require("./controllers/usuario/ListarUsuariosController");
 const uploadProdutos = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageProdutos.s3 : multer_2.storageProdutos.local,
@@ -76,6 +77,7 @@ const rotas = (0, express_1.Router)();
 exports.rotas = rotas;
 rotas.post('/usuario', new CriaUsuarioController_1.CriaUsuarioController().handle);
 rotas.put('/usuario', new AtualizaUsuarioController_1.AtualizaUsuarioController().handle);
+rotas.get('/usuarios', new ListarUsuariosController_1.ListarUsuariosController().handle);
 rotas.post('/login', new AutenticaUsuarioController_1.AutenticaUsuarioController().handle);
 rotas.get('/banners', new ListarBannersController_1.ListarBannersController().handle);
 rotas.post('/banner', uploadProdutos.single('imagem'), new CriaBannerController_1.CriaBannerController().handle);

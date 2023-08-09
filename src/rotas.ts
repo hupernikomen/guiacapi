@@ -55,6 +55,8 @@ import { CriaSubCategoriaController } from './controllers/subcategoria/CriaSubCa
 import { ListaSubCategoriaController } from './controllers/subcategoria/ListaSubCategoriasController';
 import { BuscaSubcategoriaController } from './controllers/subcategoria/BuscaSubcategoriaController';
 import { PorSubcategoriaProdutoController } from './controllers/produto/PorSubcategoriaProdutoController';
+import { ListarUsuariosController } from './controllers/usuario/ListarUsuariosController';
+
 
 const uploadProdutos = multer({
   fileFilter: fileFilter,
@@ -77,6 +79,7 @@ const rotas = Router();
 
 rotas.post('/usuario', new CriaUsuarioController().handle)
 rotas.put('/usuario', new AtualizaUsuarioController().handle)
+rotas.get('/usuarios', new ListarUsuariosController().handle)
 rotas.post('/login', new AutenticaUsuarioController().handle)
 
 rotas.get('/banners', new ListarBannersController().handle)
