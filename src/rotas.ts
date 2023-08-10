@@ -57,6 +57,8 @@ import { BuscaSubcategoriaController } from './controllers/subcategoria/BuscaSub
 import { PorSubcategoriaProdutoController } from './controllers/produto/PorSubcategoriaProdutoController';
 import { ListarUsuariosController } from './controllers/usuario/ListarUsuariosController';
 import { BuscaUsuarioController } from './controllers/usuario/BuscarUsuarioController';
+import { AtualizaMapaController } from './controllers/mapa/AtualizaMapaController';
+
 
 
 const uploadProdutos = multer({
@@ -120,6 +122,7 @@ rotas.get('/detalhe/produto', new DetalheProdutoController().handle)
 
 rotas.post('/mapa', new CriaMapaController().handle)
 rotas.get('/mapa', new BuscaMapaController().handle)
+rotas.put('/mapa', new AtualizaMapaController().handle)
 
 rotas.post('/contato', Authenticator, uploadAvatar.single('avatar'), new CriaContatoController().handle)
 rotas.get('/contatos', new ListaContatosController().handle)
