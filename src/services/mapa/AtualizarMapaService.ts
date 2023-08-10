@@ -12,9 +12,9 @@ class AtualizaMapaService {
     usuarioID
   }: mapaRequest) {
 
-    const mapa = await prismaClient.mapa.update({
+    const mapa = await prismaClient.mapa.updateMany({
       where: {
-        id: usuarioID
+        usuarioID
       },
       data: {
         latlng,

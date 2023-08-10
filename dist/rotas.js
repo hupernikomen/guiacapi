@@ -60,6 +60,7 @@ const BuscaSubcategoriaController_1 = require("./controllers/subcategoria/BuscaS
 const PorSubcategoriaProdutoController_1 = require("./controllers/produto/PorSubcategoriaProdutoController");
 const ListarUsuariosController_1 = require("./controllers/usuario/ListarUsuariosController");
 const BuscarUsuarioController_1 = require("./controllers/usuario/BuscarUsuarioController");
+const AtualizaMapaController_1 = require("./controllers/mapa/AtualizaMapaController");
 const uploadProdutos = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageProdutos.s3 : multer_2.storageProdutos.local,
@@ -109,6 +110,7 @@ rotas.delete('/produto', authenticator_1.Authenticator, new DeletaProdutoControl
 rotas.get('/detalhe/produto', new DetalheProdutoController_1.DetalheProdutoController().handle);
 rotas.post('/mapa', new CriaMapaController_1.CriaMapaController().handle);
 rotas.get('/mapa', new BuscaMapaController_1.BuscaMapaController().handle);
+rotas.put('/mapa', new AtualizaMapaController_1.AtualizaMapaController().handle);
 rotas.post('/contato', authenticator_1.Authenticator, uploadAvatar.single('avatar'), new CriaContatoController_1.CriaContatoController().handle);
 rotas.get('/contatos', new ListaContatosController_1.ListaContatosController().handle);
 rotas.delete('/contato', new DeletaContatoController_1.DeletarContatoController().handle);
