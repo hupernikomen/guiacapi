@@ -8,6 +8,7 @@ interface contatoRequest {
     horario: object,
     sabado: boolean,
     domingo: boolean,
+    afastado:boolean,
     usuarioID: string
 }
 
@@ -22,6 +23,7 @@ class CriaContatoService {
         horario,
         sabado,
         domingo,
+        afastado,
         usuarioID
 
     }: contatoRequest) {
@@ -43,6 +45,7 @@ class CriaContatoService {
                 horario,
                 sabado,
                 domingo,
+                afastado,
                 usuarioID
             }
         })

@@ -29,7 +29,8 @@ class ListaContatosService {
                     whatsapp: true,
                     horario: true,
                     sabado: true,
-                    domingo: true
+                    domingo: true,
+                    afastado: true
                 }
             });
             return contato;
