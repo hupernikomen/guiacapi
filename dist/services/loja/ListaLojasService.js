@@ -23,11 +23,6 @@ class ListaLojasService {
                         status: true
                     }
                 },
-                orderBy: {
-                    produtos: {
-                        '_count': 'asc'
-                    }
-                },
                 select: {
                     produtos: true,
                     id: true,
@@ -35,7 +30,6 @@ class ListaLojasService {
                     avatar: true,
                     delivery: true,
                     usuarioID: true,
-                    _count: true
                 }
             });
             return loja;
