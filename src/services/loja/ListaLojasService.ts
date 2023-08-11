@@ -10,6 +10,11 @@ class ListaLojasService {
                     status: true
                 }
             },
+            orderBy:{
+                produtos:{
+                    '_count': 'asc'
+                }
+            },
             select:{
                 produtos:true,
                 id:true,
