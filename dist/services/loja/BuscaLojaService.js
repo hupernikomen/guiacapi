@@ -41,6 +41,9 @@ class BuscaLojaService {
                         }
                     },
                     usuarioID: true,
+                    usuario: {
+                        select: { mapa: { select: { latlng: true } } }
+                    }
                 }
             });
             return loja;

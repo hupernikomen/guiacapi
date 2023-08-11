@@ -17,29 +17,33 @@ class BuscaLojaService {
             },
             select: {
                 id: true,
-                avatar:true,
+                avatar: true,
                 nome: true,
-                endereco:true,
+                endereco: true,
                 produtos: {
-                    select:{
-                        id:true,
-                        categoriaID:true,
-                        campanha:true,
-                        nome:true,
-                        preco:true,
-                        oferta:true,
-                        descricao:true,
-                        tamanho:true,
-                        codigo:true,
-                        imagens:true
+                    select: {
+                        id: true,
+                        categoriaID: true,
+                        campanha: true,
+                        nome: true,
+                        preco: true,
+                        oferta: true,
+                        descricao: true,
+                        tamanho: true,
+                        codigo: true,
+                        imagens: true
                     }
                 },
-                usuarioID:true,
-                
+                usuarioID: true,
+                usuario: {
+                    select: { mapa: { select: { latlng: true } } }
+                }
+
+
             }
         })
 
-        
+
 
         return loja
     }
