@@ -45,7 +45,7 @@ class ListarProdutosService {
                         }
                     },
                     categoria: {
-                        select: { nome: true }
+                        select: { id: true, nome: true }
                     }
                 },
             });
