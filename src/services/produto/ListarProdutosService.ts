@@ -5,30 +5,34 @@ class ListarProdutosService {
     const produto = await prismaClient.produto.findMany({
       where: {
         loja: {
-          usuario:{
+          usuario: {
             status: true,
+
           }
         },
       },
+
       select: {
         id: true,
         nome: true,
         preco: true,
         oferta: true,
         imagens: true,
-        campanha:{
-          select:{
-            id:true,
-            nome:true,
-            tema:true
+        campanha: {
+          select: {
+            id: true,
+            nome: true,
           }
         },
         loja: {
           select: {
             id: true,
             nome: true,
-            delivery:true
+            delivery: true
           }
+        },
+        categoria: {
+          select: { nome: true }
         }
       },
     });
