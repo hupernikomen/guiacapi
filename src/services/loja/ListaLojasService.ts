@@ -10,18 +10,13 @@ class ListaLojasService {
                     status: true
                 }
             },
-            orderBy:{
-                produtos:{
-                    '_count': 'asc'
-                }
-            },
             select:{
                 produtos:true,
                 id:true,
                 nome:true,
                 avatar:true,
                 delivery:true,
-                usuarioID:true
+                usuarioID:true,
             }
         })
 

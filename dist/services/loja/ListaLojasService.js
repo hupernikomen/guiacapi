@@ -34,7 +34,8 @@ class ListaLojasService {
                     nome: true,
                     avatar: true,
                     delivery: true,
-                    usuarioID: true
+                    usuarioID: true,
+                    _count: true
                 }
             });
             return loja;
