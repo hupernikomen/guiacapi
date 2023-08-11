@@ -17,7 +17,15 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class ListarPlanosService {
     execute() {
         return __awaiter(this, void 0, void 0, function* () {
-            const planos = yield prisma_1.default.plano.findMany();
+            const planos = yield prisma_1.default.plano.findMany({
+                select: {
+                    id: true,
+                    nome: true,
+                    pacote: true,
+                    oferta: true,
+                    valor: true
+                }
+            });
             return planos;
         });
     }
