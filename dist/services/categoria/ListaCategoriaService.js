@@ -24,6 +24,19 @@ class ListaCategoriaService {
                     _count: true,
                     subCategoria: {
                         select: { nome: true, _count: true }
+                    },
+                    produto: {
+                        select: {
+                            loja: {
+                                select: {
+                                    usuario: {
+                                        select: {
+                                            status: true
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             });
