@@ -40,16 +40,18 @@ class DetalheProdutoService {
                     },
                     categoria: {
                         select: {
-                            id: true,
                             nome: true,
                         },
                     },
-                    subcategoriaID: true,
+                    subcategoria: {
+                        select: {
+                            nome: true
+                        }
+                    },
                     campanha: {
                         select: {
                             id: true,
                             nome: true,
-                            tema: true
                         }
                     }
                 },
