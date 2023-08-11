@@ -32,7 +32,14 @@ class ListarProdutosService {
           }
         },
         categoria: {
-          select: { id:true, nome: true }
+          select: {
+            id: true, nome: true,
+            subCategoria: {
+              select: {
+                id: true, nome: true
+              }
+            }
+          }
         }
       },
     });
