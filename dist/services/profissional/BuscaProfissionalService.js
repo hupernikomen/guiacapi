@@ -26,13 +26,12 @@ class BuscaProfissionalService {
                     nome: true,
                     avatar: true,
                     bio: true,
-                    bairro: true,
                     endereco: true,
-                    profissaoID: true,
                     lista_servicos: true,
                     usuarioID: true,
                     profissao: {
                         select: {
+                            id: true,
                             nome: true
                         }
                     }
