@@ -16,7 +16,7 @@ class AutenticaService {
             throw new Error("não cadastrado");
         }
 
-        const usuario = await prismaClient.usuario.findFirst({
+        const usuario = await prismaClient.usuario.findUnique({
             where: { email }
         })
 
@@ -31,8 +31,8 @@ class AutenticaService {
         })
 
 
-        if (!usuario) {
-            throw new Error("Informações incorretas");
+        if (!usuario.id) {
+            throw new Error("Usuário não cadastrado");
         }
 
 

@@ -22,7 +22,7 @@ class AutenticaService {
             if (!email) {
                 throw new Error("não cadastrado");
             }
-            const usuario = yield prisma_1.default.usuario.findFirst({
+            const usuario = yield prisma_1.default.usuario.findUnique({
                 where: { email }
             });
             const loja = yield prisma_1.default.loja.findFirst({
@@ -34,8 +34,8 @@ class AutenticaService {
             const posto = yield prisma_1.default.posto.findFirst({
                 where: { usuarioID: usuario.id }
             });
-            if (!usuario) {
-                throw new Error("Informações incorretas");
+            if (!usuario.id) {
+                throw new Error("Usuário não cadastrado");
             }
             if (!usuario.status) {
                 throw new Error("Conta Bloqueada");
