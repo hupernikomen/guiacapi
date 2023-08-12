@@ -13,7 +13,8 @@ class CriaSubCategoriaService {
 
         const subCategoriaExiste = await prismaClient.subCategoria.findFirst({
             where: {
-                nome
+                nome,
+                categoriaID
             }
         })
 

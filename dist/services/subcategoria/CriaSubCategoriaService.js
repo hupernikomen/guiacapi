@@ -19,7 +19,8 @@ class CriaSubCategoriaService {
         return __awaiter(this, void 0, void 0, function* () {
             const subCategoriaExiste = yield prisma_1.default.subCategoria.findFirst({
                 where: {
-                    nome
+                    nome,
+                    categoriaID
                 }
             });
             if (subCategoriaExiste) {
