@@ -59,6 +59,8 @@ import { ListarUsuariosController } from './controllers/usuario/ListarUsuariosCo
 import { BuscaUsuarioController } from './controllers/usuario/BuscarUsuarioController';
 import { AtualizaMapaController } from './controllers/mapa/AtualizaMapaController';
 import { CriaPortfolioControlller } from './controllers/portfolio/CriaPortfolioController';
+import { ListarPortfolioController } from './controllers/portfolio/ListaPortfolioController';
+
 
 
 const uploadProdutos = multer({
@@ -152,7 +154,7 @@ rotas.get('/profissionais', new ListarProfissionalController().handle)
 rotas.get('/profissao/profissionais', new PorProfissaoController().handle)
 
 rotas.post('/portfolio', uploadPortfolio.single('imagem') ,new CriaPortfolioControlller().handle)
-
+rotas.get('portfolio', new ListarPortfolioController().handle)
 
 rotas.post('/plano', new CriaPlanoController().handle)
 rotas.get('/planos', new ListarPlanosController().handle)
