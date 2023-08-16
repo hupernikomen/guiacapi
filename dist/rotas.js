@@ -137,6 +137,6 @@ rotas.get('/profissional', new BucaProfissionalController_1.BuscaProfissionalCon
 rotas.get('/profissionais', new ListarProfissionalController_1.ListarProfissionalController().handle);
 rotas.get('/profissao/profissionais', new PorProfissaoController_1.PorProfissaoController().handle);
 rotas.post('/portfolio', uploadPortfolio.single('imagem'), new CriaPortfolioController_1.CriaPortfolioControlller().handle);
-rotas.get('portfolio', new ListaPortfolioController_1.ListarPortfolioController().handle);
+rotas.get('/portfolios', new ListaPortfolioController_1.ListarPortfolioController().handle);
 rotas.post('/plano', new CriaPlanoController_1.CriaPlanoController().handle);
 rotas.get('/planos', new ListarPlanosController_1.ListarPlanosController().handle);

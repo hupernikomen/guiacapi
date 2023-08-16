@@ -154,7 +154,7 @@ rotas.get('/profissionais', new ListarProfissionalController().handle)
 rotas.get('/profissao/profissionais', new PorProfissaoController().handle)
 
 rotas.post('/portfolio', uploadPortfolio.single('imagem') ,new CriaPortfolioControlller().handle)
-rotas.get('portfolio', new ListarPortfolioController().handle)
+rotas.get('/portfolios', new ListarPortfolioController().handle)
 
 rotas.post('/plano', new CriaPlanoController().handle)
 rotas.get('/planos', new ListarPlanosController().handle)
