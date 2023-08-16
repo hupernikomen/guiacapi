@@ -28,7 +28,7 @@ model Usuario {
   contato      Contato[]
 
   createdAt DateTime? @default(now())
-  
+
   @@map("usuarios")
 }
 
@@ -183,6 +183,8 @@ model Profissional {
   profissaoID    String?
   usuarioID      String?
 
+  portfolio Portfolio[]
+
   usuario   Usuario?   @relation(fields: [usuarioID], references: [id])
   profissao Profissao? @relation(fields: [profissaoID], references: [id])
 
@@ -191,9 +193,20 @@ model Profissional {
   @@map("profissionais")
 }
 
+model Portfolio {
+  id String @id @default(uuid())
+
+  imagem Json
+
+  profissional   Profissional @relation(fields: [profissionalID], references: [id])
+  profissionalID String
+
+  @@map("portfolios")
+}
+
 model Profissao {
-  id     String  @id @default(uuid())
-  nome   String
+  id   String @id @default(uuid())
+  nome String
 
   profissional Profissional[]
 

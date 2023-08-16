@@ -61,6 +61,7 @@ const PorSubcategoriaProdutoController_1 = require("./controllers/produto/PorSub
 const ListarUsuariosController_1 = require("./controllers/usuario/ListarUsuariosController");
 const BuscarUsuarioController_1 = require("./controllers/usuario/BuscarUsuarioController");
 const AtualizaMapaController_1 = require("./controllers/mapa/AtualizaMapaController");
+const CriaPortfolioController_1 = require("./controllers/portfolio/CriaPortfolioController");
 const uploadProdutos = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageProdutos.s3 : multer_2.storageProdutos.local,
@@ -71,6 +72,13 @@ const uploadProdutos = (0, multer_1.default)({
 const uploadAvatar = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageAvatar.s3 : multer_2.storageAvatar.local,
+    limits: {
+        fileSize: 1 * 1024 * 1024, // MAX 1MB
+    }
+});
+const uploadPortfolio = (0, multer_1.default)({
+    fileFilter: multer_2.fileFilter,
+    storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storagePortfolio.s3 : multer_2.storagePortfolio.local,
     limits: {
         fileSize: 1 * 1024 * 1024, // MAX 1MB
     }
@@ -127,5 +135,6 @@ rotas.put('/profissional', authenticator_1.Authenticator, uploadAvatar.single('a
 rotas.get('/profissional', new BucaProfissionalController_1.BuscaProfissionalController().handle);
 rotas.get('/profissionais', new ListarProfissionalController_1.ListarProfissionalController().handle);
 rotas.get('/profissao/profissionais', new PorProfissaoController_1.PorProfissaoController().handle);
+rotas.post('/portfolio', uploadPortfolio.single('imagem'), new CriaPortfolioController_1.CriaPortfolioControlller().handle);
 rotas.post('/plano', new CriaPlanoController_1.CriaPlanoController().handle);
 rotas.get('/planos', new ListarPlanosController_1.ListarPlanosController().handle);

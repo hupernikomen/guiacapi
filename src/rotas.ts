@@ -4,7 +4,7 @@ import 'dotenv/config';
 
 import { Authenticator } from './middlewares/authenticator';
 
-import { fileFilter, storageProdutos, storageAvatar } from './config/multer'
+import { fileFilter, storageProdutos, storageAvatar, storagePortfolio } from './config/multer'
 
 import { LojaLogadaController } from './controllers/loja/LojaLogadaController';
 import { AutenticaUsuarioController } from './controllers/usuario/AutenticaUsuarioController';
@@ -58,7 +58,7 @@ import { PorSubcategoriaProdutoController } from './controllers/produto/PorSubca
 import { ListarUsuariosController } from './controllers/usuario/ListarUsuariosController';
 import { BuscaUsuarioController } from './controllers/usuario/BuscarUsuarioController';
 import { AtualizaMapaController } from './controllers/mapa/AtualizaMapaController';
-
+import { CriaPortfolioControlller } from './controllers/portfolio/CriaPortfolioController';
 
 
 const uploadProdutos = multer({
@@ -72,6 +72,13 @@ const uploadProdutos = multer({
 const uploadAvatar = multer({
   fileFilter: fileFilter,
   storage: process.env.TYPE_STORAGE === 'S3' ? storageAvatar.s3 : storageAvatar.local,
+  limits: {
+    fileSize: 1 * 1024 * 1024, // MAX 1MB
+  }
+})
+const uploadPortfolio = multer({
+  fileFilter: fileFilter,
+  storage: process.env.TYPE_STORAGE === 'S3' ? storagePortfolio.s3 : storagePortfolio.local,
   limits: {
     fileSize: 1 * 1024 * 1024, // MAX 1MB
   }
@@ -143,6 +150,8 @@ rotas.put('/profissional', Authenticator, uploadAvatar.single('avatar'), new Atu
 rotas.get('/profissional', new BuscaProfissionalController().handle)
 rotas.get('/profissionais', new ListarProfissionalController().handle)
 rotas.get('/profissao/profissionais', new PorProfissaoController().handle)
+
+rotas.post('/portfolio', uploadPortfolio.single('imagem') ,new CriaPortfolioControlller().handle)
 
 
 rotas.post('/plano', new CriaPlanoController().handle)
