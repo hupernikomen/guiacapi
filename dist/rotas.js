@@ -63,6 +63,7 @@ const BuscarUsuarioController_1 = require("./controllers/usuario/BuscarUsuarioCo
 const AtualizaMapaController_1 = require("./controllers/mapa/AtualizaMapaController");
 const CriaPortfolioController_1 = require("./controllers/portfolio/CriaPortfolioController");
 const ListaPortfolioController_1 = require("./controllers/portfolio/ListaPortfolioController");
+const DeletaPortfolioController_1 = require("./controllers/portfolio/DeletaPortfolioController");
 const uploadProdutos = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageProdutos.s3 : multer_2.storageProdutos.local,
@@ -138,5 +139,6 @@ rotas.get('/profissionais', new ListarProfissionalController_1.ListarProfissiona
 rotas.get('/profissao/profissionais', new PorProfissaoController_1.PorProfissaoController().handle);
 rotas.post('/portfolio', uploadPortfolio.single('imagem'), new CriaPortfolioController_1.CriaPortfolioControlller().handle);
 rotas.get('/portfolios', new ListaPortfolioController_1.ListarPortfolioController().handle);
+rotas.delete('/portfolio', authenticator_1.Authenticator, new DeletaPortfolioController_1.DeletaPortfolioController().handle);
 rotas.post('/plano', new CriaPlanoController_1.CriaPlanoController().handle);
 rotas.get('/planos', new ListarPlanosController_1.ListarPlanosController().handle);
