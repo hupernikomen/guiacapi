@@ -60,18 +60,20 @@ export function fileFilter(req, file, callback) {
   callback(null, true);
 }
 
-export const storageProdutos = {
-  local: multer.diskStorage({
-    destination: (req, file, cb) => {
-      cb(null, path.resolve(__dirname, '..', '..', 'files', 'users'));
-    },
-    filename: (request, file, callback) => {
-      const fileHash = crypto.randomBytes(16).toString("hex");
-      const fileName = `${fileHash}-${file.originalname}`
+const local = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, path.resolve(__dirname, '..', '..', 'files', 'users'));
+  },
+  filename: (request, file, callback) => {
+    const fileHash = crypto.randomBytes(16).toString("hex");
+    const fileName = `${fileHash}-${file.originalname}`
 
-      return callback(null, fileName)
-    },
-  }),
+    return callback(null, fileName)
+  },
+})
+
+export const storageProdutos = {
+  local: local,
   s3: multerS3({
     s3: s3,
     bucket: process.env.BUCKETEER_BUCKET_NAME,
@@ -90,17 +92,7 @@ export const storageProdutos = {
 };
 
 export const storageAvatar = {
-  local: multer.diskStorage({
-    destination: (req, file, cb) => {
-      cb(null, path.resolve(__dirname, '..', '..', 'files', 'users'));
-    },
-    filename: (request, file, callback) => {
-      const fileHash = crypto.randomBytes(16).toString("hex");
-      const fileName = `${fileHash}-${file.originalname}`
-
-      return callback(null, fileName)
-    },
-  }),
+  local: local,
   s3: multerS3({
     s3: s3,
     bucket: process.env.BUCKETEER_BUCKET_NAME,
@@ -118,17 +110,7 @@ export const storageAvatar = {
   }),
 };
 export const storagePortfolio = {
-  local: multer.diskStorage({
-    destination: (req, file, cb) => {
-      cb(null, path.resolve(__dirname, '..', '..', 'files', 'users'));
-    },
-    filename: (request, file, callback) => {
-      const fileHash = crypto.randomBytes(16).toString("hex");
-      const fileName = `${fileHash}-${file.originalname}`
-
-      return callback(null, fileName)
-    },
-  }),
+  local: local,
   s3: multerS3({
     s3: s3,
     bucket: process.env.BUCKETEER_BUCKET_NAME,

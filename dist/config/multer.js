@@ -50,17 +50,18 @@ function fileFilter(req, file, callback) {
     callback(null, true);
 }
 exports.fileFilter = fileFilter;
+const local = multer_1.default.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, path_1.default.resolve(__dirname, '..', '..', 'files', 'users'));
+    },
+    filename: (request, file, callback) => {
+        const fileHash = crypto_1.default.randomBytes(16).toString("hex");
+        const fileName = `${fileHash}-${file.originalname}`;
+        return callback(null, fileName);
+    },
+});
 exports.storageProdutos = {
-    local: multer_1.default.diskStorage({
-        destination: (req, file, cb) => {
-            cb(null, path_1.default.resolve(__dirname, '..', '..', 'files', 'users'));
-        },
-        filename: (request, file, callback) => {
-            const fileHash = crypto_1.default.randomBytes(16).toString("hex");
-            const fileName = `${fileHash}-${file.originalname}`;
-            return callback(null, fileName);
-        },
-    }),
+    local: local,
     s3: (0, multer_s3_1.default)({
         s3: s3,
         bucket: process.env.BUCKETEER_BUCKET_NAME,
@@ -78,16 +79,7 @@ exports.storageProdutos = {
     }),
 };
 exports.storageAvatar = {
-    local: multer_1.default.diskStorage({
-        destination: (req, file, cb) => {
-            cb(null, path_1.default.resolve(__dirname, '..', '..', 'files', 'users'));
-        },
-        filename: (request, file, callback) => {
-            const fileHash = crypto_1.default.randomBytes(16).toString("hex");
-            const fileName = `${fileHash}-${file.originalname}`;
-            return callback(null, fileName);
-        },
-    }),
+    local: local,
     s3: (0, multer_s3_1.default)({
         s3: s3,
         bucket: process.env.BUCKETEER_BUCKET_NAME,
@@ -105,16 +97,7 @@ exports.storageAvatar = {
     }),
 };
 exports.storagePortfolio = {
-    local: multer_1.default.diskStorage({
-        destination: (req, file, cb) => {
-            cb(null, path_1.default.resolve(__dirname, '..', '..', 'files', 'users'));
-        },
-        filename: (request, file, callback) => {
-            const fileHash = crypto_1.default.randomBytes(16).toString("hex");
-            const fileName = `${fileHash}-${file.originalname}`;
-            return callback(null, fileName);
-        },
-    }),
+    local: local,
     s3: (0, multer_s3_1.default)({
         s3: s3,
         bucket: process.env.BUCKETEER_BUCKET_NAME,
