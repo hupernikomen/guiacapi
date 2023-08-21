@@ -28,12 +28,11 @@ class DeletaPortfolioService {
                     id: portfolioID
                 }
             });
-            console.log(portfolio, "PORTFOLIOOOOOOOOOOOO");
             if (!portfolio) {
                 throw new Error("Produto não existe");
             }
             // Apagar imagens do S3 da Amazon
-            // var params = { Bucket: process.env.BUCKETEER_BUCKET_NAME, Key: portfolio.key };
+            // var params = { Bucket: process.env.BUCKETEER_BUCKET_NAME, Key: portfolio.imagem.key };
             // s3.deleteObject(params, function (err, data) {
             //   if (err) console.log(err, err.stack);  // error
             //   else console.log();                 // deleted

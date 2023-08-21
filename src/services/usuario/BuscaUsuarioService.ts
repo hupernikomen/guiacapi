@@ -20,7 +20,8 @@ class BuscaUsuarioService {
         posto:true,
         profissional:true,
         loja:true,
-        status:true
+        status:true,
+        mapa:true
       }
     })
 

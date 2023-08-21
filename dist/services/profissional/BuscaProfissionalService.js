@@ -32,7 +32,7 @@ class BuscaProfissionalService {
                     profissao: {
                         select: {
                             id: true,
-                            nome: true
+                            nome: true,
                         }
                     }
                 }

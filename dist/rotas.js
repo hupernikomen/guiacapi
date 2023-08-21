@@ -133,7 +133,7 @@ rotas.post('/profissional', new CriaProfissionalController_1.CriaProfissionalCon
 rotas.post('/profissao', new CriaProfissaoController_1.CriaProfissaoController().handle);
 rotas.get('/profissoes', new ListaProfissaoController_1.ListaProfissaoController().handle);
 rotas.put('/profissao', new AtualizaProfissaoController_1.AtualizaProfissaoController().handle);
-rotas.put('/profissional', authenticator_1.Authenticator, uploadAvatar.single('avatar'), new AtualizarProfissionalController_1.AtualizarProfissionalController().handle);
+rotas.put('/profissional', uploadAvatar.single('avatar'), new AtualizarProfissionalController_1.AtualizarProfissionalController().handle);
 rotas.get('/profissional', new BucaProfissionalController_1.BuscaProfissionalController().handle);
 rotas.get('/profissionais', new ListarProfissionalController_1.ListarProfissionalController().handle);
 rotas.get('/profissao/profissionais', new PorProfissaoController_1.PorProfissaoController().handle);
