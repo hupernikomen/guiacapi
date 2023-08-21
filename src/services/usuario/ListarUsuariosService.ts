@@ -8,7 +8,7 @@ class ListarUsuariosService {
         id: true,
         status: true,
         loja: { select: { nome: true } },
-        profissional: { select: { nome: true } },
+        profissional: { select: { nome: true, profissao: { select: { nome: true } } } },
         posto: { select: { nome: true } },
         regiao: { select: { nome: true } },
         contato: true
