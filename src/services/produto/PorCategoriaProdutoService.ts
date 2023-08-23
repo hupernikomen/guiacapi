@@ -38,7 +38,8 @@ class PorCategoriaProdutoService {
         subcategoria:{
           select:{
             id:true,
-            nome:true
+            nome:true,
+            _count:true
           }
         },
         loja:{
