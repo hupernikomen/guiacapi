@@ -46,10 +46,10 @@ class ListarProdutosService {
                     },
                     categoria: {
                         select: {
-                            id: true, nome: true,
+                            id: true, nome: true, _count: true,
                             subCategoria: {
                                 select: {
-                                    id: true, nome: true
+                                    id: true, nome: true, _count: true
                                 }
                             }
                         }
