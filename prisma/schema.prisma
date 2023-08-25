@@ -109,15 +109,14 @@ model Loja {
   @@map("lojas")
 }
 
-model Marca{
-  id String @id @default(uuid())
-  nome String
+model Marca {
+  id     Int    @id @default(autoincrement())
+  nome   String
   avatar Json?
 
   createdAt DateTime? @default(now())
 
   @@map("marcas")
-
 }
 
 model Produto {
