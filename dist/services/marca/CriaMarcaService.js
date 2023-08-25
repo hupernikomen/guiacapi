@@ -17,13 +17,6 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class CriaMarcaService {
     execute({ nome, avatar, }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const marcaExiste = yield prisma_1.default.marca.findFirst({
-                where: {
-                    nome
-                }
-            });
-            if (marcaExiste)
-                throw new Error("Erro: Marca já registrada");
             const marca = yield prisma_1.default.marca.create({
                 data: {
                     nome,

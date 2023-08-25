@@ -33,14 +33,11 @@ exports.default = {
 // Filtro de tipos
 function fileFilter(req, file, callback) {
     let errorMessage = '';
-    const ext = path_1.default.extname(file.originalname);
-    if (ext !== '.PNG' &&
-        ext !== '.png' &&
-        ext !== '.JPG' &&
+    const ext = path_1.default.extname(file.originalname).toLowerCase();
+    console.log(ext, 'extensaoooooo');
+    if (ext !== '.png' &&
         ext !== '.jpg' &&
-        ext !== '.JPEG' &&
         ext !== '.jpeg' &&
-        ext !== '.WEBP' &&
         ext !== '.webp')
         return callback(new Error('Formato de arquivo não aceito'));
     if (errorMessage) {
