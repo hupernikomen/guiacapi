@@ -4,7 +4,7 @@ import 'dotenv/config';
 
 import { Authenticator } from './middlewares/authenticator';
 
-import { fileFilter, storageProdutos, storageAvatar, storagePortfolio } from './config/multer'
+import { fileFilter, storageProdutos, storageAvatar, storagePortfolio, storageMarca } from './config/multer'
 
 import { LojaLogadaController } from './controllers/loja/LojaLogadaController';
 import { AutenticaUsuarioController } from './controllers/usuario/AutenticaUsuarioController';
@@ -61,7 +61,9 @@ import { AtualizaMapaController } from './controllers/mapa/AtualizaMapaControlle
 import { CriaPortfolioControlller } from './controllers/portfolio/CriaPortfolioController';
 import { ListarPortfolioController } from './controllers/portfolio/ListaPortfolioController';
 import { DeletaPortfolioController } from './controllers/portfolio/DeletaPortfolioController';
-
+import { DeletaMarcaController } from './controllers/marca/DeletaMarcaController';
+import { CriaMarcaController } from './controllers/marca/CriaMarcaController';
+import { ListaMarcasController } from './controllers/marca/ListaMarcasController';
 
 const uploadProdutos = multer({
   fileFilter: fileFilter,
@@ -81,6 +83,14 @@ const uploadAvatar = multer({
 const uploadPortfolio = multer({
   fileFilter: fileFilter,
   storage: process.env.TYPE_STORAGE === 'S3' ? storagePortfolio.s3 : storagePortfolio.local,
+  limits: {
+    fileSize: 1 * 1024 * 1024, // MAX 1MB
+  }
+})
+
+const uploadMarca = multer({
+  fileFilter: fileFilter,
+  storage: process.env.TYPE_STORAGE === 'S3' ? storageMarca.s3 : storageMarca.local,
   limits: {
     fileSize: 1 * 1024 * 1024, // MAX 1MB
   }
@@ -143,6 +153,9 @@ rotas.get('/lojas', new ListaLojasController().handle)
 rotas.get('/loja', new BuscaLojaController().handle)
 rotas.post('/loja', new CriaLojaController().handle)
 
+rotas.post('/marca', new CriaMarcaController().handle)
+rotas.delete('/marca', new DeletaMarcaController().handle)
+rotas.get('/marcas', new ListaMarcasController().handle)
 
 rotas.post('/profissional', new CriaProfissionalController().handle)
 rotas.post('/profissao', new CriaProfissaoController().handle)

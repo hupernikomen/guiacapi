@@ -127,3 +127,21 @@ export const storagePortfolio = {
     },
   }),
 };
+export const storageMarca = {
+  local: local,
+  s3: multerS3({
+    s3: s3,
+    bucket: process.env.BUCKETEER_BUCKET_NAME,
+    contentType: multerS3.AUTO_CONTENT_TYPE,
+    acl: "public-read",
+    key: (req, file, cb) => {
+      crypto.randomBytes(16, (err, hash) => {
+        if (err) cb(err);
+        const fileHash = crypto.randomBytes(16).toString("hex");
+        const fileName = `marcas/${fileHash}-${file.originalname}`;
+
+        cb(null, fileName);
+      });
+    },
+  }),
+};

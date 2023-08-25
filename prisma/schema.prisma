@@ -80,6 +80,8 @@ model Banner {
   loja    Loja    @relation(fields: [lojaID], references: [id])
   status  Boolean @default(false)
 
+  createdAt DateTime? @default(now())
+
   @@map("banners")
 }
 
@@ -105,6 +107,15 @@ model Loja {
   createdAt DateTime? @default(now())
 
   @@map("lojas")
+}
+
+model Marca{
+  id String @id @default(uuid())
+  nome String
+  avatar Json?
+
+  createdAt DateTime? @default(now())
+
 }
 
 model Produto {

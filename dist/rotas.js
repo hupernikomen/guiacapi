@@ -64,6 +64,9 @@ const AtualizaMapaController_1 = require("./controllers/mapa/AtualizaMapaControl
 const CriaPortfolioController_1 = require("./controllers/portfolio/CriaPortfolioController");
 const ListaPortfolioController_1 = require("./controllers/portfolio/ListaPortfolioController");
 const DeletaPortfolioController_1 = require("./controllers/portfolio/DeletaPortfolioController");
+const DeletaMarcaController_1 = require("./controllers/marca/DeletaMarcaController");
+const CriaMarcaController_1 = require("./controllers/marca/CriaMarcaController");
+const ListaMarcasController_1 = require("./controllers/marca/ListaMarcasController");
 const uploadProdutos = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageProdutos.s3 : multer_2.storageProdutos.local,
@@ -81,6 +84,13 @@ const uploadAvatar = (0, multer_1.default)({
 const uploadPortfolio = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storagePortfolio.s3 : multer_2.storagePortfolio.local,
+    limits: {
+        fileSize: 1 * 1024 * 1024, // MAX 1MB
+    }
+});
+const uploadMarca = (0, multer_1.default)({
+    fileFilter: multer_2.fileFilter,
+    storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageMarca.s3 : multer_2.storageMarca.local,
     limits: {
         fileSize: 1 * 1024 * 1024, // MAX 1MB
     }
@@ -129,6 +139,9 @@ rotas.put('/loja', authenticator_1.Authenticator, uploadAvatar.single('avatar'),
 rotas.get('/lojas', new ListaLojasController_1.ListaLojasController().handle);
 rotas.get('/loja', new BuscaLojaController_1.BuscaLojaController().handle);
 rotas.post('/loja', new CriaLojaController_1.CriaLojaController().handle);
+rotas.post('/marca', new CriaMarcaController_1.CriaMarcaController().handle);
+rotas.delete('/marca', new DeletaMarcaController_1.DeletaMarcaController().handle);
+rotas.get('/marcas', new ListaMarcasController_1.ListaMarcasController().handle);
 rotas.post('/profissional', new CriaProfissionalController_1.CriaProfissionalController().handle);
 rotas.post('/profissao', new CriaProfissaoController_1.CriaProfissaoController().handle);
 rotas.get('/profissoes', new ListaProfissaoController_1.ListaProfissaoController().handle);
