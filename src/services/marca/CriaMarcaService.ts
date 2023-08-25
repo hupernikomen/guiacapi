@@ -9,8 +9,7 @@ class CriaMarcaService {
 
     async execute({
         nome,
-        avatar,
-
+        avatar
     }: marcaRequest) {
 
         const marca = await prismaClient.marca.create({

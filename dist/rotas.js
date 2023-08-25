@@ -139,7 +139,7 @@ rotas.put('/loja', authenticator_1.Authenticator, uploadAvatar.single('avatar'),
 rotas.get('/lojas', new ListaLojasController_1.ListaLojasController().handle);
 rotas.get('/loja', new BuscaLojaController_1.BuscaLojaController().handle);
 rotas.post('/loja', new CriaLojaController_1.CriaLojaController().handle);
-rotas.post('/marca', new CriaMarcaController_1.CriaMarcaController().handle);
+rotas.post('/marca', uploadMarca.single('avatar'), new CriaMarcaController_1.CriaMarcaController().handle);
 rotas.delete('/marca', new DeletaMarcaController_1.DeletaMarcaController().handle);
 rotas.get('/marcas', new ListaMarcasController_1.ListaMarcasController().handle);
 rotas.post('/profissional', new CriaProfissionalController_1.CriaProfissionalController().handle);

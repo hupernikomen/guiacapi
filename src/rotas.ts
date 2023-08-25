@@ -153,7 +153,7 @@ rotas.get('/lojas', new ListaLojasController().handle)
 rotas.get('/loja', new BuscaLojaController().handle)
 rotas.post('/loja', new CriaLojaController().handle)
 
-rotas.post('/marca', new CriaMarcaController().handle)
+rotas.post('/marca', uploadMarca.single('avatar'), new CriaMarcaController().handle)
 rotas.delete('/marca', new DeletaMarcaController().handle)
 rotas.get('/marcas', new ListaMarcasController().handle)
 
