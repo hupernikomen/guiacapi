@@ -110,7 +110,7 @@ model Loja {
 }
 
 model Marca {
-  id     Int    @id @default(autoincrement())
+  id     String @id @default(uuid())
   nome   String
   avatar Json?
 
