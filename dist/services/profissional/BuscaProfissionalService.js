@@ -29,6 +29,9 @@ class BuscaProfissionalService {
                     endereco: true,
                     lista_servicos: true,
                     usuarioID: true,
+                    usuario: {
+                        select: { mapa: { select: { latlng: true } } }
+                    },
                     profissao: {
                         select: {
                             id: true,
