@@ -21,8 +21,9 @@ class ListarBannersService {
                 select: {
                     id: true,
                     imagem: true,
-                    id_rota: true,
-                    rota: true,
+                    link: true,
+                    params: true,
+                    createdAt: true,
                     status: true,
                     lojaID: true
                 }

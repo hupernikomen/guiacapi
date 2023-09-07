@@ -15,21 +15,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CriaBannerService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class CriaBannerService {
-    execute({ rota, id_rota, imagem, lojaID }) {
+    execute({ link, params, imagem, lojaID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const bannerAtivo = yield prisma_1.default.banner.findFirst({
-                where: {
-                    lojaID,
-                    status: true
-                }
-            });
-            if (bannerAtivo) {
-                throw new Error("Loja já possui um banner ativo");
-            }
             const banner = yield prisma_1.default.banner.create({
                 data: {
-                    rota,
-                    id_rota,
+                    link,
+                    params,
                     imagem,
                     lojaID
                 }

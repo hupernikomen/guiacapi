@@ -15,14 +15,14 @@ class CriaBannerController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const lojaID = req.query.lojaID;
-            const { rota, id_rota } = req.body;
+            const { link, params } = req.body;
             const criaBannerService = new CriaBannerService_1.CriaBannerService();
             if (!req.file) {
                 throw new Error("Falha ao enviar baanner");
             }
             const banner = yield criaBannerService.execute({
-                rota,
-                id_rota,
+                link,
+                params,
                 imagem: req.file,
                 lojaID
             });

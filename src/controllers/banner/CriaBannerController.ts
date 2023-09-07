@@ -4,7 +4,7 @@ import { CriaBannerService } from '../../services/banner/CriaBannerService';
 class CriaBannerController {
   async handle(req: Request, res: Response) {
     const lojaID = req.query.lojaID as string
-    const { rota, id_rota } = req.body
+    const { link, params  } = req.body
 
     const criaBannerService = new CriaBannerService();
 
@@ -13,8 +13,8 @@ class CriaBannerController {
     }
 
     const banner = await criaBannerService.execute({
-      rota,
-      id_rota,
+      link,
+      params,
       imagem: req.file,
       lojaID
     })
