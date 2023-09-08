@@ -46,6 +46,7 @@ class LojaLogadaService {
                             oferta: true,
                             descricao: true,
                             tamanho: true,
+                            cores: true,
                             codigo: true,
                             imagens: true
                         }
