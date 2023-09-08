@@ -11,6 +11,7 @@ class AtualizaProdutoController {
             preco,
             oferta,
             tamanho,
+            cores,
             categoriaID,
             campanhaID
         } = req.body
@@ -23,6 +24,7 @@ class AtualizaProdutoController {
             preco,
             oferta,
             tamanho,
+            cores,
             categoriaID,
             campanhaID,
             produtoID

@@ -6,6 +6,7 @@ interface produtoRequest {
     preco: number,
     oferta: number,
     tamanho: string,
+    cores:string,
     categoriaID: string,
     campanhaID: string,    
     produtoID: string,
@@ -18,6 +19,7 @@ class AtualizaProdutoService {
         preco,
         oferta,
         tamanho,
+        cores,
         categoriaID,
         campanhaID,
         produtoID
@@ -34,6 +36,7 @@ class AtualizaProdutoService {
                 preco,
                 oferta,
                 tamanho,
+                cores,
                 categoriaID,
                 campanhaID: oferta != 0 ? campanhaID : null,
             },
