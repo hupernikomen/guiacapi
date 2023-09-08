@@ -12,6 +12,7 @@ class CriaProdutoController {
       preco,
       descricao,
       tamanho,
+      cores,
       categoriaID,
       subcategoriaID
     } =
@@ -28,6 +29,7 @@ class CriaProdutoController {
       descricao,
       preco,
       tamanho,
+      cores,
       imagens: req.files,
       categoriaID,
       subcategoriaID,
