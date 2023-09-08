@@ -17,6 +17,7 @@ class DetalheProdutoService {
         preco: true,
         oferta: true,
         tamanho: true,
+        cores:true,
         imagens: true,
         loja: {
           select: {
