@@ -35,6 +35,7 @@ class ListarProdutosService {
                         select: {
                             id: true,
                             nome: true,
+                            tema: true
                         }
                     },
                     loja: {
