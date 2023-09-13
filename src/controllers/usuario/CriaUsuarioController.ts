@@ -5,14 +5,15 @@ class CriaUsuarioController {
     async handle(req: Request, res: Response) {
 
         const regiaoID = req.query.regiaoID as string
-        const { email, senha } = req.body
+        const { email, senha, rede } = req.body
 
         const criaUsuarioService = new CriaUsuarioService();
 
         const usuario = await criaUsuarioService.execute({
             email,
             senha,
-            regiaoID
+            regiaoID,
+            rede
         })
 
         if(!usuario) {
@@ -23,6 +24,7 @@ class CriaUsuarioController {
         return res.status(200).json({
             message: "Cadastrado com Sucesso",
             usuario,
+            rede
         })
     }
 }

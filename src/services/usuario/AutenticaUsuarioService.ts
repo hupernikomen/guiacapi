@@ -30,9 +30,6 @@ class AutenticaService {
             where: { usuarioID: usuario.id }
         })
 
-        console.log(usuario,"USUARIOOOOOO");
-        
-
 
         if (!usuario) {
             throw new Error("Usuário não cadastrado");

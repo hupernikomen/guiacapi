@@ -17,6 +17,7 @@ model Usuario {
   email  String  @unique
   senha  String
   status Boolean @default(true)
+  rede String?
 
   regiaoID String
   regiao   Regiao @relation(fields: [regiaoID], references: [id])

@@ -5,13 +5,15 @@ interface usuarioRequest {
     email: string,
     senha: string,
     regiaoID: string,
+    rede: string
 }
 
 class CriaUsuarioService {
     async execute({
         email,
         senha,
-        regiaoID
+        regiaoID,
+        rede
     }: usuarioRequest) {
 
         if (!email) throw new Error("informe seu email");
@@ -32,7 +34,8 @@ class CriaUsuarioService {
             data: {
                 email,
                 senha: passwordCripto,
-                regiaoID
+                regiaoID,
+                rede
             },
             select:{
                 id:true,
