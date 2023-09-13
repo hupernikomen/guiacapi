@@ -7,14 +7,9 @@ class DeletaPortfolioController {
     const portfolioID = req.query.portfolioID as string
 
     const deletaPortfolioService = new DeletaPortfolioService()
+    await deletaPortfolioService.execute({ portfolioID })
 
-    await deletaPortfolioService.execute({
-      portfolioID
-    })
-
-    return res.status(200).json({
-      message: "Fique tranquilo! Já excluimos sua imagem"
-    })
+    return res.status(200).json({ message: "Imagem excluida" })
 
   }
 }

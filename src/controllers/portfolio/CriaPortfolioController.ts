@@ -7,9 +7,7 @@ class CriaPortfolioControlller {
 
     const profissionalID = req.query.profissionalID as string
 
-    if (!req.file) {
-      throw new Error("Ops.. algo deu errado!");
-    }
+    if (!req.file) throw new Error("Erro ao carregar imagem - API");
 
     const portfolio = await criaPortfolioService.execute({
       imagem: req.file,

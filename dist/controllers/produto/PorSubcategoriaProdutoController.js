@@ -16,9 +16,7 @@ class PorSubcategoriaProdutoController {
         return __awaiter(this, void 0, void 0, function* () {
             const subcategoriaID = req.query.subcategoriaID;
             const porSubcategoriaProdutoService = new PorSubcategoriaProdutoService_1.PorSubcategoriaProdutoService();
-            const produto = yield porSubcategoriaProdutoService.execute({
-                subcategoriaID
-            });
+            const produto = yield porSubcategoriaProdutoService.execute({ subcategoriaID });
             return res.json(produto);
         });
     }

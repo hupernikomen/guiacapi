@@ -8,10 +8,8 @@ class BuscaMapaController {
         const usuarioID = req.query.usuarioID as string
 
         const buscaMapaService = new BuscaMapaService()
+        const mapa = await buscaMapaService.execute({usuarioID})
 
-        const mapa = await buscaMapaService.execute({
-            usuarioID
-        })
         return res.json(mapa)
 
     }

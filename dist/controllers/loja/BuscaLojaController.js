@@ -16,9 +16,7 @@ class BuscaLojaController {
         return __awaiter(this, void 0, void 0, function* () {
             const usuarioID = req.query.usuarioID;
             const buscaLojaService = new BuscaLojaService_1.BuscaLojaService();
-            const loja = yield buscaLojaService.execute({
-                usuarioID
-            });
+            const loja = yield buscaLojaService.execute({ usuarioID });
             return res.json(loja);
         });
     }

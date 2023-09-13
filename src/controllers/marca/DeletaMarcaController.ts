@@ -7,14 +7,9 @@ class DeletaMarcaController {
     const marcaID = req.query.marcaID as string
 
     const deletaMarcaService = new DeletaMarcaService()
+    await deletaMarcaService.execute({ marcaID })
 
-    await deletaMarcaService.execute({
-      marcaID
-    })
-
-    return res.status(200).json({
-      message:  "Marca Excluida"
-    })
+    return res.status(200).json({ message: "Marca Excluida" })
 
   }
 }

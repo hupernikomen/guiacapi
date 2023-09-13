@@ -8,12 +8,12 @@ class CriaMapaController {
 
     const criaMapaService = new CriaMapaService();
 
-    const mapa = await criaMapaService.execute({
+    await criaMapaService.execute({
       latlng,
       usuarioID
     })
 
-    return res.json(mapa)
+    return res.json({ message: "Criado com sucesso" })
   }
 }
 

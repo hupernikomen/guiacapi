@@ -16,9 +16,8 @@ class CriaPortfolioControlller {
         return __awaiter(this, void 0, void 0, function* () {
             const criaPortfolioService = new CriaPortfolioService_1.CriaPortfolioService();
             const profissionalID = req.query.profissionalID;
-            if (!req.file) {
-                throw new Error("Ops.. algo deu errado!");
-            }
+            if (!req.file)
+                throw new Error("Erro ao carregar imagem - API");
             const portfolio = yield criaPortfolioService.execute({
                 imagem: req.file,
                 profissionalID,

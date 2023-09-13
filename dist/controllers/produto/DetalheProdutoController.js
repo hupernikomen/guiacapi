@@ -16,9 +16,7 @@ class DetalheProdutoController {
         return __awaiter(this, void 0, void 0, function* () {
             const produtoID = req.query.produtoID;
             const detalheProdutoService = new DetalheProdutoService_1.DetalheProdutoService();
-            const produto = yield detalheProdutoService.execute({
-                produtoID
-            });
+            const produto = yield detalheProdutoService.execute({ produtoID });
             return res.json(produto);
         });
     }

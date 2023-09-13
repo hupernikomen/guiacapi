@@ -8,10 +8,7 @@ class BuscaProfissionalController {
         const profissionalID = req.query.profissionalID as string
 
         const buscaProfissionalService = new BuscaProfissionalService()
-
-        const profissional = await buscaProfissionalService.execute({
-            profissionalID
-        })
+        const profissional = await buscaProfissionalService.execute({ profissionalID })
         return res.json(profissional)
 
     }

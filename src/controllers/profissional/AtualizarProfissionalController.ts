@@ -13,14 +13,13 @@ class AtualizarProfissionalController {
             profissaoID
         } = req.body
 
-        const file = req.file
-        const files = req.files
-
+        if(!req.file) throw new Error("Falha ao enviar avatar - API");
+        
         const atualizarProfissionalService = new AtualizarProfissionalService();
 
         const profissional = await atualizarProfissionalService.execute({
             profissionalID,
-            avatar: file,
+            avatar: req.file,
             nome,
             bio,
             endereco,
@@ -29,7 +28,6 @@ class AtualizarProfissionalController {
             profissaoID
 
         })
-
 
         return res.json(profissional)
     }

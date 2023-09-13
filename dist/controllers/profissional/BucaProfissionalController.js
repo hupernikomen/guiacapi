@@ -16,9 +16,7 @@ class BuscaProfissionalController {
         return __awaiter(this, void 0, void 0, function* () {
             const profissionalID = req.query.profissionalID;
             const buscaProfissionalService = new BuscaProfissionalService_1.BuscaProfissionalService();
-            const profissional = yield buscaProfissionalService.execute({
-                profissionalID
-            });
+            const profissional = yield buscaProfissionalService.execute({ profissionalID });
             return res.json(profissional);
         });
     }

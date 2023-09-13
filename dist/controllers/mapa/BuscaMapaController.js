@@ -16,9 +16,7 @@ class BuscaMapaController {
         return __awaiter(this, void 0, void 0, function* () {
             const usuarioID = req.query.usuarioID;
             const buscaMapaService = new BuscaMapaService_1.BuscaMapaService();
-            const mapa = yield buscaMapaService.execute({
-                usuarioID
-            });
+            const mapa = yield buscaMapaService.execute({ usuarioID });
             return res.json(mapa);
         });
     }

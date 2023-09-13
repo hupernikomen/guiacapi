@@ -6,16 +6,11 @@ class CriaPostoController {
     const criaPostoService = new CriaPostoService();
 
     const { usuarioID } = req.body;
+    const posto = await criaPostoService.execute({usuarioID})
 
-    const posto = await criaPostoService.execute({
-      usuarioID
-    })
+    if(!posto) throw new Error("Erro ao cadastrar posto - API");
 
-    return res.status(200).json(posto);
-
-
-
-
+    return res.status(200).json({message: "Criado com sucesso"});
   }
 }
 

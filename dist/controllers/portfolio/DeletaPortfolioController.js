@@ -16,12 +16,8 @@ class DeletaPortfolioController {
         return __awaiter(this, void 0, void 0, function* () {
             const portfolioID = req.query.portfolioID;
             const deletaPortfolioService = new DeletarPortfolioService_1.DeletaPortfolioService();
-            yield deletaPortfolioService.execute({
-                portfolioID
-            });
-            return res.status(200).json({
-                message: "Fique tranquilo! Já excluimos sua imagem"
-            });
+            yield deletaPortfolioService.execute({ portfolioID });
+            return res.status(200).json({ message: "Imagem excluida" });
         });
     }
 }

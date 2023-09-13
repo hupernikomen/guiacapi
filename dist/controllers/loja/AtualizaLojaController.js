@@ -17,7 +17,9 @@ class AtualizaLojaController {
             const usuarioID = req.query.usuarioID;
             const { nome, bio, endereco, bairro, ponto_ref, delivery, tema } = req.body;
             const atualizaLojaService = new AtualizaLojaService_1.AtualizaLojaService();
-            const data = yield atualizaLojaService.execute({
+            if (!req.file)
+                throw new Error("Falha ao enviar baanner");
+            yield atualizaLojaService.execute({
                 usuarioID,
                 avatar: req.file,
                 nome,
@@ -28,7 +30,7 @@ class AtualizaLojaController {
                 delivery,
                 tema
             });
-            return res.json(data);
+            return res.status(200).json({ message: "Loja Atualizada" });
         });
     }
 }

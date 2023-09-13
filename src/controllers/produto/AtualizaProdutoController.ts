@@ -17,8 +17,7 @@ class AtualizaProdutoController {
         } = req.body
 
         const atualizaProdutoService = new AtualizaProdutoService();
-
-        const produto = await atualizaProdutoService.execute({
+        await atualizaProdutoService.execute({
             nome,
             descricao,
             preco,
@@ -30,9 +29,7 @@ class AtualizaProdutoController {
             produtoID
         })
 
-
-
-        return res.json(produto)
+        return res.status(200).json({message: "Produto atualizado"})
     }
 }
 

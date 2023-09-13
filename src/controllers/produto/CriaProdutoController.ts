@@ -3,8 +3,7 @@ import { CriaProdutoService } from "../../services/produto/CriaProdutoService";
 
 class CriaProdutoController {
   async handle(req: Request, res: Response) {
-    const criaProdutoService = new CriaProdutoService();
-
+    
     const lojaID = req.query.lojaID as string
     const {
       codigo,
@@ -18,11 +17,9 @@ class CriaProdutoController {
     } =
       req.body;
 
-
-    if (!req.files) {
-      throw new Error("Ops.. algo deu errado!");
-    }
-
+    if (!req.files) throw new Error("Ops.. algo deu errado!");
+    
+    const criaProdutoService = new CriaProdutoService();
     const produto = await criaProdutoService.execute({
       codigo,
       nome,

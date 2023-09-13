@@ -14,10 +14,10 @@ const CriaMarcaService_1 = require("../../services/marca/CriaMarcaService");
 class CriaMarcaController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const criaMarcaService = new CriaMarcaService_1.CriaMarcaService();
             const { nome } = req.body;
             if (!req.file)
-                throw new Error("Ops.. algo deu errado!");
+                throw new Error("Falha ao carregar imagem da Marca - API");
+            const criaMarcaService = new CriaMarcaService_1.CriaMarcaService();
             const marca = yield criaMarcaService.execute({
                 nome,
                 avatar: req.file,

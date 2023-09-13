@@ -16,12 +16,8 @@ class DeletaMarcaController {
         return __awaiter(this, void 0, void 0, function* () {
             const marcaID = req.query.marcaID;
             const deletaMarcaService = new DeletaMarcaService_1.DeletaMarcaService();
-            yield deletaMarcaService.execute({
-                marcaID
-            });
-            return res.status(200).json({
-                message: "Marca Excluida"
-            });
+            yield deletaMarcaService.execute({ marcaID });
+            return res.status(200).json({ message: "Marca Excluida" });
         });
     }
 }

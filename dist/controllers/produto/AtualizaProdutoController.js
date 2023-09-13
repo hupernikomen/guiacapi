@@ -17,7 +17,7 @@ class AtualizaProdutoController {
             const produtoID = req.query.produtoID;
             const { nome, descricao, preco, oferta, tamanho, cores, categoriaID, campanhaID } = req.body;
             const atualizaProdutoService = new AtualizaProdutoService_1.AtualizaProdutoService();
-            const produto = yield atualizaProdutoService.execute({
+            yield atualizaProdutoService.execute({
                 nome,
                 descricao,
                 preco,
@@ -28,7 +28,7 @@ class AtualizaProdutoController {
                 campanhaID,
                 produtoID
             });
-            return res.json(produto);
+            return res.status(200).json({ message: "Produto atualizado" });
         });
     }
 }

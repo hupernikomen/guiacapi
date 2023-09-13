@@ -14,12 +14,11 @@ const CriaProdutoService_1 = require("../../services/produto/CriaProdutoService"
 class CriaProdutoController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const criaProdutoService = new CriaProdutoService_1.CriaProdutoService();
             const lojaID = req.query.lojaID;
             const { codigo, nome, preco, descricao, tamanho, cores, categoriaID, subcategoriaID } = req.body;
-            if (!req.files) {
+            if (!req.files)
                 throw new Error("Ops.. algo deu errado!");
-            }
+            const criaProdutoService = new CriaProdutoService_1.CriaProdutoService();
             const produto = yield criaProdutoService.execute({
                 codigo,
                 nome,

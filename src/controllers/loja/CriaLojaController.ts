@@ -7,14 +7,8 @@ class CriaLojaController {
 
     const { usuarioID } = req.body;
 
-    const loja = await criaLojaService.execute({
-      usuarioID
-    })
-
-    return res.status(200).json(loja);
-
-
-
+    await criaLojaService.execute({ usuarioID })
+    return res.status(200).json({message:"Loja criada com sucesso"});
 
   }
 }

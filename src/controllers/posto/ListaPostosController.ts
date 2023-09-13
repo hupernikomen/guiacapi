@@ -1,7 +1,6 @@
 import { Request, Response } from 'express'
 import { ListaPostosService } from '../../services/posto/ListaPostosService'
 
-
 class ListarPostosController {
     async handle(req: Request, res: Response) {
 

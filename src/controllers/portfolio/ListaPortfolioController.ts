@@ -7,9 +7,7 @@ class ListarPortfolioController {
       const profissionalID = req.query.profissionalID as string
         const listaPortfolioService = new ListaPortfolioService()
 
-        const portfolio = await listaPortfolioService.execute({
-          profissionalID
-        })
+        const portfolio = await listaPortfolioService.execute({profissionalID})
         return res.json(portfolio)
 
     }

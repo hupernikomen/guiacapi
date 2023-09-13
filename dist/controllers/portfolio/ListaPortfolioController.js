@@ -16,9 +16,7 @@ class ListarPortfolioController {
         return __awaiter(this, void 0, void 0, function* () {
             const profissionalID = req.query.profissionalID;
             const listaPortfolioService = new ListaPortfolioService_1.ListaPortfolioService();
-            const portfolio = yield listaPortfolioService.execute({
-                profissionalID
-            });
+            const portfolio = yield listaPortfolioService.execute({ profissionalID });
             return res.json(portfolio);
         });
     }

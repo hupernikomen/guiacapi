@@ -30,7 +30,9 @@ class CriaContatoController {
                 afastado,
                 usuarioID
             });
-            return res.status(200).json(contato);
+            if (!contato)
+                throw new Error("Erro ao criar contato - API");
+            return res.status(200).json({ message: "Criado com Sucesso" });
         });
     }
 }

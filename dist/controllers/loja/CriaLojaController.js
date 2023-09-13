@@ -16,10 +16,8 @@ class CriaLojaController {
         return __awaiter(this, void 0, void 0, function* () {
             const criaLojaService = new CriaLojaService_1.CriaLojaService();
             const { usuarioID } = req.body;
-            const loja = yield criaLojaService.execute({
-                usuarioID
-            });
-            return res.status(200).json(loja);
+            yield criaLojaService.execute({ usuarioID });
+            return res.status(200).json({ message: "Loja criada com sucesso" });
         });
     }
 }

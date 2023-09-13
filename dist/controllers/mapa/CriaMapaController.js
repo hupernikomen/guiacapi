@@ -17,11 +17,11 @@ class CriaMapaController {
             const usuarioID = req.query.usuarioID;
             const { latlng } = req.body;
             const criaMapaService = new CriaMapaService_1.CriaMapaService();
-            const mapa = yield criaMapaService.execute({
+            yield criaMapaService.execute({
                 latlng,
                 usuarioID
             });
-            return res.json(mapa);
+            return res.json({ message: "Criado com sucesso" });
         });
     }
 }

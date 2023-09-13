@@ -16,7 +16,9 @@ class AtualizaLojaController {
 
         const atualizaLojaService = new AtualizaLojaService();
 
-        const data = await atualizaLojaService.execute({
+        if (!req.file) throw new Error("Falha ao enviar baanner");
+
+        await atualizaLojaService.execute({
             usuarioID,
             avatar: req.file,
             nome,
@@ -26,11 +28,9 @@ class AtualizaLojaController {
             ponto_ref,
             delivery,
             tema
-
         })
 
-
-        return res.json(data)
+        return res.status(200).json({message: "Loja Atualizada"})
     }
 }
 

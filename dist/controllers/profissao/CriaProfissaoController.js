@@ -14,11 +14,9 @@ const CriaProfissaoService_1 = require("../../services/profissao/CriaProfissaoSe
 class CriaProfissaoController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const criaProfissaoService = new CriaProfissaoService_1.CriaProfissaoService();
             const { nome } = req.body;
-            const profissao = yield criaProfissaoService.execute({
-                nome,
-            });
+            const criaProfissaoService = new CriaProfissaoService_1.CriaProfissaoService();
+            const profissao = yield criaProfissaoService.execute({ nome });
             return res.status(200).json(profissao);
         });
     }

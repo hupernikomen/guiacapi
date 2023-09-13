@@ -16,10 +16,10 @@ class CriaPostoController {
         return __awaiter(this, void 0, void 0, function* () {
             const criaPostoService = new CriaPostoService_1.CriaPostoService();
             const { usuarioID } = req.body;
-            const posto = yield criaPostoService.execute({
-                usuarioID
-            });
-            return res.status(200).json(posto);
+            const posto = yield criaPostoService.execute({ usuarioID });
+            if (!posto)
+                throw new Error("Erro ao cadastrar posto - API");
+            return res.status(200).json({ message: "Criado com sucesso" });
         });
     }
 }

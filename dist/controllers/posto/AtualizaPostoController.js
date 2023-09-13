@@ -14,13 +14,14 @@ const AtualizarPostoService_1 = require("../../services/posto/AtualizarPostoServ
 class AtualizaPostoController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const atualizaPostoService = new AtualizarPostoService_1.AtualizaPostoService();
             const postoID = req.query.postoID;
             const { nome, tabela, bairro } = req.body;
-            const file = req.file;
+            if (!req.file)
+                throw new Error("Erro ao enviar avatar - API");
+            const atualizaPostoService = new AtualizarPostoService_1.AtualizaPostoService();
             const posto = yield atualizaPostoService.execute({
                 nome,
-                avatar: file,
+                avatar: req.file,
                 tabela,
                 bairro,
                 postoID

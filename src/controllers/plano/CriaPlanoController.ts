@@ -3,15 +3,9 @@ import { CriaPlanoService } from "../../services/plano/CriaPlanoService";
 
 class CriaPlanoController {
   async handle(req: Request, res: Response) {
+    const { nome, valor, oferta, pacote } = req.body;
+
     const criaPlanoService = new CriaPlanoService();
-
-    const {
-      nome,
-      valor,
-      oferta,
-      pacote 
-    } = req.body;
-
     const plano = await criaPlanoService.execute({
       nome,
       valor,
@@ -19,7 +13,7 @@ class CriaPlanoController {
       pacote
     })
 
-    return res.status(200).json(plano);
+    return res.status(200).json({message: "Criado com sucesso"});
 
   }
 }

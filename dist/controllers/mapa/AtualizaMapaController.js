@@ -14,14 +14,14 @@ const AtualizarMapaService_1 = require("../../services/mapa/AtualizarMapaService
 class AtualizaMapaController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const atualizaMapaService = new AtualizarMapaService_1.AtualizaMapaService();
             const usuarioID = req.query.usuarioID;
             const { latlng } = req.body;
-            const mapa = yield atualizaMapaService.execute({
+            const atualizaMapaService = new AtualizarMapaService_1.AtualizaMapaService();
+            yield atualizaMapaService.execute({
                 latlng,
                 usuarioID
             });
-            return res.status(200).json(mapa);
+            return res.status(200).json({ message: "Localização Atualizada" });
         });
     }
 }

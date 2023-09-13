@@ -14,15 +14,15 @@ const CriaPlanoService_1 = require("../../services/plano/CriaPlanoService");
 class CriaPlanoController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const criaPlanoService = new CriaPlanoService_1.CriaPlanoService();
             const { nome, valor, oferta, pacote } = req.body;
+            const criaPlanoService = new CriaPlanoService_1.CriaPlanoService();
             const plano = yield criaPlanoService.execute({
                 nome,
                 valor,
                 oferta,
                 pacote
             });
-            return res.status(200).json(plano);
+            return res.status(200).json({ message: "Criado com sucesso" });
         });
     }
 }

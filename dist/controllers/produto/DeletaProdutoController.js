@@ -16,12 +16,8 @@ class DeletaProdutoController {
         return __awaiter(this, void 0, void 0, function* () {
             const produtoID = req.query.produtoID;
             const deletaProdutoService = new DeletaProdutoService_1.DeletaProdutoService();
-            yield deletaProdutoService.execute({
-                produtoID
-            });
-            return res.status(200).json({
-                message: "Fique tranquilo! Já excluimos seu produto"
-            });
+            yield deletaProdutoService.execute({ produtoID });
+            return res.status(200).json({ message: "Produto excluido" });
         });
     }
 }
