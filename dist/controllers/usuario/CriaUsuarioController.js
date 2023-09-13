@@ -15,12 +15,13 @@ class CriaUsuarioController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const regiaoID = req.query.regiaoID;
-            const { email, senha } = req.body;
+            const { email, senha, rede } = req.body;
             const criaUsuarioService = new CriaUsuarioService_1.CriaUsuarioService();
             const usuario = yield criaUsuarioService.execute({
                 email,
                 senha,
-                regiaoID
+                regiaoID,
+                rede
             });
             if (!usuario) {
                 throw new Error("Ops, algo deu errado!");
@@ -28,6 +29,7 @@ class CriaUsuarioController {
             return res.status(200).json({
                 message: "Cadastrado com Sucesso",
                 usuario,
+                rede
             });
         });
     }

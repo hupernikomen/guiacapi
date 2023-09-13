@@ -41,7 +41,8 @@ class AtualizaService {
                     loja: true,
                     posto: true,
                     profissional: true,
-                    email: true
+                    email: true,
+                    rede: true
                 }
             });
             return usuario;

@@ -28,7 +28,8 @@ class BuscaUsuarioService {
                     profissional: true,
                     loja: true,
                     status: true,
-                    mapa: true
+                    mapa: true,
+                    rede: true
                 }
             });
             return usuario;

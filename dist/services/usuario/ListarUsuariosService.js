@@ -25,7 +25,8 @@ class ListarUsuariosService {
                     profissional: { select: { nome: true, profissao: { select: { nome: true } } } },
                     posto: { select: { nome: true } },
                     regiao: { select: { nome: true } },
-                    contato: true
+                    contato: true,
+                    rede: true
                 }
             });
             return usuarios;

@@ -34,7 +34,6 @@ class AutenticaService {
             const posto = yield prisma_1.default.posto.findFirst({
                 where: { usuarioID: usuario.id }
             });
-            console.log(usuario, "USUARIOOOOOO");
             if (!usuario) {
                 throw new Error("Usuário não cadastrado");
             }
