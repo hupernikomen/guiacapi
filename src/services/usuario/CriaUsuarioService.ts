@@ -5,7 +5,7 @@ interface usuarioRequest {
     email: string,
     senha: string,
     regiaoID: string,
-    rede: string
+    rede: string,
 }
 
 class CriaUsuarioService {
@@ -13,7 +13,7 @@ class CriaUsuarioService {
         email,
         senha,
         regiaoID,
-        rede
+        rede,
     }: usuarioRequest) {
 
         if (!email) throw new Error("informe seu email");

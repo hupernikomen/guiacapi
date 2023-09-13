@@ -21,7 +21,7 @@ class CriaUsuarioController {
                 email,
                 senha,
                 regiaoID,
-                rede
+                rede,
             });
             if (!usuario) {
                 throw new Error("Ops, algo deu errado!");

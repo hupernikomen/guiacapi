@@ -13,7 +13,7 @@ class CriaUsuarioController {
             email,
             senha,
             regiaoID,
-            rede
+            rede,
         })
 
         if(!usuario) {
