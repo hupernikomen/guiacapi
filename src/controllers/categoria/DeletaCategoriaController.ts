@@ -7,12 +7,9 @@ class DeletaCategoriaController {
     const categoriaID = req.query.categoriaID as string
 
     const deletaCategoriaService = new DeletaCategoriaService()
-
     await deletaCategoriaService.execute({ categoriaID })
 
-    return res.status(200).json({
-      message: "Categoria Excluida"
-    })
+    return res.status(200).json({ message: "Categoria Excluida" })
 
   }
 }

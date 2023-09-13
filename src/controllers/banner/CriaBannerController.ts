@@ -3,15 +3,13 @@ import { CriaBannerService } from '../../services/banner/CriaBannerService';
 
 class CriaBannerController {
   async handle(req: Request, res: Response) {
+
     const lojaID = req.query.lojaID as string
-    const { link, params  } = req.body
+    const { link, params } = req.body
+
+    if (!req.file) throw new Error("Falha ao enviar baanner");
 
     const criaBannerService = new CriaBannerService();
-
-    if (!req.file) {
-      throw new Error("Falha ao enviar baanner");
-    }
-
     const banner = await criaBannerService.execute({
       link,
       params,
@@ -19,7 +17,8 @@ class CriaBannerController {
       lojaID
     })
 
-    return res.json(banner)
+    if(!banner) throw new Error("Erro ao criar banner - API");
+    return res.status(200).json({message: "Criado com Sucesso"})
   }
 }
 

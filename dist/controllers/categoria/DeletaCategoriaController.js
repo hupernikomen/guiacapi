@@ -17,9 +17,7 @@ class DeletaCategoriaController {
             const categoriaID = req.query.categoriaID;
             const deletaCategoriaService = new DeletaCategoriaService_1.DeletaCategoriaService();
             yield deletaCategoriaService.execute({ categoriaID });
-            return res.status(200).json({
-                message: "Categoria Excluida"
-            });
+            return res.status(200).json({ message: "Categoria Excluida" });
         });
     }
 }

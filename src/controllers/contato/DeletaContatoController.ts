@@ -7,15 +7,9 @@ class DeletarContatoController {
     const contatoID = req.query.contatoID as string
 
     const deletaContatoService = new DeletaContatoService()
+    await deletaContatoService.execute({ contatoID })
 
-    await deletaContatoService.execute({
-      contatoID
-    })
-
-    return res.status(200).json({
-      message:  "Contato Excluido"
-    })
-
+    return res.status(200).json({ message:  "Contato Excluido" })
   }
 }
 

@@ -16,12 +16,8 @@ class DeletarContatoController {
         return __awaiter(this, void 0, void 0, function* () {
             const contatoID = req.query.contatoID;
             const deletaContatoService = new DeletaContatoService_1.DeletaContatoService();
-            yield deletaContatoService.execute({
-                contatoID
-            });
-            return res.status(200).json({
-                message: "Contato Excluido"
-            });
+            yield deletaContatoService.execute({ contatoID });
+            return res.status(200).json({ message: "Contato Excluido" });
         });
     }
 }

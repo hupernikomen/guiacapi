@@ -16,17 +16,18 @@ class CriaBannerController {
         return __awaiter(this, void 0, void 0, function* () {
             const lojaID = req.query.lojaID;
             const { link, params } = req.body;
-            const criaBannerService = new CriaBannerService_1.CriaBannerService();
-            if (!req.file) {
+            if (!req.file)
                 throw new Error("Falha ao enviar baanner");
-            }
+            const criaBannerService = new CriaBannerService_1.CriaBannerService();
             const banner = yield criaBannerService.execute({
                 link,
                 params,
                 imagem: req.file,
                 lojaID
             });
-            return res.json(banner);
+            if (!banner)
+                throw new Error("Erro ao criar banner - API");
+            return res.status(200).json({ message: "Criado com Sucesso" });
         });
     }
 }

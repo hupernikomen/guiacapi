@@ -6,10 +6,10 @@ class CriaCategoriaController {
         const { nome } = req.body
 
         const criaCategoriaService = new CriaCategoriaService();
-
         const categoria = await criaCategoriaService.execute({ nome })
 
-        return res.json(categoria)
+        if(!categoria) throw new Error("Erro ao criar categoria - API");
+        return res.status(200).json({message: "Criado com Sucesso"});
     }
 }
 

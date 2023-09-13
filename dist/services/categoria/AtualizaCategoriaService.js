@@ -18,12 +18,8 @@ class AtualizaCategoriaService {
     execute({ nome, categoriaID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const categoria = yield prisma_1.default.categoria.update({
-                where: {
-                    id: categoriaID
-                },
-                data: {
-                    nome,
-                }
+                where: { id: categoriaID },
+                data: { nome }
             });
             return categoria;
         });

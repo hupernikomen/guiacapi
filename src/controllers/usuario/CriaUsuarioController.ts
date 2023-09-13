@@ -21,11 +21,7 @@ class CriaUsuarioController {
             
         }
 
-        return res.status(200).json({
-            message: "Cadastrado com Sucesso",
-            usuario,
-            rede
-        })
+        return res.status(200).json({message: "Cadastrado com Sucesso"})
     }
 }
 

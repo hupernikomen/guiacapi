@@ -17,7 +17,9 @@ class CriaCategoriaController {
             const { nome } = req.body;
             const criaCategoriaService = new CriaCategoriaService_1.CriaCategoriaService();
             const categoria = yield criaCategoriaService.execute({ nome });
-            return res.json(categoria);
+            if (!categoria)
+                throw new Error("Erro ao criar categoria - API");
+            return res.status(200).json({ message: "Criado com Sucesso" });
         });
     }
 }

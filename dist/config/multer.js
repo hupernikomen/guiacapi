@@ -34,14 +34,13 @@ exports.default = {
 function fileFilter(req, file, callback) {
     let errorMessage = '';
     const ext = path_1.default.extname(file.originalname).toLowerCase();
-    console.log(ext, 'extensaoooooo');
     if (ext !== '.png' &&
         ext !== '.jpg' &&
         ext !== '.jpeg' &&
         ext !== '.webp')
         return callback(new Error('Formato de arquivo não aceito'));
     if (errorMessage) {
-        console.log(errorMessage);
+        console.log(errorMessage, "Multer API");
         return callback({ errorMessage: errorMessage, code: 'LIMIT_FILE_TYPE' }, false);
     }
     callback(null, true);

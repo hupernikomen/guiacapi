@@ -7,7 +7,6 @@ import { resolve } from 'path'
 
 import 'dotenv/config';
 
-
 let s3 = new AWS.S3({
   accessKeyId: process.env.ACCESS_KEY_ID,
   secretAccessKey: process.env.SECRET_ACCESS_KEY,
@@ -38,20 +37,15 @@ export function fileFilter(req, file, callback) {
   let errorMessage = '';
   const ext = path.extname(file.originalname).toLowerCase();
 
-  console.log(ext,'extensaoooooo');
-  
-
   if (
     ext !== '.png' &&
     ext !== '.jpg' &&
     ext !== '.jpeg' &&
     ext !== '.webp'
   ) return callback(new Error('Formato de arquivo não aceito'))
-  
-
 
   if (errorMessage) {
-    console.log(errorMessage);
+    console.log(errorMessage, "Multer API");
     return callback({ errorMessage: errorMessage, code: 'LIMIT_FILE_TYPE' }, false);
   }
 

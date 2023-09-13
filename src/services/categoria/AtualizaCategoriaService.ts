@@ -7,18 +7,11 @@ interface categoriaRequest {
 
 class AtualizaCategoriaService {
 
-    async execute({
-        nome,
-        categoriaID
-    }: categoriaRequest) {
+    async execute({ nome, categoriaID }: categoriaRequest) {
 
         const categoria = await prismaClient.categoria.update({
-            where: {
-                id: categoriaID
-            },
-            data: {
-                nome,
-            }
+            where: { id: categoriaID },
+            data: { nome }
         })
 
         return categoria

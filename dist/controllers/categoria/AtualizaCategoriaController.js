@@ -14,14 +14,14 @@ const AtualizaCategoriaService_1 = require("../../services/categoria/AtualizaCat
 class AtualizaCategoriaController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const atualizaCategoriaService = new AtualizaCategoriaService_1.AtualizaCategoriaService();
             const categoriaID = req.query.categoriaID;
             const { nome } = req.body;
-            const categoria = yield atualizaCategoriaService.execute({
+            const atualizaCategoriaService = new AtualizaCategoriaService_1.AtualizaCategoriaService();
+            yield atualizaCategoriaService.execute({
                 nome,
                 categoriaID
             });
-            return res.status(200).json(categoria);
+            return res.status(200).json({ message: "Atualzado com Sucesso" });
         });
     }
 }
