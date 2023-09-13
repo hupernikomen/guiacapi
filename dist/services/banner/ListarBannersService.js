@@ -18,8 +18,10 @@ class ListarBannersService {
     execute() {
         return __awaiter(this, void 0, void 0, function* () {
             const banners = yield prisma_1.default.banner.findMany({
+                where: {
+                    status: true
+                },
                 select: {
-                    id: true,
                     imagem: true,
                     link: true,
                     params: true,

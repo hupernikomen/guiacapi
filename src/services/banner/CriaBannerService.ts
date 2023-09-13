@@ -5,7 +5,6 @@ interface bannerRequest {
     params: string,
     imagem: object,
     lojaID: string
-
 }
 
 class CriaBannerService {

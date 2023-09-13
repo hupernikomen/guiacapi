@@ -4,8 +4,10 @@ class ListarBannersService {
     async execute() {
 
         const banners = await prismaClient.banner.findMany({
+            where: {
+                status: true
+            },
             select:{
-                id: true,
                 imagem: true,
                 link:true,
                 params:true,
