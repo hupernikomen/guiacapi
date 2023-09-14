@@ -42,7 +42,8 @@ class ListarProdutosService {
                         select: {
                             id: true,
                             nome: true,
-                            delivery: true
+                            delivery: true,
+                            usuario: { select: { regiaoID: true } }
                         }
                     },
                     categoria: {

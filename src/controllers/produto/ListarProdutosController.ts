@@ -4,6 +4,7 @@ import { ListarProdutosService } from '../../services/produto/ListarProdutosServ
 
 class ListarProdutosController {
     async handle(req: Request, res: Response) {
+
         const listarProdutosService = new ListarProdutosService()
 
         const feed = await listarProdutosService.execute()
