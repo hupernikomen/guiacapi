@@ -1,29 +1,29 @@
 import prismaClient from "../../prisma";
 
 interface bannerRequest {
-    link: string,
-    params: string,
-    imagem: object,
-    usuarioID: string
+    route: string,
+    paramsID: string,
+    image: object,
+    userID: string
 }
 
 class CriaBannerService {
     async execute({
-        link,
-        params,
-        imagem,
-        usuarioID
+        route,
+        paramsID,
+        image,
+        userID
     }: bannerRequest) {
-        const banner = await prismaClient.banner.create({
+        const _banner = await prismaClient.banner.create({
             data: {
-                link,
-                params,
-                imagem,
-                usuarioID
+                route,
+                paramsID,
+                image,
+                userID
             }
         })
 
-        return banner
+        return _banner
     }
 }
 

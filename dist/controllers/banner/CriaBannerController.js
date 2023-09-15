@@ -14,16 +14,16 @@ const CriaBannerService_1 = require("../../services/banner/CriaBannerService");
 class CriaBannerController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const usuarioID = req.query.usuarioID;
-            const { link, params } = req.body;
+            const userID = req.query.userID;
+            const { route, paramsID } = req.body;
             if (!req.file)
                 throw new Error("Falha ao enviar baanner");
             const criaBannerService = new CriaBannerService_1.CriaBannerService();
             const banner = yield criaBannerService.execute({
-                link,
-                params,
-                imagem: req.file,
-                usuarioID
+                route,
+                paramsID,
+                image: req.file,
+                userID
             });
             if (!banner)
                 throw new Error("Erro ao criar banner - API");

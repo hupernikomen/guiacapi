@@ -3,21 +3,21 @@ import prismaClient from "../../prisma";
 class ListarBannersService {
     async execute() {
 
-        const banners = await prismaClient.banner.findMany({
+        const _banners = await prismaClient.banner.findMany({
             where: {
                 status: true
             },
             select:{
-                imagem: true,
-                link:true,
-                params:true,
+                image: true,
+                route:true,
+                paramsID:true,
                 createdAt:true,
                 status:true,
-                usuarioID:true
+                userID:true
             }
         })
 
-        return banners
+        return _banners
     }
 }
 

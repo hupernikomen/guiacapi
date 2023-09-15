@@ -15,15 +15,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListaPortfolioService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class ListaPortfolioService {
-    execute({ profissionalID }) {
+    execute({ personID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const portfolio = yield prisma_1.default.portfolio.findMany({
                 where: {
-                    profissionalID
+                    personID
                 },
                 select: {
                     id: true,
-                    imagem: true
+                    image: true
                 }
             });
             return portfolio;

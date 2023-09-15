@@ -4,11 +4,11 @@ import { ListaPortfolioService } from '../../services/portfolio/ListaPortfolioSe
 
 class ListarPortfolioController {
     async handle(req: Request, res: Response) {
-      const profissionalID = req.query.profissionalID as string
+      const personID = req.query.personID as string
         const listaPortfolioService = new ListaPortfolioService()
 
-        const portfolio = await listaPortfolioService.execute({profissionalID})
-        return res.json(portfolio)
+        const _portfolio = await listaPortfolioService.execute({personID})
+        return res.json(_portfolio)
 
     }
 }

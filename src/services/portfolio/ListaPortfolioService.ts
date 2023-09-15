@@ -1,22 +1,22 @@
 import prismaClient from "../../prisma";
 
 interface listaPortfolioRequest {
-  profissionalID: string
+  personID: string
 }
 
 
 class ListaPortfolioService {
   async execute({
-    profissionalID
+    personID
   }: listaPortfolioRequest) {
 
     const portfolio = await prismaClient.portfolio.findMany({
       where: {
-        profissionalID
+        personID
       },
       select: {
         id: true,
-        imagem: true
+        image: true
 
       }
     })

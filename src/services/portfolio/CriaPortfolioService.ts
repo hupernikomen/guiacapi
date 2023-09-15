@@ -1,26 +1,26 @@
 import prismaClient from "../../prisma";
 
 interface portfolioRequest {
-  profissionalID: string,
-  imagem:object
+  personID: string,
+  image:object
 }
 
 class CriaPortfolioService {
 
   async execute({
-    imagem,
-    profissionalID
+    image,
+    personID
 
   }: portfolioRequest) {
 
-    const portfolio = await prismaClient.portfolio.create({
+    const _portfolio = await prismaClient.portfolio.create({
       data: {
-        imagem,
-        profissionalID
+        image,
+        personID
       }
     })
 
-    return portfolio
+    return _portfolio
   }
 }
 

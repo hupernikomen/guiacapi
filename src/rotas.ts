@@ -6,64 +6,64 @@ import { Authenticator } from './middlewares/authenticator';
 
 import { fileFilter, storageProdutos, storageAvatar, storagePortfolio, storageMarca } from './config/multer'
 
-import { LojaLogadaController } from './controllers/loja/LojaLogadaController';
-import { AutenticaUsuarioController } from './controllers/usuario/AutenticaUsuarioController';
-import { BuscaProfissionalController } from './controllers/profissional/BucaProfissionalController';
-import { BuscaMapaController } from './controllers/mapa/BuscaMapaController';
-import { BuscaLojaController } from './controllers/loja/BuscaLojaController';
-import { BuscaPostoController } from './controllers/posto/BuscaPostoController';
-import { DetalheProdutoController } from './controllers/produto/DetalheProdutoController';
-import { AtualizaUsuarioController } from './controllers/usuario/AtualizaUsuarioController';
-import { AtualizaLojaController } from './controllers/loja/AtualizaLojaController';
-import { AtualizaCategoriaController } from './controllers/categoria/AtualizaCategoriaController';
-import { AtualizaCampanhaController } from './controllers/campanha/AtualizaCampanhaController';
-import { AtualizarProfissionalController } from './controllers/profissional/AtualizarProfissionalController';
-import { AtualizaProdutoController } from './controllers/produto/AtualizaProdutoController';
-import { AtualizaPostoController } from './controllers/posto/AtualizaPostoController';
-import { CriaMapaController } from './controllers/mapa/CriaMapaController';
-import { CriaLojaController } from './controllers/loja/CriaLojaController';
+import { LojaLogadaController } from './controllers/store/LojaLogadaController';
+import { AutenticaUsuarioController } from './controllers/user/AutenticaUsuarioController';
+import { BuscaProfissionalController } from './controllers/person/BucaProfissionalController';
+import { BuscaMapaController } from './controllers/map/BuscaMapaController';
+import { BuscaLojaController } from './controllers/store/BuscaLojaController';
+import { BuscaPostoController } from './controllers/gasStation/BuscaPostoController';
+import { DetalheProdutoController } from './controllers/product/DetalheProdutoController';
+import { AtualizaUsuarioController } from './controllers/user/AtualizaUsuarioController';
+import { AtualizaLojaController } from './controllers/store/AtualizaLojaController';
+import { AtualizaCategoriaController } from './controllers/category/AtualizaCategoriaController';
+import { AtualizaCampanhaController } from './controllers/campaign/AtualizaCampanhaController';
+import { AtualizarProfissionalController } from './controllers/person/AtualizarProfissionalController';
+import { AtualizaProdutoController } from './controllers/product/AtualizaProdutoController';
+import { AtualizaPostoController } from './controllers/gasStation/AtualizaPostoController';
+import { CriaMapaController } from './controllers/map/CriaMapaController';
+import { CriaLojaController } from './controllers/store/CriaLojaController';
 import { CriaBannerController } from './controllers/banner/CriaBannerController';
-import { CriaUsuarioController } from './controllers/usuario/CriaUsuarioController';
-import { CriaRegiaoController } from './controllers/regiao/CriaRegiaoController';
-import { CriaProfissaoController } from './controllers/profissao/CriaProfissaoController';
-import { CriaCategoriaController } from './controllers/categoria/CriaCategoriaController';
-import { CriaContatoController } from './controllers/contato/CriaContatoController';
-import { CriaProfissionalController } from './controllers/profissional/CriaProfissionalController';
-import { CriaPostoController } from './controllers/posto/CriaPostoController';
-import { CriaCampanhaController } from './controllers/campanha/CriaCampanhaController';
-import { CriaProdutoController } from './controllers/produto/CriaProdutoController';
-import { ListarRegioesController } from './controllers/regiao/ListarRegioesController';
-import { ListarProdutosController } from './controllers/produto/ListarProdutosController';
-import { ListarProfissionalController } from './controllers/profissional/ListarProfissionalController';
-import { ListaProfissaoController } from './controllers/profissao/ListaProfissaoController';
-import { ListaContatosController } from './controllers/contato/ListaContatosController';
-import { ListaCategoriaController } from './controllers/categoria/ListaCategoriaController';
-import { ListaCampanhasInativasController } from './controllers/campanha/ListaCampanhasInativasController';
-import { ListaCampanhaController } from './controllers/campanha/ListaCampanhaController';
-import { ListarPostosController } from './controllers/posto/ListaPostosController';
-import { ListaLojasController } from './controllers/loja/ListaLojasController';
-import { PorCategoriaProdutoController } from './controllers/produto/PorCategoriaProdutoController';
-import { PorProfissaoController } from './controllers/profissional/PorProfissaoController';
-import { DeletaProdutoController } from './controllers/produto/DeletaProdutoController';
-import { AtualizaProfissaoController } from './controllers/profissao/AtualizaProfissaoController';
-import { DeletaCategoriaController } from './controllers/categoria/DeletaCategoriaController';
+import { CriaUsuarioController } from './controllers/user/CriaUsuarioController';
+import { CriaRegiaoController } from './controllers/region/CriaRegiaoController';
+import { CriaProfissaoController } from './controllers/profession/CriaProfissaoController';
+import { CriaCategoriaController } from './controllers/category/CriaCategoriaController';
+import { CriaContatoController } from './controllers/contact/CriaContatoController';
+import { CriaProfissionalController } from './controllers/person/CriaProfissionalController';
+import { CriaPostoController } from './controllers/gasStation/CriaPostoController';
+import { CriaCampanhaController } from './controllers/campaign/CriaCampanhaController';
+import { CriaProdutoController } from './controllers/product/CriaProdutoController';
+import { ListarRegioesController } from './controllers/region/ListarRegioesController';
+import { ListarProdutosController } from './controllers/product/ListarProdutosController';
+import { ListarProfissionalController } from './controllers/person/ListarProfissionalController';
+import { ListaProfissaoController } from './controllers/profession/ListaProfissaoController';
+import { ListaContatosController } from './controllers/contact/ListaContatosController';
+import { ListaCategoriaController } from './controllers/category/ListaCategoriaController';
+import { ListaCampanhasInativasController } from './controllers/campaign/ListaCampanhasInativasController';
+import { ListaCampanhaController } from './controllers/campaign/ListaCampanhaController';
+import { ListarPostosController } from './controllers/gasStation/ListaPostosController';
+import { ListaLojasController } from './controllers/store/ListaLojasController';
+import { PorCategoriaProdutoController } from './controllers/product/PorCategoriaProdutoController';
+import { PorProfissaoController } from './controllers/person/PorProfissaoController';
+import { DeletaProdutoController } from './controllers/product/DeletaProdutoController';
+import { AtualizaProfissaoController } from './controllers/profession/AtualizaProfissaoController';
+import { DeletaCategoriaController } from './controllers/category/DeletaCategoriaController';
 import { ListarBannersController } from './controllers/banner/ListarBannersController';
-import { DeletarContatoController } from './controllers/contato/DeletaContatoController';
-import { CriaPlanoController } from './controllers/plano/CriaPlanoController';
-import { ListarPlanosController } from './controllers/plano/ListarPlanosController';
-import { CriaSubCategoriaController } from './controllers/subcategoria/CriaSubCategoriaController';
-import { ListaSubCategoriaController } from './controllers/subcategoria/ListaSubCategoriasController';
-import { BuscaSubcategoriaController } from './controllers/subcategoria/BuscaSubcategoriaController';
-import { PorSubcategoriaProdutoController } from './controllers/produto/PorSubcategoriaProdutoController';
-import { ListarUsuariosController } from './controllers/usuario/ListarUsuariosController';
-import { BuscaUsuarioController } from './controllers/usuario/BuscarUsuarioController';
-import { AtualizaMapaController } from './controllers/mapa/AtualizaMapaController';
+import { DeletarContatoController } from './controllers/contact/DeletaContatoController';
+import { CriaPlanoController } from './controllers/price/CriaPlanoController';
+import { ListarPlanosController } from './controllers/price/ListarPlanosController';
+import { CriaSubCategoriaController } from './controllers/subcategory/CriaSubCategoriaController';
+import { ListaSubCategoriaController } from './controllers/subcategory/ListaSubCategoriasController';
+import { BuscaSubcategoriaController } from './controllers/subcategory/BuscaSubcategoriaController';
+import { PorSubcategoriaProdutoController } from './controllers/product/PorSubcategoriaProdutoController';
+import { ListarUsuariosController } from './controllers/user/ListarUsuariosController';
+import { BuscaUsuarioController } from './controllers/user/BuscarUsuarioController';
+import { AtualizaMapaController } from './controllers/map/AtualizaMapaController';
 import { CriaPortfolioControlller } from './controllers/portfolio/CriaPortfolioController';
 import { ListarPortfolioController } from './controllers/portfolio/ListaPortfolioController';
 import { DeletaPortfolioController } from './controllers/portfolio/DeletaPortfolioController';
-import { DeletaMarcaController } from './controllers/marca/DeletaMarcaController';
-import { CriaMarcaController } from './controllers/marca/CriaMarcaController';
-import { ListaMarcasController } from './controllers/marca/ListaMarcasController';
+import { DeletaMarcaController } from './controllers/brand/DeletaMarcaController';
+import { CriaMarcaController } from './controllers/brand/CriaMarcaController';
+import { ListaMarcasController } from './controllers/brand/ListaMarcasController';
 
 const uploadProdutos = multer({
   fileFilter: fileFilter,
@@ -99,72 +99,72 @@ const uploadMarca = multer({
 
 const rotas = Router();
 
-rotas.post('/usuario', Authenticator, new CriaUsuarioController().handle)
-rotas.put('/usuario', Authenticator, new AtualizaUsuarioController().handle)
-rotas.get('/usuarios', Authenticator, new ListarUsuariosController().handle)
-rotas.get('/usuario', new BuscaUsuarioController().handle)
+rotas.post('/user', Authenticator, new CriaUsuarioController().handle)
+rotas.put('/user', Authenticator, new AtualizaUsuarioController().handle)
+rotas.get('/users', Authenticator, new ListarUsuariosController().handle)
+rotas.get('/user', new BuscaUsuarioController().handle)
 rotas.post('/login', new AutenticaUsuarioController().handle)
 
 rotas.get('/banners', new ListarBannersController().handle)
 rotas.post('/banner', Authenticator, uploadProdutos.single('imagem'), new CriaBannerController().handle)
 
-rotas.get('/categorias', new ListaCategoriaController().handle)
-rotas.post('/categoria', Authenticator, new CriaCategoriaController().handle)
-rotas.delete('/categoria', Authenticator, new DeletaCategoriaController().handle)
-rotas.put('/categoria', Authenticator, new AtualizaCategoriaController().handle)
+rotas.post('/category', Authenticator, new CriaCategoriaController().handle)
+rotas.get('/categories', new ListaCategoriaController().handle)
+rotas.delete('/category', Authenticator, new DeletaCategoriaController().handle)
+rotas.put('/category', Authenticator, new AtualizaCategoriaController().handle)
 
-rotas.post('/subcategoria', Authenticator, new CriaSubCategoriaController().handle)
-rotas.get('/subcategorias', new ListaSubCategoriaController().handle)
-rotas.get('/subcategoria', new BuscaSubcategoriaController().handle)
+rotas.post('/subcategory', Authenticator, new CriaSubCategoriaController().handle)
+rotas.get('/subcategories', new ListaSubCategoriaController().handle)
+rotas.get('/subcategory', new BuscaSubcategoriaController().handle)
 
-rotas.post('/regiao', Authenticator, new CriaRegiaoController().handle)
-rotas.get('/regioes', new ListarRegioesController().handle)
+rotas.post('/region', Authenticator, new CriaRegiaoController().handle)
+rotas.get('/regions', new ListarRegioesController().handle)
 
 
-rotas.get('/campanhas/ativas', new ListaCampanhaController().handle)
-rotas.post('/campanha', Authenticator, new CriaCampanhaController().handle)
-rotas.put('/campanha', Authenticator, new AtualizaCampanhaController().handle)
-rotas.get('/campanhas', new ListaCampanhasInativasController().handle)
+rotas.get('/campaigns/ativas', new ListaCampanhaController().handle)
+rotas.post('/campaign', Authenticator, new CriaCampanhaController().handle)
+rotas.put('/campaign', Authenticator, new AtualizaCampanhaController().handle)
+rotas.get('/campaigns', new ListaCampanhasInativasController().handle)
 
 rotas.post('/posto', new CriaPostoController().handle)
 rotas.put('/posto', uploadAvatar.single('avatar'), new AtualizaPostoController().handle)
 rotas.get('/posto', new BuscaPostoController().handle)
 rotas.get('/postos', new ListarPostosController().handle)
 
-rotas.put('/produto', Authenticator, new AtualizaProdutoController().handle)
-rotas.post('/produto', Authenticator, uploadProdutos.array('files', 5), new CriaProdutoController().handle)
-rotas.get('/produtos', new ListarProdutosController().handle)
-rotas.get('/produtos/categoria', new PorCategoriaProdutoController().handle)
-rotas.get('/produtos/subcategoria', new PorSubcategoriaProdutoController().handle)
-rotas.delete('/produto', Authenticator, new DeletaProdutoController().handle)
-rotas.get('/detalhe/produto', new DetalheProdutoController().handle)
+rotas.put('/product', Authenticator, new AtualizaProdutoController().handle)
+rotas.post('/product', Authenticator, uploadProdutos.array('files', 5), new CriaProdutoController().handle)
+rotas.get('/products', new ListarProdutosController().handle)
+rotas.get('/products/category', new PorCategoriaProdutoController().handle)
+rotas.get('/products/subcategory', new PorSubcategoriaProdutoController().handle)
+rotas.delete('/product', Authenticator, new DeletaProdutoController().handle)
+rotas.get('/detail/product', new DetalheProdutoController().handle)
 
-rotas.post('/mapa', Authenticator, new CriaMapaController().handle)
-rotas.get('/mapa', new BuscaMapaController().handle)
-rotas.put('/mapa', Authenticator, new AtualizaMapaController().handle)
+rotas.post('/map', Authenticator, new CriaMapaController().handle)
+rotas.get('/map', new BuscaMapaController().handle)
+rotas.put('/map', Authenticator, new AtualizaMapaController().handle)
 
-rotas.post('/contato', Authenticator, uploadAvatar.single('avatar'), new CriaContatoController().handle)
-rotas.get('/contatos', new ListaContatosController().handle)
-rotas.delete('/contato', Authenticator, new DeletarContatoController().handle)
+rotas.post('/contact', Authenticator, uploadAvatar.single('avatar'), new CriaContatoController().handle)
+rotas.get('/contacts', new ListaContatosController().handle)
+rotas.delete('/contact', Authenticator, new DeletarContatoController().handle)
 
-rotas.get('/loja/logado', Authenticator, new LojaLogadaController().handle)
-rotas.put('/loja', Authenticator, uploadAvatar.single('avatar'), new AtualizaLojaController().handle)
-rotas.get('/lojas', new ListaLojasController().handle)
-rotas.get('/loja', new BuscaLojaController().handle)
-rotas.post('/loja', Authenticator, new CriaLojaController().handle)
+rotas.get('store/logged', Authenticator, new LojaLogadaController().handle)
+rotas.put('store', Authenticator, uploadAvatar.single('avatar'), new AtualizaLojaController().handle)
+rotas.get('stores', new ListaLojasController().handle)
+rotas.get('store', new BuscaLojaController().handle)
+rotas.post('store', Authenticator, new CriaLojaController().handle)
 
 rotas.post('/marca', Authenticator, uploadMarca.single('avatar'), new CriaMarcaController().handle)
 rotas.delete('/marca', Authenticator, new DeletaMarcaController().handle)
 rotas.get('/marcas', new ListaMarcasController().handle)
 
-rotas.post('/profissional', Authenticator, new CriaProfissionalController().handle)
-rotas.post('/profissao', new CriaProfissaoController().handle)
-rotas.get('/profissoes', new ListaProfissaoController().handle)
-rotas.put('/profissao', Authenticator, new AtualizaProfissaoController().handle)
-rotas.put('/profissional', Authenticator, uploadAvatar.single('avatar'), new AtualizarProfissionalController().handle)
-rotas.get('/profissional', new BuscaProfissionalController().handle)
-rotas.get('/profissionais', new ListarProfissionalController().handle)
-rotas.get('/profissao/profissionais', new PorProfissaoController().handle)
+rotas.post('/person', Authenticator, new CriaProfissionalController().handle)
+rotas.post('/profession', new CriaProfissaoController().handle)
+rotas.get('/professions', new ListaProfissaoController().handle)
+rotas.put('/profession', Authenticator, new AtualizaProfissaoController().handle)
+rotas.put('/person', Authenticator, uploadAvatar.single('avatar'), new AtualizarProfissionalController().handle)
+rotas.get('/person', new BuscaProfissionalController().handle)
+rotas.get('/persons', new ListarProfissionalController().handle)
+rotas.get('/profession/persons', new PorProfissaoController().handle)
 
 rotas.post('/portfolio', Authenticator, uploadPortfolio.single('imagem'), new CriaPortfolioControlller().handle)
 rotas.get('/portfolios', new ListarPortfolioController().handle)

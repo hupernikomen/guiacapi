@@ -17,20 +17,20 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class ListarBannersService {
     execute() {
         return __awaiter(this, void 0, void 0, function* () {
-            const banners = yield prisma_1.default.banner.findMany({
+            const _banners = yield prisma_1.default.banner.findMany({
                 where: {
                     status: true
                 },
                 select: {
-                    imagem: true,
-                    link: true,
-                    params: true,
+                    image: true,
+                    route: true,
+                    paramsID: true,
                     createdAt: true,
                     status: true,
-                    usuarioID: true
+                    userID: true
                 }
             });
-            return banners;
+            return _banners;
         });
     }
 }

@@ -9,251 +9,236 @@ datasource db {
 
 // yarn prisma migrate dev
 
-model Usuario {
+model User {
   id       String  @id @default(uuid())
-  email    String  @unique
-  senha    String
+  user     String  @unique
+  password String
   status   Boolean @default(true)
-  rede     String?
-  regiaoID String
+  company  String?
+  regionID String
 
-  regiao Regiao @relation(fields: [regiaoID], references: [id])
+  region Region @relation(fields: [regionID], references: [id])
 
-  posto        Posto[]
-  profissional Profissional[]
-  loja         Loja[]
-  mapa         Mapa[]
-  contato      Contato[]
-  banners      Banner[]
+  gasStation GasStation[]
+  person   Person[]
+  store      Store[]
+  map        Map[]
+  contact    Contact[]
+  banners    Banner[]
 
   createdAt DateTime? @default(now())
 
-  @@map("usuarios")
+  @@map("users")
 }
 
+model Map {
+  id     String  @id @default(uuid())
+  latlng Json?
+  userID String?
 
-model Mapa {
-  id        String  @id @default(uuid())
-  latlng    Json?
-  usuarioID String?
+  user User? @relation(fields: [userID], references: [id])
 
-  usuario Usuario? @relation(fields: [usuarioID], references: [id])
-
-  @@map("mapas")
+  @@map("maps")
 }
 
-
-model Regiao {
+model Region {
   id   String @id @default(uuid())
-  nome String
+  name String
 
-  usuario   Usuario[]
+  user      User[]
   createdAt DateTime? @default(now())
 
-  @@map("regioes")
+  @@map("regions")
 }
 
+model Contact {
+  id       String   @id @default(uuid())
+  name     String?
+  avatar   Json?
+  whatsapp String
+  time     Json?
+  sector   String?
+  saturday Boolean?
+  sunday   Boolean?
+  away     Boolean? //afastado
+  userID   String?
 
-model Contato {
-  id        String   @id @default(uuid())
-  nome      String?
-  avatar    Json?
-  whatsapp  String
-  horario   Json?
-  setor     String?
-  sabado    Boolean?
-  domingo   Boolean?
-  afastado  Boolean?
-  usuarioID String?
+  user User? @relation(fields: [userID], references: [id])
 
-  usuario Usuario? @relation(fields: [usuarioID], references: [id])
-
-  @@map("contatos")
+  @@map("contacts")
 }
-
 
 model Banner {
-  id        String  @id @default(uuid())
-  link      String
-  params    Json
-  imagem    Json
-  status    Boolean @default(true)
-  usuarioID String?
+  id       String  @id @default(uuid())
+  route    String
+  paramsID String
+  image    Json
+  status   Boolean @default(true)
+  userID   String?
 
-  Usuario   Usuario?  @relation(fields: [usuarioID], references: [id])
+  User      User?     @relation(fields: [userID], references: [id])
   createdAt DateTime? @default(now())
 
   @@map("banners")
 }
 
-
-model Loja {
+model Store {
   id        String   @id @default(uuid())
   avatar    Json?
-  nome      String?
-  endereco  String?
+  name      String?
+  address   String?
   delivery  Boolean? @default(false)
-  bairro    String?
+  district  String?
   bio       String?
-  ponto_ref String?
-  tema      Json?
-  usuarioID String
+  reference String?
+  userID    String
 
-  usuario   Usuario   @relation(fields: [usuarioID], references: [id])
-  produtos  Produto[]
+  user      User      @relation(fields: [userID], references: [id])
+  product   Product[]
   createdAt DateTime? @default(now())
 
-  @@map("lojas")
+  @@map("stores")
 }
 
-
-model Marca {
+//Marca
+model Brand {
   id     String @id @default(uuid())
-  nome   String
+  name   String
   avatar Json?
 
   createdAt DateTime? @default(now())
 
-  @@map("marcas")
+  @@map("brands")
 }
 
+model Product {
+  id            String   @id @default(uuid())
+  reference     String?
+  name          String
+  description   String
+  price         Float    @default(0)
+  off           Float?   @default(0)
+  size          String[]
+  image         Json[]
+  color         String[]
+  storeID       String
+  categoryID    String
+  subcategoryID String?
+  campaignID    String?
 
-model Produto {
-  id             String   @id @default(uuid())
-  codigo         String?
-  nome           String
-  descricao      String
-  preco          Float    @default(0)
-  oferta         Float?   @default(0)
-  tamanho        String[]
-  imagens        Json[]
-  cores          String[]
-  lojaID         String
-  categoriaID    String
-  subcategoriaID String?
-  campanhaID     String?
-
-  loja         Loja          @relation(fields: [lojaID], references: [id])
-  categoria    Categoria     @relation(fields: [categoriaID], references: [id])
-  subcategoria SubCategoria? @relation(fields: [subcategoriaID], references: [id])
-  campanha     Campanha?     @relation(fields: [campanhaID], references: [id])
+  store       Store        @relation(fields: [storeID], references: [id])
+  category    Category     @relation(fields: [categoryID], references: [id])
+  subcategory Subcategory? @relation(fields: [subcategoryID], references: [id])
+  campaign    Campaign?    @relation(fields: [campaignID], references: [id])
 
   createdAt DateTime? @default(now())
   updatedAt DateTime? @default(now())
 
-  @@map("produtos")
+  @@map("products")
 }
 
-
-model Categoria {
+model Category {
   id   String @id @default(uuid())
-  nome String
+  name String
 
-  produto      Produto[]
-  subCategoria SubCategoria[]
+  produto     Product[]
+  subcategory Subcategory[]
 
   createdAt DateTime? @default(now())
 
-  @@map("categorias")
+  @@map("categories")
 }
 
+model Subcategory {
+  id         String @id @default(uuid())
+  name       String
+  categoryID String
 
-model SubCategoria {
-  id          String @id @default(uuid())
-  nome        String
-  categoriaID String
+  product  Product[]
+  category Category  @relation(fields: [categoryID], references: [id])
 
-  produto   Produto[]
-  categoria Categoria @relation(fields: [categoriaID], references: [id])
-
-  @@map("subcategorias")
+  @@map("subcategories")
 }
 
-
-model Campanha {
+model Campaign {
   id     String  @id @default(uuid())
-  nome   String
-  tema   String
+  name   String
+  theme  String
   status Boolean @default(false)
 
-  Produto Produto[]
+  product Product[]
 
-  @@map("campanhas")
+  @@map("campaigns")
 }
 
-
-model Profissional {
-  id             String   @id @default(uuid())
-  avatar         Json?
-  nome           String?
-  bairro         String?
-  endereco       String?
-  bio            String?
-  lista_servicos String[]
-  profissaoID    String?
-  usuarioID      String?
+model Person {
+  id           String   @id @default(uuid())
+  avatar       Json?
+  name         String?
+  district     String?
+  address      String?
+  bio          String?
+  services     String[]
+  professionID String?
+  userID       String?
 
   portfolio Portfolio[]
 
-  usuario   Usuario?   @relation(fields: [usuarioID], references: [id])
-  profissao Profissao? @relation(fields: [profissaoID], references: [id])
+  user       User?       @relation(fields: [userID], references: [id])
+  profession Profession? @relation(fields: [professionID], references: [id])
 
   createdAt DateTime? @default(now())
 
-  @@map("profissionais")
+  @@map("people")
 }
 
-
 model Portfolio {
-  id             String @id @default(uuid())
-  imagem         Json
-  profissionalID String
+  id       String @id @default(uuid())
+  image    Json
+  personID String
 
-  profissional Profissional @relation(fields: [profissionalID], references: [id])
+  person Person @relation(fields: [personID], references: [id])
 
   @@map("portfolios")
 }
 
-
-model Profissao {
+model Profession {
   id   String @id @default(uuid())
-  nome String
+  name String
 
-  profissional Profissional[]
+  person Person[]
 
   createdAt DateTime? @default(now())
 
-  @@map("profissoes")
+  @@map("professions")
 }
 
+model GasStation {
+  id            String  @id @default(uuid())
+  avatar        Json?
+  name          String?
+  table         Json?
+  previoustable Json?
+  district      String?
+  userID        String?
 
-model Posto {
-  id              String  @id @default(uuid())
-  avatar          Json?
-  nome            String?
-  tabela          Json?
-  tabela_anterior Json?
-  bairro          String?
-  usuarioID       String?
-
-  usuario Usuario? @relation(fields: [usuarioID], references: [id])
+  user User? @relation(fields: [userID], references: [id])
 
   createdAt DateTime? @default(now())
   updatedAt DateTime? @default(now())
 
-  @@map("postos")
+  @@map("gasstations")
 }
 
-
-model Plano {
-  id     String   @id @default(uuid())
-  nome   String
-  valor  String
-  oferta String
-  pacote String[]
+model Price {
+  id      String   @id @default(uuid())
+  name    String
+  price   String
+  off     String
+  advantage String[]
 
   createdAt DateTime? @default(now())
   updatedAt DateTime? @default(now())
 
-  @@map("planos")
+  @@map("prices")
 }

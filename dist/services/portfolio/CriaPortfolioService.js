@@ -15,15 +15,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CriaPortfolioService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class CriaPortfolioService {
-    execute({ imagem, profissionalID }) {
+    execute({ image, personID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const portfolio = yield prisma_1.default.portfolio.create({
+            const _portfolio = yield prisma_1.default.portfolio.create({
                 data: {
-                    imagem,
-                    profissionalID
+                    image,
+                    personID
                 }
             });
-            return portfolio;
+            return _portfolio;
         });
     }
 }

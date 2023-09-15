@@ -14,10 +14,10 @@ const ListaPortfolioService_1 = require("../../services/portfolio/ListaPortfolio
 class ListarPortfolioController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const profissionalID = req.query.profissionalID;
+            const personID = req.query.personID;
             const listaPortfolioService = new ListaPortfolioService_1.ListaPortfolioService();
-            const portfolio = yield listaPortfolioService.execute({ profissionalID });
-            return res.json(portfolio);
+            const _portfolio = yield listaPortfolioService.execute({ personID });
+            return res.json(_portfolio);
         });
     }
 }
