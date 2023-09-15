@@ -13,7 +13,7 @@ class ListarBannersService {
                 params:true,
                 createdAt:true,
                 status:true,
-                lojaID:true
+                usuarioID:true
             }
         })
 

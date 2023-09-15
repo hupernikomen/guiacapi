@@ -4,7 +4,7 @@ interface bannerRequest {
     link: string,
     params: string,
     imagem: object,
-    lojaID: string
+    usuarioID: string
 }
 
 class CriaBannerService {
@@ -12,14 +12,14 @@ class CriaBannerService {
         link,
         params,
         imagem,
-        lojaID
+        usuarioID
     }: bannerRequest) {
         const banner = await prismaClient.banner.create({
             data: {
                 link,
                 params,
                 imagem,
-                lojaID
+                usuarioID
             }
         })
 

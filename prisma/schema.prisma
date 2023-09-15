@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -13,35 +10,38 @@ datasource db {
 // yarn prisma migrate dev
 
 model Usuario {
-  id     String  @id @default(uuid())
-  email  String  @unique
-  senha  String
-  status Boolean @default(true)
-  rede String?
-
+  id       String  @id @default(uuid())
+  email    String  @unique
+  senha    String
+  status   Boolean @default(true)
+  rede     String?
   regiaoID String
-  regiao   Regiao @relation(fields: [regiaoID], references: [id])
+
+  regiao Regiao @relation(fields: [regiaoID], references: [id])
 
   posto        Posto[]
   profissional Profissional[]
   loja         Loja[]
   mapa         Mapa[]
   contato      Contato[]
+  banners      Banner[]
 
   createdAt DateTime? @default(now())
 
   @@map("usuarios")
 }
 
-model Mapa {
-  id     String @id @default(uuid())
-  latlng Json?
 
+model Mapa {
+  id        String  @id @default(uuid())
+  latlng    Json?
   usuarioID String?
-  usuario   Usuario? @relation(fields: [usuarioID], references: [id])
+
+  usuario Usuario? @relation(fields: [usuarioID], references: [id])
 
   @@map("mapas")
 }
+
 
 model Regiao {
   id   String @id @default(uuid())
@@ -53,41 +53,39 @@ model Regiao {
   @@map("regioes")
 }
 
+
 model Contato {
-  id String @id @default(uuid())
-
-  nome     String?
-  avatar   Json?
-  whatsapp String
-  horario  Json?
-  setor    String?
-  sabado   Boolean?
-  domingo  Boolean?
-  afastado Boolean?
-
+  id        String   @id @default(uuid())
+  nome      String?
+  avatar    Json?
+  whatsapp  String
+  horario   Json?
+  setor     String?
+  sabado    Boolean?
+  domingo   Boolean?
+  afastado  Boolean?
   usuarioID String?
-  usuario   Usuario? @relation(fields: [usuarioID], references: [id])
+
+  usuario Usuario? @relation(fields: [usuarioID], references: [id])
 
   @@map("contatos")
 }
 
+
 model Banner {
-  id String @id @default(uuid())
+  id        String  @id @default(uuid())
+  link      String
+  params    Json
+  imagem    Json
+  status    Boolean @default(true)
+  usuarioID String?
 
-  link   String
-  params Json
-  imagem Json
-  status Boolean @default(true)
-
-  loja   Loja   @relation(fields: [lojaID], references: [id])
-  lojaID String
-
+  Usuario   Usuario?  @relation(fields: [usuarioID], references: [id])
   createdAt DateTime? @default(now())
 
   @@map("banners")
 }
 
-// ___________________________________
 
 model Loja {
   id        String   @id @default(uuid())
@@ -101,15 +99,13 @@ model Loja {
   tema      Json?
   usuarioID String
 
-  produtos Produto[]
-  banners  Banner[]
-
-  usuario Usuario @relation(fields: [usuarioID], references: [id])
-
+  usuario   Usuario   @relation(fields: [usuarioID], references: [id])
+  produtos  Produto[]
   createdAt DateTime? @default(now())
 
   @@map("lojas")
 }
+
 
 model Marca {
   id     String @id @default(uuid())
@@ -121,34 +117,33 @@ model Marca {
   @@map("marcas")
 }
 
+
 model Produto {
-  id        String   @id @default(uuid())
-  codigo    String?
-  nome      String
-  descricao String
-  preco     Float    @default(0)
-  oferta    Float?   @default(0)
-  tamanho   String[]
-  imagens   Json[]
-  cores     String[]
-
-  loja   Loja   @relation(fields: [lojaID], references: [id])
-  lojaID String
-
-  categoria   Categoria @relation(fields: [categoriaID], references: [id])
-  categoriaID String
-
-  subcategoria   SubCategoria? @relation(fields: [subcategoriaID], references: [id])
+  id             String   @id @default(uuid())
+  codigo         String?
+  nome           String
+  descricao      String
+  preco          Float    @default(0)
+  oferta         Float?   @default(0)
+  tamanho        String[]
+  imagens        Json[]
+  cores          String[]
+  lojaID         String
+  categoriaID    String
   subcategoriaID String?
+  campanhaID     String?
 
-  campanha   Campanha? @relation(fields: [campanhaID], references: [id])
-  campanhaID String?
+  loja         Loja          @relation(fields: [lojaID], references: [id])
+  categoria    Categoria     @relation(fields: [categoriaID], references: [id])
+  subcategoria SubCategoria? @relation(fields: [subcategoriaID], references: [id])
+  campanha     Campanha?     @relation(fields: [campanhaID], references: [id])
 
   createdAt DateTime? @default(now())
   updatedAt DateTime? @default(now())
 
   @@map("produtos")
 }
+
 
 model Categoria {
   id   String @id @default(uuid())
@@ -162,17 +157,18 @@ model Categoria {
   @@map("categorias")
 }
 
+
 model SubCategoria {
-  id   String @id @default(uuid())
-  nome String
-
-  produto Produto[]
-
-  categoria   Categoria @relation(fields: [categoriaID], references: [id])
+  id          String @id @default(uuid())
+  nome        String
   categoriaID String
+
+  produto   Produto[]
+  categoria Categoria @relation(fields: [categoriaID], references: [id])
 
   @@map("subcategorias")
 }
+
 
 model Campanha {
   id     String  @id @default(uuid())
@@ -185,7 +181,6 @@ model Campanha {
   @@map("campanhas")
 }
 
-// ___________________________________
 
 model Profissional {
   id             String   @id @default(uuid())
@@ -208,16 +203,17 @@ model Profissional {
   @@map("profissionais")
 }
 
+
 model Portfolio {
-  id String @id @default(uuid())
-
-  imagem Json
-
-  profissional   Profissional @relation(fields: [profissionalID], references: [id])
+  id             String @id @default(uuid())
+  imagem         Json
   profissionalID String
+
+  profissional Profissional @relation(fields: [profissionalID], references: [id])
 
   @@map("portfolios")
 }
+
 
 model Profissao {
   id   String @id @default(uuid())
@@ -230,7 +226,6 @@ model Profissao {
   @@map("profissoes")
 }
 
-// ___________________________________
 
 model Posto {
   id              String  @id @default(uuid())
@@ -239,15 +234,16 @@ model Posto {
   tabela          Json?
   tabela_anterior Json?
   bairro          String?
+  usuarioID       String?
 
-  usuarioID String?
-  usuario   Usuario? @relation(fields: [usuarioID], references: [id])
+  usuario Usuario? @relation(fields: [usuarioID], references: [id])
 
   createdAt DateTime? @default(now())
   updatedAt DateTime? @default(now())
 
   @@map("postos")
 }
+
 
 model Plano {
   id     String   @id @default(uuid())
