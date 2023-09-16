@@ -59,7 +59,7 @@ class AutenticaService {
                 id: _user.id,
                 user: _user.user,
                 token: token,
-                conta: { store, person, gasStation },
+                account: { store, person, gasStation },
 
             }
         }

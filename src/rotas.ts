@@ -101,20 +101,21 @@ const uploadMarca = multer({
 
 const rotas = Router();
 
-rotas.post('/admin', new CriaAdminController().handle)
+rotas.post('/admin',Authenticator, new CriaAdminController().handle)
+
 rotas.post('/user', Authenticator, new CriaUsuarioController().handle)
 rotas.put('/user', Authenticator, new AtualizaUsuarioController().handle)
 rotas.get('/users', Authenticator, new ListarUsuariosController().handle)
 rotas.get('/user', new BuscaUsuarioController().handle)
 rotas.post('/login', new AutenticaUsuarioController().handle)
 
-rotas.get('/banners', new ListarBannersController().handle)
 rotas.post('/banner', Authenticator, uploadProdutos.single('imagem'), new CriaBannerController().handle)
+rotas.get('/banners', new ListarBannersController().handle)
 
 rotas.post('/category', Authenticator, new CriaCategoriaController().handle)
-rotas.get('/categories', new ListaCategoriaController().handle)
 rotas.delete('/category', Authenticator, new DeletaCategoriaController().handle)
 rotas.put('/category', Authenticator, new AtualizaCategoriaController().handle)
+rotas.get('/categories', new ListaCategoriaController().handle)
 
 rotas.post('/subcategory', Authenticator, new CriaSubCategoriaController().handle)
 rotas.get('/subcategories', new ListaSubCategoriaController().handle)
@@ -124,10 +125,10 @@ rotas.post('/region', Authenticator, new CriaRegiaoController().handle)
 rotas.get('/regions', new ListarRegioesController().handle)
 
 
-rotas.get('/campaigns/ativas', new ListaCampanhaController().handle)
 rotas.post('/campaign', Authenticator, new CriaCampanhaController().handle)
 rotas.put('/campaign', Authenticator, new AtualizaCampanhaController().handle)
 rotas.get('/campaigns', new ListaCampanhasInativasController().handle)
+rotas.get('/campaigns/ativas', new ListaCampanhaController().handle)
 
 rotas.post('/posto', new CriaPostoController().handle)
 rotas.put('/posto', uploadAvatar.single('avatar'), new AtualizaPostoController().handle)
@@ -135,43 +136,43 @@ rotas.get('/posto', new BuscaPostoController().handle)
 rotas.get('/postos', new ListarPostosController().handle)
 
 rotas.put('/product', Authenticator, new AtualizaProdutoController().handle)
+rotas.delete('/product', Authenticator, new DeletaProdutoController().handle)
 rotas.post('/product', Authenticator, uploadProdutos.array('files', 5), new CriaProdutoController().handle)
 rotas.get('/products', new ListarProdutosController().handle)
 rotas.get('/products/category', new PorCategoriaProdutoController().handle)
 rotas.get('/products/subcategory', new PorSubcategoriaProdutoController().handle)
-rotas.delete('/product', Authenticator, new DeletaProdutoController().handle)
 rotas.get('/detail/product', new DetalheProdutoController().handle)
 
 rotas.post('/map', Authenticator, new CriaMapaController().handle)
-rotas.get('/map', new BuscaMapaController().handle)
 rotas.put('/map', Authenticator, new AtualizaMapaController().handle)
+rotas.get('/map', new BuscaMapaController().handle)
 
 rotas.post('/contact', Authenticator, uploadAvatar.single('avatar'), new CriaContatoController().handle)
-rotas.get('/contacts', new ListaContatosController().handle)
 rotas.delete('/contact', Authenticator, new DeletarContatoController().handle)
+rotas.get('/contacts', new ListaContatosController().handle)
 
 rotas.get('/store/logged', Authenticator, new LojaLogadaController().handle)
+rotas.post('/store', Authenticator, new CriaLojaController().handle)
 rotas.put('/store', Authenticator, uploadAvatar.single('avatar'), new AtualizaLojaController().handle)
 rotas.get('/stores', new ListaLojasController().handle)
 rotas.get('/store', new BuscaLojaController().handle)
-rotas.post('/store', Authenticator, new CriaLojaController().handle)
 
 rotas.post('/marca', Authenticator, uploadMarca.single('avatar'), new CriaMarcaController().handle)
 rotas.delete('/marca', Authenticator, new DeletaMarcaController().handle)
 rotas.get('/marcas', new ListaMarcasController().handle)
 
 rotas.post('/person', Authenticator, new CriaProfissionalController().handle)
-rotas.post('/profession', new CriaProfissaoController().handle)
-rotas.get('/professions', new ListaProfissaoController().handle)
+rotas.post('/profession', Authenticator,new CriaProfissaoController().handle)
 rotas.put('/profession', Authenticator, new AtualizaProfissaoController().handle)
 rotas.put('/person', Authenticator, uploadAvatar.single('avatar'), new AtualizarProfissionalController().handle)
 rotas.get('/person', new BuscaProfissionalController().handle)
+rotas.get('/professions', new ListaProfissaoController().handle)
 rotas.get('/persons', new ListarProfissionalController().handle)
 rotas.get('/profession/persons', new PorProfissaoController().handle)
 
 rotas.post('/portfolio', Authenticator, uploadPortfolio.single('imagem'), new CriaPortfolioControlller().handle)
-rotas.get('/portfolios', new ListarPortfolioController().handle)
 rotas.delete('/portfolio', Authenticator, new DeletaPortfolioController().handle)
+rotas.get('/portfolios', new ListarPortfolioController().handle)
 
 rotas.post('/plano', Authenticator, new CriaPlanoController().handle)
 rotas.get('/planos', new ListarPlanosController().handle)
