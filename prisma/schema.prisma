@@ -9,6 +9,14 @@ datasource db {
 
 // yarn prisma migrate dev
 
+model Admin{
+  id String @id @default(uuid())
+  nick String
+  password String
+
+  @@map("admins")
+}
+
 model User {
   id       String  @id @default(uuid())
   user     String  @unique

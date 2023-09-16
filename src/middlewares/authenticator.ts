@@ -14,9 +14,7 @@ export function Authenticator(
 
     const authToken = req.headers.authorization
 
-    if (!authToken) {
-        return res.status(401).end()
-    }
+    if (!authToken) return res.status(401).end()
 
     const [, token] = authToken.split(" ")
 

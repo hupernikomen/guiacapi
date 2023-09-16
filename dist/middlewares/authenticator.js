@@ -5,9 +5,8 @@ const jsonwebtoken_1 = require("jsonwebtoken");
 require("dotenv/config");
 function Authenticator(req, res, next) {
     const authToken = req.headers.authorization;
-    if (!authToken) {
+    if (!authToken)
         return res.status(401).end();
-    }
     const [, token] = authToken.split(" ");
     try {
         const { sub } = (0, jsonwebtoken_1.verify)(token, process.env.JWT_SECRET);
