@@ -64,6 +64,8 @@ import { DeletaPortfolioController } from './controllers/portfolio/DeletaPortfol
 import { DeletaMarcaController } from './controllers/brand/DeletaMarcaController';
 import { CriaMarcaController } from './controllers/brand/CriaMarcaController';
 import { ListaMarcasController } from './controllers/brand/ListaMarcasController';
+import { CriaAdminController } from './controllers/admin/CriaAdminController';
+
 
 const uploadProdutos = multer({
   fileFilter: fileFilter,
@@ -99,6 +101,7 @@ const uploadMarca = multer({
 
 const rotas = Router();
 
+rotas.post('/admin', new CriaAdminController().handle)
 rotas.post('/user', Authenticator, new CriaUsuarioController().handle)
 rotas.put('/user', Authenticator, new AtualizaUsuarioController().handle)
 rotas.get('/users', Authenticator, new ListarUsuariosController().handle)

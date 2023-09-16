@@ -67,6 +67,7 @@ const DeletaPortfolioController_1 = require("./controllers/portfolio/DeletaPortf
 const DeletaMarcaController_1 = require("./controllers/brand/DeletaMarcaController");
 const CriaMarcaController_1 = require("./controllers/brand/CriaMarcaController");
 const ListaMarcasController_1 = require("./controllers/brand/ListaMarcasController");
+const CriaAdminController_1 = require("./controllers/admin/CriaAdminController");
 const uploadProdutos = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageProdutos.s3 : multer_2.storageProdutos.local,
@@ -97,6 +98,7 @@ const uploadMarca = (0, multer_1.default)({
 });
 const rotas = (0, express_1.Router)();
 exports.rotas = rotas;
+rotas.post('/admin', new CriaAdminController_1.CriaAdminController().handle);
 rotas.post('/user', authenticator_1.Authenticator, new CriaUsuarioController_1.CriaUsuarioController().handle);
 rotas.put('/user', authenticator_1.Authenticator, new AtualizaUsuarioController_1.AtualizaUsuarioController().handle);
 rotas.get('/users', authenticator_1.Authenticator, new ListarUsuariosController_1.ListarUsuariosController().handle);

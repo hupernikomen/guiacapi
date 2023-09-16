@@ -19,26 +19,40 @@ const jsonwebtoken_1 = require("jsonwebtoken");
 class AutenticaService {
     execute({ user, password }) {
         return __awaiter(this, void 0, void 0, function* () {
-            if (!user)
-                throw new Error("não cadastrado");
-            const _user = yield prisma_1.default.user.findUnique({ where: { user } });
-            const store = yield prisma_1.default.store.findFirst({ where: { userID: _user.id } });
-            const person = yield prisma_1.default.person.findFirst({ where: { userID: _user.id } });
-            const gasStation = yield prisma_1.default.gasStation.findFirst({ where: { userID: _user.id } });
-            if (!_user)
-                throw new Error("Usuário não cadastrado");
-            if (!_user.status)
-                throw new Error("Conta Bloqueada");
-            const comparePassword = yield (0, bcryptjs_1.compare)(password, _user.password);
-            if (!comparePassword)
-                throw new Error("password incorreta");
-            const token = (0, jsonwebtoken_1.sign)({ user: _user.user }, process.env.JWT_SECRET, { subject: _user.id });
-            return {
-                id: _user.id,
-                user: _user.user,
-                token: token,
-                conta: { store, person, gasStation },
-            };
+            const _admin = yield prisma_1.default.admin.findFirst({ where: { user } });
+            if (_admin) {
+                const comparePassword = yield (0, bcryptjs_1.compare)(password, _admin.password);
+                if (!comparePassword)
+                    throw new Error("password incorreta");
+                const token = (0, jsonwebtoken_1.sign)({ user: _admin.user }, process.env.JWT_SECRET, { subject: _admin.id });
+                return {
+                    id: _admin.id,
+                    user: _admin.user,
+                    token: token,
+                };
+            }
+            else {
+                const _user = yield prisma_1.default.user.findUnique({ where: { user } });
+                if (!_user || !_admin)
+                    throw new Error("não cadastrado");
+                const store = yield prisma_1.default.store.findFirst({ where: { userID: _user.id } });
+                const person = yield prisma_1.default.person.findFirst({ where: { userID: _user.id } });
+                const gasStation = yield prisma_1.default.gasStation.findFirst({ where: { userID: _user.id } });
+                if (!_user)
+                    throw new Error("Usuário não cadastrado");
+                if (!_user.status)
+                    throw new Error("Conta Bloqueada");
+                const comparePassword = yield (0, bcryptjs_1.compare)(password, _user.password);
+                if (!comparePassword)
+                    throw new Error("password incorreta");
+                const token = (0, jsonwebtoken_1.sign)({ user: _user.user }, process.env.JWT_SECRET, { subject: _user.id });
+                return {
+                    id: _user.id,
+                    user: _user.user,
+                    token: token,
+                    conta: { store, person, gasStation },
+                };
+            }
         });
     }
 }

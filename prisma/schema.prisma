@@ -11,7 +11,7 @@ datasource db {
 
 model Admin{
   id String @id @default(uuid())
-  nick String
+  user String
   password String
 
   @@map("admins")
