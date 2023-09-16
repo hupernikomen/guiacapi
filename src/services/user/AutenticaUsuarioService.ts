@@ -34,7 +34,7 @@ class AutenticaService {
 
             const _user = await prismaClient.user.findUnique({ where: { user } })
 
-            if (!_user || !_admin) throw new Error("não cadastrado");
+            if (!_user) throw new Error("não cadastrado");
 
             const store = await prismaClient.store.findFirst({ where: { userID: _user.id } })
             const person = await prismaClient.person.findFirst({ where: { userID: _user.id } })

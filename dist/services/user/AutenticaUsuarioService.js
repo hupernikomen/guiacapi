@@ -33,7 +33,7 @@ class AutenticaService {
             }
             else {
                 const _user = yield prisma_1.default.user.findUnique({ where: { user } });
-                if (!_user || !_admin)
+                if (!_user)
                     throw new Error("não cadastrado");
                 const store = yield prisma_1.default.store.findFirst({ where: { userID: _user.id } });
                 const person = yield prisma_1.default.person.findFirst({ where: { userID: _user.id } });
