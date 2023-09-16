@@ -150,11 +150,11 @@ rotas.post('/contact', Authenticator, uploadAvatar.single('avatar'), new CriaCon
 rotas.get('/contacts', new ListaContatosController().handle)
 rotas.delete('/contact', Authenticator, new DeletarContatoController().handle)
 
-rotas.get('store/logged', Authenticator, new LojaLogadaController().handle)
-rotas.put('store', Authenticator, uploadAvatar.single('avatar'), new AtualizaLojaController().handle)
-rotas.get('stores', new ListaLojasController().handle)
-rotas.get('store', new BuscaLojaController().handle)
-rotas.post('store', Authenticator, new CriaLojaController().handle)
+rotas.get('/store/logged', Authenticator, new LojaLogadaController().handle)
+rotas.put('/store', Authenticator, uploadAvatar.single('avatar'), new AtualizaLojaController().handle)
+rotas.get('/stores', new ListaLojasController().handle)
+rotas.get('/store', new BuscaLojaController().handle)
+rotas.post('/store', Authenticator, new CriaLojaController().handle)
 
 rotas.post('/marca', Authenticator, uploadMarca.single('avatar'), new CriaMarcaController().handle)
 rotas.delete('/marca', Authenticator, new DeletaMarcaController().handle)

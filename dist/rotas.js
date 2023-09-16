@@ -136,11 +136,11 @@ rotas.put('/map', authenticator_1.Authenticator, new AtualizaMapaController_1.At
 rotas.post('/contact', authenticator_1.Authenticator, uploadAvatar.single('avatar'), new CriaContatoController_1.CriaContatoController().handle);
 rotas.get('/contacts', new ListaContatosController_1.ListaContatosController().handle);
 rotas.delete('/contact', authenticator_1.Authenticator, new DeletaContatoController_1.DeletarContatoController().handle);
-rotas.get('store/logged', authenticator_1.Authenticator, new LojaLogadaController_1.LojaLogadaController().handle);
-rotas.put('store', authenticator_1.Authenticator, uploadAvatar.single('avatar'), new AtualizaLojaController_1.AtualizaLojaController().handle);
-rotas.get('stores', new ListaLojasController_1.ListaLojasController().handle);
-rotas.get('store', new BuscaLojaController_1.BuscaLojaController().handle);
-rotas.post('store', authenticator_1.Authenticator, new CriaLojaController_1.CriaLojaController().handle);
+rotas.get('/store/logged', authenticator_1.Authenticator, new LojaLogadaController_1.LojaLogadaController().handle);
+rotas.put('/store', authenticator_1.Authenticator, uploadAvatar.single('avatar'), new AtualizaLojaController_1.AtualizaLojaController().handle);
+rotas.get('/stores', new ListaLojasController_1.ListaLojasController().handle);
+rotas.get('/store', new BuscaLojaController_1.BuscaLojaController().handle);
+rotas.post('/store', authenticator_1.Authenticator, new CriaLojaController_1.CriaLojaController().handle);
 rotas.post('/marca', authenticator_1.Authenticator, uploadMarca.single('avatar'), new CriaMarcaController_1.CriaMarcaController().handle);
 rotas.delete('/marca', authenticator_1.Authenticator, new DeletaMarcaController_1.DeletaMarcaController().handle);
 rotas.get('/marcas', new ListaMarcasController_1.ListaMarcasController().handle);
