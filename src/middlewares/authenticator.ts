@@ -25,7 +25,7 @@ export function Authenticator(
             process.env.JWT_SECRET
         ) as Payload
 
-        req.usuario_ID = sub
+        req.user_ID = sub
 
         return next()
 

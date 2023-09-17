@@ -10,7 +10,7 @@ function Authenticator(req, res, next) {
     const [, token] = authToken.split(" ");
     try {
         const { sub } = (0, jsonwebtoken_1.verify)(token, process.env.JWT_SECRET);
-        req.usuario_ID = sub;
+        req.user_ID = sub;
         return next();
     }
     catch (error) {
