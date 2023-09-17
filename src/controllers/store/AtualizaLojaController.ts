@@ -13,10 +13,9 @@ class AtualizaLojaController {
             delivery,
         } = req.body
 
+        if (!req.file) throw new Error("Falha ao enviar banner")
+
         const atualizaLojaService = new AtualizaLojaService();
-
-        if (!req.file) throw new Error("Falha ao enviar baanner");
-
         await atualizaLojaService.execute({
             userID,
             avatar: req.file,
