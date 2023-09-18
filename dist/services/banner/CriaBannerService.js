@@ -25,6 +25,7 @@ class CriaBannerService {
                     userID
                 }
             });
+            console.log(_banner, "Teste");
             return _banner;
         });
     }

@@ -22,6 +22,8 @@ class CriaBannerService {
             }
         })
 
+        console.log(_banner, "Teste");
+        
 
         return _banner
     }
