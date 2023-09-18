@@ -6,7 +6,6 @@ interface bannerRequest {
     image: object,
     userID: string
 }
-
 class CriaBannerService {
     async execute({
         route,
@@ -22,6 +21,7 @@ class CriaBannerService {
                 userID
             }
         })
+
 
         return _banner
     }

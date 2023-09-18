@@ -84,7 +84,7 @@ model Banner {
   status   Boolean @default(true)
   userID   String?
 
-  User      User?     @relation(fields: [userID], references: [id])
+  user      User?     @relation(fields: [userID], references: [id])
   createdAt DateTime? @default(now())
 
   @@map("banners")
