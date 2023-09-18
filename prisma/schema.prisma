@@ -149,7 +149,7 @@ model Category {
   id   String @id @default(uuid())
   name String
 
-  produto     Product[]
+  product     Product[]
   subcategory Subcategory[]
 
   createdAt DateTime? @default(now())
