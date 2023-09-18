@@ -14,7 +14,7 @@ const LojaLogadaService_1 = require("../../services/store/LojaLogadaService");
 class LojaLogadaController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const userID = req.query.usuarioID;
+            const userID = req.query.userID;
             const lojaLogadaService = new LojaLogadaService_1.LojaLogadaService();
             const _store = yield lojaLogadaService.execute({ userID });
             return res.json(_store);

@@ -141,9 +141,9 @@ rotas.post('/store', authenticator_1.Authenticator, new CriaLojaController_1.Cri
 rotas.put('/store', authenticator_1.Authenticator, uploadAvatar.single('avatar'), new AtualizaLojaController_1.AtualizaLojaController().handle);
 rotas.get('/stores', new ListaLojasController_1.ListaLojasController().handle);
 rotas.get('/store', new BuscaLojaController_1.BuscaLojaController().handle);
-rotas.post('/marca', authenticator_1.Authenticator, uploadMarca.single('avatar'), new CriaMarcaController_1.CriaMarcaController().handle);
-rotas.delete('/marca', authenticator_1.Authenticator, new DeletaMarcaController_1.DeletaMarcaController().handle);
-rotas.get('/marcas', new ListaMarcasController_1.ListaMarcasController().handle);
+rotas.post('/brand', authenticator_1.Authenticator, uploadMarca.single('avatar'), new CriaMarcaController_1.CriaMarcaController().handle);
+rotas.delete('/brand', authenticator_1.Authenticator, new DeletaMarcaController_1.DeletaMarcaController().handle);
+rotas.get('/brands', new ListaMarcasController_1.ListaMarcasController().handle);
 rotas.post('/person', authenticator_1.Authenticator, new CriaProfissionalController_1.CriaProfissionalController().handle);
 rotas.post('/profession', authenticator_1.Authenticator, new CriaProfissaoController_1.CriaProfissaoController().handle);
 rotas.put('/profession', authenticator_1.Authenticator, new AtualizaProfissaoController_1.AtualizaProfissaoController().handle);

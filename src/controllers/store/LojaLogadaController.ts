@@ -5,7 +5,7 @@ class LojaLogadaController {
 
     async handle(req: Request, res: Response) {
 
-        const userID = req.query.usuarioID as string
+        const userID = req.query.userID as string
         const lojaLogadaService = new LojaLogadaService();
 
         const _store = await lojaLogadaService.execute({ userID })

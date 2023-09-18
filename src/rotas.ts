@@ -157,9 +157,9 @@ rotas.put('/store', Authenticator, uploadAvatar.single('avatar'), new AtualizaLo
 rotas.get('/stores', new ListaLojasController().handle)
 rotas.get('/store', new BuscaLojaController().handle)
 
-rotas.post('/marca', Authenticator, uploadMarca.single('avatar'), new CriaMarcaController().handle)
-rotas.delete('/marca', Authenticator, new DeletaMarcaController().handle)
-rotas.get('/marcas', new ListaMarcasController().handle)
+rotas.post('/brand', Authenticator, uploadMarca.single('avatar'), new CriaMarcaController().handle)
+rotas.delete('/brand', Authenticator, new DeletaMarcaController().handle)
+rotas.get('/brands', new ListaMarcasController().handle)
 
 rotas.post('/person', Authenticator, new CriaProfissionalController().handle)
 rotas.post('/profession', Authenticator,new CriaProfissaoController().handle)
