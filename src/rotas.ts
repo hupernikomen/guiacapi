@@ -109,7 +109,7 @@ rotas.get('/users', Authenticator, new ListarUsuariosController().handle)
 rotas.get('/user', new BuscaUsuarioController().handle)
 rotas.post('/login', new AutenticaUsuarioController().handle)
 
-rotas.post('/banner', Authenticator, uploadProdutos.single('imagem'), new CriaBannerController().handle)
+rotas.post('/banner', Authenticator, uploadProdutos.single('image'), new CriaBannerController().handle)
 rotas.get('/banners', new ListarBannersController().handle)
 
 rotas.post('/category', Authenticator, new CriaCategoriaController().handle)
@@ -170,7 +170,7 @@ rotas.get('/professions', new ListaProfissaoController().handle)
 rotas.get('/persons', new ListarProfissionalController().handle)
 rotas.get('/profession/persons', new PorProfissaoController().handle)
 
-rotas.post('/portfolio', Authenticator, uploadPortfolio.single('imagem'), new CriaPortfolioControlller().handle)
+rotas.post('/portfolio', Authenticator, uploadPortfolio.single('image'), new CriaPortfolioControlller().handle)
 rotas.delete('/portfolio', Authenticator, new DeletaPortfolioController().handle)
 rotas.get('/portfolios', new ListarPortfolioController().handle)
 

@@ -104,7 +104,7 @@ rotas.put('/user', authenticator_1.Authenticator, new AtualizaUsuarioController_
 rotas.get('/users', authenticator_1.Authenticator, new ListarUsuariosController_1.ListarUsuariosController().handle);
 rotas.get('/user', new BuscarUsuarioController_1.BuscaUsuarioController().handle);
 rotas.post('/login', new AutenticaUsuarioController_1.AutenticaUsuarioController().handle);
-rotas.post('/banner', authenticator_1.Authenticator, uploadProdutos.single('imagem'), new CriaBannerController_1.CriaBannerController().handle);
+rotas.post('/banner', authenticator_1.Authenticator, uploadProdutos.single('image'), new CriaBannerController_1.CriaBannerController().handle);
 rotas.get('/banners', new ListarBannersController_1.ListarBannersController().handle);
 rotas.post('/category', authenticator_1.Authenticator, new CriaCategoriaController_1.CriaCategoriaController().handle);
 rotas.delete('/category', authenticator_1.Authenticator, new DeletaCategoriaController_1.DeletaCategoriaController().handle);
@@ -152,7 +152,7 @@ rotas.get('/person', new BucaProfissionalController_1.BuscaProfissionalControlle
 rotas.get('/professions', new ListaProfissaoController_1.ListaProfissaoController().handle);
 rotas.get('/persons', new ListarProfissionalController_1.ListarProfissionalController().handle);
 rotas.get('/profession/persons', new PorProfissaoController_1.PorProfissaoController().handle);
-rotas.post('/portfolio', authenticator_1.Authenticator, uploadPortfolio.single('imagem'), new CriaPortfolioController_1.CriaPortfolioControlller().handle);
+rotas.post('/portfolio', authenticator_1.Authenticator, uploadPortfolio.single('image'), new CriaPortfolioController_1.CriaPortfolioControlller().handle);
 rotas.delete('/portfolio', authenticator_1.Authenticator, new DeletaPortfolioController_1.DeletaPortfolioController().handle);
 rotas.get('/portfolios', new ListaPortfolioController_1.ListarPortfolioController().handle);
 rotas.post('/plano', authenticator_1.Authenticator, new CriaPlanoController_1.CriaPlanoController().handle);
