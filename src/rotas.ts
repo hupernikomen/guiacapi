@@ -128,7 +128,7 @@ rotas.get('/regions', new ListarRegioesController().handle)
 rotas.post('/campaign', Authenticator, new CriaCampanhaController().handle)
 rotas.put('/campaign', Authenticator, new AtualizaCampanhaController().handle)
 rotas.get('/campaigns', new ListaCampanhasInativasController().handle)
-rotas.get('/campaigns/ativas', new ListaCampanhaController().handle)
+rotas.get('/campaigns/active', new ListaCampanhaController().handle)
 
 rotas.post('/posto', new CriaPostoController().handle)
 rotas.put('/posto', uploadAvatar.single('avatar'), new AtualizaPostoController().handle)

@@ -118,7 +118,7 @@ rotas.get('/regions', new ListarRegioesController_1.ListarRegioesController().ha
 rotas.post('/campaign', authenticator_1.Authenticator, new CriaCampanhaController_1.CriaCampanhaController().handle);
 rotas.put('/campaign', authenticator_1.Authenticator, new AtualizaCampanhaController_1.AtualizaCampanhaController().handle);
 rotas.get('/campaigns', new ListaCampanhasInativasController_1.ListaCampanhasInativasController().handle);
-rotas.get('/campaigns/ativas', new ListaCampanhaController_1.ListaCampanhaController().handle);
+rotas.get('/campaigns/active', new ListaCampanhaController_1.ListaCampanhaController().handle);
 rotas.post('/posto', new CriaPostoController_1.CriaPostoController().handle);
 rotas.put('/posto', uploadAvatar.single('avatar'), new AtualizaPostoController_1.AtualizaPostoController().handle);
 rotas.get('/posto', new BuscaPostoController_1.BuscaPostoController().handle);
