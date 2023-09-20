@@ -17,6 +17,8 @@ class AtualizaLojaController {
         //     throw new Error("Falha ao enviar banner")
         // }
 
+
+
         const atualizaLojaService = new AtualizaLojaService();
         await atualizaLojaService.execute({
             userID,
@@ -26,7 +28,7 @@ class AtualizaLojaController {
             address,
             district,
             reference,
-            delivery,
+            delivery: Boolean(delivery),
         })
 
         return res.status(200).json({message: "Loja Atualizada"})
