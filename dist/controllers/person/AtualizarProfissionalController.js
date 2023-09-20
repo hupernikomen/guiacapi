@@ -16,8 +16,6 @@ class AtualizarProfissionalController {
         return __awaiter(this, void 0, void 0, function* () {
             const personID = req.query.personID;
             const { name, bio, address, services, district, professionID } = req.body;
-            if (!req.file)
-                throw new Error("Falha ao enviar avatar - API");
             const atualizarProfissionalService = new AtualizarProfissionalService_1.AtualizarProfissionalService();
             const _person = yield atualizarProfissionalService.execute({
                 personID,
