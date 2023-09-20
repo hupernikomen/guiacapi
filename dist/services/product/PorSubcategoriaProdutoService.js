@@ -55,7 +55,8 @@ class PorSubcategoriaProdutoService {
                         select: {
                             id: true,
                             name: true,
-                            delivery: true
+                            delivery: true,
+                            user: { select: { regionID: true } }
                         }
                     },
                 },
