@@ -4,9 +4,10 @@ class ListarRegioesService {
     async execute() {
 
         const _region = await prismaClient.region.findMany({
-            select:{
+            select: {
                 id: true,
                 name: true,
+                user: { select: { store: { select: { _count: true } } } }
             }
         })
 
