@@ -15,10 +15,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListarProfissionalService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class ListarProfissionalService {
-    execute() {
+    execute({ regionID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const _person = yield prisma_1.default.person.findMany({
-                where: { user: { status: true } },
+                where: { user: { status: true, regionID } },
                 select: {
                     id: true,
                     avatar: true,

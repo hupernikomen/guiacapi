@@ -1,12 +1,16 @@
 
 import prismaClient from "../../prisma";
 
+interface PersonRquest {
+  regionID: string
+}
+
 class ListarProfissionalService {
 
-  async execute() {
+  async execute({ regionID }: PersonRquest) {
 
     const _person = await prismaClient.person.findMany({
-      where: { user: { status: true } },
+      where: { user: { status: true, regionID } },
       select: {
         id: true,
         avatar: true,

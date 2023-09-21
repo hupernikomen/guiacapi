@@ -14,8 +14,9 @@ const ListarProfissionalService_1 = require("../../services/person/ListarProfiss
 class ListarProfissionalController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            const regionID = req.query.regionID;
             const listarProfissionalService = new ListarProfissionalService_1.ListarProfissionalService();
-            const _person = yield listarProfissionalService.execute();
+            const _person = yield listarProfissionalService.execute({ regionID });
             return res.json(_person);
         });
     }
