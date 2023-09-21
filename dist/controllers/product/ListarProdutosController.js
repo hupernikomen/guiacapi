@@ -14,8 +14,11 @@ const ListarProdutosService_1 = require("../../services/product/ListarProdutosSe
 class ListarProdutosController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            const regionID = req.query.regionID;
             const listarProdutosService = new ListarProdutosService_1.ListarProdutosService();
-            const feed = yield listarProdutosService.execute();
+            const feed = yield listarProdutosService.execute({
+                regionID
+            });
             return res.json(feed);
         });
     }
