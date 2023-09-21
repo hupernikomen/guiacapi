@@ -1,10 +1,14 @@
 import prismaClient from "../../prisma";
 
+interface StoreRequest {
+    regionID: string;
+  }
+
 class ListaLojasService {
-    async execute() {
+    async execute({ regionID }: StoreRequest) {
 
         const _store = await prismaClient.store.findMany({
-            where: { user: { status: true } },
+            where: { user: { status: true, regionID } },
             select: {
                 product: true,
                 id: true,

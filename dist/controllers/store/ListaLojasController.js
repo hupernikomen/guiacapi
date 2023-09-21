@@ -14,8 +14,9 @@ const ListaLojasService_1 = require("../../services/store/ListaLojasService");
 class ListaLojasController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            const regionID = req.query.regionID;
             const listaLojasService = new ListaLojasService_1.ListaLojasService();
-            const _store = yield listaLojasService.execute();
+            const _store = yield listaLojasService.execute({ regionID });
             return res.json(_store);
         });
     }
