@@ -15,8 +15,9 @@ class PorCategoriaProdutoController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const categoryID = req.query.categoryID;
+            const regionID = req.query.regionID;
             const porCategoriaProdutoService = new PorCategoriaProdutoService_1.PorCategoriaProdutoService();
-            const _product = yield porCategoriaProdutoService.execute({ categoryID });
+            const _product = yield porCategoriaProdutoService.execute({ categoryID, regionID });
             return res.json(_product);
         });
     }

@@ -2,16 +2,18 @@ import prismaClient from "../../prisma";
 
 interface ProdutoRequest {
   categoryID: string;
+  regionID: string
 }
 
 class PorCategoriaProdutoService {
-  async execute({ categoryID }: ProdutoRequest) {
+  async execute({ categoryID,regionID }: ProdutoRequest) {
     const _category = await prismaClient.product.findMany({
       where: {
         categoryID,
         store: {
-          user:{
+          user: {
             status: true,
+            regionID
           }
         },
       },
@@ -21,32 +23,32 @@ class PorCategoriaProdutoService {
         price: true,
         off: true,
         image: true,
-        campaign:{
-          select:{
-            id:true,
-            name:true,
-            theme:true
-          }
-        },
-        category:{
+        campaign: {
           select: {
-           id:true,
-           name:true,
-           _count:true,
+            id: true,
+            name: true,
+            theme: true
           }
         },
-        subcategory:{
-          select:{
-            id:true,
-            name:true,
-            _count:true
+        category: {
+          select: {
+            id: true,
+            name: true,
+            _count: true,
           }
         },
-        store:{
-          select:{
-            id:true,
-            name:true,
-            delivery:true
+        subcategory: {
+          select: {
+            id: true,
+            name: true,
+            _count: true
+          }
+        },
+        store: {
+          select: {
+            id: true,
+            name: true,
+            delivery: true
           }
         },
       },

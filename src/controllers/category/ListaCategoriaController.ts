@@ -3,12 +3,10 @@ import { ListaCategoriaService } from '../../services/category/ListaCategoriaSer
 
 class ListaCategoriaController {
     async handle(req: Request, res: Response) {
-
-        const regionID = req.query.regionID as string
-
+        
         const listaCategoriaService = new ListaCategoriaService()
 
-        const _categories = await listaCategoriaService.execute({regionID})
+        const _categories = await listaCategoriaService.execute()
         return res.json(_categories)
     }
 }

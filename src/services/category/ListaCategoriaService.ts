@@ -1,16 +1,9 @@
 import prismaClient from "../../prisma";
 
-interface CategoryRequest {
-    regionID: string
-}
-
 class ListaCategoriaService {
-    async execute({ regionID }: CategoryRequest) {
+    async execute() {
 
         const _category = await prismaClient.category.findMany({
-            where: {
-                product: { every: { store: { user: { regionID: regionID } } } }
-            },
             select: {
                 id: true,
                 name: true,

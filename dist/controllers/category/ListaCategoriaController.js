@@ -14,9 +14,8 @@ const ListaCategoriaService_1 = require("../../services/category/ListaCategoriaS
 class ListaCategoriaController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const regionID = req.query.regionID;
             const listaCategoriaService = new ListaCategoriaService_1.ListaCategoriaService();
-            const _categories = yield listaCategoriaService.execute({ regionID });
+            const _categories = yield listaCategoriaService.execute();
             return res.json(_categories);
         });
     }
