@@ -54,6 +54,7 @@ model Region {
   name String
 
   user      User[]
+  banner    Banner[]
   createdAt DateTime? @default(now())
 
   @@map("regions")
@@ -83,7 +84,9 @@ model Banner {
   image    Json
   status   Boolean @default(true)
   userID   String
+  regionID String?
 
+  region    Region?   @relation(fields: [regionID], references: [id])
   user      User      @relation(fields: [userID], references: [id])
   createdAt DateTime? @default(now())
 

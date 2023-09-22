@@ -15,6 +15,7 @@ class CriaBannerController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const userID = req.query.userID;
+            const regionID = req.query.regionID;
             const { route, paramsID } = req.body;
             if (!req.file)
                 throw new Error("Falha ao enviar banner");
@@ -23,7 +24,8 @@ class CriaBannerController {
                 route,
                 paramsID,
                 image: req.file,
-                userID
+                userID,
+                regionID
             });
             if (!banner)
                 throw new Error("Erro ao criar banner - API");
