@@ -17,7 +17,7 @@ class CriaUsuarioController {
         })
 
         if(!_user) throw new Error("Ops, algo deu errado - API!");
-        return res.status(200).json({message: "Cadastrado com Sucesso"})
+        return res.json(_user)
     }
 }
 
