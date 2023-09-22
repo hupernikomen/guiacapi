@@ -5,7 +5,7 @@ interface bannerRequest {
     paramsID: string,
     image: object,
     userID: string,
-    regionID:string
+    adminID:string
 }
 class CriaBannerService {
     async execute({
@@ -13,7 +13,7 @@ class CriaBannerService {
         paramsID,
         image,
         userID,
-        regionID
+        adminID
     }: bannerRequest) {
         const _banner = await prismaClient.banner.create({
             data: {
@@ -21,7 +21,7 @@ class CriaBannerService {
                 paramsID,
                 image,
                 userID,
-                regionID
+                adminID
             }
         })
 
