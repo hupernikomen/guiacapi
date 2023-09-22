@@ -9,9 +9,9 @@ datasource db {
 
 // yarn prisma migrate dev
 
-model Admin{
-  id String @id @default(uuid())
-  user String
+model Admin {
+  id       String @id @default(uuid())
+  user     String
   password String
 
   @@map("admins")
@@ -28,7 +28,7 @@ model User {
   region Region @relation(fields: [regionID], references: [id])
 
   gasStation GasStation[]
-  person   Person[]
+  person     Person[]
   store      Store[]
   map        Map[]
   contact    Contact[]
@@ -40,7 +40,7 @@ model User {
 }
 
 model Map {
-  id     String  @id @default(uuid())
+  id     String @id @default(uuid())
   latlng Json?
   userID String
 
@@ -83,8 +83,9 @@ model Banner {
   image    Json
   status   Boolean @default(true)
   userID   String
+  admin    Boolean? @default(false)
 
-  user      User     @relation(fields: [userID], references: [id])
+  user      User      @relation(fields: [userID], references: [id])
   createdAt DateTime? @default(now())
 
   @@map("banners")
@@ -192,7 +193,7 @@ model Person {
 
   portfolio Portfolio[]
 
-  user       User       @relation(fields: [userID], references: [id])
+  user       User        @relation(fields: [userID], references: [id])
   profession Profession? @relation(fields: [professionID], references: [id])
 
   createdAt DateTime? @default(now())
@@ -239,10 +240,10 @@ model GasStation {
 }
 
 model Price {
-  id      String   @id @default(uuid())
-  name    String
-  price   String
-  off     String
+  id        String   @id @default(uuid())
+  name      String
+  price     String
+  off       String
   advantage String[]
 
   createdAt DateTime? @default(now())
