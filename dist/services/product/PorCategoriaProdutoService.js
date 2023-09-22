@@ -20,24 +20,12 @@ class PorCategoriaProdutoService {
             const _category = yield prisma_1.default.product.findMany({
                 where: {
                     categoryID,
-                    OR: [
-                        {
-                            store: {
-                                user: {
-                                    regionID,
-                                    status: true
-                                }
-                            }
-                        },
-                        {
-                            store: {
-                                user: {
-                                    regionID: null,
-                                    status: true
-                                }
-                            }
+                    store: {
+                        user: {
+                            status: true,
+                            regionID
                         }
-                    ]
+                    },
                 },
                 select: {
                     id: true,
