@@ -10,12 +10,24 @@ class PorCategoriaProdutoService {
     const _category = await prismaClient.product.findMany({
       where: {
         categoryID,
-        store: {
-          user: {
-            status: true,
-            regionID
+        OR:[
+          {
+            store:{
+              user:{
+                regionID,
+                status:true
+              }
+            }
+          },
+          {
+            store:{
+              user:{
+                regionID: null,
+                status:true
+              }
+            }
           }
-        },
+        ]
       },
       select: {
         id: true,
