@@ -18,10 +18,12 @@ class ListarRegioesService {
     execute() {
         return __awaiter(this, void 0, void 0, function* () {
             const _region = yield prisma_1.default.region.findMany({
+                where: {
+                    user: { every: { status: true } }
+                },
                 select: {
                     id: true,
                     name: true,
-                    user: { select: { _count: true } }
                 }
             });
             return _region;
