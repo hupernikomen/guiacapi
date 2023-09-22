@@ -11,7 +11,7 @@ class ListarBannersService {
             where: {
                 status: true,
                 user: { regionID },
-                OR: { adminID: "b085e85a-8cf4-417f-9df8-388b51c3f38f" }
+                AND: { adminID: "b085e85a-8cf4-417f-9df8-388b51c3f38f" }
             },
             select: {
                 image: true,
