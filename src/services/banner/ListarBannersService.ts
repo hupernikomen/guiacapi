@@ -10,7 +10,8 @@ class ListarBannersService {
         const _banners = await prismaClient.banner.findMany({
             where: {
                 status: true,
-                user: { regionID: regionID || null }
+                user: { regionID: regionID || "6262dadc-168c-44e3-b57c-e87b12d64f19" }
+            
             },
             select: {
                 image: true,

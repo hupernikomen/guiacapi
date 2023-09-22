@@ -83,7 +83,6 @@ model Banner {
   image    Json
   status   Boolean @default(true)
   userID   String
-  admin    Boolean? @default(false)
 
   user      User      @relation(fields: [userID], references: [id])
   createdAt DateTime? @default(now())
