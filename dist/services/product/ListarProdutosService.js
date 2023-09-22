@@ -19,24 +19,12 @@ class ListarProdutosService {
         return __awaiter(this, void 0, void 0, function* () {
             const _product = yield prisma_1.default.product.findMany({
                 where: {
-                    OR: [
-                        {
-                            store: {
-                                user: {
-                                    status: true,
-                                    regionID
-                                }
-                            },
-                        },
-                        {
-                            store: {
-                                user: {
-                                    status: true,
-                                    regionID: "cb9085c6-439b-48da-8bc4-17ecd2800d4a"
-                                }
-                            },
+                    store: {
+                        user: {
+                            status: true,
+                            regionID
                         }
-                    ]
+                    },
                 },
                 select: {
                     id: true,
