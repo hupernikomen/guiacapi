@@ -1,19 +1,24 @@
 import prismaClient from "../../prisma";
 
+interface BannerRequest {
+    regionID: string
+}
+
 class ListarBannersService {
-    async execute() {
+    async execute({ regionID }: BannerRequest) {
 
         const _banners = await prismaClient.banner.findMany({
             where: {
-                status: true
+                status: true,
+                user: { regionID }
             },
-            select:{
+            select: {
                 image: true,
-                route:true,
-                paramsID:true,
-                createdAt:true,
-                status:true,
-                userID:true
+                route: true,
+                paramsID: true,
+                createdAt: true,
+                status: true,
+                userID: true
             }
         })
 

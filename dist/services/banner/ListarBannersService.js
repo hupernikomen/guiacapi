@@ -15,11 +15,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListarBannersService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class ListarBannersService {
-    execute() {
+    execute({ regionID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const _banners = yield prisma_1.default.banner.findMany({
                 where: {
-                    status: true
+                    status: true,
+                    user: { regionID }
                 },
                 select: {
                     image: true,
