@@ -2,16 +2,18 @@ import prismaClient from "../../prisma";
 
 interface ProdutoRequest {
   subcategoryID: string;
+  regionID:string
 }
 
 class PorSubcategoriaProdutoService {
-  async execute({ subcategoryID }: ProdutoRequest) {
+  async execute({ subcategoryID,regionID }: ProdutoRequest) {
     const _subcategory = await prismaClient.product.findMany({
       where: {
         subcategoryID,
         store: {
           user: {
             status: true,
+            regionID
           }
         },
       },

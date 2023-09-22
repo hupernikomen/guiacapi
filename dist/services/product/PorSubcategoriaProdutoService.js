@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PorSubcategoriaProdutoService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class PorSubcategoriaProdutoService {
-    execute({ subcategoryID }) {
+    execute({ subcategoryID, regionID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const _subcategory = yield prisma_1.default.product.findMany({
                 where: {
@@ -23,6 +23,7 @@ class PorSubcategoriaProdutoService {
                     store: {
                         user: {
                             status: true,
+                            regionID
                         }
                     },
                 },
