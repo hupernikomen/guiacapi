@@ -19,10 +19,10 @@ class ListarBannersService {
         return __awaiter(this, void 0, void 0, function* () {
             const _banners = yield prisma_1.default.banner.findMany({
                 where: {
+                    user: { regionID: "6262dadc-168c-44e3-b57c-e87b12d64f19", status: true },
                     OR: [
                         { user: { regionID }, status: true },
                         { adminID: "b085e85a-8cf4-417f-9df8-388b51c3f38f", status: true },
-                        { user: { regionID: "6262dadc-168c-44e3-b57c-e87b12d64f19", status: true } }
                     ]
                 },
                 select: {
