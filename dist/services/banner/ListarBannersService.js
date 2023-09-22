@@ -20,7 +20,7 @@ class ListarBannersService {
             const _banners = yield prisma_1.default.banner.findMany({
                 where: {
                     status: true,
-                    user: { regionID }
+                    user: { regionID: regionID || null }
                 },
                 select: {
                     image: true,
