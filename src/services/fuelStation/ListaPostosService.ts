@@ -3,7 +3,7 @@ import prismaClient from "../../prisma";
 class ListaPostosService {
   async execute() {
 
-    const _gasStation = await prismaClient.gasStation.findMany({
+    const _fuelStation = await prismaClient.fuelStation.findMany({
       where: {
         user: {
           status: true
@@ -27,7 +27,7 @@ class ListaPostosService {
       }
     })
 
-    return _gasStation
+    return _fuelStation
   }
 }
 

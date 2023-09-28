@@ -5,7 +5,6 @@ interface usuarioRequest {
     user: string,
     password: string,
     regionID: string,
-    company: string,
 }
 
 class CriaUsuarioService {
@@ -13,7 +12,6 @@ class CriaUsuarioService {
         user,
         password,
         regionID,
-        company,
     }: usuarioRequest) {
 
         if (!user) throw new Error("informe seu email");
@@ -29,7 +27,6 @@ class CriaUsuarioService {
                 user,
                 password: passwordCripto,
                 regionID,
-                company
             },
             select: { id: true }
 

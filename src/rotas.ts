@@ -11,7 +11,7 @@ import { AutenticaUsuarioController } from './controllers/user/AutenticaUsuarioC
 import { BuscaProfissionalController } from './controllers/person/BucaProfissionalController';
 import { BuscaMapaController } from './controllers/map/BuscaMapaController';
 import { BuscaLojaController } from './controllers/store/BuscaLojaController';
-import { BuscaPostoController } from './controllers/gasStation/BuscaPostoController';
+import { BuscaPostoController } from './controllers/fuelStation/BuscaPostoController';
 import { DetalheProdutoController } from './controllers/product/DetalheProdutoController';
 import { AtualizaUsuarioController } from './controllers/user/AtualizaUsuarioController';
 import { AtualizaLojaController } from './controllers/store/AtualizaLojaController';
@@ -19,7 +19,7 @@ import { AtualizaCategoriaController } from './controllers/category/AtualizaCate
 import { AtualizaCampanhaController } from './controllers/campaign/AtualizaCampanhaController';
 import { AtualizarProfissionalController } from './controllers/person/AtualizarProfissionalController';
 import { AtualizaProdutoController } from './controllers/product/AtualizaProdutoController';
-import { AtualizaPostoController } from './controllers/gasStation/AtualizaPostoController';
+import { AtualizaPostoController } from './controllers/fuelStation/AtualizaPostoController';
 import { CriaMapaController } from './controllers/map/CriaMapaController';
 import { CriaLojaController } from './controllers/store/CriaLojaController';
 import { CriaBannerController } from './controllers/banner/CriaBannerController';
@@ -29,7 +29,7 @@ import { CriaProfissaoController } from './controllers/profession/CriaProfissaoC
 import { CriaCategoriaController } from './controllers/category/CriaCategoriaController';
 import { CriaContatoController } from './controllers/contact/CriaContatoController';
 import { CriaProfissionalController } from './controllers/person/CriaProfissionalController';
-import { CriaPostoController } from './controllers/gasStation/CriaPostoController';
+import { CriaPostoController } from './controllers/fuelStation/CriaPostoController';
 import { CriaCampanhaController } from './controllers/campaign/CriaCampanhaController';
 import { CriaProdutoController } from './controllers/product/CriaProdutoController';
 import { ListarRegioesController } from './controllers/region/ListarRegioesController';
@@ -40,7 +40,7 @@ import { ListaContatosController } from './controllers/contact/ListaContatosCont
 import { ListaCategoriaController } from './controllers/category/ListaCategoriaController';
 import { ListaCampanhasInativasController } from './controllers/campaign/ListaCampanhasInativasController';
 import { ListaCampanhaController } from './controllers/campaign/ListaCampanhaController';
-import { ListarPostosController } from './controllers/gasStation/ListaPostosController';
+import { ListarPostosController } from './controllers/fuelStation/ListaPostosController';
 import { ListaLojasController } from './controllers/store/ListaLojasController';
 import { PorCategoriaProdutoController } from './controllers/product/PorCategoriaProdutoController';
 import { PorProfissaoController } from './controllers/person/PorProfissaoController';

@@ -15,13 +15,12 @@ class CriaUsuarioController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const regionID = req.query.regionID;
-            const { user, password, company } = req.body;
+            const { user, password } = req.body;
             const criaUsuarioService = new CriaUsuarioService_1.CriaUsuarioService();
             const _user = yield criaUsuarioService.execute({
                 user,
                 password,
                 regionID,
-                company,
             });
             if (!_user)
                 throw new Error("Ops, algo deu errado - API!");

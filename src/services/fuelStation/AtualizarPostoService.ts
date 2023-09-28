@@ -5,7 +5,7 @@ interface postoRequest {
     avatar: object,
     table: object,
     district: string,
-    gasStationID: string
+    fuelStationID: string
 }
 
 class AtualizaPostoService {
@@ -15,24 +15,24 @@ class AtualizaPostoService {
         avatar,
         table,
         district,
-        gasStationID
+        fuelStationID
     }: postoRequest) {
 
-        const _gasStationID = await prismaClient.gasStation.findFirst({ where: { id: gasStationID } })
+        const _fuelStationID = await prismaClient.fuelStation.findFirst({ where: { id: fuelStationID } })
 
-        const __gasStationID = await prismaClient.gasStation.updateMany({
-            where: { id: gasStationID },
+        const __fuelStationID = await prismaClient.fuelStation.updateMany({
+            where: { id: fuelStationID },
             data: {
                 name,
                 avatar,
                 table,
-                previoustable: _gasStationID.table,
+                previoustable: _fuelStationID.table,
                 district,
                 updatedAt: new Date()
             }
         })
 
-        return __gasStationID
+        return __fuelStationID
     }
 }
 

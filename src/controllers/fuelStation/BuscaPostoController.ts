@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { BuscaPostoService } from '../../services/gasStation/BuscaPostoService'
+import { BuscaPostoService } from '../../services/fuelStation/BuscaPostoService'
 
 class BuscaPostoController {
     async handle(req: Request, res: Response) {
@@ -7,8 +7,8 @@ class BuscaPostoController {
         const userID = req.query.userID as string
         const buscaPostoService = new BuscaPostoService()
 
-        const _gasStationID = await buscaPostoService.execute({userID})
-        return res.json(_gasStationID)
+        const _fuelStationID = await buscaPostoService.execute({userID})
+        return res.json(_fuelStationID)
 
     }
 }

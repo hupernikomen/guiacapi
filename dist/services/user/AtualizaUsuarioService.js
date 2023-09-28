@@ -33,10 +33,9 @@ class AtualizaService {
                 select: {
                     status: true,
                     store: true,
-                    gasStation: true,
+                    fuelStation: true,
                     person: true,
                     user: true,
-                    company: true
                 }
             });
             return __user;

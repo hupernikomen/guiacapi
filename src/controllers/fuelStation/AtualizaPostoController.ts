@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
-import { AtualizaPostoService } from "../../services/gasStation/AtualizarPostoService";
+import { AtualizaPostoService } from "../../services/fuelStation/AtualizarPostoService";
 
 class AtualizaPostoController {
   async handle(req: Request, res: Response) {
 
-    const gasStationID = req.query.gasStationID as string
+    const fuelStationID = req.query.fuelStationID as string
 
     const { name, table, district } = req.body;
     if (!req.file) throw new Error("Erro ao enviar avatar - API");
@@ -15,7 +15,7 @@ class AtualizaPostoController {
       avatar: req.file,
       table,
       district,
-      gasStationID
+      fuelStationID
     })
 
     return res.status(200).json(posto);

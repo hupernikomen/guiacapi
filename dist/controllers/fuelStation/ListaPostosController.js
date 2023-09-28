@@ -8,29 +8,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BuscaUsuarioService = void 0;
-const prisma_1 = __importDefault(require("../../prisma"));
-class BuscaUsuarioService {
-    execute({ userID }) {
+exports.ListarPostosController = void 0;
+const ListaPostosService_1 = require("../../services/fuelStation/ListaPostosService");
+class ListarPostosController {
+    handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const _user = yield prisma_1.default.user.findFirst({
-                where: { id: userID },
-                select: {
-                    id: true,
-                    user: true,
-                    fuelStation: true,
-                    person: true,
-                    store: true,
-                    status: true,
-                    map: true,
-                }
-            });
-            return _user;
+            const listarPostosService = new ListaPostosService_1.ListaPostosService();
+            const postos = yield listarPostosService.execute();
+            return res.json(postos);
         });
     }
 }
-exports.BuscaUsuarioService = BuscaUsuarioService;
+exports.ListarPostosController = ListarPostosController;

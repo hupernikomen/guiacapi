@@ -5,7 +5,7 @@ class CriaUsuarioController {
     async handle(req: Request, res: Response) {
 
         const regionID = req.query.regionID as string
-        const { user, password, company } = req.body
+        const { user, password } = req.body
 
         const criaUsuarioService = new CriaUsuarioService();
 
@@ -13,7 +13,6 @@ class CriaUsuarioController {
             user,
             password,
             regionID,
-            company,
         })
 
         if(!_user) throw new Error("Ops, algo deu errado - API!");

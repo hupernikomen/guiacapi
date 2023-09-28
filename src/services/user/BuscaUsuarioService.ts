@@ -12,12 +12,11 @@ class BuscaUsuarioService {
       select: {
         id: true,
         user: true,
-        gasStation: true,
+        fuelStation:true,
         person: true,
         store: true,
         status: true,
         map: true,
-        company: true
       }
     })
 

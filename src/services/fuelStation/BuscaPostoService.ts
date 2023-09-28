@@ -10,7 +10,7 @@ class BuscaPostoService {
     userID
   }: postoRequest) {
 
-    const _gasStationID = await prismaClient.gasStation.findFirst({
+    const _fuelStationID = await prismaClient.fuelStation.findFirst({
 
       where: {
         user: {
@@ -33,7 +33,7 @@ class BuscaPostoService {
 
 
 
-    return _gasStationID
+    return _fuelStationID
   }
 }
 

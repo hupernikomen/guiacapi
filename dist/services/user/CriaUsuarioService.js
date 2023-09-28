@@ -16,7 +16,7 @@ exports.CriaUsuarioService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 const bcryptjs_1 = require("bcryptjs");
 class CriaUsuarioService {
-    execute({ user, password, regionID, company, }) {
+    execute({ user, password, regionID, }) {
         return __awaiter(this, void 0, void 0, function* () {
             if (!user)
                 throw new Error("informe seu email");
@@ -29,7 +29,6 @@ class CriaUsuarioService {
                     user,
                     password: passwordCripto,
                     regionID,
-                    company
                 },
                 select: { id: true }
             });

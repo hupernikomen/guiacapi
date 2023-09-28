@@ -8,29 +8,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BuscaUsuarioService = void 0;
-const prisma_1 = __importDefault(require("../../prisma"));
-class BuscaUsuarioService {
-    execute({ userID }) {
+exports.CriaPostoController = void 0;
+const CriaPostoService_1 = require("../../services/fuelStation/CriaPostoService");
+class CriaPostoController {
+    handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const _user = yield prisma_1.default.user.findFirst({
-                where: { id: userID },
-                select: {
-                    id: true,
-                    user: true,
-                    fuelStation: true,
-                    person: true,
-                    store: true,
-                    status: true,
-                    map: true,
-                }
-            });
-            return _user;
+            const criaPostoService = new CriaPostoService_1.CriaPostoService();
+            const { userID } = req.body;
+            const _fuelStation = yield criaPostoService.execute({ userID });
+            if (!_fuelStation)
+                throw new Error("Erro ao cadastrar posto - API");
+            return res.status(200).json({ message: "Criado com sucesso" });
         });
     }
 }
-exports.BuscaUsuarioService = BuscaUsuarioService;
+exports.CriaPostoController = CriaPostoController;

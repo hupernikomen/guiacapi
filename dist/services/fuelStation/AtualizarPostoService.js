@@ -12,25 +12,25 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BuscaUsuarioService = void 0;
+exports.AtualizaPostoService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
-class BuscaUsuarioService {
-    execute({ userID }) {
+class AtualizaPostoService {
+    execute({ name, avatar, table, district, fuelStationID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const _user = yield prisma_1.default.user.findFirst({
-                where: { id: userID },
-                select: {
-                    id: true,
-                    user: true,
-                    fuelStation: true,
-                    person: true,
-                    store: true,
-                    status: true,
-                    map: true,
+            const _fuelStationID = yield prisma_1.default.fuelStation.findFirst({ where: { id: fuelStationID } });
+            const __fuelStationID = yield prisma_1.default.fuelStation.updateMany({
+                where: { id: fuelStationID },
+                data: {
+                    name,
+                    avatar,
+                    table,
+                    previoustable: _fuelStationID.table,
+                    district,
+                    updatedAt: new Date()
                 }
             });
-            return _user;
+            return __fuelStationID;
         });
     }
 }
-exports.BuscaUsuarioService = BuscaUsuarioService;
+exports.AtualizaPostoService = AtualizaPostoService;
