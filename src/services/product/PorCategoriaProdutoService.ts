@@ -12,6 +12,7 @@ class PorCategoriaProdutoService {
         categoryID,
         store: {
           user: {
+            
             status: true,
             regionID
           }
