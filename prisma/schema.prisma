@@ -136,7 +136,6 @@ model Product {
   categoryID    String
   subcategoryID String?
   campaignID    String?
-  arrayIDs      String[]
 
   store       Store        @relation(fields: [storeID], references: [id])
   category    Category     @relation(fields: [categoryID], references: [id])
