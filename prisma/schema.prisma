@@ -29,11 +29,11 @@ model User {
   region Region @relation(fields: [regionID], references: [id])
 
   fuelStation FuelStation[]
-  person     Person[]
-  store      Store[]
-  map        Map[]
-  contact    Contact[]
-  banners    Banner[]
+  person      Person[]
+  store       Store[]
+  map         Map[]
+  contact     Contact[]
+  banners     Banner[]
 
   createdAt DateTime? @default(now())
 
@@ -136,6 +136,7 @@ model Product {
   categoryID    String
   subcategoryID String?
   campaignID    String?
+  arrayIDs      String[]
 
   store       Store        @relation(fields: [storeID], references: [id])
   category    Category     @relation(fields: [categoryID], references: [id])
