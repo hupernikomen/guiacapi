@@ -13,9 +13,10 @@ class ListarProdutosService {
   
   async execute({ regionID, arrayIDs }: ProdutoRequest) {
     console.log(JSON.stringify(arrayIDs),"aRRAYidsSSSSSSS");
+    console.log(arrayIDs,"NORMAL");
     const _product = await prismaClient.product.findMany({
       where: {
-        categoryID: { in: JSON.stringify(arrayIDs) },
+        categoryID: { in: arrayIDs },
         store: {
           user: {
             status: true,
