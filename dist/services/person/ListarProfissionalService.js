@@ -18,7 +18,15 @@ class ListarProfissionalService {
     execute({ regionID }) {
         return __awaiter(this, void 0, void 0, function* () {
             if (regionID === "cb9085c6-439b-48da-8bc4-17ecd2800d4a") {
-                return yield prisma_1.default.person.findMany();
+                return yield prisma_1.default.person.findMany({
+                    select: {
+                        id: true,
+                        avatar: true,
+                        name: true,
+                        professionID: true,
+                        profession: { select: { name: true } }
+                    }
+                });
             }
             const _person = yield prisma_1.default.person.findMany({
                 where: { user: { status: true, regionID: regionID } },
