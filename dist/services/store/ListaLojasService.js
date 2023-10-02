@@ -17,18 +17,24 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class ListaLojasService {
     execute({ regionID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const _store = yield prisma_1.default.store.findMany({
+            const select = {
+                product: true,
+                id: true,
+                name: true,
+                avatar: true,
+                delivery: true,
+                userID: true,
+            };
+            if (regionID === "cb9085c6-439b-48da-8bc4-17ecd2800d4a") {
+                return yield prisma_1.default.store.findMany({
+                    where: { user: { status: true } },
+                    select: select
+                });
+            }
+            return yield prisma_1.default.store.findMany({
                 where: { user: { status: true, regionID: regionID } },
-                select: {
-                    product: true,
-                    id: true,
-                    name: true,
-                    avatar: true,
-                    delivery: true,
-                    userID: true,
-                }
+                select: select
             });
-            return _store;
         });
     }
 }

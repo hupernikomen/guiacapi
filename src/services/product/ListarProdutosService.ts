@@ -6,7 +6,6 @@ interface ProdutoRequest {
 
 class ListarProdutosService {
 
-
   async execute({ regionID }: ProdutoRequest) {
     const select = {
       id: true,
@@ -14,29 +13,17 @@ class ListarProdutosService {
       price: true,
       off: true,
       image: true,
-      campaign: {
-        select: {
-          id: true,
-          name: true,
-          theme: true
-        }
-      },
+      campaign: { select: { id: true, name: true, theme: true } },
       store: {
         select: {
-          id: true,
-          name: true,
-          delivery: true,
+          id: true, name: true, delivery: true,
           user: { select: { regionID: true } }
         }
       },
       category: {
         select: {
           id: true, name: true, _count: true,
-          subcategory: {
-            select: {
-              id: true, name: true, _count: true
-            }
-          }
+          subcategory: { select: { id: true, name: true, _count: true } }
         }
       }
     }
@@ -54,7 +41,7 @@ class ListarProdutosService {
       })
     }
 
-    const _product = await prismaClient.product.findMany({
+    return await prismaClient.product.findMany({
       where: {
         store: {
           user: {
@@ -67,7 +54,6 @@ class ListarProdutosService {
       select: select
     })
 
-    return _product;
   }
 }
 

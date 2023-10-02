@@ -7,19 +7,28 @@ interface StoreRequest {
 class ListaLojasService {
     async execute({ regionID }: StoreRequest) {
 
-        const _store = await prismaClient.store.findMany({
+        const select = {
+            product: true,
+            id: true,
+            name: true,
+            avatar: true,
+            delivery: true,
+            userID: true,
+        }
+
+        if (regionID === "cb9085c6-439b-48da-8bc4-17ecd2800d4a") {
+            return await prismaClient.store.findMany({
+                where: { user: { status: true } },
+                select: select
+
+            })
+        }
+
+        return await prismaClient.store.findMany({
             where: { user: { status: true, regionID: regionID } },
-            select: {
-                product: true,
-                id: true,
-                name: true,
-                avatar: true,
-                delivery: true,
-                userID: true,
-            }
+            select: select
         })
 
-        return _store
     }
 }
 

@@ -17,29 +17,23 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class ListarProfissionalService {
     execute({ regionID }) {
         return __awaiter(this, void 0, void 0, function* () {
+            const select = {
+                id: true,
+                avatar: true,
+                name: true,
+                professionID: true,
+                profession: { select: { name: true } }
+            };
             if (regionID === "cb9085c6-439b-48da-8bc4-17ecd2800d4a") {
                 return yield prisma_1.default.person.findMany({
                     where: { user: { status: true } },
-                    select: {
-                        id: true,
-                        avatar: true,
-                        name: true,
-                        professionID: true,
-                        profession: { select: { name: true } }
-                    }
+                    select: select
                 });
             }
-            const _person = yield prisma_1.default.person.findMany({
+            return yield prisma_1.default.person.findMany({
                 where: { user: { status: true, regionID: regionID } },
-                select: {
-                    id: true,
-                    avatar: true,
-                    name: true,
-                    professionID: true,
-                    profession: { select: { name: true } }
-                }
+                select: select
             });
-            return _person;
         });
     }
 }
