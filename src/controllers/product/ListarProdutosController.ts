@@ -5,13 +5,13 @@ import { ListarProdutosService } from '../../services/product/ListarProdutosServ
 class ListarProdutosController {
     async handle(req: Request, res: Response) {
         const regionID = req.query.regionID as string
-        const arrayCategories = req.body as string
+        const arrayCategoriesIDs = req.query.arrayCategoriesIDs as string
 
         const listarProdutosService = new ListarProdutosService()
 
         const feed = await listarProdutosService.execute({
             regionID,
-            arrayCategories
+            arrayCategoriesIDs
         })
         console.log(regionID,"REG");
         console.log(feed,"FEEEEEEED");
