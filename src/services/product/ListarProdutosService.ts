@@ -8,6 +8,10 @@ interface ProdutoRequest {
 class ListarProdutosService {
 
   async execute({ regionID, arrayCategoriesIDs }: ProdutoRequest) {
+
+    console.log(regionID,"REG2");
+    console.log(arrayCategoriesIDs,"arrayCategoriesIDs2");
+
     const _product = await prismaClient.product.findMany({
       where: {
         categoryID: { in: arrayCategoriesIDs },

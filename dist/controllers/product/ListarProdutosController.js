@@ -21,8 +21,6 @@ class ListarProdutosController {
                 regionID,
                 arrayCategoriesIDs
             });
-            console.log(regionID, "REG");
-            console.log(arrayCategoriesIDs, "arrayCategoriesIDs");
             return res.json(feed);
         });
     }
