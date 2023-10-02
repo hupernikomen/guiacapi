@@ -9,16 +9,15 @@ class ListarProdutosService {
   async execute({ regionID }: ProdutoRequest) {
 
     if (regionID === "cb9085c6-439b-48da-8bc4-17ecd2800d4a") {
-      const productAll = await prismaClient.product.findMany()
-      return productAll
+      return await prismaClient.product.findMany()
     }
-    
+
     const _product = await prismaClient.product.findMany({
       where: {
         store: {
           user: {
             status: true,
-            regionID: regionID 
+            regionID: regionID
           }
         }
       },
