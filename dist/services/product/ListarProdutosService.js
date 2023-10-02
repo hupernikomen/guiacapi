@@ -23,7 +23,7 @@ class ListarProdutosService {
                     store: {
                         user: {
                             status: true,
-                            OR: [{ regionID }, { region: { name: "Teresina" } }]
+                            regionID
                         }
                     },
                 },
