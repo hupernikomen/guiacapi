@@ -13,7 +13,7 @@ class ListarProdutosService {
         store: {
           user: {
             status: true,
-            OR: [{ regionID: regionID }, { region: { name: "Teresina" } }]
+            OR: [{ regionID: regionID }, { regionID: "cb9085c6-439b-48da-8bc4-17ecd2800d4a" }]
           }
         }
       },
