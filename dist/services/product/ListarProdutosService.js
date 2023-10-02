@@ -21,7 +21,8 @@ class ListarProdutosService {
                 where: {
                     store: {
                         user: {
-                            OR: [{ regionID: regionID }, { status: true }]
+                            status: true,
+                            OR: [{ regionID: regionID }, { regionID: { not: regionID } }]
                         }
                     }
                 },
