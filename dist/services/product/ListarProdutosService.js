@@ -17,7 +17,6 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class ListarProdutosService {
     execute({ regionID, arrayIDs }) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(JSON.stringify(arrayIDs), "aRRAYidsSSSSSSS");
             console.log(arrayIDs, "NORMAL");
             const _product = yield prisma_1.default.product.findMany({
                 where: {

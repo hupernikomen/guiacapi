@@ -5,14 +5,9 @@ interface ProdutoRequest {
   arrayIDs: string
 }
 
-
-
 class ListarProdutosService {
-
-  
   
   async execute({ regionID, arrayIDs }: ProdutoRequest) {
-    console.log(JSON.stringify(arrayIDs),"aRRAYidsSSSSSSS");
     console.log(arrayIDs,"NORMAL");
     const _product = await prismaClient.product.findMany({
       where: {
