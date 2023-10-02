@@ -39,6 +39,7 @@ class ListarProdutosService {
             user: { select: { regionID: true } }
           }
         },
+        categoryID: true,
         category: {
           select: {
             id: true, name: true, _count: true,
