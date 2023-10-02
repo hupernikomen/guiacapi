@@ -14,13 +14,7 @@ class ListarProdutosService {
 
     const _product = await prismaClient.product.findMany({
       where: {
-        categoryID: { in: arrayCategoriesIDs },
-        store: {
-          user: {
-            status: true,
-            regionID
-          }
-        }
+        categoryID: { in: arrayCategoriesIDs }
       },
 
       select: {
@@ -44,7 +38,6 @@ class ListarProdutosService {
             user: { select: { regionID: true } }
           }
         },
-        categoryID: true,
         category: {
           select: {
             id: true, name: true, _count: true,

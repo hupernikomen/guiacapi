@@ -21,13 +21,7 @@ class ListarProdutosService {
             console.log(arrayCategoriesIDs, "arrayCategoriesIDs2");
             const _product = yield prisma_1.default.product.findMany({
                 where: {
-                    categoryID: { in: arrayCategoriesIDs },
-                    store: {
-                        user: {
-                            status: true,
-                            regionID
-                        }
-                    }
+                    categoryID: { in: arrayCategoriesIDs }
                 },
                 select: {
                     id: true,
@@ -50,7 +44,6 @@ class ListarProdutosService {
                             user: { select: { regionID: true } }
                         }
                     },
-                    categoryID: true,
                     category: {
                         select: {
                             id: true, name: true, _count: true,
