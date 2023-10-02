@@ -18,8 +18,7 @@ class ListarProdutosService {
     execute({ regionID }) {
         return __awaiter(this, void 0, void 0, function* () {
             if (regionID === "cb9085c6-439b-48da-8bc4-17ecd2800d4a") {
-                const productAll = yield prisma_1.default.product.findMany();
-                return productAll;
+                return yield prisma_1.default.product.findMany();
             }
             const _product = yield prisma_1.default.product.findMany({
                 where: {
