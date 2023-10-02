@@ -7,7 +7,7 @@ class ListarBannersController {
         const regionID = req.query.regionID as string
         const listarBannersService = new ListarBannersService()
 
-        const banners = await listarBannersService.execute({regionID})
+        const banners = await listarBannersService.execute({ regionID })
         return res.json(banners)
 
     }

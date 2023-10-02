@@ -15,9 +15,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListaMarcasService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class ListaMarcasService {
-    execute() {
+    execute({ regionID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const _brand = yield prisma_1.default.brand.findMany();
+            const _brand = yield prisma_1.default.brand.findMany({
+                where: {
+                    user: { status: true, regionID: regionID }
+                }
+            });
             return _brand;
         });
     }

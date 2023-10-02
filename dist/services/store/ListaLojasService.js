@@ -18,7 +18,7 @@ class ListaLojasService {
     execute({ regionID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const _store = yield prisma_1.default.store.findMany({
-                where: { user: { status: true, regionID } },
+                where: { user: { status: true, regionID: regionID } },
                 select: {
                     product: true,
                     id: true,

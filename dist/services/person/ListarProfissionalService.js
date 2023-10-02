@@ -18,7 +18,7 @@ class ListarProfissionalService {
     execute({ regionID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const _person = yield prisma_1.default.person.findMany({
-                where: { user: { status: true, regionID } },
+                where: { user: { status: true, regionID: regionID } },
                 select: {
                     id: true,
                     avatar: true,

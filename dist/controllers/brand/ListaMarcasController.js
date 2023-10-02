@@ -14,8 +14,9 @@ const ListaMarcasService_1 = require("../../services/brand/ListaMarcasService");
 class ListaMarcasController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            const regionID = req.query.regionID;
             const listaMarcasService = new ListaMarcasService_1.ListaMarcasService();
-            const _brand = yield listaMarcasService.execute();
+            const _brand = yield listaMarcasService.execute({ regionID });
             return res.json(_brand);
         });
     }

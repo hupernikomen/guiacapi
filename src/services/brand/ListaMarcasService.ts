@@ -1,9 +1,18 @@
 import prismaClient from "../../prisma";
 
-class ListaMarcasService {
-  async execute() {
+interface RegionRequest {
+  regionID: string
+}
 
-    const _brand = await prismaClient.brand.findMany()
+class ListaMarcasService {
+  async execute({ regionID }: RegionRequest) {
+
+    const _brand = await prismaClient.brand.findMany({
+      where: {
+        user: { status: true, regionID: regionID }
+
+      }
+    })
     return _brand
   }
 }

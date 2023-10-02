@@ -9,7 +9,7 @@ class ListarProfissionalController {
 
         const listarProfissionalService = new ListarProfissionalService()
 
-        const _person = await listarProfissionalService.execute({regionID})
+        const _person = await listarProfissionalService.execute({ regionID })
         return res.json(_person)
 
     }

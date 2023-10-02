@@ -10,7 +10,7 @@ class ListarProfissionalService {
   async execute({ regionID }: PersonRquest) {
 
     const _person = await prismaClient.person.findMany({
-      where: { user: { status: true, regionID } },
+      where: { user: { status: true, regionID: regionID } },
       select: {
         id: true,
         avatar: true,

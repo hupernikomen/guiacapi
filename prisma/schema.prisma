@@ -34,6 +34,7 @@ model User {
   map         Map[]
   contact     Contact[]
   banners     Banner[]
+  Brand     Brand[]
 
   createdAt DateTime? @default(now())
 
@@ -116,6 +117,9 @@ model Brand {
   id     String @id @default(uuid())
   name   String
   avatar Json?
+  userID String
+
+  user User? @relation(fields: [userID], references: [id])
 
   createdAt DateTime? @default(now())
 

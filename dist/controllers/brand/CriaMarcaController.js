@@ -14,6 +14,7 @@ const CriaMarcaService_1 = require("../../services/brand/CriaMarcaService");
 class CriaMarcaController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            const userID = req.query.userID;
             const { name } = req.body;
             if (!req.file)
                 throw new Error("Falha ao carregar imagem da Marca - API");
@@ -21,6 +22,7 @@ class CriaMarcaController {
             const _brand = yield criaMarcaService.execute({
                 name,
                 avatar: req.file,
+                userID
             });
             return res.status(200).json(_brand);
         });
