@@ -5,7 +5,7 @@ import { ListarProdutosService } from '../../services/product/ListarProdutosServ
 class ListarProdutosController {
     async handle(req: Request, res: Response) {
         const regionID = req.query.regionID as string
-        const { arrayIDs } = req.body
+        const arrayIDs = req.query.arrayIDs as string
 
         const listarProdutosService = new ListarProdutosService()
 
