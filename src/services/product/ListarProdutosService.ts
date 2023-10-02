@@ -9,13 +9,15 @@ class ListarProdutosService {
   async execute({ regionID, arrayIDs }: ProdutoRequest) {
     const _product = await prismaClient.product.findMany({
       where: {
-        categoryID: { in: arrayIDs },
-        store: {
-          user: {
-            status: true,
-            regionID
-          }
-        },
+        AND:[{
+          categoryID: { in: arrayIDs },
+          store: {
+            user: {
+              status: true,
+              regionID
+            }
+          },
+        }]
       },
 
       select: {
