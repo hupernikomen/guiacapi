@@ -15,12 +15,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListarProdutosService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class ListarProdutosService {
-    execute({ regionID, arrayIDs }) {
+    execute({ regionID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(arrayIDs, "NORMAL");
             const _product = yield prisma_1.default.product.findMany({
                 where: {
-                    categoryID: { in: arrayIDs },
                     store: {
                         user: {
                             status: true,
