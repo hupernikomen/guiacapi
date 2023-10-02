@@ -21,8 +21,7 @@ class ListarProdutosService {
                 where: {
                     store: {
                         user: {
-                            status: true,
-                            OR: [{ regionID: regionID }, { regionID: "cb9085c6-439b-48da-8bc4-17ecd2800d4a" }]
+                            OR: [{ regionID: regionID }, { status: true }]
                         }
                     }
                 },
@@ -58,7 +57,7 @@ class ListarProdutosService {
                         }
                     }
                 },
-            }).finally(() => __awaiter(this, void 0, void 0, function* () { return yield prisma_1.default.$disconnect(); }));
+            });
             return _product;
         });
     }
