@@ -19,6 +19,7 @@ class ListarProdutosController {
             const feed = yield listarProdutosService.execute({
                 regionID,
             });
+            console.log(regionID, "REG");
             console.log(feed, "FEEEEEEED");
             return res.json(feed);
         });
