@@ -9,7 +9,7 @@ class ListarProdutosService {
   async execute({ regionID, arrayIDs }: ProdutoRequest) {
     const _product = await prismaClient.product.findMany({
       where: {
-        categoryID: { in: arrayIDs },
+        OR: [{ categoryID: { in: arrayIDs } }, { categoryID: null }],
         store: {
           user: {
             status: true,
@@ -39,7 +39,6 @@ class ListarProdutosService {
             user: { select: { regionID: true } }
           }
         },
-        categoryID: true,
         category: {
           select: {
             id: true, name: true, _count: true,
