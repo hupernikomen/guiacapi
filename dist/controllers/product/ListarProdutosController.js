@@ -15,7 +15,7 @@ class ListarProdutosController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const regionID = req.query.regionID;
-            const arrayCategoriesIDs = req.body;
+            const arrayCategoriesIDs = req.query.arrayCategoriesIDs;
             const listarProdutosService = new ListarProdutosService_1.ListarProdutosService();
             const feed = yield listarProdutosService.execute({
                 regionID,
@@ -23,7 +23,6 @@ class ListarProdutosController {
             });
             console.log(regionID, "REG");
             console.log(arrayCategoriesIDs, "arrayCategoriesIDs");
-            console.log(feed, "fedd");
             return res.json(feed);
         });
     }
