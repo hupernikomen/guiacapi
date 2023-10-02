@@ -14,7 +14,7 @@ class ListarProdutosController {
             arrayCategoriesIDs
         })
         console.log(regionID,"REG");
-        console.log(feed,"FEEEEEEED");
+        console.log(arrayCategoriesIDs,"arrayCategoriesIDs");
         
         return res.json(feed)
 
