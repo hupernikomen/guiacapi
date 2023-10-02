@@ -8,6 +8,10 @@ class ListarProdutosService {
 
   async execute({ regionID }: ProdutoRequest) {
 
+
+    console.log(regionID,"regonnnnnnnnnnn");
+    
+
     const _product = await prismaClient.product.findMany({
       where: {
         store: {
