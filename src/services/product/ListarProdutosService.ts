@@ -2,13 +2,15 @@ import prismaClient from "../../prisma";
 
 interface ProdutoRequest {
   regionID: string;
+  arrayCategories: string
 }
 
 class ListarProdutosService {
-  
-  async execute({ regionID }: ProdutoRequest) {
+
+  async execute({ regionID, arrayCategories }: ProdutoRequest) {
     const _product = await prismaClient.product.findMany({
       where: {
+        categoryID: { in: arrayCategories },
         store: {
           user: {
             status: true,
