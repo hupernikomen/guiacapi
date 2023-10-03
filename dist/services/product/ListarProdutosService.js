@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListarProdutosService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class ListarProdutosService {
-    execute({ regionID }) {
+    execute({ regionID, listIDsCategories }) {
         return __awaiter(this, void 0, void 0, function* () {
             const select = {
                 id: true,
@@ -40,6 +40,7 @@ class ListarProdutosService {
             if (regionID === "cb9085c6-439b-48da-8bc4-17ecd2800d4a") {
                 return yield prisma_1.default.product.findMany({
                     where: {
+                        categoryID: { in: listIDsCategories },
                         store: {
                             user: {
                                 status: true,
@@ -51,6 +52,7 @@ class ListarProdutosService {
             }
             return yield prisma_1.default.product.findMany({
                 where: {
+                    categoryID: { in: listIDsCategories },
                     store: {
                         user: {
                             status: true,

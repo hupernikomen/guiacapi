@@ -2,11 +2,12 @@ import prismaClient from "../../prisma";
 
 interface ProdutoRequest {
   regionID: string;
+  listIDsCategories: string
 }
 
 class ListarProdutosService {
 
-  async execute({ regionID }: ProdutoRequest) {
+  async execute({ regionID, listIDsCategories }: ProdutoRequest) {
     const select = {
       id: true,
       name: true,
@@ -31,6 +32,7 @@ class ListarProdutosService {
     if (regionID === "cb9085c6-439b-48da-8bc4-17ecd2800d4a") {
       return await prismaClient.product.findMany({
         where: {
+          categoryID: { in: listIDsCategories },
           store: {
             user: {
               status: true,
@@ -43,10 +45,12 @@ class ListarProdutosService {
 
     return await prismaClient.product.findMany({
       where: {
+        categoryID: { in: listIDsCategories },
         store: {
           user: {
             status: true,
             regionID: regionID
+
           }
         }
       },
