@@ -17,7 +17,54 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class PorSubcategoriaProdutoService {
     execute({ subcategoryID, regionID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const _subcategory = yield prisma_1.default.product.findMany({
+            const select = {
+                id: true,
+                name: true,
+                price: true,
+                off: true,
+                image: true,
+                campaign: {
+                    select: {
+                        id: true,
+                        name: true,
+                        theme: true,
+                    }
+                },
+                subcategory: {
+                    select: {
+                        _count: true,
+                        id: true,
+                        name: true,
+                        category: {
+                            select: {
+                                name: true
+                            }
+                        }
+                    }
+                },
+                store: {
+                    select: {
+                        id: true,
+                        name: true,
+                        delivery: true,
+                        user: { select: { regionID: true } }
+                    }
+                },
+            };
+            if (regionID === "cb9085c6-439b-48da-8bc4-17ecd2800d4a") {
+                return yield prisma_1.default.product.findMany({
+                    where: {
+                        subcategoryID,
+                        store: {
+                            user: {
+                                status: true,
+                            }
+                        }
+                    },
+                    select: select
+                });
+            }
+            return yield prisma_1.default.product.findMany({
                 where: {
                     subcategoryID,
                     store: {
@@ -27,42 +74,8 @@ class PorSubcategoriaProdutoService {
                         }
                     },
                 },
-                select: {
-                    id: true,
-                    name: true,
-                    price: true,
-                    off: true,
-                    image: true,
-                    campaign: {
-                        select: {
-                            id: true,
-                            name: true,
-                            theme: true,
-                        }
-                    },
-                    subcategory: {
-                        select: {
-                            _count: true,
-                            id: true,
-                            name: true,
-                            category: {
-                                select: {
-                                    name: true
-                                }
-                            }
-                        }
-                    },
-                    store: {
-                        select: {
-                            id: true,
-                            name: true,
-                            delivery: true,
-                            user: { select: { regionID: true } }
-                        }
-                    },
-                },
+                select: select
             });
-            return _subcategory;
         });
     }
 }
