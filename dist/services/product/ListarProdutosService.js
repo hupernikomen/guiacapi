@@ -40,7 +40,7 @@ class ListarProdutosService {
             if (regionID === "cb9085c6-439b-48da-8bc4-17ecd2800d4a") {
                 return yield prisma_1.default.product.findMany({
                     where: {
-                        categoryID: { in: listIDsCategories },
+                        categoryID: { contains: listIDsCategories },
                         store: {
                             user: {
                                 status: true,
