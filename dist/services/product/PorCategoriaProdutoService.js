@@ -17,7 +17,55 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class PorCategoriaProdutoService {
     execute({ categoryID, regionID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const _category = yield prisma_1.default.product.findMany({
+            const select = {
+                id: true,
+                name: true,
+                price: true,
+                off: true,
+                image: true,
+                campaign: {
+                    select: {
+                        id: true,
+                        name: true,
+                        theme: true
+                    }
+                },
+                category: {
+                    select: {
+                        id: true,
+                        name: true,
+                        _count: true,
+                    }
+                },
+                subcategory: {
+                    select: {
+                        id: true,
+                        name: true,
+                        _count: true
+                    }
+                },
+                store: {
+                    select: {
+                        id: true,
+                        name: true,
+                        delivery: true
+                    }
+                },
+            };
+            if (regionID === "cb9085c6-439b-48da-8bc4-17ecd2800d4a") {
+                return yield prisma_1.default.product.findMany({
+                    where: {
+                        categoryID,
+                        store: {
+                            user: {
+                                status: true,
+                            }
+                        }
+                    },
+                    select: select
+                });
+            }
+            return yield prisma_1.default.product.findMany({
                 where: {
                     categoryID,
                     store: {
@@ -27,43 +75,8 @@ class PorCategoriaProdutoService {
                         }
                     },
                 },
-                select: {
-                    id: true,
-                    name: true,
-                    price: true,
-                    off: true,
-                    image: true,
-                    campaign: {
-                        select: {
-                            id: true,
-                            name: true,
-                            theme: true
-                        }
-                    },
-                    category: {
-                        select: {
-                            id: true,
-                            name: true,
-                            _count: true,
-                        }
-                    },
-                    subcategory: {
-                        select: {
-                            id: true,
-                            name: true,
-                            _count: true
-                        }
-                    },
-                    store: {
-                        select: {
-                            id: true,
-                            name: true,
-                            delivery: true
-                        }
-                    },
-                },
+                select: select
             });
-            return _category;
         });
     }
 }
