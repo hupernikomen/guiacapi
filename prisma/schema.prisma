@@ -210,6 +210,7 @@ model Person {
 model Portfolio {
   id       String @id @default(uuid())
   image    Json
+  comments String?
   personID String
 
   person Person @relation(fields: [personID], references: [id])

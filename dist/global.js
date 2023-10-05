@@ -8,23 +8,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CriaMarcaController = void 0;
-const CriaMarcaService_1 = require("../../services/brand/CriaMarcaService");
-class CriaMarcaController {
-    handle(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { name, userID } = req.body;
-            if (!req.file)
-                throw new Error("Falha ao carregar imagem da Marca - API");
-            const criaMarcaService = new CriaMarcaService_1.CriaMarcaService();
-            const _brand = yield criaMarcaService.execute({
-                name,
-                avatar: req.file,
-                userID
-            });
-            return res.status(200).json(_brand);
-        });
-    }
-}
-exports.CriaMarcaController = CriaMarcaController;
+const prisma_1 = __importDefault(require("./prisma"));
+const IDTeresina = () => __awaiter(void 0, void 0, void 0, function* () {
+    return yield prisma_1.default.region.findFirst({
+        where: { name: "Teresina" },
+        select: { id: true }
+    });
+});
+exports.default = IDTeresina;
