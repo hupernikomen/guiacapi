@@ -16,7 +16,8 @@ class ListaPortfolioService {
       },
       select: {
         id: true,
-        image: true
+        image: true,
+        comments:true
 
       }
     })
