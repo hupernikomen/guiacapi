@@ -2,21 +2,24 @@ import prismaClient from "../../prisma";
 
 interface portfolioRequest {
   personID: string,
-  image:object
+  image:object,
+  comments:string
 }
 
 class CriaPortfolioService {
 
   async execute({
     image,
-    personID
+    personID,
+    comments
 
   }: portfolioRequest) {
 
     const _portfolio = await prismaClient.portfolio.create({
       data: {
         image,
-        personID
+        personID,
+        comments
       }
     })
 

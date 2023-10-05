@@ -16,11 +16,13 @@ class CriaPortfolioControlller {
         return __awaiter(this, void 0, void 0, function* () {
             const criaPortfolioService = new CriaPortfolioService_1.CriaPortfolioService();
             const personID = req.query.personID;
+            const { comments } = req.body;
             if (!req.file)
                 throw new Error("Erro ao carregar imagem - API");
             const _portfolio = yield criaPortfolioService.execute({
                 image: req.file,
                 personID,
+                comments
             });
             return res.status(200).json(_portfolio);
         });
