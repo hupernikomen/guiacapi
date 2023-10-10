@@ -17,6 +17,7 @@ class ListarBannersService {
             select: {
                 image: true,
                 route: true,
+                nDays:true,
                 paramsID: true,
                 createdAt: true,
                 status: true,
