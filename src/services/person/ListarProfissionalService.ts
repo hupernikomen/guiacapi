@@ -13,6 +13,7 @@ class ListarProfissionalService {
       id: true,
       avatar: true,
       name: true,
+      bio:true,
       professionID: true,
       profession: { select: { name: true } }
     }
