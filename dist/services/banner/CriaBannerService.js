@@ -15,12 +15,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CriaBannerService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class CriaBannerService {
-    execute({ route, paramsID, image, userID, adminID }) {
+    execute({ route, paramsID, nDays, image, userID, adminID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const _banner = yield prisma_1.default.banner.create({
                 data: {
                     route,
                     paramsID,
+                    nDays,
                     image,
                     userID,
                     adminID

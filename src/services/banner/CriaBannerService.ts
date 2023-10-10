@@ -3,14 +3,16 @@ import prismaClient from "../../prisma";
 interface bannerRequest {
     route: string,
     paramsID: string,
+    nDays: string,
     image: object,
     userID: string,
-    adminID:string
+    adminID: string
 }
 class CriaBannerService {
     async execute({
         route,
         paramsID,
+        nDays,
         image,
         userID,
         adminID
@@ -19,6 +21,7 @@ class CriaBannerService {
             data: {
                 route,
                 paramsID,
+                nDays,
                 image,
                 userID,
                 adminID
