@@ -23,7 +23,8 @@ class ListarProfissionalService {
                 name: true,
                 bio: true,
                 professionID: true,
-                profession: { select: { name: true } }
+                profession: { select: { name: true } },
+                userID: true
             };
             if (regionID === "cb9085c6-439b-48da-8bc4-17ecd2800d4a") {
                 return yield prisma_1.default.person.findMany({
