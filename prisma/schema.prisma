@@ -19,12 +19,23 @@ model Admin {
   @@map("admins")
 }
 
+model Owner {
+  id       String @id @default(uuid())
+  nome     String
+  whatsapp String
+
+  User User?
+
+  @@map("owners")
+}
+
 model User {
   id       String  @id @default(uuid())
   user     String  @unique
   password String
   status   Boolean @default(true)
   regionID String
+  ownerId  String? @unique
 
   region Region @relation(fields: [regionID], references: [id])
 
@@ -35,6 +46,7 @@ model User {
   contact     Contact[]
   banners     Banner[]
   Brand       Brand[]
+  owner       Owner?        @relation(fields: [ownerId], references: [id])
 
   createdAt DateTime? @default(now())
 
