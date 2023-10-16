@@ -68,6 +68,7 @@ const DeletaMarcaController_1 = require("./controllers/brand/DeletaMarcaControll
 const CriaMarcaController_1 = require("./controllers/brand/CriaMarcaController");
 const ListaMarcasController_1 = require("./controllers/brand/ListaMarcasController");
 const CriaAdminController_1 = require("./controllers/admin/CriaAdminController");
+const CriarPagamentoController_1 = require("./controllers/payment/CriarPagamentoController");
 const uploadProdutos = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageProdutos.s3 : multer_2.storageProdutos.local,
@@ -115,6 +116,7 @@ rotas.get('/subcategories', new ListaSubCategoriasController_1.ListaSubCategoria
 rotas.get('/subcategory', new BuscaSubcategoriaController_1.BuscaSubcategoriaController().handle);
 rotas.post('/region', authenticator_1.Authenticator, new CriaRegiaoController_1.CriaRegiaoController().handle);
 rotas.get('/regions', new ListarRegioesController_1.ListarRegioesController().handle);
+rotas.post('/payment', authenticator_1.Authenticator, new CriarPagamentoController_1.CriaPaymentController().handle);
 rotas.post('/campaign', authenticator_1.Authenticator, new CriaCampanhaController_1.CriaCampanhaController().handle);
 rotas.put('/campaign', authenticator_1.Authenticator, new AtualizaCampanhaController_1.AtualizaCampanhaController().handle);
 rotas.get('/campaigns', new ListaCampanhasInativasController_1.ListaCampanhasInativasController().handle);
