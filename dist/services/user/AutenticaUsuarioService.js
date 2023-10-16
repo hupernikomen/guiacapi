@@ -38,6 +38,7 @@ class AutenticaService {
                 const store = yield prisma_1.default.store.findFirst({ where: { userID: _user.id } });
                 const person = yield prisma_1.default.person.findFirst({ where: { userID: _user.id } });
                 const gasStation = yield prisma_1.default.fuelStation.findFirst({ where: { userID: _user.id } });
+                const payment = yield prisma_1.default.payment.findMany({ where: { userID: _user.id } });
                 if (!_user)
                     throw new Error("Usuário não cadastrado");
                 if (!_user.status)
@@ -51,6 +52,7 @@ class AutenticaService {
                     user: _user.user,
                     token: token,
                     account: { store, person, gasStation },
+                    payment
                 };
             }
         });

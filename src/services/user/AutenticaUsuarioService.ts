@@ -39,6 +39,7 @@ class AutenticaService {
             const store = await prismaClient.store.findFirst({ where: { userID: _user.id } })
             const person = await prismaClient.person.findFirst({ where: { userID: _user.id } })
             const gasStation = await prismaClient.fuelStation.findFirst({ where: { userID: _user.id } })
+            const payment = await prismaClient.payment.findMany({ where: { userID: _user.id } })
 
 
             if (!_user) throw new Error("Usuário não cadastrado");
@@ -60,7 +61,7 @@ class AutenticaService {
                 user: _user.user,
                 token: token,
                 account: { store, person, gasStation },
-
+                payment
             }
         }
 
