@@ -9,6 +9,8 @@ datasource db {
 
 // yarn prisma migrate dev
 
+
+
 model Admin {
   id       String @id @default(uuid())
   user     String
@@ -18,6 +20,8 @@ model Admin {
 
   @@map("admins")
 }
+
+
 
 model Owner {
   id       String @id @default(uuid())
@@ -29,16 +33,31 @@ model Owner {
   @@map("owners")
 }
 
+
+
+model Payment {
+  id         String @id @default(uuid())
+  expiration String
+  value      String
+  userID     String
+
+  user User @relation(fields: [userID], references: [id])
+
+  updatedAt DateTime? @default(now())
+}
+
+
+
 model User {
-  id       String  @id @default(uuid())
-  user     String  @unique
-  password String
-  status   Boolean @default(true)
-  regionID String
-  ownerId  String? @unique
+  id        String  @id @default(uuid())
+  user      String  @unique
+  password  String
+  status    Boolean @default(true)
+  regionID  String
+  ownerId   String? @unique
+  paymentID String? @unique
 
-  region Region @relation(fields: [regionID], references: [id])
-
+  Payment     Payment[]
   fuelStation FuelStation[]
   person      Person[]
   store       Store[]
@@ -46,12 +65,16 @@ model User {
   contact     Contact[]
   banners     Banner[]
   Brand       Brand[]
-  owner       Owner?        @relation(fields: [ownerId], references: [id])
+
+  region Region @relation(fields: [regionID], references: [id])
+  owner  Owner? @relation(fields: [ownerId], references: [id])
 
   createdAt DateTime? @default(now())
 
   @@map("users")
 }
+
+
 
 model Map {
   id     String @id @default(uuid())
@@ -63,6 +86,8 @@ model Map {
   @@map("maps")
 }
 
+
+
 model Region {
   id   String @id @default(uuid())
   name String
@@ -72,6 +97,8 @@ model Region {
 
   @@map("regions")
 }
+
+
 
 model Contact {
   id       String   @id @default(uuid())
@@ -90,6 +117,8 @@ model Contact {
   @@map("contacts")
 }
 
+
+
 model Banner {
   id       String  @id @default(uuid())
   route    String
@@ -106,6 +135,8 @@ model Banner {
 
   @@map("banners")
 }
+
+
 
 model Store {
   id        String   @id @default(uuid())
@@ -125,7 +156,8 @@ model Store {
   @@map("stores")
 }
 
-//Marca
+
+
 model Brand {
   id     String @id @default(uuid())
   name   String
@@ -138,6 +170,8 @@ model Brand {
 
   @@map("brands")
 }
+
+
 
 model Product {
   id            String   @id @default(uuid())
@@ -165,6 +199,8 @@ model Product {
   @@map("products")
 }
 
+
+
 model Category {
   id   String @id @default(uuid())
   name String
@@ -177,6 +213,8 @@ model Category {
   @@map("categories")
 }
 
+
+
 model Subcategory {
   id         String @id @default(uuid())
   name       String
@@ -188,6 +226,8 @@ model Subcategory {
   @@map("subcategories")
 }
 
+
+
 model Campaign {
   id     String  @id @default(uuid())
   name   String
@@ -198,6 +238,8 @@ model Campaign {
 
   @@map("campaigns")
 }
+
+
 
 model Person {
   id           String   @id @default(uuid())
@@ -220,6 +262,8 @@ model Person {
   @@map("people")
 }
 
+
+
 model Portfolio {
   id       String  @id @default(uuid())
   image    Json
@@ -231,6 +275,8 @@ model Portfolio {
   @@map("portfolios")
 }
 
+
+
 model Profession {
   id   String @id @default(uuid())
   name String
@@ -241,6 +287,8 @@ model Profession {
 
   @@map("professions")
 }
+
+
 
 model FuelStation {
   id            String  @id @default(uuid())
@@ -258,6 +306,8 @@ model FuelStation {
 
   @@map("fuelstations")
 }
+
+
 
 model Price {
   id        String   @id @default(uuid())
