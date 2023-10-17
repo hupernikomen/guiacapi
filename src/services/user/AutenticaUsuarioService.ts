@@ -39,7 +39,10 @@ class AutenticaService {
             const store = await prismaClient.store.findFirst({ where: { userID: _user.id } })
             const person = await prismaClient.person.findFirst({ where: { userID: _user.id } })
             const gasStation = await prismaClient.fuelStation.findFirst({ where: { userID: _user.id } })
-            const payment = await prismaClient.payment.findMany({ where: { userID: _user.id } })
+            const payment = await prismaClient.payment.findMany({
+                where: { userID: _user.id },
+                orderBy: { expiration: 'desc' }
+            })
 
 
             if (!_user) throw new Error("Usuário não cadastrado");
@@ -55,6 +58,9 @@ class AutenticaService {
                 process.env.JWT_SECRET,
                 { subject: _user.id }
             )
+
+            // CALCULAR STATUS DE PAGAMENTO
+
 
             return {
                 id: _user.id,

@@ -38,7 +38,10 @@ class AutenticaService {
                 const store = yield prisma_1.default.store.findFirst({ where: { userID: _user.id } });
                 const person = yield prisma_1.default.person.findFirst({ where: { userID: _user.id } });
                 const gasStation = yield prisma_1.default.fuelStation.findFirst({ where: { userID: _user.id } });
-                const payment = yield prisma_1.default.payment.findMany({ where: { userID: _user.id } });
+                const payment = yield prisma_1.default.payment.findMany({
+                    where: { userID: _user.id },
+                    orderBy: { expiration: 'desc' }
+                });
                 if (!_user)
                     throw new Error("Usuário não cadastrado");
                 if (!_user.status)
@@ -47,6 +50,7 @@ class AutenticaService {
                 if (!comparePassword)
                     throw new Error("password incorreta");
                 const token = (0, jsonwebtoken_1.sign)({ user: _user.user }, process.env.JWT_SECRET, { subject: _user.id });
+                // CALCULAR STATUS DE PAGAMENTO
                 return {
                     id: _user.id,
                     user: _user.user,
