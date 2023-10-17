@@ -66,6 +66,7 @@ import { CriaMarcaController } from './controllers/brand/CriaMarcaController';
 import { ListaMarcasController } from './controllers/brand/ListaMarcasController';
 import { CriaAdminController } from './controllers/admin/CriaAdminController';
 import { CriaPaymentController } from './controllers/payment/CriarPagamentoController';
+import { ListarPaymentController } from './controllers/payment/ListarPaymentController';
 
 
 const uploadProdutos = multer({
@@ -126,6 +127,7 @@ rotas.post('/region', Authenticator, new CriaRegiaoController().handle)
 rotas.get('/regions', new ListarRegioesController().handle)
 
 rotas.post('/payment', Authenticator, new CriaPaymentController().handle)
+rotas.get('/payment', new ListarPaymentController().handle)
 
 
 rotas.post('/campaign', Authenticator, new CriaCampanhaController().handle)
