@@ -98,6 +98,13 @@ const uploadMarca = (0, multer_1.default)({
         fileSize: 1 * 1024 * 1024, // MAX 1MB
     }
 });
+const uploadBanner = (0, multer_1.default)({
+    fileFilter: multer_2.fileFilter,
+    storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageBanner.s3 : multer_2.storageBanner.local,
+    limits: {
+        fileSize: 1 * 1024 * 1024, // MAX 1MB
+    }
+});
 const rotas = (0, express_1.Router)();
 exports.rotas = rotas;
 rotas.post('/admin', authenticator_1.Authenticator, new CriaAdminController_1.CriaAdminController().handle);
@@ -106,7 +113,7 @@ rotas.put('/user', authenticator_1.Authenticator, new AtualizaUsuarioController_
 rotas.get('/users', authenticator_1.Authenticator, new ListarUsuariosController_1.ListarUsuariosController().handle);
 rotas.get('/user', new BuscarUsuarioController_1.BuscaUsuarioController().handle);
 rotas.post('/login', new AutenticaUsuarioController_1.AutenticaUsuarioController().handle);
-rotas.post('/banner', authenticator_1.Authenticator, uploadProdutos.single('image'), new CriaBannerController_1.CriaBannerController().handle);
+rotas.post('/banner', authenticator_1.Authenticator, uploadBanner.single('image'), new CriaBannerController_1.CriaBannerController().handle);
 rotas.get('/banners', new ListarBannersController_1.ListarBannersController().handle);
 rotas.post('/category', authenticator_1.Authenticator, new CriaCategoriaController_1.CriaCategoriaController().handle);
 rotas.delete('/category', authenticator_1.Authenticator, new DeletaCategoriaController_1.DeletaCategoriaController().handle);

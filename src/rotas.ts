@@ -4,7 +4,7 @@ import 'dotenv/config';
 
 import { Authenticator } from './middlewares/authenticator';
 
-import { fileFilter, storageProdutos, storageAvatar, storagePortfolio, storageMarca } from './config/multer'
+import { fileFilter, storageProdutos, storageAvatar, storagePortfolio, storageMarca,storageBanner } from './config/multer'
 
 import { LojaLogadaController } from './controllers/store/LojaLogadaController';
 import { AutenticaUsuarioController } from './controllers/user/AutenticaUsuarioController';
@@ -100,6 +100,14 @@ const uploadMarca = multer({
   }
 })
 
+const uploadBanner = multer({
+  fileFilter: fileFilter,
+  storage: process.env.TYPE_STORAGE === 'S3' ? storageBanner.s3 : storageBanner.local,
+  limits: {
+    fileSize: 1 * 1024 * 1024, // MAX 1MB
+  }
+})
+
 
 const rotas = Router();
 
@@ -111,7 +119,7 @@ rotas.get('/users', Authenticator, new ListarUsuariosController().handle)
 rotas.get('/user', new BuscaUsuarioController().handle)
 rotas.post('/login', new AutenticaUsuarioController().handle)
 
-rotas.post('/banner', Authenticator, uploadProdutos.single('image'), new CriaBannerController().handle)
+rotas.post('/banner', Authenticator, uploadBanner.single('image'), new CriaBannerController().handle)
 rotas.get('/banners', new ListarBannersController().handle)
 
 rotas.post('/category', Authenticator, new CriaCategoriaController().handle)
