@@ -9,7 +9,7 @@ class CriaBannerController {
 
     if (!req.file) throw new Error("Falha ao enviar banner");
 
-    console.log(global, typeof global);
+    console.log(global, typeof Boolean(global));
 
 
     const criaBannerService = new CriaBannerService();
