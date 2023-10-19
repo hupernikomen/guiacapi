@@ -37,8 +37,8 @@ class ListarBannersService {
                             payment: {
                                 select: {
                                     expiration: true,
-                                    type: true,
-                                    userID: true
+                                    referenceID: true,
+                                    userID: true,
                                 }
                             }
                         }

@@ -15,14 +15,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CriaPaymentService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class CriaPaymentService {
-    execute({ userID, value, expiration, type }) {
+    execute({ userID, value, expiration, referenceID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const _payment = yield prisma_1.default.payment.create({
                 data: {
                     userID,
                     value,
                     expiration,
-                    type
+                    referenceID
                 }
             });
             return _payment;

@@ -28,11 +28,11 @@ model Owner {
 }
 
 model Payment {
-  id         String  @id @default(uuid())
-  expiration String
-  value      String
-  userID     String
-  type       String?
+  id          String  @id @default(uuid())
+  expiration  String
+  value       String
+  userID      String
+  referenceID String
 
   user User @relation(fields: [userID], references: [id])
 
@@ -42,12 +42,12 @@ model Payment {
 }
 
 model Banner {
-  id       String   @id @default(uuid())
+  id       String  @id @default(uuid())
   route    String
   paramsID String
   image    Json
-  status   Boolean  @default(true)
-  global   Boolean  @default(false)
+  status   Boolean @default(true)
+  global   Boolean @default(false)
   userID   String?
 
   user      User?     @relation(fields: [userID], references: [id])
@@ -80,9 +80,6 @@ model User {
 
   @@map("users")
 }
-
-
-
 
 model Map {
   id     String @id @default(uuid())
@@ -120,8 +117,6 @@ model Contact {
 
   @@map("contacts")
 }
-
-
 
 model Store {
   id        String   @id @default(uuid())

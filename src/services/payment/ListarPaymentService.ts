@@ -15,7 +15,8 @@ class ListarPaymentService {
         value:true,
         expiration:true,
         createdAt:true,
-        userID:true
+        userID:true,
+        referenceID:true
         
       }
     })
