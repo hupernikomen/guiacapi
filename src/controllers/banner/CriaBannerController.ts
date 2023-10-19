@@ -9,6 +9,9 @@ class CriaBannerController {
 
     if (!req.file) throw new Error("Falha ao enviar banner");
 
+    console.log(global, typeof global);
+
+
     const criaBannerService = new CriaBannerService();
     const banner = await criaBannerService.execute({
       route,
@@ -19,7 +22,7 @@ class CriaBannerController {
     })
 
     if (!banner) throw new Error("Erro ao criar banner - API");
-    return res.status(200).json({ message: "Criado com Sucesso", "id":banner.id })
+    return res.status(200).json({ message: "Criado com Sucesso", "id": banner.id })
   }
 }
 

@@ -18,6 +18,7 @@ class CriaBannerController {
             const { route, paramsID, global } = req.body;
             if (!req.file)
                 throw new Error("Falha ao enviar banner");
+            console.log(global, typeof global);
             const criaBannerService = new CriaBannerService_1.CriaBannerService();
             const banner = yield criaBannerService.execute({
                 route,
