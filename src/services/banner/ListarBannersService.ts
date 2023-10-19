@@ -10,8 +10,8 @@ class ListarBannersService {
         const _banners = await prismaClient.banner.findMany({
             where: {
                 OR: [
-                    { user: { regionID }, status: true },
-                    { global: true, status: true},
+                    { user: { regionID }, status: true, global: false },
+                    { global: true, status: true },
                 ]
             },
             select: {
