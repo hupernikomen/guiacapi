@@ -20,10 +20,10 @@ class CriaBannerController {
                 throw new Error("Falha ao enviar banner");
             const criaBannerService = new CriaBannerService_1.CriaBannerService();
             const banner = yield criaBannerService.execute({
+                image: req.file,
                 route,
                 paramsID,
-                image: req.file,
-                global,
+                global: Boolean(global),
                 userID,
             });
             if (!banner)

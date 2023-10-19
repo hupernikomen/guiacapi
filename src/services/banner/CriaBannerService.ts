@@ -1,28 +1,28 @@
 import prismaClient from "../../prisma";
 
 interface bannerRequest {
+    image: object,
     route: string,
     paramsID: string,
-    image: object,
     global: boolean,
     userID: string,
 }
 class CriaBannerService {
 
     async execute({
+        image,
         route,
         paramsID,
-        image,
         global,
         userID,
     }: bannerRequest) {
         const _banner = await prismaClient.banner.create({
             data: {
+                image,
                 route,
                 paramsID,
-                image,
                 userID,
-                global: Boolean(global)
+                global
             }
         })
 

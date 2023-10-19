@@ -11,10 +11,10 @@ class CriaBannerController {
 
     const criaBannerService = new CriaBannerService();
     const banner = await criaBannerService.execute({
+      image: req.file,
       route,
       paramsID,
-      image: req.file,
-      global,
+      global: Boolean(global),
       userID,
     })
 
