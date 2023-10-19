@@ -16,7 +16,6 @@ class CriaBannerService {
         global,
         userID,
     }: bannerRequest) {
-        console.log(global, "service")
         const _banner = await prismaClient.banner.create({
             data: {
                 route,
