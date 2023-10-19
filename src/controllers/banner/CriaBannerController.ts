@@ -19,7 +19,7 @@ class CriaBannerController {
     })
 
     if (!banner) throw new Error("Erro ao criar banner - API");
-    return res.status(200).json({ message: "Criado com Sucesso" })
+    return res.status(200).json({ message: "Criado com Sucesso", "id":banner.id })
   }
 }
 
