@@ -64,7 +64,7 @@ model User {
   regionID String
   ownerId  String? @unique
 
-  Payment     Payment[]
+  payment     Payment[]
   fuelStation FuelStation[]
   person      Person[]
   store       Store[]

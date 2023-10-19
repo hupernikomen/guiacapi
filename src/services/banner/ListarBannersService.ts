@@ -11,7 +11,7 @@ class ListarBannersService {
             where: {
                 OR: [
                     { user: { regionID }, status: true },
-                    { global: true, status: true },
+                    { global: true, status: true},
                 ]
             },
             select: {
