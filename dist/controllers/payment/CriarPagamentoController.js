@@ -15,7 +15,8 @@ class CriaPaymentController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const criaPaymentService = new CriarPagamentoService_1.CriaPaymentService();
-            const { userID, value, expiration } = req.body;
+            const userID = req.query.userID;
+            const { value, expiration } = req.body;
             const _payment = yield criaPaymentService.execute({
                 userID,
                 value,
