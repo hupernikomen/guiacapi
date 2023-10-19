@@ -17,6 +17,7 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class CriaBannerService {
     execute({ route, paramsID, image, global, userID, }) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log(global, "service");
             const _banner = yield prisma_1.default.banner.create({
                 data: {
                     route,
