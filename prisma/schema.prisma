@@ -46,8 +46,7 @@ model Banner {
   route    String
   paramsID String
   image    Json
-  status   Boolean @default(true)
-  global   Boolean @default(false)
+  global   Boolean
   userID   String?
 
   user      User?     @relation(fields: [userID], references: [id])
