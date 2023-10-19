@@ -14,7 +14,7 @@ class CriaBannerController {
       route,
       paramsID,
       image: req.file,
-      global: Boolean(global),
+      global,
       userID,
     })
 

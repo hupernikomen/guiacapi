@@ -23,7 +23,7 @@ class CriaBannerService {
                     paramsID,
                     image,
                     userID,
-                    global
+                    global: Boolean(global)
                 }
             });
             return _banner;
