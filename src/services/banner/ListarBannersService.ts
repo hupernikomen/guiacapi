@@ -11,16 +11,16 @@ class ListarBannersService {
             where: {
                 OR: [
                     { user: { regionID }, status: true },
-                    { adminID: "b085e85a-8cf4-417f-9df8-388b51c3f38f", status: true },
+                    { global: true, status: true },
                 ]
             },
             select: {
                 image: true,
                 route: true,
-                nDays:true,
                 paramsID: true,
                 createdAt: true,
                 status: true,
+                global: true,
                 userID: true
             }
         })

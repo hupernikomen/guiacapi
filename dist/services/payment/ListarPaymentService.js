@@ -22,7 +22,7 @@ class ListarPaymentService {
                     id: true,
                     value: true,
                     expiration: true,
-                    updatedAt: true,
+                    createdAt: true,
                     userID: true
                 }
             });

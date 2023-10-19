@@ -5,8 +5,7 @@ class CriaBannerController {
   async handle(req: Request, res: Response) {
 
     const userID = req.query.userID as string
-    const adminID = req.query.adminID as string
-    const { route, paramsID, nDays } = req.body
+    const { route, paramsID, global } = req.body
     
     if (!req.file) throw new Error("Falha ao enviar banner");
     
@@ -14,10 +13,9 @@ class CriaBannerController {
     const banner = await criaBannerService.execute({
       route,
       paramsID,
-      nDays,
       image: req.file,
+      global,
       userID,
-      adminID
     })
 
     if(!banner) throw new Error("Erro ao criar banner - API");
