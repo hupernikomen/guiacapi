@@ -71,7 +71,7 @@ model User {
   map         Map[]
   contact     Contact[]
   banners     Banner[]
-  Brand       Brand[]
+  brand       Brand[]
 
   region Region @relation(fields: [regionID], references: [id])
   owner  Owner? @relation(fields: [ownerId], references: [id])
