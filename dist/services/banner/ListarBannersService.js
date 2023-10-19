@@ -31,7 +31,18 @@ class ListarBannersService {
                     createdAt: true,
                     status: true,
                     global: true,
-                    userID: true
+                    userID: true,
+                    user: {
+                        select: {
+                            payment: {
+                                select: {
+                                    expiration: true,
+                                    type: true,
+                                    userID: true
+                                }
+                            }
+                        }
+                    }
                 }
             });
             return _banners;
