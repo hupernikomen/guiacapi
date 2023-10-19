@@ -21,8 +21,8 @@ class CriaBannerService {
                 image,
                 route,
                 paramsID,
-                userID,
-                global
+                global,
+                userID
             }
         })
 
