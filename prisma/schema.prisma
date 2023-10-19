@@ -43,7 +43,7 @@ model Payment {
 
   user User @relation(fields: [userID], references: [id])
 
-  updatedAt DateTime? @default(now())
+  createdAt DateTime? @default(now())
 
   @@map("payments")
 }
