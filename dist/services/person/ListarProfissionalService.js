@@ -17,24 +17,19 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class ListarProfissionalService {
     execute({ regionID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const select = {
-                id: true,
-                avatar: true,
-                name: true,
-                bio: true,
-                professionID: true,
-                profession: { select: { name: true } },
-                userID: true
-            };
-            if (regionID === "cb9085c6-439b-48da-8bc4-17ecd2800d4a") {
-                return yield prisma_1.default.person.findMany({
-                    where: { user: { status: true } },
-                    select: select
-                });
-            }
+            const today = new Date().toLocaleDateString('pt-BR');
+            const regionQuery = regionID === "cb9085c6-439b-48da-8bc4-17ecd2800d4a" ? { user: { payment: { every: { expiration: { gte: today } } } } } : { user: { payment: { every: { expiration: { gte: today } } }, regionID: regionID } };
             return yield prisma_1.default.person.findMany({
-                where: { user: { status: true, regionID: regionID } },
-                select: select
+                where: regionQuery,
+                select: {
+                    id: true,
+                    avatar: true,
+                    name: true,
+                    bio: true,
+                    professionID: true,
+                    profession: { select: { name: true } },
+                    userID: true
+                }
             });
         });
     }

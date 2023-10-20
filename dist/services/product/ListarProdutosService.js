@@ -17,43 +17,32 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class ListarProdutosService {
     execute({ regionID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const select = {
-                id: true,
-                name: true,
-                price: true,
-                off: true,
-                image: true,
-                campaign: { select: { id: true, name: true, theme: true } },
-                store: {
-                    select: {
-                        id: true, name: true, delivery: true,
-                        user: { select: { regionID: true } }
-                    }
-                },
-                category: {
-                    select: {
-                        id: true, name: true, _count: true,
-                        subcategory: { select: { id: true, name: true, _count: true } }
-                    }
-                }
-            };
             const today = new Date().toLocaleDateString('pt-BR');
-            if (regionID === "cb9085c6-439b-48da-8bc4-17ecd2800d4a") {
-                return yield prisma_1.default.product.findMany({
-                    where: { store: { user: { payment: { every: { expiration: { gte: today } } } } } },
-                    select: select
-                });
-            }
+            const storeWhere = regionID === "cb9085c6-439b-48da-8bc4-17ecd2800d4a" ? { user: { payment: { every: { expiration: { gte: today } } } } } : { user: { payment: { every: { expiration: { gte: today } } }, regionID: regionID } };
             return yield prisma_1.default.product.findMany({
                 where: {
+                    store: storeWhere
+                },
+                select: {
+                    id: true,
+                    name: true,
+                    price: true,
+                    off: true,
+                    image: true,
+                    campaign: { select: { id: true, name: true, theme: true } },
                     store: {
-                        user: {
-                            payment: { every: { expiration: { gte: today } } },
-                            regionID: regionID
+                        select: {
+                            id: true, name: true, delivery: true,
+                            user: { select: { regionID: true } }
+                        }
+                    },
+                    category: {
+                        select: {
+                            id: true, name: true, _count: true,
+                            subcategory: { select: { id: true, name: true, _count: true } }
                         }
                     }
-                },
-                select: select
+                }
             });
         });
     }

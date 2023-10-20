@@ -18,18 +18,17 @@ class ListaLojasService {
     execute({ regionID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const today = new Date().toLocaleDateString('pt-BR');
-            const select = {
-                product: true,
-                id: true,
-                name: true,
-                avatar: true,
-                delivery: true,
-                userID: true,
-            };
             const regionQuery = regionID === "cb9085c6-439b-48da-8bc4-17ecd2800d4a" ? { user: { payment: { every: { expiration: { gte: today } } } } } : { user: { payment: { every: { expiration: { gte: today } } }, regionID: regionID } };
             return yield prisma_1.default.store.findMany({
                 where: regionQuery,
-                select: select
+                select: {
+                    product: true,
+                    id: true,
+                    name: true,
+                    avatar: true,
+                    delivery: true,
+                    userID: true,
+                }
             });
         });
     }
