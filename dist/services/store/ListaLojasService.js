@@ -26,24 +26,14 @@ class ListaLojasService {
                 delivery: true,
                 userID: true,
             };
-            // if (regionID === "cb9085c6-439b-48da-8bc4-17ecd2800d4a") {
-            //     return await prismaClient.store.findMany({
-            //         where: { user: { payment: { every: { expiration: { gte: today } } } } },
-            //         select: select
-            //     })
-            // }
-            // return await prismaClient.store.findMany({
-            //     where: { user: { payment: { every: { expiration: { gte: today } } }, regionID: regionID } },
-            //     select: select
-            // })
-            const isMonthlyPaymentRegion = regionID === "cb9085c6-439b-48da-8bc4-17ecd2800d4a";
+            if (regionID === "cb9085c6-439b-48da-8bc4-17ecd2800d4a") {
+                return yield prisma_1.default.store.findMany({
+                    where: { user: { payment: { every: { expiration: { gte: today } } } } },
+                    select: select
+                });
+            }
             return yield prisma_1.default.store.findMany({
-                where: {
-                    user: {
-                        regionID: regionID,
-                        payment: isMonthlyPaymentRegion ? { every: { expiration: { gte: today } } } : undefined
-                    }
-                },
+                where: { user: { payment: { every: { expiration: { gte: today } } }, regionID: regionID } },
                 select: select
             });
         });
