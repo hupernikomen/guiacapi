@@ -11,7 +11,7 @@ class CriaPaymentController {
     const _payment = await criaPaymentService.execute({
       userID,
       value,
-      expiration,
+      expiration: expiration.toLocaleDateString(),
       paymentOf
     })
 

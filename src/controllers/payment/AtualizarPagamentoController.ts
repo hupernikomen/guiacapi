@@ -13,7 +13,7 @@ class AtualizarPagamentoController {
 
         const _pay = await atualizarPagamentoService.execute({
           value,
-          expiration,
+          expiration: expiration.toLocaleDateString(),
           paymentID
 
         })

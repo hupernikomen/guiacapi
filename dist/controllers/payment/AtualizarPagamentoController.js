@@ -19,7 +19,7 @@ class AtualizarPagamentoController {
             const atualizarPagamentoService = new AtualizaPagamentoService_1.AtualizarPagamentoService();
             const _pay = yield atualizarPagamentoService.execute({
                 value,
-                expiration,
+                expiration: expiration.toLocaleDateString(),
                 paymentID
             });
             return res.json(_pay);
