@@ -20,7 +20,7 @@ class CriaPaymentController {
             const _payment = yield criaPaymentService.execute({
                 userID,
                 value,
-                expiration: expiration.toLocaleDateString(),
+                expiration,
                 paymentOf
             });
             return res.status(200).json(_payment);
