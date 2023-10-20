@@ -28,21 +28,16 @@ class ListarProdutosService {
       }
     }
 
+    const today = new Date().toLocaleDateString('pt-BR');
 
     if (regionID === "cb9085c6-439b-48da-8bc4-17ecd2800d4a") {
       return await prismaClient.product.findMany({
-        where: {
-          store: {
-            user: {
-              status: true,
-            }
-          }
-        },
-
+        where: { store: { user: { payment: { every: { expiration: { gte: today } } } } } },
         select: select
       })
     }
-    const today = new Date().toLocaleDateString('pt-BR');
+
+    
     return await prismaClient.product.findMany({
       where: {
         store: {
