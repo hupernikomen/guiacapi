@@ -26,14 +26,9 @@ class ListaLojasService {
                 delivery: true,
                 userID: true,
             };
-            if (regionID === "cb9085c6-439b-48da-8bc4-17ecd2800d4a") {
-                return yield prisma_1.default.store.findMany({
-                    where: { user: { payment: { every: { expiration: { gte: today } } } } },
-                    select: select
-                });
-            }
+            const regionQuery = regionID === "cb9085c6-439b-48da-8bc4-17ecd2800d4a" ? { user: { payment: { every: { expiration: { gte: today } } } } } : { user: { payment: { every: { expiration: { gte: today } } }, regionID: regionID } };
             return yield prisma_1.default.store.findMany({
-                where: { user: { payment: { every: { expiration: { gte: today } } }, regionID: regionID } },
+                where: regionQuery,
                 select: select
             });
         });
