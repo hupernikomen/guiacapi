@@ -18,7 +18,7 @@ class AtualizarPagamentoService {
       where: { id: paymentID },
       data: {
         value,
-        expiration
+        expiration,
       },
 
     })
