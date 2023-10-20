@@ -33,7 +33,7 @@ class ListaLojasService {
                 });
             }
             return yield prisma_1.default.store.findMany({
-                where: { user: { status: true, regionID: regionID } },
+                where: { user: { payment: { every: { expiration: { gte: today } } }, regionID: regionID } },
                 select: select
             });
         });

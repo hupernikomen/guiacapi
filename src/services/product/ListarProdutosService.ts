@@ -47,7 +47,7 @@ class ListarProdutosService {
       where: {
         store: {
           user: {
-            payment: { every: { expiration: { gt: today } } },
+            payment: { every: { expiration: { gte: today } } },
             regionID: regionID
 
           }
