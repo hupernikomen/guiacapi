@@ -111,7 +111,7 @@ const uploadBanner = (0, multer_1.default)({
 const rotas = (0, express_1.Router)();
 exports.rotas = rotas;
 rotas.post('/admin', authenticator_1.Authenticator, new CriaAdminController_1.CriaAdminController().handle);
-rotas.get('/lojasAdmin', new ListaLojasControllerAdmin_1.ListaLojasControllerAdmin().handle);
+rotas.get('/storeAdmin', new ListaLojasControllerAdmin_1.ListaLojasControllerAdmin().handle);
 rotas.post('/user', authenticator_1.Authenticator, new CriaUsuarioController_1.CriaUsuarioController().handle);
 rotas.put('/user', authenticator_1.Authenticator, new AtualizaUsuarioController_1.AtualizaUsuarioController().handle);
 rotas.get('/users', authenticator_1.Authenticator, new ListarUsuariosController_1.ListarUsuariosController().handle);
