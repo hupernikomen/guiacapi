@@ -24,7 +24,7 @@ class ListarPaymentService {
                     expiration: true,
                     createdAt: true,
                     userID: true,
-                    paymentOfID: true
+                    paymentOf: true
                 }
             });
         });

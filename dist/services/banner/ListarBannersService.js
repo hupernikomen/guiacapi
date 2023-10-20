@@ -18,6 +18,7 @@ class ListarBannersService {
     execute() {
         return __awaiter(this, void 0, void 0, function* () {
             const _banners = yield prisma_1.default.banner.findMany({
+                where: { user: { payment: { every: { paymentOf: 'outdoor' } } } },
                 select: {
                     image: true,
                     route: true,
@@ -29,7 +30,7 @@ class ListarBannersService {
                             payment: {
                                 select: {
                                     expiration: true,
-                                    paymentOfID: true,
+                                    paymentOf: true,
                                 }
                             }
                         }
