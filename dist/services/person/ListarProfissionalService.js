@@ -18,7 +18,9 @@ class ListarProfissionalService {
     execute({ regionID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const today = new Date().toLocaleDateString('pt-BR');
-            const regionQuery = regionID === "cb9085c6-439b-48da-8bc4-17ecd2800d4a" ? { user: { payment: { every: { expiration: { gte: today } } } } } : { user: { payment: { every: { expiration: { gte: today } } }, regionID: regionID } };
+            const regionQuery = regionID === "cb9085c6-439b-48da-8bc4-17ecd2800d4a" ?
+                { user: { not: null, payment: { every: { expiration: { gte: today } } } } } :
+                { user: { not: null, payment: { every: { expiration: { gte: today } } }, regionID: regionID } };
             return yield prisma_1.default.person.findMany({
                 where: regionQuery,
                 select: {
