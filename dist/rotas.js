@@ -72,6 +72,7 @@ const CriarPagamentoController_1 = require("./controllers/payment/CriarPagamento
 const ListarPaymentController_1 = require("./controllers/payment/ListarPaymentController");
 const BuscaPaymentController_1 = require("./controllers/payment/BuscaPaymentController");
 const AtualizarPagamentoController_1 = require("./controllers/payment/AtualizarPagamentoController");
+const ListaLojasControllerAdmin_1 = require("./controllers/store/ListaLojasControllerAdmin");
 const uploadProdutos = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageProdutos.s3 : multer_2.storageProdutos.local,
@@ -110,6 +111,7 @@ const uploadBanner = (0, multer_1.default)({
 const rotas = (0, express_1.Router)();
 exports.rotas = rotas;
 rotas.post('/admin', authenticator_1.Authenticator, new CriaAdminController_1.CriaAdminController().handle);
+rotas.get('/lojasAdmin', new ListaLojasControllerAdmin_1.ListaLojasControllerAdmin().handle);
 rotas.post('/user', authenticator_1.Authenticator, new CriaUsuarioController_1.CriaUsuarioController().handle);
 rotas.put('/user', authenticator_1.Authenticator, new AtualizaUsuarioController_1.AtualizaUsuarioController().handle);
 rotas.get('/users', authenticator_1.Authenticator, new ListarUsuariosController_1.ListarUsuariosController().handle);

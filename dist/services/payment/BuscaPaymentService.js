@@ -15,12 +15,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.BuscaPaymentService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class BuscaPaymentService {
-    execute({ userID, paymentOf }) {
+    execute({ userID }) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield prisma_1.default.payment.findFirst({
                 where: {
                     userID,
-                    paymentOf
                 },
                 select: {
                     id: true,
@@ -28,7 +27,6 @@ class BuscaPaymentService {
                     expiration: true,
                     createdAt: true,
                     userID: true,
-                    paymentOf: true
                 }
             });
         });

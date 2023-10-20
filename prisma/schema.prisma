@@ -32,7 +32,6 @@ model Payment {
   expiration String
   value      String
   userID     String
-  paymentOf  String
 
   user      User      @relation(fields: [userID], references: [id])
   createdAt DateTime? @default(now())
@@ -40,15 +39,27 @@ model Payment {
   @@map("payments")
 }
 
-model Banner {
-  id       String @id @default(uuid())
-  image    Json
-  route    String
-  paramsID String
-  userID   String
+model PaymentBanners {
+  id         String    @id @default(uuid())
+  expiration String
+  value      String
+  bannerID   String
+  createdAt  DateTime? @default(now())
 
-  user      User      @relation(fields: [userID], references: [id])
-  createdAt DateTime? @default(now())
+  banner Banner @relation(fields: [bannerID], references: [id])
+
+  @@map("paymentsBanners")
+}
+
+model Banner {
+  id        String    @id @default(uuid())
+  image     Json
+  route     String
+  paramsID  String
+  userID    String
+
+  PaymentBanners PaymentBanners[]
+  user           User             @relation(fields: [userID], references: [id])
 
   @@map("banners")
 }

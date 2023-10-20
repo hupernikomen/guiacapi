@@ -9,21 +9,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CriaPaymentController = void 0;
-const CriarPagamentoService_1 = require("../../services/payment/CriarPagamentoService");
-class CriaPaymentController {
+exports.ListaLojasControllerAdmin = void 0;
+const ListaLojasServiceAdmin_1 = require("../../services/store/ListaLojasServiceAdmin");
+class ListaLojasControllerAdmin {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const criaPaymentService = new CriarPagamentoService_1.CriaPaymentService();
-            const userID = req.query.userID;
-            const { value, expiration } = req.body;
-            const _payment = yield criaPaymentService.execute({
-                userID,
-                value,
-                expiration,
-            });
-            return res.status(200).json(_payment);
+            const listaLojasServiceAdmin = new ListaLojasServiceAdmin_1.ListaLojasServiceAdmin();
+            const _store = yield listaLojasServiceAdmin.execute();
+            return res.json(_store);
         });
     }
 }
-exports.CriaPaymentController = CriaPaymentController;
+exports.ListaLojasControllerAdmin = ListaLojasControllerAdmin;

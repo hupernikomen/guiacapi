@@ -3,17 +3,15 @@ import prismaClient from "../../prisma";
 
 interface PaymentRquest {
   userID: string,
-  paymentOf: string
 }
 
 class BuscaPaymentService {
 
-  async execute({ userID, paymentOf }: PaymentRquest) {
+  async execute({ userID }: PaymentRquest) {
 
     return await prismaClient.payment.findFirst({
       where: {
         userID,
-        paymentOf
       },
       select: {
         id: true,
@@ -21,7 +19,6 @@ class BuscaPaymentService {
         expiration: true,
         createdAt: true,
         userID: true,
-        paymentOf: true
 
       }
     })

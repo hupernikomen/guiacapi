@@ -8,22 +8,26 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CriaPaymentController = void 0;
-const CriarPagamentoService_1 = require("../../services/payment/CriarPagamentoService");
-class CriaPaymentController {
-    handle(req, res) {
+exports.ListaLojasServiceAdmin = void 0;
+const prisma_1 = __importDefault(require("../../prisma"));
+class ListaLojasServiceAdmin {
+    execute() {
         return __awaiter(this, void 0, void 0, function* () {
-            const criaPaymentService = new CriarPagamentoService_1.CriaPaymentService();
-            const userID = req.query.userID;
-            const { value, expiration } = req.body;
-            const _payment = yield criaPaymentService.execute({
-                userID,
-                value,
-                expiration,
+            return yield prisma_1.default.store.findMany({
+                select: {
+                    product: true,
+                    id: true,
+                    name: true,
+                    avatar: true,
+                    delivery: true,
+                    userID: true,
+                }
             });
-            return res.status(200).json(_payment);
         });
     }
 }
-exports.CriaPaymentController = CriaPaymentController;
+exports.ListaLojasServiceAdmin = ListaLojasServiceAdmin;
