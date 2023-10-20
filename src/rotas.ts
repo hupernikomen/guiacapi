@@ -70,7 +70,7 @@ import { ListarPaymentController } from './controllers/payment/ListarPaymentCont
 import { BuscaPaymentController } from './controllers/payment/BuscaPaymentController';
 import { AtualizarPagamentoController } from './controllers/payment/AtualizarPagamentoController';
 import { ListaLojasControllerAdmin } from './controllers/store/ListaLojasControllerAdmin';
-
+import { ListarProfissionalControllerAdmin } from './controllers/person/ListarProfissionalControllerAdmin';
 
 
 const uploadProdutos = multer({
@@ -116,7 +116,8 @@ const uploadBanner = multer({
 const rotas = Router();
 
 rotas.post('/admin', Authenticator, new CriaAdminController().handle)
-rotas.get('/storeAdmin',new ListaLojasControllerAdmin().handle)
+rotas.get('/storesAdmin',new ListaLojasControllerAdmin().handle)
+rotas.get('/personsAdmin',new ListarProfissionalControllerAdmin().handle)
 
 rotas.post('/user', Authenticator, new CriaUsuarioController().handle)
 rotas.put('/user', Authenticator, new AtualizaUsuarioController().handle)
