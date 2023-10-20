@@ -30,7 +30,6 @@ class ListaLojasService {
             return yield prisma_1.default.store.findMany({
                 where: {
                     user: {
-                        status: true,
                         regionID: regionID,
                         payment: isMonthlyPaymentRegion ? { some: { expiration: { gt: today } } } : undefined
                     }

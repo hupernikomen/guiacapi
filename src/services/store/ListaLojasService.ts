@@ -21,7 +21,6 @@ class ListaLojasService {
         return await prismaClient.store.findMany({
             where: {
                 user: {
-                    status: true,
                     regionID: regionID,
                     payment: isMonthlyPaymentRegion ? { some: { expiration: { gt: today } } } : undefined
                 }
