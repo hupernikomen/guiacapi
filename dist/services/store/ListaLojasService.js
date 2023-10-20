@@ -32,7 +32,7 @@ class ListaLojasService {
                     user: {
                         status: true,
                         regionID: regionID,
-                        payment: isMonthlyPaymentRegion ? { every: { expiration: { gt: today }, paymentOf: "monthlyPayment" } } : undefined
+                        payment: isMonthlyPaymentRegion ? { some: { expiration: { gt: today } } } : undefined
                     }
                 },
                 select: select
