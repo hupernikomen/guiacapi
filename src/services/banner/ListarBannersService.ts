@@ -6,7 +6,7 @@ class ListarBannersService {
         const today = new Date().toLocaleDateString('pt-BR');
         const _banners = await prismaClient.banner.findMany({
 
-            where: { user: { payment: { every: { expiration: { gte: today } } } } },
+            where: { user: { payment: { every: { AND: [{ expiration: { gte: today }, paymentOf: "outdoor" }] } } } },
             select: {
                 image: true,
                 route: true,
