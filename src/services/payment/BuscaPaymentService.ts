@@ -2,16 +2,16 @@
 import prismaClient from "../../prisma";
 
 interface PaymentRquest {
-  paymentID: string
+  userID: string
 }
 
 class BuscaPaymentService {
 
-  async execute({ paymentID }: PaymentRquest) {
+  async execute({ userID }: PaymentRquest) {
 
     return await prismaClient.payment.findFirst({
       where:{
-        id: paymentID
+        userID
       },
       select: {
         id: true,

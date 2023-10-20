@@ -14,9 +14,9 @@ const BuscaPaymentService_1 = require("../../services/payment/BuscaPaymentServic
 class BuscaPaymentController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const paymentID = req.query.paymentID;
+            const userID = req.query.userID;
             const buscaPaymentService = new BuscaPaymentService_1.BuscaPaymentService();
-            const _pay = yield buscaPaymentService.execute({ paymentID });
+            const _pay = yield buscaPaymentService.execute({ userID });
             return res.json(_pay);
         });
     }
