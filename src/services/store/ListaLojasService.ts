@@ -6,9 +6,7 @@ interface StoreRequest {
 
 class ListaLojasService {
     async execute({ regionID }: StoreRequest) {
-
-        const timeElapsed = Date.now();
-        let today = new Date(timeElapsed).toLocaleDateString();
+        const today = new Date().toLocaleDateString();
 
         const select = {
             product: true,
@@ -19,18 +17,15 @@ class ListaLojasService {
             userID: true,
         }
 
-
-
-        if (regionID === "cb9085c6-439b-48da-8bc4-17ecd2800d4a") {
-            return await prismaClient.store.findMany({
-                where: { user: { payment: { every: { expiration: { gt: today }, paymentOf:"monthlyPayment" } } } },
-                select: select
-
-            })
-        }
-
+        const isMonthlyPaymentRegion = regionID === "cb9085c6-439b-48da-8bc4-17ecd2800d4a";
         return await prismaClient.store.findMany({
-            where: { user: { status: true, regionID: regionID } },
+            where: {
+                user: {
+                    status: true,
+                    regionID: regionID,
+                    payment: isMonthlyPaymentRegion ? { every: { expiration: { gt: today }, paymentOf:"monthlyPayment" } } : undefined
+                }
+            },
             select: select
         })
 
