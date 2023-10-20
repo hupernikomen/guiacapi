@@ -15,7 +15,7 @@ class CriaBannerController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const userID = req.query.userID;
-            const { route, paramsID, global } = req.body;
+            const { route, paramsID } = req.body;
             if (!req.file)
                 throw new Error("Falha ao enviar banner");
             const criaBannerService = new CriaBannerService_1.CriaBannerService();
@@ -23,7 +23,6 @@ class CriaBannerController {
                 image: req.file,
                 route,
                 paramsID,
-                global: Boolean(global),
                 userID,
             });
             if (!banner)

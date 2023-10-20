@@ -15,29 +15,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListarBannersService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class ListarBannersService {
-    execute({ regionID }) {
+    execute() {
         return __awaiter(this, void 0, void 0, function* () {
             const _banners = yield prisma_1.default.banner.findMany({
-                where: {
-                    OR: [
-                        { user: { regionID }, global: false },
-                        { global: true },
-                    ]
-                },
                 select: {
                     image: true,
                     route: true,
                     paramsID: true,
                     createdAt: true,
-                    global: true,
                     userID: true,
                     user: {
                         select: {
                             payment: {
                                 select: {
                                     expiration: true,
-                                    referenceID: true,
-                                    userID: true,
+                                    paymentOfID: true,
                                 }
                             }
                         }

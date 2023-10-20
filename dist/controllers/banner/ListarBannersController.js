@@ -14,9 +14,8 @@ const ListarBannersService_1 = require("../../services/banner/ListarBannersServi
 class ListarBannersController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const regionID = req.query.regionID;
             const listarBannersService = new ListarBannersService_1.ListarBannersService();
-            const banners = yield listarBannersService.execute({ regionID });
+            const banners = yield listarBannersService.execute();
             return res.json(banners);
         });
     }

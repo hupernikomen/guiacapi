@@ -5,7 +5,7 @@ class CriaBannerController {
   async handle(req: Request, res: Response) {
 
     const userID = req.query.userID as string
-    const { route, paramsID, global } = req.body
+    const { route, paramsID } = req.body
 
     if (!req.file) throw new Error("Falha ao enviar banner");
 
@@ -14,7 +14,6 @@ class CriaBannerController {
       image: req.file,
       route,
       paramsID,
-      global: Boolean(global),
       userID,
     })
 

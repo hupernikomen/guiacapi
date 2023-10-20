@@ -4,7 +4,7 @@ interface paymentRequest {
   userID: string,
   value:string,
   expiration:string,
-  referenceID:string
+  paymentOfID:string
 }
 
 class CriaPaymentService {
@@ -14,7 +14,7 @@ class CriaPaymentService {
     userID,
     value,
     expiration,
-    referenceID
+    paymentOfID
 
   }: paymentRequest) {
 
@@ -23,7 +23,7 @@ class CriaPaymentService {
         userID,
         value,
         expiration,
-        referenceID
+        paymentOfID
       }
     })
 
