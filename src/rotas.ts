@@ -68,6 +68,8 @@ import { CriaAdminController } from './controllers/admin/CriaAdminController';
 import { CriaPaymentController } from './controllers/payment/CriarPagamentoController';
 import { ListarPaymentController } from './controllers/payment/ListarPaymentController';
 import { BuscaPaymentController } from './controllers/payment/BuscaPaymentController';
+import { AtualizarPagamentoController } from './controllers/payment/AtualizarPagamentoController';
+
 
 const uploadProdutos = multer({
   fileFilter: fileFilter,
@@ -137,6 +139,7 @@ rotas.get('/regions', new ListarRegioesController().handle)
 rotas.post('/payment', Authenticator, new CriaPaymentController().handle)
 rotas.get('/payments', new ListarPaymentController().handle)
 rotas.get('/payment', new BuscaPaymentController().handle)
+rotas.put('/payment', Authenticator, new AtualizarPagamentoController().handle)
 
 rotas.post('/campaign', Authenticator, new CriaCampanhaController().handle)
 rotas.put('/campaign', Authenticator, new AtualizaCampanhaController().handle)
