@@ -4,7 +4,7 @@ import 'dotenv/config';
 
 import { Authenticator } from './middlewares/authenticator';
 
-import { fileFilter, storageProdutos, storageAvatar, storagePortfolio, storageMarca,storageBanner } from './config/multer'
+import { fileFilter, storageProdutos, storageAvatar, storagePortfolio, storageMarca, storageBanner } from './config/multer'
 
 import { LojaLogadaController } from './controllers/store/LojaLogadaController';
 import { AutenticaUsuarioController } from './controllers/user/AutenticaUsuarioController';
@@ -67,7 +67,7 @@ import { ListaMarcasController } from './controllers/brand/ListaMarcasController
 import { CriaAdminController } from './controllers/admin/CriaAdminController';
 import { CriaPaymentController } from './controllers/payment/CriarPagamentoController';
 import { ListarPaymentController } from './controllers/payment/ListarPaymentController';
-
+import { BuscaPaymentController } from './controllers/payment/BuscaPaymentController';
 
 const uploadProdutos = multer({
   fileFilter: fileFilter,
@@ -111,7 +111,7 @@ const uploadBanner = multer({
 
 const rotas = Router();
 
-rotas.post('/admin',Authenticator, new CriaAdminController().handle)
+rotas.post('/admin', Authenticator, new CriaAdminController().handle)
 
 rotas.post('/user', Authenticator, new CriaUsuarioController().handle)
 rotas.put('/user', Authenticator, new AtualizaUsuarioController().handle)
@@ -135,8 +135,8 @@ rotas.post('/region', Authenticator, new CriaRegiaoController().handle)
 rotas.get('/regions', new ListarRegioesController().handle)
 
 rotas.post('/payment', Authenticator, new CriaPaymentController().handle)
-rotas.get('/payment', new ListarPaymentController().handle)
-
+rotas.get('/payments', new ListarPaymentController().handle)
+rotas.get('/payment', new BuscaPaymentController().handle)
 
 rotas.post('/campaign', Authenticator, new CriaCampanhaController().handle)
 rotas.put('/campaign', Authenticator, new AtualizaCampanhaController().handle)
@@ -175,7 +175,7 @@ rotas.delete('/brand', Authenticator, new DeletaMarcaController().handle)
 rotas.get('/brands', new ListaMarcasController().handle)
 
 rotas.post('/person', Authenticator, new CriaProfissionalController().handle)
-rotas.post('/profession', Authenticator,new CriaProfissaoController().handle)
+rotas.post('/profession', Authenticator, new CriaProfissaoController().handle)
 rotas.put('/profession', Authenticator, new AtualizaProfissaoController().handle)
 rotas.put('/person', Authenticator, uploadAvatar.single('avatar'), new AtualizarProfissionalController().handle)
 rotas.get('/person', new BuscaProfissionalController().handle)

@@ -8,16 +8,29 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ListarPaymentController = void 0;
-const ListarPaymentService_1 = require("../../services/payment/ListarPaymentService");
-class ListarPaymentController {
-    handle(req, res) {
+exports.BuscaPaymentService = void 0;
+const prisma_1 = __importDefault(require("../../prisma"));
+class BuscaPaymentService {
+    execute({ paymentID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const listarPaymentService = new ListarPaymentService_1.ListarPaymentService();
-            const _pay = yield listarPaymentService.execute();
-            return res.json(_pay);
+            return yield prisma_1.default.payment.findFirst({
+                where: {
+                    id: paymentID
+                },
+                select: {
+                    id: true,
+                    value: true,
+                    expiration: true,
+                    createdAt: true,
+                    userID: true,
+                    paymentOf: true
+                }
+            });
         });
     }
 }
-exports.ListarPaymentController = ListarPaymentController;
+exports.BuscaPaymentService = BuscaPaymentService;

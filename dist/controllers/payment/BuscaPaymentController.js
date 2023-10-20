@@ -9,15 +9,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ListarPaymentController = void 0;
-const ListarPaymentService_1 = require("../../services/payment/ListarPaymentService");
-class ListarPaymentController {
+exports.BuscaPaymentController = void 0;
+const BuscaPaymentService_1 = require("../../services/payment/BuscaPaymentService");
+class BuscaPaymentController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const listarPaymentService = new ListarPaymentService_1.ListarPaymentService();
-            const _pay = yield listarPaymentService.execute();
+            const paymentID = req.query.paymentID;
+            const buscaPaymentService = new BuscaPaymentService_1.BuscaPaymentService();
+            const _pay = yield buscaPaymentService.execute({ paymentID });
             return res.json(_pay);
         });
     }
 }
-exports.ListarPaymentController = ListarPaymentController;
+exports.BuscaPaymentController = BuscaPaymentController;

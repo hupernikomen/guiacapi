@@ -5,11 +5,9 @@ import { ListarPaymentService } from '../../services/payment/ListarPaymentServic
 class ListarPaymentController {
     async handle(req: Request, res: Response) {
 
-        const paymentID = req.query.paymentID as string
-
         const listarPaymentService = new ListarPaymentService()
 
-        const _pay = await listarPaymentService.execute({ paymentID })
+        const _pay = await listarPaymentService.execute()
         return res.json(_pay)
 
     }

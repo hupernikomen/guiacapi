@@ -1,13 +1,9 @@
 
 import prismaClient from "../../prisma";
 
-interface PaymentRquest {
-  paymentID: string
-}
-
 class ListarPaymentService {
 
-  async execute({ paymentID }: PaymentRquest) {
+  async execute() {
 
     return await prismaClient.payment.findMany({
       select: {
