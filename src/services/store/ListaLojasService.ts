@@ -22,7 +22,7 @@ class ListaLojasService {
             where: {
                 user: {
                     regionID: regionID,
-                    payment: isMonthlyPaymentRegion ? { some: { expiration: { gt: today } } } : undefined
+                    // payment: isMonthlyPaymentRegion ? { some: { expiration: { gt: today } } } : undefined
                 }
             },
             select: select
