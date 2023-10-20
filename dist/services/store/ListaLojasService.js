@@ -17,7 +17,7 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class ListaLojasService {
     execute({ regionID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const today = new Date().toLocaleDateString();
+            const today = new Date().toLocaleDateString('pt-BR');
             const select = {
                 product: true,
                 id: true,
