@@ -38,16 +38,16 @@ class ListarProdutosService {
             }
           }
         },
-        
+
         select: select
       })
     }
-
+    const today = new Date().toLocaleDateString('pt-BR');
     return await prismaClient.product.findMany({
       where: {
         store: {
           user: {
-            status: true,
+            payment: { every: { expiration: { gt: today } } },
             regionID: regionID
 
           }
