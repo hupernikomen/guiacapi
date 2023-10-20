@@ -30,26 +30,40 @@ class ListarProdutosService {
 
     const today = new Date().toLocaleDateString('pt-BR');
 
-    if (regionID === "cb9085c6-439b-48da-8bc4-17ecd2800d4a") {
-      return await prismaClient.product.findMany({
-        where: { store: { user: { payment: { every: { expiration: { gte: today } } } } } },
-        select: select
-      })
-    }
+    // if (regionID === "cb9085c6-439b-48da-8bc4-17ecd2800d4a") {
+    //   return await prismaClient.product.findMany({
+    //     where: { store: { user: { payment: { every: { expiration: { gte: today } } } } } },
+    //     select: select
+    //   })
+    // }
 
-    
+
+    // return await prismaClient.product.findMany({
+    //   where: {
+    //     store: {
+    //       user: {
+    //         payment: { every: { expiration: { gte: today } } },
+    //         regionID: regionID
+
+    //       }
+    //     }
+    //   },
+
+    //   select: select
+    // })
+
+    const isMonthlyPaymentRegion = regionID === "cb9085c6-439b-48da-8bc4-17ecd2800d4a";
+
     return await prismaClient.product.findMany({
-      where: {
-        store: {
-          user: {
-            payment: { every: { expiration: { gte: today } } },
-            regionID: regionID
-
+        where: {
+          store:{
+            user: {
+              regionID: regionID,
+              payment: isMonthlyPaymentRegion ? { every: { expiration: { gte: today }} } : undefined
+            }
           }
-        }
-      },
-
-      select: select
+        },
+        select: select
     })
 
   }
