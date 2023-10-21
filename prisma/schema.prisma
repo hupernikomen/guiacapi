@@ -40,25 +40,25 @@ model Payment {
 }
 
 model PaymentBanners {
-  id         String    @id @default(uuid())
+  id         String @id @default(uuid())
   expiration String
   value      String
   userID     String
 
   user      User      @relation(fields: [userID], references: [id])
-  createdAt  DateTime? @default(now())
+  createdAt DateTime? @default(now())
 
   @@map("paymentsBanners")
 }
 
 model Banner {
-  id        String    @id @default(uuid())
-  image     Json
-  route     String
-  paramsID  String
-  userID    String
+  id       String @id @default(uuid())
+  image    Json
+  route    String
+  paramsID String
+  userID   String
 
-  user           User             @relation(fields: [userID], references: [id])
+  user User @relation(fields: [userID], references: [id])
 
   @@map("banners")
 }
@@ -71,8 +71,8 @@ model User {
   regionID String
   ownerId  String? @unique
 
-  payment     Payment[]
-  PaymentBanners PaymentBanners[]
+  payment        Payment[]
+  paymentBanners PaymentBanners[]
 
   fuelStation FuelStation[]
   person      Person[]
