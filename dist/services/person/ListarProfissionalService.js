@@ -29,6 +29,7 @@ class ListarProfissionalService {
                     name: true,
                     bio: true,
                     professionID: true,
+                    user: { select: { payment: true } },
                     profession: { select: { name: true } },
                     userID: true
                 }
