@@ -75,6 +75,7 @@ import { AtualizarPagamentoBannerController } from './controllers/paymentBanner/
 import { BuscaPaymentBannerController } from './controllers/paymentBanner/BuscaPaymentController';
 import { CriaPaymentBannerController } from './controllers/paymentBanner/CriarPagamentoController';
 import { ListarPaymentBannerController } from './controllers/paymentBanner/ListarPaymentController';
+import { BuscaBannerController } from './controllers/banner/BuscaBannerController';
 
 
 
@@ -132,6 +133,7 @@ rotas.post('/login', new AutenticaUsuarioController().handle)
 
 rotas.post('/banner', Authenticator, uploadBanner.single('image'), new CriaBannerController().handle)
 rotas.get('/banners', new ListarBannersController().handle)
+rotas.get('/banner', new BuscaBannerController().handle)
 
 rotas.post('/category', Authenticator, new CriaCategoriaController().handle)
 rotas.delete('/category', Authenticator, new DeletaCategoriaController().handle)

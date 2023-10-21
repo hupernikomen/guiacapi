@@ -78,6 +78,7 @@ const AtualizarPagamentoController_2 = require("./controllers/paymentBanner/Atua
 const BuscaPaymentController_2 = require("./controllers/paymentBanner/BuscaPaymentController");
 const CriarPagamentoController_2 = require("./controllers/paymentBanner/CriarPagamentoController");
 const ListarPaymentController_2 = require("./controllers/paymentBanner/ListarPaymentController");
+const BuscaBannerController_1 = require("./controllers/banner/BuscaBannerController");
 const uploadProdutos = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageProdutos.s3 : multer_2.storageProdutos.local,
@@ -125,6 +126,7 @@ rotas.get('/user', new BuscarUsuarioController_1.BuscaUsuarioController().handle
 rotas.post('/login', new AutenticaUsuarioController_1.AutenticaUsuarioController().handle);
 rotas.post('/banner', authenticator_1.Authenticator, uploadBanner.single('image'), new CriaBannerController_1.CriaBannerController().handle);
 rotas.get('/banners', new ListarBannersController_1.ListarBannersController().handle);
+rotas.get('/banner', new BuscaBannerController_1.BuscaBannerController().handle);
 rotas.post('/category', authenticator_1.Authenticator, new CriaCategoriaController_1.CriaCategoriaController().handle);
 rotas.delete('/category', authenticator_1.Authenticator, new DeletaCategoriaController_1.DeletaCategoriaController().handle);
 rotas.put('/category', authenticator_1.Authenticator, new AtualizaCategoriaController_1.AtualizaCategoriaController().handle);
