@@ -74,6 +74,10 @@ const BuscaPaymentController_1 = require("./controllers/payment/BuscaPaymentCont
 const AtualizarPagamentoController_1 = require("./controllers/payment/AtualizarPagamentoController");
 const ListaLojasControllerAdmin_1 = require("./controllers/store/ListaLojasControllerAdmin");
 const ListarProfissionalControllerAdmin_1 = require("./controllers/person/ListarProfissionalControllerAdmin");
+const AtualizarPagamentoController_2 = require("./controllers/paymentBanner/AtualizarPagamentoController");
+const BuscaPaymentController_2 = require("./controllers/paymentBanner/BuscaPaymentController");
+const CriarPagamentoController_2 = require("./controllers/paymentBanner/CriarPagamentoController");
+const ListarPaymentController_2 = require("./controllers/paymentBanner/ListarPaymentController");
 const uploadProdutos = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageProdutos.s3 : multer_2.storageProdutos.local,
@@ -134,6 +138,10 @@ rotas.post('/payment', authenticator_1.Authenticator, new CriarPagamentoControll
 rotas.get('/payments', new ListarPaymentController_1.ListarPaymentController().handle);
 rotas.get('/payment', new BuscaPaymentController_1.BuscaPaymentController().handle);
 rotas.put('/payment', authenticator_1.Authenticator, new AtualizarPagamentoController_1.AtualizarPagamentoController().handle);
+rotas.post('/paymentBanner', authenticator_1.Authenticator, new CriarPagamentoController_2.CriaPaymentBannerController().handle);
+rotas.get('/paymentBanners', new ListarPaymentController_2.ListarPaymentBannerController().handle);
+rotas.get('/paymentBanner', new BuscaPaymentController_2.BuscaPaymentBannerController().handle);
+rotas.put('/paymentBanner', authenticator_1.Authenticator, new AtualizarPagamentoController_2.AtualizarPagamentoBannerController().handle);
 rotas.post('/campaign', authenticator_1.Authenticator, new CriaCampanhaController_1.CriaCampanhaController().handle);
 rotas.put('/campaign', authenticator_1.Authenticator, new AtualizaCampanhaController_1.AtualizaCampanhaController().handle);
 rotas.get('/campaigns', new ListaCampanhasInativasController_1.ListaCampanhasInativasController().handle);

@@ -71,6 +71,11 @@ import { BuscaPaymentController } from './controllers/payment/BuscaPaymentContro
 import { AtualizarPagamentoController } from './controllers/payment/AtualizarPagamentoController';
 import { ListaLojasControllerAdmin } from './controllers/store/ListaLojasControllerAdmin';
 import { ListarProfissionalControllerAdmin } from './controllers/person/ListarProfissionalControllerAdmin';
+import { AtualizarPagamentoBannerController } from './controllers/paymentBanner/AtualizarPagamentoController';
+import { BuscaPaymentBannerController } from './controllers/paymentBanner/BuscaPaymentController';
+import { CriaPaymentBannerController } from './controllers/paymentBanner/CriarPagamentoController';
+import { ListarPaymentBannerController } from './controllers/paymentBanner/ListarPaymentController';
+
 
 
 const uploadProdutos = multer({
@@ -144,6 +149,12 @@ rotas.post('/payment', Authenticator, new CriaPaymentController().handle)
 rotas.get('/payments', new ListarPaymentController().handle)
 rotas.get('/payment', new BuscaPaymentController().handle)
 rotas.put('/payment', Authenticator, new AtualizarPagamentoController().handle)
+
+rotas.post('/paymentBanner', Authenticator, new CriaPaymentBannerController().handle)
+rotas.get('/paymentBanners', new ListarPaymentBannerController().handle)
+rotas.get('/paymentBanner', new BuscaPaymentBannerController().handle)
+rotas.put('/paymentBanner',Authenticator, new AtualizarPagamentoBannerController().handle)
+
 
 rotas.post('/campaign', Authenticator, new CriaCampanhaController().handle)
 rotas.put('/campaign', Authenticator, new AtualizaCampanhaController().handle)

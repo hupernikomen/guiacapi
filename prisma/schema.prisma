@@ -44,9 +44,9 @@ model PaymentBanners {
   expiration String
   value      String
   bannerID   String
-  createdAt  DateTime? @default(now())
 
   banner Banner @relation(fields: [bannerID], references: [id])
+  createdAt  DateTime? @default(now())
 
   @@map("paymentsBanners")
 }
