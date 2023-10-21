@@ -13,6 +13,7 @@ class ListarProfissionalServiceAdmin {
         bio: true,
         professionID: true,
         profession: { select: { name: true } },
+        user: { select: { payment: true } },
         userID: true
 
       }
