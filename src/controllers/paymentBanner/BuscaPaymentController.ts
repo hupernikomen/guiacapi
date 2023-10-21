@@ -5,11 +5,11 @@ import { BuscaPaymentBannerService } from '../../services/paymentBanner/BuscaPay
 class BuscaPaymentBannerController {
     async handle(req: Request, res: Response) {
 
-        const bannerID = req.query.bannerID as string
+        const userID = req.query.userID as string
 
         const buscaPaymentBannerService = new BuscaPaymentBannerService()
 
-        const _pay = await buscaPaymentBannerService.execute({ bannerID })
+        const _pay = await buscaPaymentBannerService.execute({ userID })
         return res.json(_pay)
 
     }

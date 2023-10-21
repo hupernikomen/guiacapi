@@ -43,9 +43,9 @@ model PaymentBanners {
   id         String    @id @default(uuid())
   expiration String
   value      String
-  bannerID   String
+  userID     String
 
-  banner Banner @relation(fields: [bannerID], references: [id])
+  user      User      @relation(fields: [userID], references: [id])
   createdAt  DateTime? @default(now())
 
   @@map("paymentsBanners")
@@ -58,7 +58,6 @@ model Banner {
   paramsID  String
   userID    String
 
-  PaymentBanners PaymentBanners[]
   user           User             @relation(fields: [userID], references: [id])
 
   @@map("banners")
@@ -73,6 +72,8 @@ model User {
   ownerId  String? @unique
 
   payment     Payment[]
+  PaymentBanners PaymentBanners[]
+
   fuelStation FuelStation[]
   person      Person[]
   store       Store[]

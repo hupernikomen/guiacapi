@@ -1,7 +1,7 @@
 import prismaClient from "../../prisma";
 
 interface paymentRequest {
-  bannerID: string,
+  userID: string,
   value:string,
   expiration:string,
 }
@@ -10,7 +10,7 @@ class CriaPaymentBannerService {
 
   async execute({
 
-    bannerID,
+    userID,
     value,
     expiration,
 
@@ -18,7 +18,7 @@ class CriaPaymentBannerService {
 
     const _payment = await prismaClient.paymentBanners.create({
       data: {
-        bannerID,
+        userID,
         value,
         expiration,
       }

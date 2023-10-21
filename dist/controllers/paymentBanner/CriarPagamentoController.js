@@ -15,10 +15,10 @@ class CriaPaymentBannerController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const criaPaymentBannerService = new CriarPagamentoService_1.CriaPaymentBannerService();
-            const bannerID = req.query.bannerID;
+            const userID = req.query.userID;
             const { value, expiration } = req.body;
             const _payment = yield criaPaymentBannerService.execute({
-                bannerID,
+                userID,
                 value,
                 expiration,
             });
