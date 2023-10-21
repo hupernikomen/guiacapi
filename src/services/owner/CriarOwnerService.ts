@@ -3,6 +3,7 @@ import prismaClient from "../../prisma";
 interface ownerRequest {
   name:string,
   whatsapp:string,
+  userID: string
 }
 
 class CriarOwnerService {
@@ -10,6 +11,7 @@ class CriarOwnerService {
   async execute({
     name,
     whatsapp,
+    userID
 
   }: ownerRequest) {
 
@@ -17,6 +19,7 @@ class CriarOwnerService {
       data: {
         name,
         whatsapp,
+        userID
       }
     })
 

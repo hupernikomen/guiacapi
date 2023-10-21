@@ -21,8 +21,9 @@ model Owner {
   id       String @id @default(uuid())
   name     String
   whatsapp String
+  userID   String
 
-  User User?
+  user User @relation(fields: [userID], references: [id])
 
   @@map("owners")
 }
@@ -69,11 +70,11 @@ model User {
   password String
   status   Boolean @default(true)
   regionID String
-  ownerId  String? @unique
 
   payment        Payment[]
   paymentBanners PaymentBanners[]
 
+  owner       Owner[]
   fuelStation FuelStation[]
   person      Person[]
   store       Store[]
@@ -83,7 +84,6 @@ model User {
   brand       Brand[]
 
   region Region @relation(fields: [regionID], references: [id])
-  owner  Owner? @relation(fields: [ownerId], references: [id])
 
   createdAt DateTime? @default(now())
 

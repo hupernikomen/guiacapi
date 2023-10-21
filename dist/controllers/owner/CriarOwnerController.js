@@ -14,9 +14,11 @@ const CriarOwnerService_1 = require("../../services/owner/CriarOwnerService");
 class CriaOwnerController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const criarOwnerService = new CriarOwnerService_1.CriarOwnerService();
+            const userID = req.query.userID;
             const { name, whatsapp } = req.body;
+            const criarOwnerService = new CriarOwnerService_1.CriarOwnerService();
             const _owner = yield criarOwnerService.execute({
+                userID,
                 name,
                 whatsapp,
             });

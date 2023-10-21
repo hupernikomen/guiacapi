@@ -15,12 +15,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CriarOwnerService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class CriarOwnerService {
-    execute({ name, whatsapp, }) {
+    execute({ name, whatsapp, userID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const _payment = yield prisma_1.default.owner.create({
                 data: {
                     name,
                     whatsapp,
+                    userID
                 }
             });
             return _payment;
