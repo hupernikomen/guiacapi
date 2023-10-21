@@ -77,6 +77,8 @@ import { CriaPaymentBannerController } from './controllers/paymentBanner/CriarPa
 import { ListarPaymentBannerController } from './controllers/paymentBanner/ListarPaymentController';
 import { BuscaBannerController } from './controllers/banner/BuscaBannerController';
 import { AtualizarBannerController } from './controllers/banner/AtualizaBannerController';
+import { CriaOwnerController } from './controllers/owner/CriarOwnerController';
+
 
 
 
@@ -125,6 +127,8 @@ const rotas = Router();
 rotas.post('/admin', Authenticator, new CriaAdminController().handle)
 rotas.get('/storesAdmin',new ListaLojasControllerAdmin().handle)
 rotas.get('/personsAdmin',new ListarProfissionalControllerAdmin().handle)
+
+rotas.post('/owner', Authenticator, new CriaOwnerController().handle)
 
 rotas.post('/user', Authenticator, new CriaUsuarioController().handle)
 rotas.put('/user', Authenticator, new AtualizaUsuarioController().handle)

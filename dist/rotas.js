@@ -80,6 +80,7 @@ const CriarPagamentoController_2 = require("./controllers/paymentBanner/CriarPag
 const ListarPaymentController_2 = require("./controllers/paymentBanner/ListarPaymentController");
 const BuscaBannerController_1 = require("./controllers/banner/BuscaBannerController");
 const AtualizaBannerController_1 = require("./controllers/banner/AtualizaBannerController");
+const CriarOwnerController_1 = require("./controllers/owner/CriarOwnerController");
 const uploadProdutos = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageProdutos.s3 : multer_2.storageProdutos.local,
@@ -120,6 +121,7 @@ exports.rotas = rotas;
 rotas.post('/admin', authenticator_1.Authenticator, new CriaAdminController_1.CriaAdminController().handle);
 rotas.get('/storesAdmin', new ListaLojasControllerAdmin_1.ListaLojasControllerAdmin().handle);
 rotas.get('/personsAdmin', new ListarProfissionalControllerAdmin_1.ListarProfissionalControllerAdmin().handle);
+rotas.post('/owner', authenticator_1.Authenticator, new CriarOwnerController_1.CriaOwnerController().handle);
 rotas.post('/user', authenticator_1.Authenticator, new CriaUsuarioController_1.CriaUsuarioController().handle);
 rotas.put('/user', authenticator_1.Authenticator, new AtualizaUsuarioController_1.AtualizaUsuarioController().handle);
 rotas.get('/users', authenticator_1.Authenticator, new ListarUsuariosController_1.ListarUsuariosController().handle);

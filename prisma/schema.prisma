@@ -19,7 +19,7 @@ model Admin {
 
 model Owner {
   id       String @id @default(uuid())
-  nome     String
+  name     String
   whatsapp String
 
   User User?
