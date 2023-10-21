@@ -17,7 +17,7 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class BuscaBannerService {
     execute({ userID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const _banner = yield prisma_1.default.banner.findMany({
+            const _banner = yield prisma_1.default.banner.findFirst({
                 where: { userID },
                 select: {
                     image: true,

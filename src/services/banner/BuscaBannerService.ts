@@ -7,7 +7,7 @@ interface bannerRequest {
 class BuscaBannerService {
     async execute({ userID }: bannerRequest) {
 
-        const _banner = await prismaClient.banner.findMany({
+        const _banner = await prismaClient.banner.findFirst({
 
             where: { userID },
             select: {

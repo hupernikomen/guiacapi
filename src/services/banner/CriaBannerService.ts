@@ -14,6 +14,7 @@ class CriaBannerService {
         paramsID,
         userID,
     }: bannerRequest) {
+
         const _banner = await prismaClient.banner.create({
             data: {
                 image,
