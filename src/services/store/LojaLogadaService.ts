@@ -7,7 +7,7 @@ interface lojaRequest {
 class LojaLogadaService {
     async execute({ userID }: lojaRequest) {
         const _store = await prismaClient.store.findFirst({
-            where: { user: { status: true }, userID },
+            where: {  userID },
             select: {
                 id: true,
                 avatar: true,
@@ -17,7 +17,6 @@ class LojaLogadaService {
                 reference: true,
                 bio: true,
                 delivery: true,
-                user: { select: { status: true } },
                 product: {
                     select: {
                         id: true,

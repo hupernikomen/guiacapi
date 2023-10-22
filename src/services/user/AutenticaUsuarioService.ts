@@ -46,8 +46,6 @@ class AutenticaService {
 
 
             if (!_user) throw new Error("Usuário não cadastrado");
-            if (!_user.status) throw new Error("Conta Bloqueada");
-
 
             const comparePassword = await compare(password, _user.password)
 

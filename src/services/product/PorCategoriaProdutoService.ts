@@ -48,11 +48,6 @@ class PorCategoriaProdutoService {
       return await prismaClient.product.findMany({
         where: {
           categoryID,
-          store: {
-            user: {
-              status: true,
-            }
-          }
         },
         select: select
       })
@@ -63,7 +58,6 @@ class PorCategoriaProdutoService {
         categoryID,
         store: {
           user: {
-            status: true,
             regionID
           }
         },

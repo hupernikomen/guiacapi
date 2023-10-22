@@ -9,7 +9,7 @@ class ListaMarcasService {
 
     const _brand = await prismaClient.brand.findMany({
       where: {
-        user: { status: true, regionID: regionID }
+        user: {regionID: regionID }
 
       }
     })

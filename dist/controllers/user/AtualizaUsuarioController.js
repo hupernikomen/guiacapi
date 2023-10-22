@@ -15,11 +15,10 @@ class AtualizaUsuarioController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const userID = req.query.userID;
-            const { status, password } = req.body;
+            const { password } = req.body;
             const atualizaService = new AtualizaUsuarioService_1.AtualizaService();
             const _user = yield atualizaService.execute({
                 userID,
-                status,
                 password
             });
             return res.json(_user);

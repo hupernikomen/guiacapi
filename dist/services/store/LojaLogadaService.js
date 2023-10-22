@@ -18,7 +18,7 @@ class LojaLogadaService {
     execute({ userID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const _store = yield prisma_1.default.store.findFirst({
-                where: { user: { status: true }, userID },
+                where: { userID },
                 select: {
                     id: true,
                     avatar: true,
@@ -28,7 +28,6 @@ class LojaLogadaService {
                     reference: true,
                     bio: true,
                     delivery: true,
-                    user: { select: { status: true } },
                     product: {
                         select: {
                             id: true,

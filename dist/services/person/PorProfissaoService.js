@@ -18,7 +18,7 @@ class PorProfissaoService {
     execute({ professionID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const _person = yield prisma_1.default.person.findMany({
-                where: { user: { status: true }, professionID },
+                where: { professionID },
                 select: {
                     id: true,
                     avatar: true,

@@ -21,7 +21,6 @@ class BuscaPostoService {
                 where: {
                     user: {
                         id: userID,
-                        status: true
                     }
                 },
                 select: {

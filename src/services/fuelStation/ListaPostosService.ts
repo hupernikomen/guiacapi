@@ -4,11 +4,6 @@ class ListaPostosService {
   async execute() {
 
     const _fuelStation = await prismaClient.fuelStation.findMany({
-      where: {
-        user: {
-          status: true
-        }
-      },
       select: {
         id: true,
         name: true,

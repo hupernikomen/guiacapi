@@ -47,11 +47,6 @@ class PorSubcategoriaProdutoService {
       return await prismaClient.product.findMany({
         where: {
           subcategoryID,
-          store: {
-            user: {
-              status: true,
-            }
-          }
         },
         select: select
       })
@@ -62,7 +57,6 @@ class PorSubcategoriaProdutoService {
         subcategoryID,
         store: {
           user: {
-            status: true,
             regionID
           }
         },

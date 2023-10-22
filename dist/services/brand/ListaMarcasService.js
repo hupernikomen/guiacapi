@@ -19,7 +19,7 @@ class ListaMarcasService {
         return __awaiter(this, void 0, void 0, function* () {
             const _brand = yield prisma_1.default.brand.findMany({
                 where: {
-                    user: { status: true, regionID: regionID }
+                    user: { regionID: regionID }
                 }
             });
             return _brand;

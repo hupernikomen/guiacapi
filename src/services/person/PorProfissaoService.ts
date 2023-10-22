@@ -8,7 +8,7 @@ class PorProfissaoService {
   async execute({ professionID }: ProductRequest) {
 
     const _person = await prismaClient.person.findMany({
-      where: { user: { status: true }, professionID },
+      where: { professionID },
       select: {
         id: true,
         avatar: true,

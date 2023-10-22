@@ -44,8 +44,6 @@ class AutenticaService {
                 });
                 if (!_user)
                     throw new Error("Usuário não cadastrado");
-                if (!_user.status)
-                    throw new Error("Conta Bloqueada");
                 const comparePassword = yield (0, bcryptjs_1.compare)(password, _user.password);
                 if (!comparePassword)
                     throw new Error("password incorreta");

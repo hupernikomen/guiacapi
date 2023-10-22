@@ -3,14 +3,12 @@ import { hash } from "bcryptjs";
 
 interface usuarioRequest {
     userID: string,
-    status: boolean,
     password: string
 }
 
 class AtualizaService {
     async execute({
         userID,
-        status,
         password
 
     }: usuarioRequest) {
@@ -24,15 +22,12 @@ class AtualizaService {
         const __user = await prismaClient.user.update({
             where: { id: userID },
             data: {
-                status,
                 password: passwordCripto
             },
             select:{
-                status:true,
                 store:true,
                 fuelStation:true,
                 person:true,
-                user:true,
             }
         })
 

@@ -15,7 +15,6 @@ class BuscaUsuarioService {
         fuelStation:true,
         person: true,
         store: true,
-        status: true,
         map: true,
       }
     })

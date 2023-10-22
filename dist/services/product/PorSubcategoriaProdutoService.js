@@ -55,11 +55,6 @@ class PorSubcategoriaProdutoService {
                 return yield prisma_1.default.product.findMany({
                     where: {
                         subcategoryID,
-                        store: {
-                            user: {
-                                status: true,
-                            }
-                        }
                     },
                     select: select
                 });
@@ -69,7 +64,6 @@ class PorSubcategoriaProdutoService {
                     subcategoryID,
                     store: {
                         user: {
-                            status: true,
                             regionID
                         }
                     },

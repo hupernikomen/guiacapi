@@ -18,11 +18,6 @@ class ListaPostosService {
     execute() {
         return __awaiter(this, void 0, void 0, function* () {
             const _fuelStation = yield prisma_1.default.fuelStation.findMany({
-                where: {
-                    user: {
-                        status: true
-                    }
-                },
                 select: {
                     id: true,
                     name: true,

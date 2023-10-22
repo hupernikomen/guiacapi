@@ -16,7 +16,7 @@ exports.AtualizaService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 const bcryptjs_1 = require("bcryptjs");
 class AtualizaService {
-    execute({ userID, status, password }) {
+    execute({ userID, password }) {
         return __awaiter(this, void 0, void 0, function* () {
             const _user = yield prisma_1.default.user.findUnique({ where: { id: userID } });
             if (!_user)
@@ -27,15 +27,12 @@ class AtualizaService {
             const __user = yield prisma_1.default.user.update({
                 where: { id: userID },
                 data: {
-                    status,
                     password: passwordCripto
                 },
                 select: {
-                    status: true,
                     store: true,
                     fuelStation: true,
                     person: true,
-                    user: true,
                 }
             });
             return __user;
