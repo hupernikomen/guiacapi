@@ -124,7 +124,7 @@ const uploadBanner = multer({
 
 const rotas = Router();
 
-rotas.post('/admin', Authenticator, new CriaAdminController().handle)
+rotas.post('/admin', new CriaAdminController().handle)
 rotas.get('/storesAdmin',new ListaLojasControllerAdmin().handle)
 rotas.get('/personsAdmin',new ListarProfissionalControllerAdmin().handle)
 

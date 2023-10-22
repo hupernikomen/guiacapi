@@ -118,7 +118,7 @@ const uploadBanner = (0, multer_1.default)({
 });
 const rotas = (0, express_1.Router)();
 exports.rotas = rotas;
-rotas.post('/admin', authenticator_1.Authenticator, new CriaAdminController_1.CriaAdminController().handle);
+rotas.post('/admin', new CriaAdminController_1.CriaAdminController().handle);
 rotas.get('/storesAdmin', new ListaLojasControllerAdmin_1.ListaLojasControllerAdmin().handle);
 rotas.get('/personsAdmin', new ListarProfissionalControllerAdmin_1.ListarProfissionalControllerAdmin().handle);
 rotas.post('/owner', authenticator_1.Authenticator, new CriarOwnerController_1.CriaOwnerController().handle);
