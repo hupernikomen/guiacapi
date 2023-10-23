@@ -57,8 +57,6 @@ class AutenticaService {
                 { subject: _user.id }
             )
 
-            // CALCULAR STATUS DE PAGAMENTO
-
 
             return {
                 id: _user.id,

@@ -48,7 +48,6 @@ class AutenticaService {
                 if (!comparePassword)
                     throw new Error("password incorreta");
                 const token = (0, jsonwebtoken_1.sign)({ user: _user.user }, process.env.JWT_SECRET, { subject: _user.id });
-                // CALCULAR STATUS DE PAGAMENTO
                 return {
                     id: _user.id,
                     user: _user.user,

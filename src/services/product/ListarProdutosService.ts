@@ -10,7 +10,7 @@ class ListarProdutosService {
 
 
     const today = new Date().toLocaleDateString('pt-BR');
-    const storeWhere = regionID === "cb9085c6-439b-48da-8bc4-17ecd2800d4a" ? 
+    const storeWhere = regionID === "bba1f5be-3be9-4af3-8d86-5a8ae7963915" ? 
     { user: { payment: { every: { expiration: { gte: today } } } } } : 
     { user: { payment: { every: { expiration: { gte: today } } }, regionID: regionID } };
 
