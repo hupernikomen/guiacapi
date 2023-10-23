@@ -1,4 +1,5 @@
 import prismaClient from "../../prisma";
+import 'dotenv/config';
 
 interface StoreRequest {
     regionID: string;
