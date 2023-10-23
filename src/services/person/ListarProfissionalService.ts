@@ -1,5 +1,5 @@
-
 import prismaClient from "../../prisma";
+import 'dotenv/config';
 
 interface PersonRquest {
   regionID: string
