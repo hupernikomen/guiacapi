@@ -25,6 +25,7 @@ class ListaSubCategoriasService {
                     _count: true,
                     category: {
                         select: {
+                            id: true,
                             name: true
                         }
                     }
