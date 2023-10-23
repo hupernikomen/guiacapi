@@ -8,7 +8,7 @@ class ListaLojasService {
     async execute({ regionID }: StoreRequest) {
 
         const today = new Date().toLocaleDateString('pt-BR');
-        const regionQuery = regionID === "bba1f5be-3be9-4af3-8d86-5a8ae7963915" ? { user: { payment: { every: { expiration: { gte: today } } } } } : { user: { payment: { every: { expiration: { gte: today } } }, regionID: regionID } };
+        const regionQuery = regionID === process.env.TERESINAID ? { user: { payment: { every: { expiration: { gte: today } } } } } : { user: { payment: { every: { expiration: { gte: today } } }, regionID: regionID } };
 
         return await prismaClient.store.findMany({
             where: regionQuery,

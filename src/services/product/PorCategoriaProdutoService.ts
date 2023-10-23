@@ -44,7 +44,7 @@ class PorCategoriaProdutoService {
       },
     }
 
-    if (regionID === "bba1f5be-3be9-4af3-8d86-5a8ae7963915") {
+    if (regionID === process.env.TERESINAID) {
       return await prismaClient.product.findMany({
         where: {
           categoryID,

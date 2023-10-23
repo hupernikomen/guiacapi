@@ -11,7 +11,7 @@ class ListarProfissionalService {
 
 
     const today = new Date().toLocaleDateString('pt-BR');
-    const regionQuery = regionID === "bba1f5be-3be9-4af3-8d86-5a8ae7963915" ?
+    const regionQuery = regionID === process.env.TERESINAID ?
       { user: { payment: { every: { expiration: { gte: today } } } } } :
       { user: { payment: { every: { expiration: { gte: today } } }, regionID: regionID } };
 
