@@ -124,7 +124,7 @@ rotas.get('/personsAdmin', new ListarProfissionalControllerAdmin_1.ListarProfiss
 rotas.post('/owner', authenticator_1.Authenticator, new CriarOwnerController_1.CriaOwnerController().handle);
 rotas.post('/user', authenticator_1.Authenticator, new CriaUsuarioController_1.CriaUsuarioController().handle);
 rotas.put('/user', authenticator_1.Authenticator, new AtualizaUsuarioController_1.AtualizaUsuarioController().handle);
-rotas.get('/users', authenticator_1.Authenticator, new ListarUsuariosController_1.ListarUsuariosController().handle);
+rotas.get('/users', new ListarUsuariosController_1.ListarUsuariosController().handle);
 rotas.get('/user', new BuscarUsuarioController_1.BuscaUsuarioController().handle);
 rotas.post('/login', new AutenticaUsuarioController_1.AutenticaUsuarioController().handle);
 rotas.post('/banner', authenticator_1.Authenticator, uploadBanner.single('image'), new CriaBannerController_1.CriaBannerController().handle);

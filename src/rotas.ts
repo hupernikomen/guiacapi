@@ -132,7 +132,7 @@ rotas.post('/owner', Authenticator, new CriaOwnerController().handle)
 
 rotas.post('/user', Authenticator, new CriaUsuarioController().handle)
 rotas.put('/user', Authenticator, new AtualizaUsuarioController().handle)
-rotas.get('/users', Authenticator, new ListarUsuariosController().handle)
+rotas.get('/users', new ListarUsuariosController().handle)
 rotas.get('/user', new BuscaUsuarioController().handle)
 rotas.post('/login', new AutenticaUsuarioController().handle)
 
