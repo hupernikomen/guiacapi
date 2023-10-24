@@ -127,16 +127,16 @@ model Contact {
 }
 
 model Store {
-  id        String   @id @default(uuid())
+  id        String    @id @default(uuid())
   avatar    Json?
   name      String?
   address   String?
-  delivery  Boolean? @default(false)
+  delivery  Boolean?  @default(false)
   district  String?
   bio       String?
   reference String?
   userID    String
-
+  type      String?    @default("store")
   user      User      @relation(fields: [userID], references: [id])
   product   Product[]
   createdAt DateTime? @default(now())
@@ -218,7 +218,7 @@ model Campaign {
 }
 
 model Person {
-  id           String   @id @default(uuid())
+  id           String      @id @default(uuid())
   avatar       Json?
   name         String?
   district     String?
@@ -227,15 +227,15 @@ model Person {
   services     String[]
   professionID String?
   userID       String
-
-  portfolio Portfolio[]
+  type         String?      @default("person")
+  portfolio    Portfolio[]
 
   user       User        @relation(fields: [userID], references: [id])
   profession Profession? @relation(fields: [professionID], references: [id])
 
   createdAt DateTime? @default(now())
 
-  @@map("people")
+  @@map("persons")
 }
 
 model Portfolio {

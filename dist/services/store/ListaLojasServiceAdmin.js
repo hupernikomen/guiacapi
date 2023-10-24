@@ -26,6 +26,7 @@ class ListaLojasServiceAdmin {
                     delivery: true,
                     user: { select: { payment: true } },
                     userID: true,
+                    type: true
                 }
             });
         });

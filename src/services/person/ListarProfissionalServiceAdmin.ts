@@ -15,8 +15,7 @@ class ListarProfissionalServiceAdmin {
         profession: { select: { name: true } },
         user: { select: { payment: true } },
         userID: true,
-        
-
+        type:true
       }
     })
   }

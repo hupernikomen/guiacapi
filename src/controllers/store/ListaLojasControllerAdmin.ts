@@ -8,13 +8,7 @@ class ListaLojasControllerAdmin {
         const listaLojasServiceAdmin = new ListaLojasServiceAdmin()
 
         const _store = await listaLojasServiceAdmin.execute()
-
-        const _response = {
-            type: "store",
-            data: _store
-        }
-
-        return res.json(_response)
+        return res.json(_store)
 
     }
 }

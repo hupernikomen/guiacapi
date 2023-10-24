@@ -8,13 +8,7 @@ class ListarProfissionalControllerAdmin {
         const listarProfissionalServiceAdmin = new ListarProfissionalServiceAdmin()
 
         const _person = await listarProfissionalServiceAdmin.execute()
-
-        const _response = {
-            type: "person",
-            data: _person
-        }
-
-        return res.json(_response)
+        return res.json(_person)
 
     }
 }

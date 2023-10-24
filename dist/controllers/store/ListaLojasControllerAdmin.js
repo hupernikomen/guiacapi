@@ -16,11 +16,7 @@ class ListaLojasControllerAdmin {
         return __awaiter(this, void 0, void 0, function* () {
             const listaLojasServiceAdmin = new ListaLojasServiceAdmin_1.ListaLojasServiceAdmin();
             const _store = yield listaLojasServiceAdmin.execute();
-            const _response = {
-                type: "store",
-                data: _store
-            };
-            return res.json(_response);
+            return res.json(_store);
         });
     }
 }
