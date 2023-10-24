@@ -16,7 +16,11 @@ class ListarProfissionalControllerAdmin {
         return __awaiter(this, void 0, void 0, function* () {
             const listarProfissionalServiceAdmin = new ListarProfissionalServiceAdmin_1.ListarProfissionalServiceAdmin();
             const _person = yield listarProfissionalServiceAdmin.execute();
-            return res.json(_person);
+            const _response = {
+                type: "person",
+                _person
+            };
+            return res.json(_response);
         });
     }
 }

@@ -9,7 +9,6 @@ class ListarProdutosService {
 
   async execute({ regionID }: ProdutoRequest) {
 
-
     const today = new Date().toLocaleDateString('pt-BR');
     const storeWhere = regionID === process.env.TERESINAID ? 
     { user: { payment: { every: { expiration: { gte: today } } } } } : 
@@ -19,7 +18,6 @@ class ListarProdutosService {
       where: {
         store: storeWhere
       },
-
       select: {
         id: true,
         name: true,
