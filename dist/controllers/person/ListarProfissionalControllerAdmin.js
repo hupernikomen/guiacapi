@@ -18,7 +18,7 @@ class ListarProfissionalControllerAdmin {
             const _person = yield listarProfissionalServiceAdmin.execute();
             const _response = {
                 type: "person",
-                _person
+                data: _person
             };
             return res.json(_response);
         });

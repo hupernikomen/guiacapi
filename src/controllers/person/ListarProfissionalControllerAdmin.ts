@@ -11,8 +11,8 @@ class ListarProfissionalControllerAdmin {
 
         const _response = {
             type: "person",
-            _person
-           }
+            data: _person
+        }
 
         return res.json(_response)
 
