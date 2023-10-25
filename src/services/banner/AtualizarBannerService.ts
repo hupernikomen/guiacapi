@@ -13,7 +13,6 @@ class AtualizarBannerService {
       route,
       paramsID,
       userID,
-
     }: bannerRequest) {
 
         const _banner = await prismaClient.banner.updateMany({
