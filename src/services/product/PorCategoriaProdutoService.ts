@@ -9,8 +9,20 @@ interface ProdutoRequest {
 class PorCategoriaProdutoService {
   async execute({ categoryID, regionID }: ProdutoRequest) {
 
-    const select = {
-      id: true,
+    const today = new Date().toLocaleDateString('pt-BR');
+    const storeWhere = regionID === process.env.TERESINAID ? 
+    { user: { payment: { every: { expiration: { gte: today } } } } } : 
+    { user: { payment: { every: { expiration: { gte: today } } }, regionID: regionID } };
+
+
+    return await prismaClient.product.findMany({
+      where: {
+        categoryID,
+        store: storeWhere
+      },
+
+      select: {
+        id: true,
       name: true,
       price: true,
       off: true,
@@ -43,29 +55,7 @@ class PorCategoriaProdutoService {
           delivery: true
         }
       },
-    }
-
-    if (regionID === process.env.TERESINAID) {
-      return await prismaClient.product.findMany({
-        where: {
-          categoryID,
-        },
-        select: select
-      })
-    }
-
-    return await prismaClient.product.findMany({
-      where: {
-        categoryID,
-        store: {
-          user: {
-            regionID
-          }
-        },
-
-      },
-
-      select: select
+      }
 
     });
 

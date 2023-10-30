@@ -18,59 +18,50 @@ require("dotenv/config");
 class PorCategoriaProdutoService {
     execute({ categoryID, regionID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const select = {
-                id: true,
-                name: true,
-                price: true,
-                off: true,
-                image: true,
-                campaign: {
-                    select: {
-                        id: true,
-                        name: true,
-                        theme: true
-                    }
-                },
-                category: {
-                    select: {
-                        id: true,
-                        name: true,
-                        _count: true,
-                    }
-                },
-                subcategory: {
-                    select: {
-                        id: true,
-                        name: true,
-                        _count: true
-                    }
-                },
-                store: {
-                    select: {
-                        id: true,
-                        name: true,
-                        delivery: true
-                    }
-                },
-            };
-            if (regionID === process.env.TERESINAID) {
-                return yield prisma_1.default.product.findMany({
-                    where: {
-                        categoryID,
-                    },
-                    select: select
-                });
-            }
+            const today = new Date().toLocaleDateString('pt-BR');
+            const storeWhere = regionID === process.env.TERESINAID ?
+                { user: { payment: { every: { expiration: { gte: today } } } } } :
+                { user: { payment: { every: { expiration: { gte: today } } }, regionID: regionID } };
             return yield prisma_1.default.product.findMany({
                 where: {
                     categoryID,
-                    store: {
-                        user: {
-                            regionID
+                    store: storeWhere
+                },
+                select: {
+                    id: true,
+                    name: true,
+                    price: true,
+                    off: true,
+                    image: true,
+                    campaign: {
+                        select: {
+                            id: true,
+                            name: true,
+                            theme: true
                         }
                     },
-                },
-                select: select
+                    category: {
+                        select: {
+                            id: true,
+                            name: true,
+                            _count: true,
+                        }
+                    },
+                    subcategory: {
+                        select: {
+                            id: true,
+                            name: true,
+                            _count: true
+                        }
+                    },
+                    store: {
+                        select: {
+                            id: true,
+                            name: true,
+                            delivery: true
+                        }
+                    },
+                }
             });
         });
     }

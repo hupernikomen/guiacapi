@@ -16,9 +16,6 @@ class AtualizaLojaController {
         return __awaiter(this, void 0, void 0, function* () {
             const userID = req.query.userID;
             const { name, bio, address, district, reference, delivery, } = req.body;
-            // if (!req.file) {
-            //     throw new Error("Falha ao enviar banner")
-            // }
             const atualizaLojaService = new AtualizaLojaService_1.AtualizaLojaService();
             yield atualizaLojaService.execute({
                 userID,
