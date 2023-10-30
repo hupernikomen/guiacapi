@@ -44,23 +44,15 @@ class PorSubcategoriaProdutoService {
       },
     }
 
-    if (regionID === process.env.TERESINAID) {
-      return await prismaClient.product.findMany({
-        where: {
-          subcategoryID,
-        },
-        select: select
-      })
-    }
+    const today = new Date().toLocaleDateString('pt-BR');
+    const storeWhere = regionID === process.env.TERESINAID ? 
+    { user: { payment: { every: { expiration: { gte: today } } } } } : 
+    { user: { payment: { every: { expiration: { gte: today } } }, regionID: regionID } };
 
     return await prismaClient.product.findMany({
       where: {
         subcategoryID,
-        store: {
-          user: {
-            regionID
-          }
-        },
+        store: storeWhere
       },
       select: select
 
