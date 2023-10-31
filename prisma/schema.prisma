@@ -30,7 +30,7 @@ model Owner {
 
 model Payment {
   id         String   @id @default(uuid())
-  expiration DateTime
+  expiration String
   value      String
   userID     String
 
