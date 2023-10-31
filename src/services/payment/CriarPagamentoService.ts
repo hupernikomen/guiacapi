@@ -21,7 +21,7 @@ class CriaPaymentService {
         expiration,
         userID
       }
-    })
+    }) 
 
     return _payment
   }
