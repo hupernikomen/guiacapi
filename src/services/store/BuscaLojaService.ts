@@ -13,6 +13,7 @@ class BuscaLojaService {
                 userID
             },
             select: {
+                
                 id: true,
                 avatar: true,
                 name: true,

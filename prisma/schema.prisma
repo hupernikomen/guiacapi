@@ -29,8 +29,8 @@ model Owner {
 }
 
 model Payment {
-  id         String @id @default(uuid())
-  expiration String
+  id         String   @id @default(uuid())
+  expiration DateTime
   value      String
   userID     String
 
@@ -136,7 +136,7 @@ model Store {
   bio       String?
   reference String?
   userID    String
-  type      String?    @default("store")
+  type      String?   @default("store")
   user      User      @relation(fields: [userID], references: [id])
   product   Product[]
   createdAt DateTime? @default(now())
@@ -227,7 +227,7 @@ model Person {
   services     String[]
   professionID String?
   userID       String
-  type         String?      @default("person")
+  type         String?     @default("person")
   portfolio    Portfolio[]
 
   user       User        @relation(fields: [userID], references: [id])

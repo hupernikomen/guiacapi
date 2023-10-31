@@ -36,7 +36,7 @@ class ListarProdutosService {
                     store: {
                         select: {
                             id: true, name: true, delivery: true,
-                            user: { select: { regionID: true } }
+                            user: { select: { regionID: true, } }
                         }
                     },
                     category: {

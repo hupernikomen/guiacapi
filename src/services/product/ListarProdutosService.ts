@@ -19,6 +19,7 @@ class ListarProdutosService {
         store: storeWhere
       },
       select: {
+
         id: true,
         name: true,
         price: true,
@@ -28,7 +29,7 @@ class ListarProdutosService {
         store: {
           select: {
             id: true, name: true, delivery: true,
-            user: { select: { regionID: true } }
+            user: { select: { regionID: true, } }
           }
         },
         category: {

@@ -1,8 +1,8 @@
 import prismaClient from "../../prisma";
 
 interface paymentRequest {
-  value:string,
-  expiration:string,
+  value: string,
+  expiration: Date,
   userID: string
 }
 
