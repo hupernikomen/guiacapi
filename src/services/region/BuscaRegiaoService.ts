@@ -1,15 +1,15 @@
 import prismaClient from "../../prisma";
 
 interface regionRequest {
-    regionID: string
+    regionName: string
 }
 
 class BuscaRegiaoService {
-    async execute({ regionID }: regionRequest) {
+    async execute({ regionName }: regionRequest) {
 
         const region = await prismaClient.region.findFirst({
             where: {
-                id: regionID
+                name: regionName
             },
             select: {
                 id:true,

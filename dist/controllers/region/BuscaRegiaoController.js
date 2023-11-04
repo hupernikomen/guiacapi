@@ -14,9 +14,9 @@ const BuscaRegiaoService_1 = require("../../services/region/BuscaRegiaoService")
 class BuscaRegiaoController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const regionID = req.query.regionID;
+            const regionName = req.query.regionName;
             const buscaRegiaoService = new BuscaRegiaoService_1.BuscaRegiaoService();
-            const _region = yield buscaRegiaoService.execute({ regionID });
+            const _region = yield buscaRegiaoService.execute({ regionName });
             return res.json(_region);
         });
     }
