@@ -78,7 +78,7 @@ import { ListarPaymentBannerController } from './controllers/paymentBanner/Lista
 import { BuscaBannerController } from './controllers/banner/BuscaBannerController';
 import { AtualizarBannerController } from './controllers/banner/AtualizaBannerController';
 import { CriaOwnerController } from './controllers/owner/CriarOwnerController';
-
+import { BuscaRegiaoController } from './controllers/region/BuscaRegiaoController';
 
 
 
@@ -152,6 +152,7 @@ rotas.get('/subcategory', new BuscaSubcategoriaController().handle)
 
 rotas.post('/region', Authenticator, new CriaRegiaoController().handle)
 rotas.get('/regions', new ListarRegioesController().handle)
+rotas.get('/region', new BuscaRegiaoController().handle)
 
 rotas.post('/payment', Authenticator, new CriaPaymentController().handle)
 rotas.get('/payments', new ListarPaymentController().handle)
