@@ -3,12 +3,11 @@ import 'dotenv/config';
 
 interface ProdutoRequest {
   regionID: string;
-  filteredList: string[]
 }
 
 class ListarProdutosService {
 
-  async execute({ regionID, filteredList }: ProdutoRequest) {
+  async execute({ regionID }: ProdutoRequest) {
 
     const today = new Date().toLocaleDateString('pt-BR');
     const storeWhere = regionID === process.env.TERESINAID ? 
@@ -17,8 +16,7 @@ class ListarProdutosService {
 
     return await prismaClient.product.findMany({
       where: {
-        store: storeWhere,
-        categoryID: { notIn: filteredList }
+        store: storeWhere
       },
       select: {
 

@@ -16,7 +16,7 @@ exports.ListarProdutosService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 require("dotenv/config");
 class ListarProdutosService {
-    execute({ regionID, filteredList }) {
+    execute({ regionID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const today = new Date().toLocaleDateString('pt-BR');
             const storeWhere = regionID === process.env.TERESINAID ?
@@ -24,8 +24,7 @@ class ListarProdutosService {
                 { user: { payment: { every: { expiration: { gte: today } } }, regionID: regionID } };
             return yield prisma_1.default.product.findMany({
                 where: {
-                    store: storeWhere,
-                    categoryID: { notIn: filteredList }
+                    store: storeWhere
                 },
                 select: {
                     id: true,
