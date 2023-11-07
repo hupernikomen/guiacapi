@@ -34,6 +34,10 @@ exports.default = {
 function fileFilter(req, file, callback) {
     let errorMessage = '';
     const ext = path_1.default.extname(file.originalname).toLowerCase();
+    if (file.size > 1024) {
+        errorMessage = 'Tamanho do arquivo excede o limite permitido';
+        return callback({ errorMessage: errorMessage, code: 'LIMIT_FILE_SIZE' }, false);
+    }
     if (ext !== '.png' &&
         ext !== '.jpg' &&
         ext !== '.jpeg' &&
