@@ -18,7 +18,7 @@ class ListarProdutosService {
     return await prismaClient.product.findMany({
       where: {
         store: storeWhere,
-        categoryID: { in: categoryIDs } // Adicione esta linha para filtrar produtos por categoryID
+        categoryID: { notIn: categoryIDs } // Adicione esta linha para filtrar produtos por categoryID
       },
       select: {
 

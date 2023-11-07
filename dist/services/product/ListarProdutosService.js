@@ -25,7 +25,7 @@ class ListarProdutosService {
             return yield prisma_1.default.product.findMany({
                 where: {
                     store: storeWhere,
-                    categoryID: { in: categoryIDs } // Adicione esta linha para filtrar produtos por categoryID
+                    categoryID: { notIn: categoryIDs } // Adicione esta linha para filtrar produtos por categoryID
                 },
                 select: {
                     id: true,
