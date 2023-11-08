@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListarProdutosController = void 0;
 const ListarProdutosService_1 = require("../../services/product/ListarProdutosService");
+const lodash_1 = require("lodash");
 class ListarProdutosController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -19,7 +20,8 @@ class ListarProdutosController {
             const feed = yield listarProdutosService.execute({
                 regionID,
             });
-            return res.json(feed);
+            const shuffledResults = (0, lodash_1.shuffle)(feed);
+            return res.json(shuffledResults);
         });
     }
 }

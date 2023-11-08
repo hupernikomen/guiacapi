@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { ListarProdutosService } from '../../services/product/ListarProdutosService'
-
+import { shuffle } from 'lodash';
 
 class ListarProdutosController {
     async handle(req: Request, res: Response) {
@@ -12,8 +12,8 @@ class ListarProdutosController {
             regionID,
         })
 
-
-        return res.json(feed)
+        const shuffledResults = shuffle(feed);
+        return res.json(shuffledResults)
 
     }
 }
