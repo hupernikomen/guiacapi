@@ -11,13 +11,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListarProfissionalController = void 0;
 const ListarProfissionalService_1 = require("../../services/person/ListarProfissionalService");
+const lodash_1 = require("lodash");
 class ListarProfissionalController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const regionID = req.query.regionID;
             const listarProfissionalService = new ListarProfissionalService_1.ListarProfissionalService();
             const _person = yield listarProfissionalService.execute({ regionID });
-            return res.json(_person);
+            const shuffledResults = (0, lodash_1.shuffle)(_person);
+            return res.json(shuffledResults);
         });
     }
 }

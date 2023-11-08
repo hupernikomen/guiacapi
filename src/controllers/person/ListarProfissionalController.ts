@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { ListarProfissionalService } from '../../services/person/ListarProfissionalService'
-
+import { shuffle } from 'lodash';
 
 class ListarProfissionalController {
     async handle(req: Request, res: Response) {
@@ -10,7 +10,9 @@ class ListarProfissionalController {
         const listarProfissionalService = new ListarProfissionalService()
 
         const _person = await listarProfissionalService.execute({ regionID })
-        return res.json(_person)
+
+        const shuffledResults = shuffle(_person);
+        return res.json(shuffledResults)
 
     }
 }

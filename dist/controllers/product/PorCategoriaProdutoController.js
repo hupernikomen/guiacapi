@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PorCategoriaProdutoController = void 0;
 const PorCategoriaProdutoService_1 = require("../../services/product/PorCategoriaProdutoService");
+const lodash_1 = require("lodash");
 class PorCategoriaProdutoController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -18,7 +19,8 @@ class PorCategoriaProdutoController {
             const regionID = req.query.regionID;
             const porCategoriaProdutoService = new PorCategoriaProdutoService_1.PorCategoriaProdutoService();
             const _product = yield porCategoriaProdutoService.execute({ categoryID, regionID });
-            return res.json(_product);
+            const shuffledResults = (0, lodash_1.shuffle)(_product);
+            return res.json(shuffledResults);
         });
     }
 }

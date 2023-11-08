@@ -1,5 +1,6 @@
 import { Request, Response } from 'express'
 import { PorCategoriaProdutoService } from '../../services/product/PorCategoriaProdutoService'
+import { shuffle } from 'lodash';
 
 class PorCategoriaProdutoController {
     async handle(req: Request, res: Response) {
@@ -9,7 +10,8 @@ class PorCategoriaProdutoController {
         const porCategoriaProdutoService = new PorCategoriaProdutoService()
         const _product = await porCategoriaProdutoService.execute({ categoryID, regionID })
 
-        return res.json(_product)
+        const shuffledResults = shuffle(_product);
+        return res.json(shuffledResults)
     }
 }
 
