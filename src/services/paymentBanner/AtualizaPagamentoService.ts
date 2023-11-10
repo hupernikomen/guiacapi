@@ -2,7 +2,7 @@ import prismaClient from "../../prisma"
 
 interface paymentRequest {
   value: string,
-  expiration: string,
+  dataPayment: string,
   paymentID: string
 }
 
@@ -10,7 +10,7 @@ class AtualizarPagamentoBannerService {
   async execute({
     paymentID,
     value,
-    expiration
+    dataPayment
 
   }: paymentRequest) {
 
@@ -18,7 +18,7 @@ class AtualizarPagamentoBannerService {
       where: { id: paymentID },
       data: {
         value,
-        expiration,
+        dataPayment,
       },
 
     })

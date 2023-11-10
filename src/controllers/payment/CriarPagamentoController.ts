@@ -5,14 +5,14 @@ class CriaPaymentController {
   async handle(req: Request, res: Response) {
     
     const userID = req.query.userID as string
-    const { value, expiration } = req.body;
+    const { value, dataPayment } = req.body;
     
     const criaPaymentService = new CriaPaymentService();
 
     const _payment = await criaPaymentService.execute({
       userID,
       value,
-      expiration,
+      dataPayment,
     })
 
     return res.status(200).json(_payment);

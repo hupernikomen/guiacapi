@@ -30,7 +30,7 @@ model Owner {
 
 model Payment {
   id         String   @id @default(uuid())
-  expiration String
+  dataPayment String
   value      String
   userID     String
 
@@ -42,7 +42,7 @@ model Payment {
 
 model PaymentBanners {
   id         String @id @default(uuid())
-  expiration String
+  dataPayment String
   value      String
   userID     String
 
