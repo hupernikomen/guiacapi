@@ -15,11 +15,11 @@ class AtualizarPagamentoBannerController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const paymentID = req.query.paymentID;
-            const { value, dataPayment, } = req.body;
+            const { value, datePayment, } = req.body;
             const atualizarPagamentoBannerService = new AtualizaPagamentoService_1.AtualizarPagamentoBannerService();
             const _pay = yield atualizarPagamentoBannerService.execute({
                 value,
-                dataPayment,
+                datePayment,
                 paymentID
             });
             return res.json(_pay);

@@ -2,7 +2,7 @@ import prismaClient from "../../prisma";
 
 interface paymentRequest {
   value: string,
-  dataPayment: string,
+  datePayment: string,
   userID: string
 }
 
@@ -10,7 +10,7 @@ class CriaPaymentService {
 
   async execute({
     value,
-    dataPayment,
+    datePayment,
     userID
 
   }: paymentRequest) {
@@ -18,7 +18,7 @@ class CriaPaymentService {
     const _payment = await prismaClient.payment.create({
       data: {
         value,
-        dataPayment,
+        datePayment,
         userID
       }
     }) 

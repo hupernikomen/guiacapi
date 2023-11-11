@@ -19,7 +19,7 @@ class ListarBannersService {
         return __awaiter(this, void 0, void 0, function* () {
             const today = new Date().toLocaleDateString('pt-BR');
             const _banners = yield prisma_1.default.banner.findMany({
-                where: { user: { paymentBanners: { every: { dataPayment: { gte: today } } } } },
+                where: { user: { paymentBanners: { every: { datePayment: { gte: today } } } } },
                 select: {
                     image: true,
                     route: true,
@@ -29,7 +29,7 @@ class ListarBannersService {
                         select: {
                             payment: {
                                 select: {
-                                    dataPayment: true,
+                                    datePayment: true,
                                 }
                             }
                         }

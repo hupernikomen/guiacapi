@@ -3,7 +3,7 @@ import prismaClient from "../../prisma";
 interface paymentRequest {
   userID: string,
   value:string,
-  dataPayment:string,
+  datePayment:string,
 }
 
 class CriaPaymentBannerService {
@@ -12,7 +12,7 @@ class CriaPaymentBannerService {
 
     userID,
     value,
-    dataPayment,
+    datePayment,
 
   }: paymentRequest) {
 
@@ -20,7 +20,7 @@ class CriaPaymentBannerService {
       data: {
         userID,
         value,
-        dataPayment,
+        datePayment,
       }
     })
 

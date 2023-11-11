@@ -9,7 +9,7 @@ class ListarPaymentService {
       select: {
         id: true,
         value:true,
-        dataPayment:true,
+        datePayment:true,
         createdAt:true,
         userID:true,
         

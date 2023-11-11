@@ -15,12 +15,12 @@ class CriaPaymentController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const userID = req.query.userID;
-            const { value, dataPayment } = req.body;
+            const { value, datePayment } = req.body;
             const criaPaymentService = new CriarPagamentoService_1.CriaPaymentService();
             const _payment = yield criaPaymentService.execute({
                 userID,
                 value,
-                dataPayment,
+                datePayment,
             });
             return res.status(200).json(_payment);
         });
