@@ -17,9 +17,9 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class BuscaPaymentService {
     execute({ userID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield prisma_1.default.payment.findUnique({
+            return yield prisma_1.default.payment.findFirst({
                 where: {
-                    id: userID,
+                    userID,
                 },
                 select: {
                     id: true,
