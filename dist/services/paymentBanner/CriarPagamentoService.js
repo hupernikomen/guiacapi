@@ -15,13 +15,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CriaPaymentBannerService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class CriaPaymentBannerService {
-    execute({ userID, value, expiration, }) {
+    execute({ userID, value, dataPayment, }) {
         return __awaiter(this, void 0, void 0, function* () {
             const _payment = yield prisma_1.default.paymentBanners.create({
                 data: {
                     userID,
                     value,
-                    expiration,
+                    dataPayment,
                 }
             });
             return _payment;

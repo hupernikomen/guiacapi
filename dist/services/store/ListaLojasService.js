@@ -19,7 +19,7 @@ class ListaLojasService {
     execute({ regionID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const today = new Date().toLocaleDateString('pt-BR');
-            const regionQuery = regionID === process.env.TERESINAID ? { user: { payment: { every: { expiration: { gte: today } } } } } : { user: { payment: { every: { expiration: { gte: today } } }, regionID: regionID } };
+            const regionQuery = regionID === process.env.TERESINAID ? { user: { payment: { every: { dataPayment: { gte: today } } } } } : { user: { payment: { every: { dataPayment: { gte: today } } }, regionID: regionID } };
             return yield prisma_1.default.store.findMany({
                 where: regionQuery,
                 select: {
