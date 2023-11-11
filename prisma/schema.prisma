@@ -29,7 +29,7 @@ model Owner {
 }
 
 model Payment {
-  id         String   @id @default(uuid())
+  id         String  @id @default(uuid())
   datePayment String
   value      String
   userID     String

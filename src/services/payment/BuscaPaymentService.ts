@@ -9,9 +9,9 @@ class BuscaPaymentService {
 
   async execute({ userID }: PaymentRquest) {
 
-    return await prismaClient.payment.findFirst({
+    return await prismaClient.payment.findUnique({
       where: {
-        userID,
+        id: userID,
       },
       select: {
         id: true,
