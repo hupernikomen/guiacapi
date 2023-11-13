@@ -82,6 +82,7 @@ const BuscaBannerController_1 = require("./controllers/banner/BuscaBannerControl
 const AtualizaBannerController_1 = require("./controllers/banner/AtualizaBannerController");
 const CriarOwnerController_1 = require("./controllers/owner/CriarOwnerController");
 const BuscaRegiaoController_1 = require("./controllers/region/BuscaRegiaoController");
+const DeletaRegiaoController_1 = require("./controllers/region/DeletaRegiaoController");
 const uploadProdutos = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageProdutos.s3 : multer_2.storageProdutos.local,
@@ -142,6 +143,7 @@ rotas.get('/subcategory', new BuscaSubcategoriaController_1.BuscaSubcategoriaCon
 rotas.post('/region', authenticator_1.Authenticator, new CriaRegiaoController_1.CriaRegiaoController().handle);
 rotas.get('/regions', new ListarRegioesController_1.ListarRegioesController().handle);
 rotas.get('/region', new BuscaRegiaoController_1.BuscaRegiaoController().handle);
+rotas.delete('/region', authenticator_1.Authenticator, new DeletaRegiaoController_1.DeletaRegiaoController().handle);
 rotas.post('/payment', authenticator_1.Authenticator, new CriarPagamentoController_1.CriaPaymentController().handle);
 rotas.get('/payments', new ListarPaymentController_1.ListarPaymentController().handle);
 rotas.get('/payment', new BuscaPaymentController_1.BuscaPaymentController().handle);
