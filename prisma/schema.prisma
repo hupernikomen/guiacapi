@@ -1,3 +1,6 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -7,7 +10,9 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// yarn prisma migrate dev
+
+
+//npx prisma migrate dev
 
 model Admin {
   id       String @id @default(uuid())
@@ -30,7 +35,7 @@ model Owner {
 
 model Payment {
   id         String  @id @default(uuid())
-  datePayment String
+  expiration String?
   value      String
   userID     String
 
@@ -42,7 +47,7 @@ model Payment {
 
 model PaymentBanners {
   id         String @id @default(uuid())
-  datePayment String
+  expiration String?
   value      String
   userID     String
 
@@ -224,11 +229,9 @@ model Person {
   district     String?
   address      String?
   bio          String?
-  services     String[]
   professionID String?
   userID       String
   type         String?     @default("person")
-  portfolio    Portfolio[]
 
   user       User        @relation(fields: [userID], references: [id])
   profession Profession? @relation(fields: [professionID], references: [id])
@@ -238,16 +241,6 @@ model Person {
   @@map("persons")
 }
 
-model Portfolio {
-  id       String  @id @default(uuid())
-  image    Json
-  comments String?
-  personID String
-
-  person Person @relation(fields: [personID], references: [id])
-
-  @@map("portfolios")
-}
 
 model Profession {
   id   String @id @default(uuid())
@@ -275,17 +268,4 @@ model FuelStation {
   updatedAt DateTime? @default(now())
 
   @@map("fuelstations")
-}
-
-model Price {
-  id        String   @id @default(uuid())
-  name      String
-  price     String
-  off       String
-  advantage String[]
-
-  createdAt DateTime? @default(now())
-  updatedAt DateTime? @default(now())
-
-  @@map("prices")
 }

@@ -6,14 +6,14 @@ class AtualizarPagamentoController {
         const paymentID = req.query.paymentID as string
         const {
           value,
-          datePayment,
+          expiration,
         } = req.body
 
         const atualizarPagamentoService = new AtualizarPagamentoService();
 
         const _pay = await atualizarPagamentoService.execute({
           value,
-          datePayment,
+          expiration,
           paymentID
 
         })

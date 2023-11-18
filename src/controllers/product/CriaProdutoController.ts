@@ -27,7 +27,7 @@ class CriaProdutoController {
       price,
       size,
       color,
-      image: req.files,
+      image: [req.files],
       categoryID,
       subcategoryID,
       storeID,

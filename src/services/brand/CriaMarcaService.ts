@@ -1,4 +1,5 @@
-import prismaClient from "../../prisma";
+import prismaClient from "../../prisma"
+
 
 interface marcaRequest {
     name: string,

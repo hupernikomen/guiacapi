@@ -7,7 +7,7 @@ class ListarBannersService {
 
         const _banners = await prismaClient.banner.findMany({
 
-            where: { user: { paymentBanners: { every: { datePayment: { gte: today } } } } },
+            where: { user: { paymentBanners: { every: { expiration: { gte: today } } } } },
             select: {
                 image: true,
                 route: true,
@@ -17,7 +17,7 @@ class ListarBannersService {
                     select: {
                         payment: {
                             select: {
-                                datePayment: true,
+                                expiration: true,
                             }
                         }
                     }

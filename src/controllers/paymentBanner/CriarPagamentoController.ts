@@ -6,12 +6,12 @@ class CriaPaymentBannerController {
     const criaPaymentBannerService = new CriaPaymentBannerService();
 
     const userID = req.query.userID as string
-    const { value, datePayment } = req.body;
+    const { value, expiration } = req.body;
 
     const _payment = await criaPaymentBannerService.execute({
       userID,
       value,
-      datePayment,
+      expiration,
     })
 
     return res.status(200).json(_payment);

@@ -49,8 +49,6 @@ import { AtualizaProfissaoController } from './controllers/profession/AtualizaPr
 import { DeletaCategoriaController } from './controllers/category/DeletaCategoriaController';
 import { ListarBannersController } from './controllers/banner/ListarBannersController';
 import { DeletarContatoController } from './controllers/contact/DeletaContatoController';
-import { CriaPlanoController } from './controllers/price/CriaPlanoController';
-import { ListarPlanosController } from './controllers/price/ListarPlanosController';
 import { CriaSubCategoriaController } from './controllers/subcategory/CriaSubCategoriaController';
 import { ListaSubCategoriaController } from './controllers/subcategory/ListaSubCategoriasController';
 import { BuscaSubcategoriaController } from './controllers/subcategory/BuscaSubcategoriaController';
@@ -58,9 +56,6 @@ import { PorSubcategoriaProdutoController } from './controllers/product/PorSubca
 import { ListarUsuariosController } from './controllers/user/ListarUsuariosController';
 import { BuscaUsuarioController } from './controllers/user/BuscarUsuarioController';
 import { AtualizaMapaController } from './controllers/map/AtualizaMapaController';
-import { CriaPortfolioControlller } from './controllers/portfolio/CriaPortfolioController';
-import { ListarPortfolioController } from './controllers/portfolio/ListaPortfolioController';
-import { DeletaPortfolioController } from './controllers/portfolio/DeletaPortfolioController';
 import { DeletaMarcaController } from './controllers/brand/DeletaMarcaController';
 import { CriaMarcaController } from './controllers/brand/CriaMarcaController';
 import { ListaMarcasController } from './controllers/brand/ListaMarcasController';
@@ -211,12 +206,7 @@ rotas.get('/professions', new ListaProfissaoController().handle)
 rotas.get('/persons', new ListarProfissionalController().handle)
 rotas.get('/profession/persons', new PorProfissaoController().handle)
 
-rotas.post('/portfolio', Authenticator, uploadPortfolio.single('image'), new CriaPortfolioControlller().handle)
-rotas.delete('/portfolio', Authenticator, new DeletaPortfolioController().handle)
-rotas.get('/portfolios', new ListarPortfolioController().handle)
 
-rotas.post('/plano', Authenticator, new CriaPlanoController().handle)
-rotas.get('/planos', new ListarPlanosController().handle)
 
 
 

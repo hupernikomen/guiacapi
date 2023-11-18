@@ -12,8 +12,8 @@ class ListarProdutosService {
 
     const today = new Date().toLocaleDateString('pt-BR');
     const storeWhere = regionID === process.env.TERESINAID ? 
-    { user: { payment: { every: { datePayment: { gte: today } } } } } : 
-    { user: { payment: { every: { datePayment: { gte: today } } }, regionID: regionID } };
+    { user: { payment: { every: { expiration: { gte: today } } } } } : 
+    { user: { payment: { every: { expiration: { gte: today } } }, regionID: regionID } };
 
     return await prismaClient.product.findMany({
       where: {

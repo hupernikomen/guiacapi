@@ -41,7 +41,7 @@ class AutenticaService {
             const gasStation = await prismaClient.fuelStation.findFirst({ where: { userID: _user.id } })
             const payment = await prismaClient.payment.findMany({
                 where: { userID: _user.id },
-                orderBy: { datePayment: 'desc' }
+                orderBy: { expiration: 'desc' }
             })
 
 
