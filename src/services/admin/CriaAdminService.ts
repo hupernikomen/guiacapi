@@ -11,7 +11,6 @@ class CriaAdminService {
         user,
         password,
     }: adminRequest) {
-        
 
         if (!user) throw new Error("informe seu user");
 
