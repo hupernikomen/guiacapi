@@ -24,7 +24,7 @@ class BuscaPaymentService {
                 select: {
                     id: true,
                     value: true,
-                    datePayment: true,
+                    expiration: true,
                     createdAt: true,
                     userID: true,
                 }

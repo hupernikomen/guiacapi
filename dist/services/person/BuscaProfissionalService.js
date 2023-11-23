@@ -25,7 +25,6 @@ class BuscaProfissionalService {
                     avatar: true,
                     bio: true,
                     address: true,
-                    services: true,
                     userID: true,
                     user: { select: { map: { select: { latlng: true } } } },
                     profession: { select: { id: true, name: true } }

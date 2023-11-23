@@ -28,7 +28,7 @@ class BuscaBannerService {
                         select: {
                             payment: {
                                 select: {
-                                    datePayment: true,
+                                    expiration: true,
                                 }
                             }
                         }

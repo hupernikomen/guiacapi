@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AtualizarProfissionalService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class AtualizarProfissionalService {
-    execute({ personID, professionID, avatar, name, bio, address, services, district, }) {
+    execute({ personID, professionID, avatar, name, bio, address, district, }) {
         return __awaiter(this, void 0, void 0, function* () {
             const _person = yield prisma_1.default.person.findFirst({ where: { id: personID } });
             if (!_person)
@@ -27,7 +27,6 @@ class AtualizarProfissionalService {
                     avatar,
                     bio,
                     address,
-                    services,
                     district,
                     professionID
                 },

@@ -12,7 +12,7 @@ class CriaAdminService {
         password,
     }: adminRequest) {
 
-        if (!user) throw new Error("informe seu email");
+        if (!user) throw new Error("informe seu user");
 
         const _user = await prismaClient.admin.findFirst({ where: { user } })
         if (_user) throw new Error("Usuário já cadastrado!");

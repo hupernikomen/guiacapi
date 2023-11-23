@@ -23,7 +23,6 @@ class PorProfissaoService {
                     id: true,
                     avatar: true,
                     name: true,
-                    portfolio: true,
                     address: true,
                     bio: true,
                 }

@@ -15,7 +15,7 @@ class AtualizarProfissionalController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const personID = req.query.personID;
-            const { name, bio, address, services, district, professionID } = req.body;
+            const { name, bio, address, district, professionID } = req.body;
             const atualizarProfissionalService = new AtualizarProfissionalService_1.AtualizarProfissionalService();
             const _person = yield atualizarProfissionalService.execute({
                 personID,
@@ -23,7 +23,6 @@ class AtualizarProfissionalController {
                 name,
                 bio,
                 address,
-                services,
                 district,
                 professionID
             });

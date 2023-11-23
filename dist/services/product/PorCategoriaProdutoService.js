@@ -20,8 +20,8 @@ class PorCategoriaProdutoService {
         return __awaiter(this, void 0, void 0, function* () {
             const today = new Date().toLocaleDateString('pt-BR');
             const storeWhere = regionID === process.env.TERESINAID ?
-                { user: { payment: { every: { datePayment: { gte: today } } } } } :
-                { user: { payment: { every: { datePayment: { gte: today } } }, regionID: regionID } };
+                { user: { payment: { every: { expiration: { gte: today } } } } } :
+                { user: { payment: { every: { expiration: { gte: today } } }, regionID: regionID } };
             return yield prisma_1.default.product.findMany({
                 where: {
                     categoryID,

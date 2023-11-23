@@ -52,8 +52,6 @@ const AtualizaProfissaoController_1 = require("./controllers/profession/Atualiza
 const DeletaCategoriaController_1 = require("./controllers/category/DeletaCategoriaController");
 const ListarBannersController_1 = require("./controllers/banner/ListarBannersController");
 const DeletaContatoController_1 = require("./controllers/contact/DeletaContatoController");
-const CriaPlanoController_1 = require("./controllers/price/CriaPlanoController");
-const ListarPlanosController_1 = require("./controllers/price/ListarPlanosController");
 const CriaSubCategoriaController_1 = require("./controllers/subcategory/CriaSubCategoriaController");
 const ListaSubCategoriasController_1 = require("./controllers/subcategory/ListaSubCategoriasController");
 const BuscaSubcategoriaController_1 = require("./controllers/subcategory/BuscaSubcategoriaController");
@@ -61,9 +59,6 @@ const PorSubcategoriaProdutoController_1 = require("./controllers/product/PorSub
 const ListarUsuariosController_1 = require("./controllers/user/ListarUsuariosController");
 const BuscarUsuarioController_1 = require("./controllers/user/BuscarUsuarioController");
 const AtualizaMapaController_1 = require("./controllers/map/AtualizaMapaController");
-const CriaPortfolioController_1 = require("./controllers/portfolio/CriaPortfolioController");
-const ListaPortfolioController_1 = require("./controllers/portfolio/ListaPortfolioController");
-const DeletaPortfolioController_1 = require("./controllers/portfolio/DeletaPortfolioController");
 const DeletaMarcaController_1 = require("./controllers/brand/DeletaMarcaController");
 const CriaMarcaController_1 = require("./controllers/brand/CriaMarcaController");
 const ListaMarcasController_1 = require("./controllers/brand/ListaMarcasController");
@@ -189,8 +184,3 @@ rotas.get('/person', new BucaProfissionalController_1.BuscaProfissionalControlle
 rotas.get('/professions', new ListaProfissaoController_1.ListaProfissaoController().handle);
 rotas.get('/persons', new ListarProfissionalController_1.ListarProfissionalController().handle);
 rotas.get('/profession/persons', new PorProfissaoController_1.PorProfissaoController().handle);
-rotas.post('/portfolio', authenticator_1.Authenticator, uploadPortfolio.single('image'), new CriaPortfolioController_1.CriaPortfolioControlller().handle);
-rotas.delete('/portfolio', authenticator_1.Authenticator, new DeletaPortfolioController_1.DeletaPortfolioController().handle);
-rotas.get('/portfolios', new ListaPortfolioController_1.ListarPortfolioController().handle);
-rotas.post('/plano', authenticator_1.Authenticator, new CriaPlanoController_1.CriaPlanoController().handle);
-rotas.get('/planos', new ListarPlanosController_1.ListarPlanosController().handle);
