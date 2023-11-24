@@ -18,6 +18,9 @@ class CriaProdutoController {
 
       
     if (!req.files) throw new Error("Ops.. algo deu errado!");
+
+    console.log(req.files, "TESTESTESTESTE");
+    
     
     const criaProdutoService = new CriaProdutoService();
     const produto = await criaProdutoService.execute({
