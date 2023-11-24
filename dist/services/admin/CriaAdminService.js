@@ -19,7 +19,7 @@ class CriaAdminService {
     execute({ user, password, }) {
         return __awaiter(this, void 0, void 0, function* () {
             if (!user)
-                throw new Error("informe seu email");
+                throw new Error("informe seu user");
             const _user = yield prisma_1.default.admin.findFirst({ where: { user } });
             if (_user)
                 throw new Error("Usuário já cadastrado!");
