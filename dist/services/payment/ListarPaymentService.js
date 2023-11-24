@@ -18,7 +18,6 @@ class ListarPaymentService {
     execute() {
         return __awaiter(this, void 0, void 0, function* () {
             return yield prisma_1.default.payment.findMany({
-                orderBy: { expiration: "asc" },
                 select: {
                     id: true,
                     value: true,

@@ -17,7 +17,9 @@ class CriaProdutoController {
     } =
       req.body;
 
+      
     if (!req.files) throw new Error("Ops.. algo deu errado!");
+
     
     const criaProdutoService = new CriaProdutoService();
     const produto = await criaProdutoService.execute({
@@ -27,7 +29,7 @@ class CriaProdutoController {
       price,
       size,
       color,
-      image: [req.files],
+      image: req.files,
       categoryID,
       subcategoryID,
       storeID,

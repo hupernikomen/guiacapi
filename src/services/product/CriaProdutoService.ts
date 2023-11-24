@@ -7,7 +7,7 @@ interface ProductRequest {
   price: number,
   size: string[],
   color: string[],
-  image: object[],
+  image: any,
   categoryID: string,
   subcategoryID:string,
   storeID: string,
