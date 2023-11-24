@@ -11,9 +11,7 @@ class ListarProfissionalService {
 
 
     const today = new Date().toLocaleDateString('pt-BR');
-    const regionQuery = regionID === process.env.TERESINAID ?
-      { user: { payment: { every: { expiration: { gte: today } } } } } :
-      { user: { payment: { every: { expiration: { gte: today } } }, regionID: regionID } };
+    const regionQuery = { user: { payment: { every: { expiration: { gte: today } } } } }
 
 
     return await prismaClient.person.findMany({

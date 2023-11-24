@@ -12,6 +12,7 @@ class ListarUsuariosService {
         fuelStation: { select: { name: true } },
         region: { select: { name: true } },
         contact: true,
+        payment:true
 
       }
     })

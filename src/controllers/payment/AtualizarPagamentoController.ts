@@ -7,6 +7,7 @@ class AtualizarPagamentoController {
         const {
           value,
           expiration,
+          status
         } = req.body
 
         const atualizarPagamentoService = new AtualizarPagamentoService();
@@ -14,8 +15,8 @@ class AtualizarPagamentoController {
         const _pay = await atualizarPagamentoService.execute({
           value,
           expiration,
-          paymentID
-
+          paymentID,
+          status
         })
 
         return res.json(_pay)

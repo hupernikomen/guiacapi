@@ -3,7 +3,8 @@ import prismaClient from "../../prisma";
 interface paymentRequest {
   value: string,
   expiration: string,
-  userID: string
+  userID: string,
+  status: string
 }
 
 class CriaPaymentService {
@@ -11,7 +12,8 @@ class CriaPaymentService {
   async execute({
     value,
     expiration,
-    userID
+    userID,
+    status
 
   }: paymentRequest) {
 
@@ -19,7 +21,8 @@ class CriaPaymentService {
       data: {
         value,
         expiration,
-        userID
+        userID,
+        status
       }
     }) 
 

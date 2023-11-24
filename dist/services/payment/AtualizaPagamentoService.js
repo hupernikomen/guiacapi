@@ -15,13 +15,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AtualizarPagamentoService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class AtualizarPagamentoService {
-    execute({ paymentID, value, expiration }) {
+    execute({ paymentID, value, expiration, status }) {
         return __awaiter(this, void 0, void 0, function* () {
             const __pay = yield prisma_1.default.payment.updateMany({
                 where: { id: paymentID },
                 data: {
                     value,
                     expiration,
+                    status
                 },
             });
             return __pay;

@@ -10,7 +10,7 @@ class ListaLojasServiceAdmin {
                 name: true,
                 avatar: true,
                 delivery: true,
-                user: { select: { payment: true } },
+                user: { select: { payment: { select: { status: true, value: true, expiration: true, createdAt: true } } } },
                 userID: true,
                 type:true
             }

@@ -53,13 +53,11 @@ class PorSubcategoriaProdutoService {
                 },
             };
             const today = new Date().toLocaleDateString('pt-BR');
-            const storeWhere = regionID === process.env.TERESINAID ?
-                { user: { payment: { every: { expiration: { gte: today } } } } } :
-                { user: { payment: { every: { expiration: { gte: today } } }, regionID: regionID } };
+            const storeQuery = { user: { payment: { every: { expiration: { gte: today } } } } };
             return yield prisma_1.default.product.findMany({
                 where: {
                     subcategoryID,
-                    store: storeWhere
+                    store: storeQuery
                 },
                 select: select
             });

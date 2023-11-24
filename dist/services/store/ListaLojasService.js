@@ -16,19 +16,17 @@ exports.ListaLojasService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 require("dotenv/config");
 class ListaLojasService {
-    execute({ regionID }) {
+    execute() {
         return __awaiter(this, void 0, void 0, function* () {
-            const today = new Date().toLocaleDateString('pt-BR');
-            const regionQuery = regionID === process.env.TERESINAID ? { user: { payment: { every: { expiration: { gte: today } } } } } : { user: { payment: { every: { expiration: { gte: today } } }, regionID: regionID } };
             return yield prisma_1.default.store.findMany({
-                where: regionQuery,
+                where: { user: { payment: { some: { status: "Aprovado" } } } },
                 select: {
                     product: true,
                     id: true,
                     name: true,
                     avatar: true,
                     delivery: true,
-                    user: { select: { payment: true } },
+                    user: { select: { payment: { select: { status: true, value: true, expiration: true, createdAt: true } }, } },
                     userID: true,
                 }
             });
