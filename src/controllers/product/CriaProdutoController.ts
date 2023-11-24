@@ -14,13 +14,10 @@ class CriaProdutoController {
       color,
       categoryID,
       subcategoryID,
-    } =
-      req.body;
+    } = req.body;
 
       
-    // if (!req.files) throw new Error("Ops.. algo deu errado!");
-console.log(req.files, "filessss");
-
+    if (!req.files) throw new Error("Ops.. algo deu errado!");
     
     const criaProdutoService = new CriaProdutoService();
     const produto = await criaProdutoService.execute({
@@ -30,7 +27,7 @@ console.log(req.files, "filessss");
       price,
       size,
       color,
-      // image: req.files,
+      image: [req.files],
       categoryID,
       subcategoryID,
       storeID,

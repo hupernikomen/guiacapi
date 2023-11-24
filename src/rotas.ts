@@ -173,7 +173,7 @@ rotas.get('/postos', new ListarPostosController().handle)
 
 rotas.put('/product', Authenticator, new AtualizaProdutoController().handle)
 rotas.delete('/product', Authenticator, new DeletaProdutoController().handle)
-rotas.post('/product', Authenticator, uploadProdutos.array('image', 5), new CriaProdutoController().handle)
+rotas.post('/product', Authenticator, uploadProdutos.array('files', 5), new CriaProdutoController().handle)
 rotas.get('/products', new ListarProdutosController().handle)
 rotas.get('/products/category', new PorCategoriaProdutoController().handle)
 rotas.get('/products/subcategory', new PorSubcategoriaProdutoController().handle)

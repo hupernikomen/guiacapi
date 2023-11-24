@@ -157,7 +157,7 @@ rotas.get('/posto', new BuscaPostoController_1.BuscaPostoController().handle);
 rotas.get('/postos', new ListaPostosController_1.ListarPostosController().handle);
 rotas.put('/product', authenticator_1.Authenticator, new AtualizaProdutoController_1.AtualizaProdutoController().handle);
 rotas.delete('/product', authenticator_1.Authenticator, new DeletaProdutoController_1.DeletaProdutoController().handle);
-rotas.post('/product', authenticator_1.Authenticator, uploadProdutos.array('image', 5), new CriaProdutoController_1.CriaProdutoController().handle);
+rotas.post('/product', authenticator_1.Authenticator, uploadProdutos.array('files', 5), new CriaProdutoController_1.CriaProdutoController().handle);
 rotas.get('/products', new ListarProdutosController_1.ListarProdutosController().handle);
 rotas.get('/products/category', new PorCategoriaProdutoController_1.PorCategoriaProdutoController().handle);
 rotas.get('/products/subcategory', new PorSubcategoriaProdutoController_1.PorSubcategoriaProdutoController().handle);

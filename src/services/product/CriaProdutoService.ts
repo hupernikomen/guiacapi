@@ -7,7 +7,7 @@ interface ProductRequest {
   price: number,
   size: string[],
   color: string[],
-  // image: object,
+  image: any,
   categoryID: string,
   subcategoryID:string,
   storeID: string,
@@ -21,11 +21,12 @@ class CriaProdutoService {
     price,
     size,
     color,
-    // image,
+    image,
     categoryID,
     subcategoryID,
     storeID,
   }: ProductRequest) {
+    
     try {
 
       const _product = await prismaClient.product.create({
@@ -36,7 +37,7 @@ class CriaProdutoService {
           price: Number(price),
           size,
           color,
-          // image,
+          image,
           categoryID,
           subcategoryID,
           storeID,
