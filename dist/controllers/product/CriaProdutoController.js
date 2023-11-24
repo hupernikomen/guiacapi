@@ -16,8 +16,8 @@ class CriaProdutoController {
         return __awaiter(this, void 0, void 0, function* () {
             const storeID = req.query.storeID;
             const { reference, name, description, price, size, color, categoryID, subcategoryID, } = req.body;
-            if (!req.files)
-                throw new Error("Ops.. algo deu errado!");
+            // if (!req.files) throw new Error("Ops.. algo deu errado!");
+            console.log(req.files, "filessss");
             const criaProdutoService = new CriaProdutoService_1.CriaProdutoService();
             const produto = yield criaProdutoService.execute({
                 reference,
@@ -26,7 +26,7 @@ class CriaProdutoController {
                 price,
                 size,
                 color,
-                image: req.files,
+                // image: req.files,
                 categoryID,
                 subcategoryID,
                 storeID,

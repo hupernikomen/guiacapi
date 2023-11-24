@@ -18,7 +18,8 @@ class CriaProdutoController {
       req.body;
 
       
-    if (!req.files) throw new Error("Ops.. algo deu errado!");
+    // if (!req.files) throw new Error("Ops.. algo deu errado!");
+console.log(req.files, "filessss");
 
     
     const criaProdutoService = new CriaProdutoService();
@@ -29,7 +30,7 @@ class CriaProdutoController {
       price,
       size,
       color,
-      image: req.files,
+      // image: req.files,
       categoryID,
       subcategoryID,
       storeID,
