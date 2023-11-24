@@ -26,7 +26,7 @@ class CriaProdutoService {
                         price: Number(price),
                         size,
                         color,
-                        image,
+                        image: Object(image),
                         categoryID,
                         subcategoryID,
                         storeID,
