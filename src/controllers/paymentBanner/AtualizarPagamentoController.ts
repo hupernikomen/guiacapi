@@ -7,6 +7,7 @@ class AtualizarPagamentoBannerController {
         const {
           value,
           expiration,
+          status
         } = req.body
 
         const atualizarPagamentoBannerService = new AtualizarPagamentoBannerService();
@@ -14,7 +15,8 @@ class AtualizarPagamentoBannerController {
         const _pay = await atualizarPagamentoBannerService.execute({
           value,
           expiration,
-          paymentID
+          paymentID,
+          status
 
         })
 
