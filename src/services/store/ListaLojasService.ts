@@ -13,12 +13,12 @@ class ListaLojasService {
                 user: {
                     payment: { some: { status: "Aprovado" } },
                     OR: [
-                        { region: { name: "Teresina" } },
                         { regionID },
+                        { city: "Teresina" }
                     ]
                 }
             },
-            
+
             select: {
                 product: true,
                 id: true,

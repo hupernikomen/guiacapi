@@ -14,13 +14,13 @@ class ListarProdutosService {
       where: {
         store: {
           user: {
-              payment: { some: { status: "Aprovado" } },
-              OR: [
-                  { region: { name: "Teresina" } },
-                  { regionID },
-              ]
+            payment: { some: { status: "Aprovado" } },
+            OR: [
+              { regionID },
+              { city: "Teresina" }
+            ]
           }
-      },
+        },
       },
       select: {
 

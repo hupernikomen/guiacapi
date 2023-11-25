@@ -23,8 +23,8 @@ class ListaLojasService {
                     user: {
                         payment: { some: { status: "Aprovado" } },
                         OR: [
-                            { region: { name: "Teresina" } },
                             { regionID },
+                            { city: "Teresina" }
                         ]
                     }
                 },
