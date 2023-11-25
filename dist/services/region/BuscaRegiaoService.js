@@ -17,6 +17,14 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class BuscaRegiaoService {
     execute({ regionName }) {
         return __awaiter(this, void 0, void 0, function* () {
+            const _region = yield prisma_1.default.region.findFirst({
+                where: {
+                    name: "Teresina"
+                },
+            });
+            if (!_region) {
+                yield prisma_1.default.region.create({ data: { name: "Teresina" } });
+            }
             const region = yield prisma_1.default.region.findFirst({
                 where: {
                     name: regionName
