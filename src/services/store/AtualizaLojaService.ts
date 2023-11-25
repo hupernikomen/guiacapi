@@ -37,10 +37,6 @@ class AtualizaLojaService {
 
         if (!_store) throw new Error("Ops, infelizmente não encontramos!");
 
-        // Exclua a imagem avatar antiga
-        var deleteParams: DeleteObjectRequest = { Bucket: process.env.BUCKETEER_BUCKET_NAME, Key: _store.avatar as string };
-        await s3.deleteObject(deleteParams).promise();
-
         const __store = await prismaClient.store.updateMany({
             where: { userID },
             data: {
@@ -53,6 +49,10 @@ class AtualizaLojaService {
                 delivery,
             },
         })
+
+        // Exclua a imagem avatar antiga
+        var deleteParams: DeleteObjectRequest = { Bucket: process.env.BUCKETEER_BUCKET_NAME, Key: _store.avatar as string };
+        await s3.deleteObject(deleteParams).promise();
 
         return __store
 
