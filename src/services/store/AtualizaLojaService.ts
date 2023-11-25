@@ -1,7 +1,6 @@
 import prismaClient from "../../prisma"
 
 import AWS from 'aws-sdk';
-import { DeleteObjectRequest } from 'aws-sdk/clients/s3';
 
 let s3 = new AWS.S3({
     accessKeyId: process.env.ACCESS_KEY_ID,
@@ -49,13 +48,6 @@ class AtualizaLojaService {
                 delivery,
             },
         })
-
-        console.log(_store.avatar);
-        
-
-        // Exclua a imagem avatar antiga
-        // var deleteParams: DeleteObjectRequest = { Bucket: process.env.BUCKETEER_BUCKET_NAME, Key: _store.avatar.key };
-        // await s3.deleteObject(deleteParams).promise();
 
         return __store
 

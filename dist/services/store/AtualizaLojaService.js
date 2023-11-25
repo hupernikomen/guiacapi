@@ -38,10 +38,6 @@ class AtualizaLojaService {
                     delivery,
                 },
             });
-            console.log(_store.avatar);
-            // Exclua a imagem avatar antiga
-            // var deleteParams: DeleteObjectRequest = { Bucket: process.env.BUCKETEER_BUCKET_NAME, Key: _store.avatar.key };
-            // await s3.deleteObject(deleteParams).promise();
             return __store;
         });
     }
