@@ -52,8 +52,7 @@ class PorSubcategoriaProdutoService {
                     }
                 },
             };
-            const today = new Date().toLocaleDateString('pt-BR');
-            const storeQuery = { user: { payment: { every: { expiration: { gte: today } } } } };
+            const storeQuery = { user: { payment: { some: { status: "Aprovado" } } } };
             return yield prisma_1.default.product.findMany({
                 where: {
                     subcategoryID,

@@ -18,10 +18,7 @@ require("dotenv/config");
 class PorCategoriaProdutoService {
     execute({ categoryID, regionID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const today = new Date().toLocaleDateString('pt-BR');
-            const storeWhere = regionID === process.env.TERESINAID ?
-                { user: { payment: { every: { expiration: { gte: today } } } } } :
-                { user: { payment: { every: { expiration: { gte: today } } }, regionID: regionID } };
+            const storeWhere = { user: { payment: { some: { status: "Aprovado" } } } };
             return yield prisma_1.default.product.findMany({
                 where: {
                     categoryID,

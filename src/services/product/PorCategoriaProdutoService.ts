@@ -9,11 +9,7 @@ interface ProdutoRequest {
 class PorCategoriaProdutoService {
   async execute({ categoryID, regionID }: ProdutoRequest) {
 
-    const today = new Date().toLocaleDateString('pt-BR');
-    const storeWhere = regionID === process.env.TERESINAID ? 
-    { user: { payment: { every: { expiration: { gte: today } } } } } : 
-    { user: { payment: { every: { expiration: { gte: today } } }, regionID: regionID } };
-
+    const storeWhere =  { user: { payment: { some: { status: "Aprovado" } } } } 
 
     return await prismaClient.product.findMany({
       where: {
