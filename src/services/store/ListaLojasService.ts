@@ -8,12 +8,18 @@ interface PersonRquest {
 class ListaLojasService {
     async execute({ regionID }: PersonRquest) {
 
+        const teresina = await prismaClient.region.findFirst({
+            where: {
+              name: "Teresina"
+            }
+          })
+
         return await prismaClient.store.findMany({
             where: {
                 user: {
                     payment: { some: { status: "Aprovado" } },
                     OR: [
-                        { region: { name: "Teresina" } },
+                        { regionID: teresina.id },
                         { regionID },
                     ]
                 }
