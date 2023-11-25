@@ -18,7 +18,7 @@ class CriaProdutoController {
             const { reference, name, description, price, size, color, categoryID, subcategoryID, } = req.body;
             if (!req.files)
                 throw new Error("Ops.. algo deu errado!");
-            console.log(req.files, "TESTESTESTESTE");
+            console.log(reference, name, description, price, size, color, categoryID, subcategoryID, "Paramsssss");
             const criaProdutoService = new CriaProdutoService_1.CriaProdutoService();
             const produto = yield criaProdutoService.execute({
                 reference,
