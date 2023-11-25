@@ -16,10 +16,18 @@ exports.ListaLojasService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 require("dotenv/config");
 class ListaLojasService {
-    execute() {
+    execute({ regionID }) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield prisma_1.default.store.findMany({
-                where: { user: { payment: { some: { status: "Aprovado" } } } },
+                where: {
+                    user: {
+                        payment: { some: { status: "Aprovado" } },
+                        OR: [
+                            { region: { name: "Teresina" } },
+                            { regionID },
+                        ]
+                    }
+                },
                 select: {
                     product: true,
                     id: true,

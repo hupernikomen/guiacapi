@@ -18,9 +18,16 @@ require("dotenv/config");
 class ListarProfissionalService {
     execute({ regionID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const regionQuery = { user: { payment: { some: { status: "Aprovado" } } } };
             return yield prisma_1.default.person.findMany({
-                where: regionQuery,
+                where: {
+                    user: {
+                        payment: { some: { status: "Aprovado" } },
+                        OR: [
+                            { region: { name: "Teresina" } },
+                            { regionID },
+                        ]
+                    }
+                },
                 select: {
                     id: true,
                     avatar: true,

@@ -17,9 +17,8 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class ListarBannersService {
     execute() {
         return __awaiter(this, void 0, void 0, function* () {
-            const today = new Date().toLocaleDateString('pt-BR');
             const _banners = yield prisma_1.default.banner.findMany({
-                where: { user: { paymentBanners: { every: { expiration: { gte: today } } } } },
+                where: { user: { paymentBanners: { some: { status: "Aprovado" } } } },
                 select: {
                     image: true,
                     route: true,

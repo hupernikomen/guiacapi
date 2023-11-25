@@ -1,11 +1,24 @@
 import prismaClient from "../../prisma";
 import 'dotenv/config';
 
+interface PersonRquest {
+    regionID: string
+}
+
 class ListaLojasService {
-    async execute() {
+    async execute({ regionID }: PersonRquest) {
 
         return await prismaClient.store.findMany({
-            where: { user: { payment: { some: { status: "Aprovado" } } } },
+            where: {
+                user: {
+                    payment: { some: { status: "Aprovado" } },
+                    OR: [
+                        { region: { name: "Teresina" } },
+                        { regionID },
+                    ]
+                }
+            },
+            
             select: {
                 product: true,
                 id: true,

@@ -18,47 +18,53 @@ require("dotenv/config");
 class PorSubcategoriaProdutoService {
     execute({ subcategoryID, regionID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const select = {
-                id: true,
-                name: true,
-                price: true,
-                off: true,
-                image: true,
-                campaign: {
-                    select: {
-                        id: true,
-                        name: true,
-                        theme: true,
-                    }
-                },
-                subcategory: {
-                    select: {
-                        _count: true,
-                        id: true,
-                        name: true,
-                        category: {
-                            select: {
-                                name: true
-                            }
-                        }
-                    }
-                },
-                store: {
-                    select: {
-                        id: true,
-                        name: true,
-                        delivery: true,
-                        user: { select: { regionID: true } }
-                    }
-                },
-            };
-            const storeQuery = { user: { payment: { some: { status: "Aprovado" } } } };
             return yield prisma_1.default.product.findMany({
                 where: {
                     subcategoryID,
-                    store: storeQuery
+                    store: {
+                        user: {
+                            payment: { some: { status: "Aprovado" } },
+                            OR: [
+                                { region: { name: "Teresina" } },
+                                { regionID },
+                            ]
+                        }
+                    }
                 },
-                select: select
+                select: {
+                    id: true,
+                    name: true,
+                    price: true,
+                    off: true,
+                    image: true,
+                    campaign: {
+                        select: {
+                            id: true,
+                            name: true,
+                            theme: true,
+                        }
+                    },
+                    subcategory: {
+                        select: {
+                            _count: true,
+                            id: true,
+                            name: true,
+                            category: {
+                                select: {
+                                    name: true
+                                }
+                            }
+                        }
+                    },
+                    store: {
+                        select: {
+                            id: true,
+                            name: true,
+                            delivery: true,
+                            user: { select: { regionID: true } }
+                        }
+                    },
+                }
             });
         });
     }
