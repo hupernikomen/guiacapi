@@ -10,21 +10,19 @@ class ListaLojasService {
 
         const teresina = await prismaClient.region.findFirst({
             where: {
-              name: "Teresina"
+                name: "Teresina"
             }
-          })
+        })
 
         return await prismaClient.store.findMany({
             where: {
                 user: {
                     payment: { some: { status: "Aprovado" } },
-                    OR: [
-                        { regionID: teresina.id },
-                        { regionID },
-                    ]
+                    regionID: regionID || teresina.id
+
                 }
             },
-            
+
             select: {
                 product: true,
                 id: true,
