@@ -27,13 +27,16 @@ class DeletaProdutoService {
             if (!_product)
                 throw new Error("Produto não existe");
             // Apagar imagens do S3 da Amazon
-            // _product.image?.forEach((item: any) => {
-            //     var params = { Bucket: process.env.BUCKETEER_BUCKET_NAME, Key: item.key };
-            //     s3.deleteObject(params, function (err, data) {
-            //         if (err) console.log(err, err.stack);  // error
-            //         else console.log();                 // deleted
-            //     })
-            // })
+            const deletePromises = [];
+            let tempArray = [];
+            if (_product.image && Array.isArray(_product.image)) {
+                tempArray = _product.image.map((item) => {
+                    var params = { Bucket: process.env.BUCKETEER_BUCKET_NAME, Key: item.key };
+                    return s3.deleteObject(params).promise();
+                });
+            }
+            deletePromises.push(...tempArray);
+            yield Promise.all(deletePromises);
             const __product = yield prisma_1.default.product.delete({ where: { id: productID } });
             return __product;
         });
