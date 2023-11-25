@@ -9,9 +9,7 @@ class ListarProfissionalService {
 
   async execute({ regionID }: PersonRquest) {
 
-
-    const today = new Date().toLocaleDateString('pt-BR');
-    const regionQuery = { user: { payment: { every: { expiration: { gte: today } } } } }
+    const regionQuery = { user: { payment: { some: { status: "Aprovado" } } } }
 
 
     return await prismaClient.person.findMany({

@@ -18,8 +18,7 @@ require("dotenv/config");
 class ListarProfissionalService {
     execute({ regionID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const today = new Date().toLocaleDateString('pt-BR');
-            const regionQuery = { user: { payment: { every: { expiration: { gte: today } } } } };
+            const regionQuery = { user: { payment: { some: { status: "Aprovado" } } } };
             return yield prisma_1.default.person.findMany({
                 where: regionQuery,
                 select: {
