@@ -10,13 +10,19 @@ class ListarProdutosService {
 
   async execute({ regionID }: ProdutoRequest) {
 
+    const teresina = await prismaClient.region.findFirst({
+      where: {
+        name: "Teresina"
+      }
+    })
+
     return await prismaClient.product.findMany({
       where: {
         store: {
           user: {
               payment: { some: { status: "Aprovado" } },
               OR: [
-                  { region: { name: "Teresina" } },
+                  { regionID: teresina.id }, 
                   { regionID },
               ]
           }
