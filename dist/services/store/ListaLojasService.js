@@ -18,16 +18,14 @@ require("dotenv/config");
 class ListaLojasService {
     execute({ regionID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const teresina = yield prisma_1.default.region.findFirst({
-                where: {
-                    name: "Teresina"
-                }
-            });
             return yield prisma_1.default.store.findMany({
                 where: {
                     user: {
                         payment: { some: { status: "Aprovado" } },
-                        regionID: regionID || teresina.id
+                        OR: [
+                            { region: { name: "Teresina" } },
+                            { regionID },
+                        ]
                     }
                 },
                 select: {
