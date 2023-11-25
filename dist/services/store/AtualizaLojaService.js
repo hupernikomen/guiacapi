@@ -26,16 +26,9 @@ class AtualizaLojaService {
             const _store = yield prisma_1.default.store.findFirst({ where: { userID } });
             if (!_store)
                 throw new Error("Ops, infelizmente não encontramos!");
-            const deletePromises = [];
-            let tempArray = [];
-            if (_store.avatar && Array.isArray(_store.avatar)) {
-                tempArray = _store.avatar.map((item) => {
-                    var params = { Bucket: process.env.BUCKETEER_BUCKET_NAME, Key: item.key };
-                    return s3.deleteObject(params).promise();
-                });
-            }
-            deletePromises.push(...tempArray);
-            yield Promise.all(deletePromises);
+            // Exclua a imagem avatar antiga
+            var deleteParams = { Bucket: process.env.BUCKETEER_BUCKET_NAME, Key: _store.avatar };
+            yield s3.deleteObject(deleteParams).promise();
             const __store = yield prisma_1.default.store.updateMany({
                 where: { userID },
                 data: {

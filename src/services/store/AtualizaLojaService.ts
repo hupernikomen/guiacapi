@@ -1,6 +1,7 @@
 import prismaClient from "../../prisma"
 
 import AWS from 'aws-sdk';
+import { DeleteObjectRequest } from 'aws-sdk/clients/s3';
 
 let s3 = new AWS.S3({
     accessKeyId: process.env.ACCESS_KEY_ID,
@@ -36,21 +37,9 @@ class AtualizaLojaService {
 
         if (!_store) throw new Error("Ops, infelizmente não encontramos!");
 
-
-
-        const deletePromises = []
-        let tempArray = []
-        if (_store.avatar && Array.isArray(_store.avatar)) {
-            tempArray = _store.avatar.map((item: any) => {
-                var params = { Bucket: process.env.BUCKETEER_BUCKET_NAME, Key: item.key };
-                return s3.deleteObject(params).promise();
-            });
-        }
-
-        deletePromises.push(...tempArray)
-    
-        await Promise.all(deletePromises);
-
+        // Exclua a imagem avatar antiga
+        var deleteParams: DeleteObjectRequest = { Bucket: process.env.BUCKETEER_BUCKET_NAME, Key: _store.avatar as string };
+        await s3.deleteObject(deleteParams).promise();
 
         const __store = await prismaClient.store.updateMany({
             where: { userID },
