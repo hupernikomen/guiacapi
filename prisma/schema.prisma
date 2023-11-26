@@ -71,7 +71,6 @@ model User {
   user     String  @unique
   password String
   regionID String
-  city     String? @default("Teresina")
 
   payment        Payment[]
   paymentBanners PaymentBanners[]

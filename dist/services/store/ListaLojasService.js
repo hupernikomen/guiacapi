@@ -22,10 +22,7 @@ class ListaLojasService {
                 where: {
                     user: {
                         payment: { some: { status: "Aprovado" } },
-                        OR: [
-                            { regionID },
-                            { city: "Teresina" }
-                        ]
+                        regionID
                     }
                 },
                 select: {
