@@ -16,7 +16,6 @@ class ListarProdutosService {
           user: {
             payment: { some: { status: "Aprovado" } },
             regionID
-            
           }
         },
       },

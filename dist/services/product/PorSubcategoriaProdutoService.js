@@ -24,10 +24,7 @@ class PorSubcategoriaProdutoService {
                     store: {
                         user: {
                             payment: { some: { status: "Aprovado" } },
-                            OR: [
-                                { region: { name: "Teresina" } },
-                                { regionID },
-                            ]
+                            regionID
                         }
                     }
                 },
