@@ -31,6 +31,10 @@ class ListaLojasService {
                     name: true,
                     avatar: true,
                     delivery: true,
+                    address: true,
+                    district: true,
+                    bio: true,
+                    reference: true,
                     user: { select: { payment: { select: { status: true, value: true, expiration: true, createdAt: true } }, } },
                     userID: true,
                 }
