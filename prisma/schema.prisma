@@ -166,7 +166,7 @@ model Product {
   description   String
   price         Float    @default(0)
   off           Float?   @default(0)
-  size          String[]
+  size          String
   image         Json
   color         String[]
   storeID       String
