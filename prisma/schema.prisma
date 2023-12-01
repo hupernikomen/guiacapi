@@ -67,8 +67,8 @@ model Banner {
 }
 
 model User {
-  id       String  @id @default(uuid())
-  user     String  @unique
+  id       String @id @default(uuid())
+  user     String @unique
   password String
   regionID String
 
@@ -166,7 +166,7 @@ model Product {
   description   String
   price         Float    @default(0)
   off           Float?   @default(0)
-  size          String
+  size          String?   @default("")
   image         Json
   color         String[]
   storeID       String
