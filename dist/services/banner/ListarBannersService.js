@@ -29,6 +29,7 @@ class ListarBannersService {
                             payment: {
                                 select: {
                                     expiration: true,
+                                    status: true
                                 }
                             }
                         }
