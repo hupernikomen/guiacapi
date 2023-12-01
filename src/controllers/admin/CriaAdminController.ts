@@ -11,6 +11,7 @@ class CriaAdminController {
         const _user = await criaAdminService.execute({
             user,
             password
+            
         })
 
         if(!_user) throw new Error("Ops, algo deu errado - API!");
