@@ -5,7 +5,7 @@ interface produtoRequest {
     description: string,
     price: number,
     off: number,
-    size: string[],
+    size: string,
     color:string[],
     categoryID: string,
     campaignID: string,    
