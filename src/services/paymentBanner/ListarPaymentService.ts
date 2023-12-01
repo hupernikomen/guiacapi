@@ -12,6 +12,7 @@ class ListarPaymentBannerService {
         expiration:true,
         createdAt:true,
         userID:true,
+        status:true
         
       }
     })
