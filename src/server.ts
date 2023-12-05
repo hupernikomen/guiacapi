@@ -11,7 +11,6 @@ const app = express()
 
 app.use(cors())
 app.use(express.json())
-
 app.use(rotas)
 
 app.use('/files', express.static(path.resolve(__dirname, '..', 'tmp')))
