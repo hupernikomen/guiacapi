@@ -29,7 +29,7 @@ class AutenticaService {
                     id: _admin.id,
                     user: _admin.user,
                     token: token,
-                    account: 'admin'
+                    account: { type: "admin" }
                 };
             }
             else {
