@@ -28,6 +28,7 @@ class AutenticaService {
                 id: _admin.id,
                 user: _admin.user,
                 token: token,
+                account: 'admin'
             }
 
         } else {
@@ -57,12 +58,14 @@ class AutenticaService {
                 { subject: _user.id }
             )
 
+            const account = store || person || gasStation;
+            
 
             return {
                 id: _user.id,
                 user: _user.user,
                 token: token,
-                account: { store, person, gasStation },
+                account: account,
                 payment
             }
         }
