@@ -7,12 +7,12 @@ class ListarUsuariosService {
       select: {
         id: true,
         user: true,
-        store: { select: { name: true } },
-        person: { select: { name: true, profession: { select: { name: true } } } },
+        store: { select: { name: true, userID: true } },
+        person: { select: { userID: true, name: true, profession: { select: { name: true } } } },
         fuelStation: { select: { name: true } },
         region: { select: { name: true } },
         contact: true,
-        payment:true
+        payment: true
 
       }
     })
