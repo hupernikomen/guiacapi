@@ -58,8 +58,8 @@ model PaymentBanners {
 model Banner {
   id       String @id @default(uuid())
   image    Json
-  route    String
-  paramsID String
+  route    String?
+  paramsID String?
   userID   String
 
   user User @relation(fields: [userID], references: [id])
