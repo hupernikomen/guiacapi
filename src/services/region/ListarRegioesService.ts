@@ -7,8 +7,8 @@ class ListarRegioesService {
             select: {
                 id: true,
                 name: true,
-            }
-        })
+                user: { select: { store: { select: { product: true } } }}
+            }})
 
         return _region
     }
