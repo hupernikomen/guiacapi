@@ -21,7 +21,7 @@ class ListarRegioesService {
                 select: {
                     id: true,
                     name: true,
-                    user: { select: { store: { select: { product: true } } } }
+                    user: { select: { person: true, store: true } }
                 }
             });
             return _region;
