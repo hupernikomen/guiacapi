@@ -24,8 +24,8 @@ class BuscaUsuarioService {
                     user: true,
                     fuelStation: true,
                     payment: true,
-                    person: true,
-                    store: true,
+                    person: { select: { name: true } },
+                    store: { select: { name: true } },
                     map: true
                 }
             });
