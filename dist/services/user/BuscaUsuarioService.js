@@ -23,9 +23,10 @@ class BuscaUsuarioService {
                     id: true,
                     user: true,
                     fuelStation: true,
+                    payment: true,
                     person: true,
                     store: true,
-                    map: true,
+                    map: true
                 }
             });
             return _user;

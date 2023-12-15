@@ -1,26 +1,26 @@
-import prismaClient from "../../prisma";
+import prismaClient from '../../prisma';
 
 interface usuarioRequest {
-  userID: string
+  userID: string;
 }
 
 class BuscaUsuarioService {
-  async execute({ userID  }: usuarioRequest) {
-
+  async execute({ userID }: usuarioRequest) {
     const _user = await prismaClient.user.findFirst({
       where: { id: userID },
       select: {
         id: true,
         user: true,
-        fuelStation:true,
+        fuelStation: true,
+        payment: true,
         person: true,
         store: true,
-        map: true,
+        map: true
       }
-    })
+    });
 
-    return _user
+    return _user;
   }
 }
 
-export { BuscaUsuarioService }
+export { BuscaUsuarioService };
