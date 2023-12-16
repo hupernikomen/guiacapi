@@ -1,8 +1,7 @@
-import prismaClient from "../../prisma";
+import prismaClient from '../../prisma';
 
 class ListarUsuariosService {
   async execute() {
-
     const usuarios = await prismaClient.user.findMany({
       select: {
         id: true,
@@ -12,13 +11,13 @@ class ListarUsuariosService {
         fuelStation: { select: { name: true } },
         region: { select: { name: true } },
         contact: true,
-        payment: true
-
+        payment: true,
+        map: true
       }
-    })
+    });
 
-    return usuarios
+    return usuarios;
   }
 }
 
-export { ListarUsuariosService }
+export { ListarUsuariosService };

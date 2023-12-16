@@ -26,7 +26,8 @@ class ListarUsuariosService {
                     fuelStation: { select: { name: true } },
                     region: { select: { name: true } },
                     contact: true,
-                    payment: true
+                    payment: true,
+                    map: true
                 }
             });
             return usuarios;
