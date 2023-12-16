@@ -21,7 +21,12 @@ class ListaMapasService {
                 select: {
                     id: true,
                     latlng: true,
-                    user: true
+                    user: {
+                        select: {
+                            store: true,
+                            person: true
+                        }
+                    }
                 }
             });
             return map;
