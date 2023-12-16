@@ -78,39 +78,40 @@ const AtualizaBannerController_1 = require("./controllers/banner/AtualizaBannerC
 const CriarOwnerController_1 = require("./controllers/owner/CriarOwnerController");
 const BuscaRegiaoController_1 = require("./controllers/region/BuscaRegiaoController");
 const DeletaRegiaoController_1 = require("./controllers/region/DeletaRegiaoController");
+const ListarMapsController_1 = require("./controllers/map/ListarMapsController");
 const uploadProdutos = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageProdutos.s3 : multer_2.storageProdutos.local,
     limits: {
-        fileSize: 1 * 1024 * 1024, // MAX 1MB
+        fileSize: 1 * 1024 * 1024 // MAX 1MB
     }
 });
 const uploadAvatar = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageAvatar.s3 : multer_2.storageAvatar.local,
     limits: {
-        fileSize: 1 * 1024 * 1024, // MAX 1MB
+        fileSize: 1 * 1024 * 1024 // MAX 1MB
     }
 });
 const uploadPortfolio = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storagePortfolio.s3 : multer_2.storagePortfolio.local,
     limits: {
-        fileSize: 1 * 1024 * 1024, // MAX 1MB
+        fileSize: 1 * 1024 * 1024 // MAX 1MB
     }
 });
 const uploadMarca = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageMarca.s3 : multer_2.storageMarca.local,
     limits: {
-        fileSize: 1 * 1024 * 1024, // MAX 1MB
+        fileSize: 1 * 1024 * 1024 // MAX 1MB
     }
 });
 const uploadBanner = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageBanner.s3 : multer_2.storageBanner.local,
     limits: {
-        fileSize: 1 * 1024 * 1024, // MAX 1MB
+        fileSize: 1 * 1024 * 1024 // MAX 1MB
     }
 });
 const rotas = (0, express_1.Router)();
@@ -165,6 +166,7 @@ rotas.get('/detail/product', new DetalheProdutoController_1.DetalheProdutoContro
 rotas.post('/map', authenticator_1.Authenticator, new CriaMapaController_1.CriaMapaController().handle);
 rotas.put('/map', authenticator_1.Authenticator, new AtualizaMapaController_1.AtualizaMapaController().handle);
 rotas.get('/map', new BuscaMapaController_1.BuscaMapaController().handle);
+rotas.get('/maps', new ListarMapsController_1.ListaMapasController().handle);
 rotas.post('/contact', authenticator_1.Authenticator, uploadAvatar.single('avatar'), new CriaContatoController_1.CriaContatoController().handle);
 rotas.delete('/contact', authenticator_1.Authenticator, new DeletaContatoController_1.DeletarContatoController().handle);
 rotas.get('/contacts', new ListaContatosController_1.ListaContatosController().handle);

@@ -8,25 +8,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BuscaMapaService = void 0;
-const prisma_1 = __importDefault(require("../../prisma"));
-class BuscaMapaService {
-    execute({ userID }) {
+exports.ListaMapasController = void 0;
+const ListarMapsService_1 = require("../../services/map/ListarMapsService");
+class ListaMapasController {
+    handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const _map = yield prisma_1.default.map.findFirst({
-                where: { userID },
-                select: {
-                    id: true,
-                    userID: true,
-                    latlng: true,
-                }
-            });
-            return _map;
+            const listaMapasService = new ListarMapsService_1.ListaMapasService();
+            const _mapas = yield listaMapasService.execute();
+            return res.json(_mapas);
         });
     }
 }
-exports.BuscaMapaService = BuscaMapaService;
+exports.ListaMapasController = ListaMapasController;

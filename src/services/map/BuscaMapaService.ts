@@ -12,7 +12,8 @@ class BuscaMapaService {
       select: {
         id: true,
         userID: true,
-        latlng: true
+        latlng: true,
+        
       }
     })
     return _map
