@@ -15,7 +15,7 @@ class CriaBannerController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const userID = req.query.userID;
-            const { route, paramsID, link, typebanner, category } = req.body;
+            const { route, paramsID, link, typebanner, categoryID } = req.body;
             if (!req.file)
                 throw new Error('Falha ao enviar banner');
             const criaBannerService = new CriaBannerService_1.CriaBannerService();
@@ -26,7 +26,7 @@ class CriaBannerController {
                 userID,
                 link,
                 typebanner,
-                category
+                categoryID
             });
             if (!banner)
                 throw new Error('Erro ao criar banner - API');

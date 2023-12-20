@@ -4,7 +4,7 @@ import { CriaBannerService } from '../../services/banner/CriaBannerService';
 class CriaBannerController {
   async handle(req: Request, res: Response) {
     const userID = req.query.userID as string;
-    const { route, paramsID, link, typebanner, category } = req.body;
+    const { route, paramsID, link, typebanner, categoryID } = req.body;
 
     if (!req.file) throw new Error('Falha ao enviar banner');
 
@@ -16,7 +16,7 @@ class CriaBannerController {
       userID,
       link,
       typebanner,
-      category
+      categoryID
     });
 
     if (!banner) throw new Error('Erro ao criar banner - API');

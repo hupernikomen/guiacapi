@@ -64,7 +64,7 @@ model Banner {
 
   link String?
   typebanner String?
-  category String?
+  categoryID String? // para filtrar em qual categoria ele deve aparecer em detalhes 
 
   user User @relation(fields: [userID], references: [id])
 

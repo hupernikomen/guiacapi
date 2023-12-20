@@ -25,7 +25,7 @@ class ListarBannersService {
                     paramsID: true,
                     userID: true,
                     link: true,
-                    category: true,
+                    categoryID: true,
                     typebanner: true,
                     id: true,
                     user: {

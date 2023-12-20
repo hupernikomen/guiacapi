@@ -7,10 +7,10 @@ interface bannerRequest {
   userID: string;
   link: string;
   typebanner: string;
-  category: string;
+  categoryID: string;
 }
 class CriaBannerService {
-  async execute({ image, route, paramsID, userID, link, typebanner, category }: bannerRequest) {
+  async execute({ image, route, paramsID, userID, link, typebanner, categoryID }: bannerRequest) {
     const _banner = await prismaClient.banner.create({
       data: {
         image,
@@ -19,7 +19,7 @@ class CriaBannerService {
         userID,
         link,
         typebanner,
-        category
+        categoryID
       }
     });
 
