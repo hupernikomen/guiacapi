@@ -1,4 +1,4 @@
-import prismaClient from "../../prisma";
+import prismaClient from '../../prisma';
 
 interface DetalheRequest {
   productID: string;
@@ -8,7 +8,7 @@ class DetalheProdutoService {
   async execute({ productID }: DetalheRequest) {
     const _product = await prismaClient.product.findUnique({
       where: {
-        id: productID,
+        id: productID
       },
       select: {
         id: true,
@@ -17,13 +17,13 @@ class DetalheProdutoService {
         price: true,
         off: true,
         size: true,
-        color:true,
+        color: true,
         image: true,
         store: {
           select: {
             id: true,
             name: true,
-            bio:true,
+            bio: true,
             delivery: true,
             avatar: true,
             userID: true
@@ -32,21 +32,22 @@ class DetalheProdutoService {
         category: {
           select: {
             name: true,
-          },
+            id: true
+          }
         },
-        subcategory:{
-          select:{
-            id:true,
-            name:true
+        subcategory: {
+          select: {
+            id: true,
+            name: true
           }
         },
         campaign: {
           select: {
             id: true,
-            name: true,
+            name: true
           }
         }
-      },
+      }
     });
 
     return _product;

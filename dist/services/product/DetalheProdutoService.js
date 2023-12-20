@@ -19,7 +19,7 @@ class DetalheProdutoService {
         return __awaiter(this, void 0, void 0, function* () {
             const _product = yield prisma_1.default.product.findUnique({
                 where: {
-                    id: productID,
+                    id: productID
                 },
                 select: {
                     id: true,
@@ -43,7 +43,8 @@ class DetalheProdutoService {
                     category: {
                         select: {
                             name: true,
-                        },
+                            id: true
+                        }
                     },
                     subcategory: {
                         select: {
@@ -54,10 +55,10 @@ class DetalheProdutoService {
                     campaign: {
                         select: {
                             id: true,
-                            name: true,
+                            name: true
                         }
                     }
-                },
+                }
             });
             return _product;
         });
