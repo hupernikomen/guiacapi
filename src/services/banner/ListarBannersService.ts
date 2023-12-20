@@ -15,6 +15,12 @@ class ListarBannersService {
         id: true,
         user: {
           select: {
+            paymentBanners: {
+              select: {
+                expiration: true,
+                status: true
+              }
+            },
             payment: {
               select: {
                 expiration: true,
