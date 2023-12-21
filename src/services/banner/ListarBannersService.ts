@@ -15,6 +15,7 @@ class ListarBannersService {
         id: true,
         user: {
           select: {
+            owner: { select: { name: true, whatsapp: true } },
             paymentBanners: {
               select: {
                 expiration: true,
