@@ -1,31 +1,25 @@
-import prismaClient from "../../prisma";
+import prismaClient from '../../prisma';
 
 interface paymentRequest {
-  userID: string,
-  value:string,
-  expiration:string,
+  userID: string;
+  bannerID: string;
+  value: string;
+  expiration: string;
 }
 
 class CriaPaymentBannerService {
-
-  async execute({
-
-    userID,
-    value,
-    expiration,
-
-  }: paymentRequest) {
-
+  async execute({ userID, bannerID, value, expiration }: paymentRequest) {
     const _payment = await prismaClient.paymentBanners.create({
       data: {
         userID,
+        bannerID,
         value,
-        expiration,
+        expiration
       }
-    })
+    });
 
-    return _payment
+    return _payment;
   }
 }
 
-export { CriaPaymentBannerService }
+export { CriaPaymentBannerService };
