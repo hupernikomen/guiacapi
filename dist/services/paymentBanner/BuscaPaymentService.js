@@ -19,7 +19,7 @@ class BuscaPaymentBannerService {
         return __awaiter(this, void 0, void 0, function* () {
             return yield prisma_1.default.paymentBanners.findFirst({
                 where: {
-                    userID,
+                    userID
                 },
                 select: {
                     id: true,
@@ -27,6 +27,8 @@ class BuscaPaymentBannerService {
                     expiration: true,
                     createdAt: true,
                     userID: true,
+                    bannerID: true,
+                    user: { select: { banners: true } }
                 }
             });
         });

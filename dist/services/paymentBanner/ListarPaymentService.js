@@ -24,7 +24,9 @@ class ListarPaymentBannerService {
                     expiration: true,
                     createdAt: true,
                     userID: true,
-                    status: true
+                    bannerID: true,
+                    status: true,
+                    user: { select: { banners: true } }
                 }
             });
         });
