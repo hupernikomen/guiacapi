@@ -1,35 +1,32 @@
-import prismaClient from "../../prisma";
+import prismaClient from '../../prisma';
 
 interface bannerRequest {
-    userID: string
+  bannerID: string;
 }
 
 class BuscaBannerService {
-    async execute({ userID }: bannerRequest) {
-
-
-        const _banner = await prismaClient.banner.findFirst({
-
-            where: { userID },
-            select: {
-                image: true,
-                route: true,
-                paramsID: true,
-                userID: true,
-                user: {
-                    select: {
-                        payment: {
-                            select: {
-                                expiration: true,
-                            }
-                        }
-                    }
-                }
+  async execute({ bannerID }: bannerRequest) {
+    const _banner = await prismaClient.banner.findFirst({
+      where: { id: bannerID },
+      select: {
+        image: true,
+        route: true,
+        paramsID: true,
+        userID: true,
+        user: {
+          select: {
+            payment: {
+              select: {
+                expiration: true
+              }
             }
-        })
+          }
+        }
+      }
+    });
 
-        return _banner
-    }
+    return _banner;
+  }
 }
 
-export { BuscaBannerService }
+export { BuscaBannerService };

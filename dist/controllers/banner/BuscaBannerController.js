@@ -14,9 +14,10 @@ const BuscaBannerService_1 = require("../../services/banner/BuscaBannerService")
 class BuscaBannerController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const userID = req.query.userID;
+            // const userID = req.query.userID as string
+            const bannerID = req.query.bannerID;
             const buscaBannerService = new BuscaBannerService_1.BuscaBannerService();
-            const banner = yield buscaBannerService.execute({ userID });
+            const banner = yield buscaBannerService.execute({ bannerID });
             return res.json(banner);
         });
     }
