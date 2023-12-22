@@ -20,6 +20,7 @@ class BuscaBannerService {
             const _banner = yield prisma_1.default.banner.findFirst({
                 where: { id: bannerID },
                 select: {
+                    id: true,
                     image: true,
                     route: true,
                     paramsID: true,

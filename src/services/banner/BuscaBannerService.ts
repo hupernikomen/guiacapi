@@ -9,6 +9,7 @@ class BuscaBannerService {
     const _banner = await prismaClient.banner.findFirst({
       where: { id: bannerID },
       select: {
+        id: true,
         image: true,
         route: true,
         paramsID: true,
