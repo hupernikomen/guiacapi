@@ -2,13 +2,15 @@ import prismaClient from '../../prisma';
 
 interface PaymentRquest {
   userID: string;
+  bannerID: string;
 }
 
 class BuscaPaymentBannerService {
-  async execute({ userID }: PaymentRquest) {
+  async execute({ userID, bannerID }: PaymentRquest) {
     return await prismaClient.paymentBanners.findFirst({
       where: {
-        userID
+        userID,
+        bannerID
       },
       select: {
         id: true,
@@ -17,7 +19,7 @@ class BuscaPaymentBannerService {
         createdAt: true,
         userID: true,
         bannerID: true,
-        user: { select: { banners: true } }
+        user: { select: { banners: { where: { id: bannerID } } } }
       }
     });
   }
