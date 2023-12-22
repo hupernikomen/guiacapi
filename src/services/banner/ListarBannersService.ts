@@ -20,7 +20,8 @@ class ListarBannersService {
               select: {
                 id: true,
                 expiration: true,
-                status: true
+                status: true,
+                bannerID: true
               }
             },
             payment: {
