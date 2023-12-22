@@ -15,11 +15,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.BuscaPaymentBannerService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class BuscaPaymentBannerService {
-    execute({ userID, bannerID }) {
+    execute({ bannerID }) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield prisma_1.default.paymentBanners.findFirst({
                 where: {
-                    userID,
                     bannerID
                 },
                 select: {
@@ -28,8 +27,7 @@ class BuscaPaymentBannerService {
                     expiration: true,
                     createdAt: true,
                     userID: true,
-                    bannerID: true,
-                    user: { select: { banners: { where: { id: bannerID } } } }
+                    user: { select: { banners: true } }
                 }
             });
         });
