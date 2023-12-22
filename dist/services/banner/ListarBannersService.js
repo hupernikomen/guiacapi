@@ -33,12 +33,14 @@ class ListarBannersService {
                             owner: { select: { name: true, whatsapp: true } },
                             paymentBanners: {
                                 select: {
+                                    id: true,
                                     expiration: true,
                                     status: true
                                 }
                             },
                             payment: {
                                 select: {
+                                    id: true,
                                     expiration: true,
                                     status: true
                                 }
