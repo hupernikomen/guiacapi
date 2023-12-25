@@ -76,6 +76,7 @@ import { CriaOwnerController } from './controllers/owner/CriarOwnerController';
 import { BuscaRegiaoController } from './controllers/region/BuscaRegiaoController';
 import { DeletaRegiaoController } from './controllers/region/DeletaRegiaoController';
 import { ListaMapasController } from './controllers/map/ListarMapsController';
+import { ListarAdminController } from './controllers/banner/ListarAdminController';
 
 const uploadProdutos = multer({
   fileFilter: fileFilter,
@@ -134,6 +135,7 @@ rotas.post('/banner', Authenticator, uploadBanner.single('image'), new CriaBanne
 rotas.get('/banners', new ListarBannersController().handle);
 rotas.get('/banner', new BuscaBannerController().handle);
 rotas.put('/banner', Authenticator, uploadBanner.single('image'), new AtualizarBannerController().handle);
+rotas.get('/bannersAdmin', Authenticator, new ListarAdminController().handle);
 
 rotas.post('/category', Authenticator, new CriaCategoriaController().handle);
 rotas.delete('/category', Authenticator, new DeletaCategoriaController().handle);

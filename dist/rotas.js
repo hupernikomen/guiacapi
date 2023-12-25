@@ -79,6 +79,7 @@ const CriarOwnerController_1 = require("./controllers/owner/CriarOwnerController
 const BuscaRegiaoController_1 = require("./controllers/region/BuscaRegiaoController");
 const DeletaRegiaoController_1 = require("./controllers/region/DeletaRegiaoController");
 const ListarMapsController_1 = require("./controllers/map/ListarMapsController");
+const ListarAdminController_1 = require("./controllers/banner/ListarAdminController");
 const uploadProdutos = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageProdutos.s3 : multer_2.storageProdutos.local,
@@ -129,6 +130,7 @@ rotas.post('/banner', authenticator_1.Authenticator, uploadBanner.single('image'
 rotas.get('/banners', new ListarBannersController_1.ListarBannersController().handle);
 rotas.get('/banner', new BuscaBannerController_1.BuscaBannerController().handle);
 rotas.put('/banner', authenticator_1.Authenticator, uploadBanner.single('image'), new AtualizaBannerController_1.AtualizarBannerController().handle);
+rotas.get('/bannersAdmin', authenticator_1.Authenticator, new ListarAdminController_1.ListarAdminController().handle);
 rotas.post('/category', authenticator_1.Authenticator, new CriaCategoriaController_1.CriaCategoriaController().handle);
 rotas.delete('/category', authenticator_1.Authenticator, new DeletaCategoriaController_1.DeletaCategoriaController().handle);
 rotas.put('/category', authenticator_1.Authenticator, new AtualizaCategoriaController_1.AtualizaCategoriaController().handle);
