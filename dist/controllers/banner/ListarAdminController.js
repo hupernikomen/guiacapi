@@ -10,15 +10,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListarAdminController = void 0;
-const ListarBannersService_1 = require("../../services/banner/ListarBannersService");
-const lodash_1 = require("lodash");
+const ListarAdminSevice_1 = require("../../services/banner/ListarAdminSevice");
 class ListarAdminController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const listarBannersService = new ListarBannersService_1.ListarBannersService();
-            const banners = yield listarBannersService.execute();
-            const shuffledResults = (0, lodash_1.shuffle)(banners);
-            return res.json(shuffledResults);
+            const listarAdminService = new ListarAdminSevice_1.ListarAdminService();
+            const banners = yield listarAdminService.execute();
+            return res.json(banners);
         });
     }
 }

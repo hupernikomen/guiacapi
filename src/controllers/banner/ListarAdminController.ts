@@ -1,15 +1,13 @@
 import { Request, Response } from 'express';
-import { ListarBannersService } from '../../services/banner/ListarBannersService';
-import { shuffle } from 'lodash';
+import { ListarAdminService } from '../../services/banner/ListarAdminSevice';
 
 class ListarAdminController {
   async handle(req: Request, res: Response) {
-    const listarBannersService = new ListarBannersService();
+    const listarAdminService = new ListarAdminService();
 
-    const banners = await listarBannersService.execute();
+    const banners = await listarAdminService.execute();
 
-    const shuffledResults = shuffle(banners);
-    return res.json(shuffledResults);
+    return res.json(banners);
   }
 }
 
