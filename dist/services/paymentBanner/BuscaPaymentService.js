@@ -17,7 +17,7 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class BuscaPaymentBannerService {
     execute({ bannerID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield prisma_1.default.paymentBanners.findFirst({
+            return yield prisma_1.default.paymentBanners.findMany({
                 where: {
                     bannerID
                 },
@@ -28,6 +28,7 @@ class BuscaPaymentBannerService {
                     createdAt: true,
                     bannerID: true,
                     userID: true,
+                    status: true,
                     user: { select: { banners: true } }
                 }
             });

@@ -6,7 +6,7 @@ interface PaymentRquest {
 
 class BuscaPaymentBannerService {
   async execute({ bannerID }: PaymentRquest) {
-    return await prismaClient.paymentBanners.findFirst({
+    return await prismaClient.paymentBanners.findMany({
       where: {
         bannerID
       },
@@ -17,6 +17,7 @@ class BuscaPaymentBannerService {
         createdAt: true,
         bannerID: true,
         userID: true,
+        status: true,
         user: { select: { banners: true } }
       }
     });
