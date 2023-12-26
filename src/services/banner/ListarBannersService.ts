@@ -12,7 +12,8 @@ class ListarBannersService {
         link: true,
         categoryID: true,
         typebanner: true,
-        id: true
+        id: true,
+        paymentBanners: true
       }
     });
 
