@@ -15,10 +15,8 @@ class BuscaPaymentBannerService {
         value: true,
         expiration: true,
         createdAt: true,
-        bannerID: true,
-        userID: true,
         status: true,
-        user: { select: { banners: true } }
+        banner: true
       }
     });
   }

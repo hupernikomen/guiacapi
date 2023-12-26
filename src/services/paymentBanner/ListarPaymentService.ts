@@ -8,10 +8,8 @@ class ListarPaymentBannerService {
         value: true,
         expiration: true,
         createdAt: true,
-        userID: true,
-        bannerID: true,
         status: true,
-        user: { select: { banners: true } }
+        banner: true
       }
     });
   }

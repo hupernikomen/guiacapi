@@ -46,11 +46,10 @@ model PaymentBanners {
   id         String  @id @default(uuid())
   expiration String?
   value      String
-  userID     String
-  bannerID String?
   status     String? @default("Processando") // Aprovado ou Vencido
 
-  user      User      @relation(fields: [userID], references: [id])
+  bannerID   String?
+  banner      Banner?      @relation(fields: [bannerID], references: [id])
   createdAt DateTime? @default(now())
 
   @@map("paymentsBanners")
@@ -62,6 +61,8 @@ model Banner {
   route    String? //Store - DetailProduct
   paramsID String?
   userID   String
+
+  paymentBanners PaymentBanners[]
 
   link String?
   typebanner String?
@@ -79,7 +80,7 @@ model User {
   regionID String
 
   payment        Payment[]
-  paymentBanners PaymentBanners[]
+
 
   owner       Owner[]
   fuelStation FuelStation[]

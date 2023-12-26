@@ -9,29 +9,10 @@ class ListarAdminService {
         paramsID: true,
         userID: true,
         link: true,
+        paymentBanners: true,
         categoryID: true,
         typebanner: true,
-        id: true,
-        user: {
-          select: {
-            owner: { select: { name: true, whatsapp: true } },
-            paymentBanners: {
-              select: {
-                id: true,
-                expiration: true,
-                status: true,
-                bannerID: true
-              }
-            },
-            payment: {
-              select: {
-                id: true,
-                expiration: true,
-                status: true
-              }
-            }
-          }
-        }
+        id: true
       }
     });
 
