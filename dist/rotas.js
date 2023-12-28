@@ -80,6 +80,7 @@ const BuscaRegiaoController_1 = require("./controllers/region/BuscaRegiaoControl
 const DeletaRegiaoController_1 = require("./controllers/region/DeletaRegiaoController");
 const ListarMapsController_1 = require("./controllers/map/ListarMapsController");
 const ListarAdminController_1 = require("./controllers/banner/ListarAdminController");
+const ListarRegioesControllerAdmin_1 = require("./controllers/region/ListarRegioesControllerAdmin");
 const uploadProdutos = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageProdutos.s3 : multer_2.storageProdutos.local,
@@ -140,6 +141,7 @@ rotas.get('/subcategories', new ListaSubCategoriasController_1.ListaSubCategoria
 rotas.get('/subcategory', new BuscaSubcategoriaController_1.BuscaSubcategoriaController().handle);
 rotas.post('/region', authenticator_1.Authenticator, new CriaRegiaoController_1.CriaRegiaoController().handle);
 rotas.get('/regions', new ListarRegioesController_1.ListarRegioesController().handle);
+rotas.get('/regionsAdmin', new ListarRegioesControllerAdmin_1.ListarRegioesControllerAdmin().handle);
 rotas.get('/region', new BuscaRegiaoController_1.BuscaRegiaoController().handle);
 rotas.delete('/region', authenticator_1.Authenticator, new DeletaRegiaoController_1.DeletaRegiaoController().handle);
 rotas.post('/payment', authenticator_1.Authenticator, new CriarPagamentoController_1.CriaPaymentController().handle);

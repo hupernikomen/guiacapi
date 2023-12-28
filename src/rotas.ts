@@ -77,6 +77,7 @@ import { BuscaRegiaoController } from './controllers/region/BuscaRegiaoControlle
 import { DeletaRegiaoController } from './controllers/region/DeletaRegiaoController';
 import { ListaMapasController } from './controllers/map/ListarMapsController';
 import { ListarAdminController } from './controllers/banner/ListarAdminController';
+import { ListarRegioesControllerAdmin } from './controllers/region/ListarRegioesControllerAdmin';
 
 const uploadProdutos = multer({
   fileFilter: fileFilter,
@@ -148,6 +149,7 @@ rotas.get('/subcategory', new BuscaSubcategoriaController().handle);
 
 rotas.post('/region', Authenticator, new CriaRegiaoController().handle);
 rotas.get('/regions', new ListarRegioesController().handle);
+rotas.get('/regionsAdmin', new ListarRegioesControllerAdmin().handle);
 rotas.get('/region', new BuscaRegiaoController().handle);
 rotas.delete('/region', Authenticator, new DeletaRegiaoController().handle);
 
