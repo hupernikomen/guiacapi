@@ -23,20 +23,7 @@ class ListaContatosService {
       }
     });
 
-    const owner = await prismaClient.owner.findFirst({
-      where: { userID },
-      select: {
-        id: true,
-        name: true,
-        whatsapp: true
-      }
-    });
-
-    if (contato.length === 0) {
-      return owner;
-    } else {
-      return contato;
-    }
+    return contato;
   }
 }
 

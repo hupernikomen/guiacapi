@@ -33,20 +33,7 @@ class ListaContatosService {
                     away: true
                 }
             });
-            const owner = yield prisma_1.default.owner.findFirst({
-                where: { userID },
-                select: {
-                    id: true,
-                    name: true,
-                    whatsapp: true
-                }
-            });
-            if (contato.length === 0) {
-                return owner;
-            }
-            else {
-                return contato;
-            }
+            return contato;
         });
     }
 }
