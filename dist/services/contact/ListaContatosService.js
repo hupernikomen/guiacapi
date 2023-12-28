@@ -30,11 +30,23 @@ class ListaContatosService {
                     time: true,
                     saturday: true,
                     sunday: true,
-                    away: true,
-                    user: { select: { owner: true } }
+                    away: true
                 }
             });
-            return contato;
+            const owner = yield prisma_1.default.owner.findFirst({
+                where: { userID },
+                select: {
+                    id: true,
+                    name: true,
+                    whatsapp: true
+                }
+            });
+            if (!contato) {
+                return owner;
+            }
+            else {
+                return contato;
+            }
         });
     }
 }
