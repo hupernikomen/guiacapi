@@ -20,14 +20,13 @@ class ListarUsuariosService {
             const usuarios = yield prisma_1.default.user.findMany({
                 select: {
                     id: true,
-                    user: true,
                     store: { select: { name: true, userID: true } },
                     person: { select: { userID: true, name: true, profession: { select: { name: true } } } },
-                    fuelStation: { select: { name: true } },
-                    region: { select: { name: true } },
-                    contact: true,
                     payment: true,
-                    map: true
+                    map: true,
+                    user: true
+                    // region: { select: { name: true } },
+                    // contact: true,
                 }
             });
             return usuarios;
