@@ -32,6 +32,8 @@ class ListaContatosService {
       }
     });
 
+    console.log(contato);
+
     if (!contato) {
       return owner;
     } else {
