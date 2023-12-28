@@ -20,15 +20,15 @@ class ListarBannersService {
             const _banners = yield prisma_1.default.banner.findMany({
                 where: { paymentBanners: { every: { status: 'Aprovado' } } },
                 select: {
-                    image: true,
+                    id: true,
                     route: true,
-                    paramsID: true,
                     userID: true,
                     link: true,
-                    categoryID: true,
+                    image: true,
+                    paymentBanners: true,
                     typebanner: true,
-                    id: true,
-                    paymentBanners: true
+                    categoryID: true
+                    // paramsID: true,
                 }
             });
             return _banners;

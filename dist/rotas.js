@@ -131,7 +131,7 @@ rotas.post('/user', authenticator_1.Authenticator, new CriaUsuarioController_1.C
 // account/person/dados
 // account/users/manipulatePassword
 rotas.put('/user', authenticator_1.Authenticator, new AtualizaUsuarioController_1.AtualizaUsuarioController().handle);
-// pages/admin/index
+// pages/admin/index - OK
 rotas.get('/users', new ListarUsuariosController_1.ListarUsuariosController().handle);
 // pages/admin/create/payment
 rotas.get('/user', new BuscarUsuarioController_1.BuscaUsuarioController().handle);
