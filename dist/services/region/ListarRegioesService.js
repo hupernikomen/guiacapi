@@ -18,24 +18,13 @@ class ListarRegioesService {
     execute() {
         return __awaiter(this, void 0, void 0, function* () {
             const _region = yield prisma_1.default.region.findMany({
-                where: { user: { some: { payment: { some: { status: 'Aprovado' } } } } },
+                where: { OR: [{ user: { some: { payment: { some: { status: 'Aprovado' } } } }, name: 'Teresina' }] },
                 select: {
                     id: true,
                     name: true,
                     user: { select: { person: true, store: true } }
                 }
             });
-            const _teresina = yield prisma_1.default.region.findFirst({
-                where: { name: 'Teresina' },
-                select: {
-                    id: true,
-                    name: true,
-                    user: { select: { person: true, store: true } }
-                }
-            });
-            if (_teresina) {
-                _region.push(_teresina);
-            }
             return _region;
         });
     }
