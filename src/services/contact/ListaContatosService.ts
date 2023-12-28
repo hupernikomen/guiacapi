@@ -1,34 +1,31 @@
-import prismaClient from "../../prisma";
+import prismaClient from '../../prisma';
 
 interface contatoRequest {
-  userID: string
+  userID: string;
 }
 
 class ListaContatosService {
-  async execute({
-    userID
-}: contatoRequest) {
-
+  async execute({ userID }: contatoRequest) {
     const contato = await prismaClient.contact.findMany({
-      where:{
+      where: {
         userID
       },
       select: {
         id: true,
         name: true,
         avatar: true,
-        sector:true,
+        sector: true,
         whatsapp: true,
-        time:true,
-        saturday:true,
-        sunday:true,
-        away:true
-
+        time: true,
+        saturday: true,
+        sunday: true,
+        away: true,
+        user: { select: { owner: true } }
       }
-    })
+    });
 
-    return contato
+    return contato;
   }
 }
 
-export { ListaContatosService }
+export { ListaContatosService };

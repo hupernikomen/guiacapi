@@ -30,7 +30,8 @@ class ListaContatosService {
                     time: true,
                     saturday: true,
                     sunday: true,
-                    away: true
+                    away: true,
+                    user: { select: { owner: true } }
                 }
             });
             return contato;
