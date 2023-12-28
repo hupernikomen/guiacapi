@@ -11,7 +11,8 @@ class BuscaOwnerService {
       select: {
         id: true,
         name: true,
-        whatsapp: true
+        whatsapp: true,
+        user: { select: { store: { select: { avatar: true } }, person: { select: { avatar: true } } } }
       }
     });
     return owner;

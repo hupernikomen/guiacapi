@@ -125,90 +125,196 @@ rotas.post('/admin', new CriaAdminController().handle);
 rotas.get('/storesAdmin', new ListaLojasControllerAdmin().handle);
 rotas.get('/personsAdmin', new ListarProfissionalControllerAdmin().handle);
 
+// pages/admin/create/user
 rotas.post('/owner', Authenticator, new CriaOwnerController().handle);
+
+// pages/contactUs
 rotas.get('/owner', new BuscaOwnerController().handle);
 
+// pages/admin/create/user
 rotas.post('/user', Authenticator, new CriaUsuarioController().handle);
+
+// account/person/dados
+// account/users/manipulatePassword
 rotas.put('/user', Authenticator, new AtualizaUsuarioController().handle);
+
+// pages/admin/index
 rotas.get('/users', new ListarUsuariosController().handle);
+
+// pages/admin/create/payment
 rotas.get('/user', new BuscaUsuarioController().handle);
+
+// context/appcontext
 rotas.post('/login', new AutenticaUsuarioController().handle);
 
+// pages/admin/create/banner
 rotas.post('/banner', Authenticator, uploadBanner.single('image'), new CriaBannerController().handle);
+
+// components/FixedBanner
+// pages/feed
 rotas.get('/banners', new ListarBannersController().handle);
+
 rotas.get('/banner', new BuscaBannerController().handle);
 rotas.put('/banner', Authenticator, uploadBanner.single('image'), new AtualizarBannerController().handle);
+
+// pages/admin/list/banner
 rotas.get('/bannersAdmin', Authenticator, new ListarAdminController().handle);
 
 rotas.post('/category', Authenticator, new CriaCategoriaController().handle);
 rotas.delete('/category', Authenticator, new DeletaCategoriaController().handle);
 rotas.put('/category', Authenticator, new AtualizaCategoriaController().handle);
+
+// account/store/addproduct
+// pages/admin/create/banner
 rotas.get('/categories', new ListaCategoriaController().handle);
 
 rotas.post('/subcategory', Authenticator, new CriaSubCategoriaController().handle);
+
+// account/store/addproduct
 rotas.get('/subcategories', new ListaSubCategoriaController().handle);
+
 rotas.get('/subcategory', new BuscaSubcategoriaController().handle);
 
+// pages/admin/create/region
 rotas.post('/region', Authenticator, new CriaRegiaoController().handle);
+
+// pages/filters
 rotas.get('/regions', new ListarRegioesController().handle);
+
+// pages/admin/create/user
 rotas.get('/regionsAdmin', new ListarRegioesControllerAdmin().handle);
+
+// context/appcontext
 rotas.get('/region', new BuscaRegiaoController().handle);
 rotas.delete('/region', Authenticator, new DeletaRegiaoController().handle);
 
+// pages/admin/create/payment
 rotas.post('/payment', Authenticator, new CriaPaymentController().handle);
+
 rotas.get('/payments', new ListarPaymentController().handle);
 rotas.get('/payment', new BuscaPaymentController().handle);
+
+// pages/admin/create/payment
 rotas.put('/payment', Authenticator, new AtualizarPagamentoController().handle);
 
+// pages/admin/create/paymentBanner
 rotas.post('/paymentBanner', Authenticator, new CriaPaymentBannerController().handle);
+
+// pages/admin/list/banner
 rotas.get('/paymentBanners', new ListarPaymentBannerController().handle);
+
+// pages/admin/create/paymentBanner
 rotas.get('/paymentBanner', new BuscaPaymentBannerController().handle);
+
+// pages/admin/create/paymentBanner
 rotas.put('/paymentBanner', Authenticator, new AtualizarPagamentoBannerController().handle);
 
 rotas.post('/campaign', Authenticator, new CriaCampanhaController().handle);
 rotas.put('/campaign', Authenticator, new AtualizaCampanhaController().handle);
 rotas.get('/campaigns', new ListaCampanhasInativasController().handle);
 rotas.get('/campaigns/active', new ListaCampanhaController().handle);
-
 rotas.post('/posto', new CriaPostoController().handle);
 rotas.put('/posto', uploadAvatar.single('avatar'), new AtualizaPostoController().handle);
 rotas.get('/posto', new BuscaPostoController().handle);
 rotas.get('/postos', new ListarPostosController().handle);
 
+// account/store/manipulateproduct
 rotas.put('/product', Authenticator, new AtualizaProdutoController().handle);
+
+// account/store/manipulateproduct
 rotas.delete('/product', Authenticator, new DeletaProdutoController().handle);
+
+// account/store/addproduct
 rotas.post('/product', Authenticator, uploadProdutos.array('files', 5), new CriaProdutoController().handle);
+
+// pages/feed
+// pages/search
 rotas.get('/products', new ListarProdutosController().handle);
+
+// pages/productbycategory
 rotas.get('/products/category', new PorCategoriaProdutoController().handle);
+
+// pages/detailProduct
+// pages/productbysubcategory
 rotas.get('/products/subcategory', new PorSubcategoriaProdutoController().handle);
+
+// account/store/manipulateproduct
+// pages/detailProduct
 rotas.get('/detail/product', new DetalheProdutoController().handle);
 
+// pages/admin/create/location
+// pages/admin/create/user
 rotas.post('/map', Authenticator, new CriaMapaController().handle);
+
+// pages/admin/create/location
 rotas.put('/map', Authenticator, new AtualizaMapaController().handle);
+
+// pages/admin/create/location
+// pages/map
 rotas.get('/map', new BuscaMapaController().handle);
+
+// pages/whois
 rotas.get('/maps', new ListaMapasController().handle);
 
+// account/users/contacts/create
 rotas.post('/contact', Authenticator, uploadAvatar.single('avatar'), new CriaContatoController().handle);
+
+// account/users/contacts/listcontacts
 rotas.delete('/contact', Authenticator, new DeletarContatoController().handle);
+
+// account/users/contacts/listcontacts
+// pages/contactUs
 rotas.get('/contacts', new ListaContatosController().handle);
 
+// account/store/home
+// account/store/settings
+// account/store/addproduct
+// account/store/profilestore
 rotas.get('/store/logged', Authenticator, new LojaLogadaController().handle);
+
+// pages/admin/create/user
 rotas.post('/store', Authenticator, new CriaLojaController().handle);
+
+// account/store/profilestore
+// account/store/settings
+// pages/admin/create/user
 rotas.put('/store', Authenticator, uploadAvatar.single('avatar'), new AtualizaLojaController().handle);
+
+// pages/admin/create/banner
+// pages/liststores
 rotas.get('/stores', new ListaLojasController().handle);
+
+// pages/store
 rotas.get('/store', new BuscaLojaController().handle);
 
 rotas.post('/brand', Authenticator, uploadMarca.single('avatar'), new CriaMarcaController().handle);
 rotas.delete('/brand', Authenticator, new DeletaMarcaController().handle);
+
+// pages/feed
 rotas.get('/brands', new ListaMarcasController().handle);
 
+// pages/admin/create/user
 rotas.post('/person', Authenticator, new CriaProfissionalController().handle);
-rotas.post('/profession', Authenticator, new CriaProfissaoController().handle);
-rotas.put('/profession', Authenticator, new AtualizaProfissaoController().handle);
+
+// account/person/dados
+// pages/admin/create/user
 rotas.put('/person', Authenticator, uploadAvatar.single('avatar'), new AtualizarProfissionalController().handle);
+
+// account/person/dados
 rotas.get('/person', new BuscaProfissionalController().handle);
-rotas.get('/professions', new ListaProfissaoController().handle);
+
+// pages/feed
+// pages/listPersons
+// pages/search
 rotas.get('/persons', new ListarProfissionalController().handle);
+
+// pages/admin/create/profession
+rotas.post('/profession', Authenticator, new CriaProfissaoController().handle);
+
+rotas.put('/profession', Authenticator, new AtualizaProfissaoController().handle);
+
+// pages/admin/create/user
+rotas.get('/professions', new ListaProfissaoController().handle);
 rotas.get('/profession/persons', new PorProfissaoController().handle);
 
 export { rotas };
