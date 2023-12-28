@@ -3,7 +3,7 @@ import prismaClient from '../../prisma';
 class ListarRegioesService {
   async execute() {
     const _region = await prismaClient.region.findMany({
-      // where: { OR: [{ user: { some: { payment: { some: { status: 'Aprovado' } } } } }, { name: 'Teresina' }] },
+      where: { OR: [{ user: { some: { payment: { some: { status: 'Aprovado' } } } } }, { name: 'Teresina' }] },
       select: {
         id: true,
         name: true,
