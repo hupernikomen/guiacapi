@@ -41,8 +41,7 @@ class ListaContatosService {
                     whatsapp: true
                 }
             });
-            console.log(contato);
-            if (!contato) {
+            if (contato.length === 0) {
                 return owner;
             }
             else {

@@ -32,9 +32,7 @@ class ListaContatosService {
       }
     });
 
-    console.log(contato);
-
-    if (!contato) {
+    if (contato.length === 0) {
       return owner;
     } else {
       return contato;
