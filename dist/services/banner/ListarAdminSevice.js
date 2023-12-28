@@ -19,15 +19,15 @@ class ListarAdminService {
         return __awaiter(this, void 0, void 0, function* () {
             const _banners = yield prisma_1.default.banner.findMany({
                 select: {
+                    id: true,
                     image: true,
                     route: true,
-                    paramsID: true,
                     userID: true,
                     link: true,
                     paymentBanners: true,
                     categoryID: true,
-                    typebanner: true,
-                    id: true
+                    typebanner: true
+                    // paramsID: true,
                 }
             });
             return _banners;

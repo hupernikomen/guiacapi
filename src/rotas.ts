@@ -141,7 +141,7 @@ rotas.put('/user', Authenticator, new AtualizaUsuarioController().handle);
 // pages/admin/index - OK
 rotas.get('/users', new ListarUsuariosController().handle);
 
-// pages/admin/create/payment
+// pages/admin/create/payment - OK
 rotas.get('/user', new BuscaUsuarioController().handle);
 
 // context/appcontext
@@ -150,14 +150,14 @@ rotas.post('/login', new AutenticaUsuarioController().handle);
 // pages/admin/create/banner
 rotas.post('/banner', Authenticator, uploadBanner.single('image'), new CriaBannerController().handle);
 
-// components/FixedBanner
-// pages/feed
+// components/FixedBanner - OK
+// pages/feed - OK
 rotas.get('/banners', new ListarBannersController().handle);
 
-rotas.get('/banner', new BuscaBannerController().handle);
-rotas.put('/banner', Authenticator, uploadBanner.single('image'), new AtualizarBannerController().handle);
+// rotas.get('/banner', new BuscaBannerController().handle);
+// rotas.put('/banner', Authenticator, uploadBanner.single('image'), new AtualizarBannerController().handle);
 
-// pages/admin/list/banner
+// pages/admin/list/banner - OK
 rotas.get('/bannersAdmin', Authenticator, new ListarAdminController().handle);
 
 rotas.post('/category', Authenticator, new CriaCategoriaController().handle);

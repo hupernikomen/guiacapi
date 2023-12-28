@@ -73,8 +73,6 @@ const AtualizarPagamentoController_2 = require("./controllers/paymentBanner/Atua
 const BuscaPaymentController_2 = require("./controllers/paymentBanner/BuscaPaymentController");
 const CriarPagamentoController_2 = require("./controllers/paymentBanner/CriarPagamentoController");
 const ListarPaymentController_2 = require("./controllers/paymentBanner/ListarPaymentController");
-const BuscaBannerController_1 = require("./controllers/banner/BuscaBannerController");
-const AtualizaBannerController_1 = require("./controllers/banner/AtualizaBannerController");
 const CriarOwnerController_1 = require("./controllers/owner/CriarOwnerController");
 const BuscaRegiaoController_1 = require("./controllers/region/BuscaRegiaoController");
 const DeletaRegiaoController_1 = require("./controllers/region/DeletaRegiaoController");
@@ -133,18 +131,18 @@ rotas.post('/user', authenticator_1.Authenticator, new CriaUsuarioController_1.C
 rotas.put('/user', authenticator_1.Authenticator, new AtualizaUsuarioController_1.AtualizaUsuarioController().handle);
 // pages/admin/index - OK
 rotas.get('/users', new ListarUsuariosController_1.ListarUsuariosController().handle);
-// pages/admin/create/payment
+// pages/admin/create/payment - OK
 rotas.get('/user', new BuscarUsuarioController_1.BuscaUsuarioController().handle);
 // context/appcontext
 rotas.post('/login', new AutenticaUsuarioController_1.AutenticaUsuarioController().handle);
 // pages/admin/create/banner
 rotas.post('/banner', authenticator_1.Authenticator, uploadBanner.single('image'), new CriaBannerController_1.CriaBannerController().handle);
-// components/FixedBanner
-// pages/feed
+// components/FixedBanner - OK
+// pages/feed - OK
 rotas.get('/banners', new ListarBannersController_1.ListarBannersController().handle);
-rotas.get('/banner', new BuscaBannerController_1.BuscaBannerController().handle);
-rotas.put('/banner', authenticator_1.Authenticator, uploadBanner.single('image'), new AtualizaBannerController_1.AtualizarBannerController().handle);
-// pages/admin/list/banner
+// rotas.get('/banner', new BuscaBannerController().handle);
+// rotas.put('/banner', Authenticator, uploadBanner.single('image'), new AtualizarBannerController().handle);
+// pages/admin/list/banner - OK
 rotas.get('/bannersAdmin', authenticator_1.Authenticator, new ListarAdminController_1.ListarAdminController().handle);
 rotas.post('/category', authenticator_1.Authenticator, new CriaCategoriaController_1.CriaCategoriaController().handle);
 rotas.delete('/category', authenticator_1.Authenticator, new DeletaCategoriaController_1.DeletaCategoriaController().handle);

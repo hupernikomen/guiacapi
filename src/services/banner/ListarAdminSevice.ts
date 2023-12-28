@@ -4,15 +4,15 @@ class ListarAdminService {
   async execute() {
     const _banners = await prismaClient.banner.findMany({
       select: {
+        id: true,
         image: true,
         route: true,
-        paramsID: true,
         userID: true,
         link: true,
         paymentBanners: true,
         categoryID: true,
-        typebanner: true,
-        id: true
+        typebanner: true
+        // paramsID: true,
       }
     });
 
