@@ -124,7 +124,7 @@ rotas.get('/storesAdmin', new ListaLojasControllerAdmin_1.ListaLojasControllerAd
 rotas.get('/personsAdmin', new ListarProfissionalControllerAdmin_1.ListarProfissionalControllerAdmin().handle);
 // pages/admin/create/user
 rotas.post('/owner', authenticator_1.Authenticator, new CriarOwnerController_1.CriaOwnerController().handle);
-// pages/contactUs
+// pages/contactUs - OK
 rotas.get('/owner', new BuscarOwnerController_1.BuscaOwnerController().handle);
 // pages/admin/create/user
 rotas.post('/user', authenticator_1.Authenticator, new CriaUsuarioController_1.CriaUsuarioController().handle);

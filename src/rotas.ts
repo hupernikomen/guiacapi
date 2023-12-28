@@ -128,7 +128,7 @@ rotas.get('/personsAdmin', new ListarProfissionalControllerAdmin().handle);
 // pages/admin/create/user
 rotas.post('/owner', Authenticator, new CriaOwnerController().handle);
 
-// pages/contactUs
+// pages/contactUs - OK
 rotas.get('/owner', new BuscaOwnerController().handle);
 
 // pages/admin/create/user
@@ -138,7 +138,7 @@ rotas.post('/user', Authenticator, new CriaUsuarioController().handle);
 // account/users/manipulatePassword
 rotas.put('/user', Authenticator, new AtualizaUsuarioController().handle);
 
-// pages/admin/index
+// pages/admin/index - OK
 rotas.get('/users', new ListarUsuariosController().handle);
 
 // pages/admin/create/payment
