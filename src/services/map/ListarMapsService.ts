@@ -9,7 +9,7 @@ class ListaMapasService {
         user: {
           select: {
             store: true,
-            person: { select: { profession: { select: { name: true } }, address: true, avatar: true, name: true, professionID: true, bio: true } }
+            person: { select: { profession: { select: { name: true } }, id: true, address: true, avatar: true, name: true, professionID: true, bio: true } }
           }
         }
       }
