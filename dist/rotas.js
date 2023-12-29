@@ -82,6 +82,7 @@ const ListarMapsController_1 = require("./controllers/map/ListarMapsController")
 const ListarAdminController_1 = require("./controllers/banner/ListarAdminController");
 const ListarRegioesControllerAdmin_1 = require("./controllers/region/ListarRegioesControllerAdmin");
 const BuscarOwnerController_1 = require("./controllers/owner/BuscarOwnerController");
+const DeleteBannerController_1 = require("./controllers/banner/DeleteBannerController");
 const uploadProdutos = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageProdutos.s3 : multer_2.storageProdutos.local,
@@ -143,6 +144,7 @@ rotas.post('/banner', authenticator_1.Authenticator, uploadBanner.single('image'
 // pages/productByCategory - OK
 // pages/detailProduct - OK
 rotas.get('/banners', new ListarBannersController_1.ListarBannersController().handle);
+rotas.delete('/banner', authenticator_1.Authenticator, new DeleteBannerController_1.DeleteBannerController().handle);
 // rotas.get('/banner', new BuscaBannerController().handle);
 // rotas.put('/banner', Authenticator, uploadBanner.single('image'), new AtualizarBannerController().handle);
 // pages/admin/list/banner - OK
