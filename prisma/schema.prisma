@@ -14,7 +14,6 @@ model Admin {
   user     String
   password String
 
-
   @@map("admins")
 }
 
@@ -23,54 +22,9 @@ model Owner {
   name     String
   whatsapp String
   userID   String
-
   user User @relation(fields: [userID], references: [id])
 
   @@map("owners")
-}
-
-model Payment {
-  id         String  @id @default(uuid())
-  expiration String?
-  value      String
-  userID     String
-  status     String? @default("Processando") // Aprovado ou Vencido
-
-  user      User      @relation(fields: [userID], references: [id])
-  createdAt DateTime? @default(now())
-
-  @@map("payments")
-}
-
-model PaymentBanners {
-  id         String  @id @default(uuid())
-  expiration String?
-  value      String
-  status     String? @default("Processando") // Aprovado ou Vencido
-
-  bannerID   String?
-  banner      Banner?      @relation(fields: [bannerID], references: [id])
-  createdAt DateTime? @default(now())
-
-  @@map("paymentsBanners")
-}
-
-model Banner {
-  id       String @id @default(uuid())
-  image    Json
-  route    String? //Store - DetailProduct
-  paramsID String?
-  userID   String
-
-  paymentBanners PaymentBanners[]
-
-  link String?
-  typebanner String?
-  categoryID String? // para filtrar em qual categoria ele deve aparecer em detalhes 
-
-  user User @relation(fields: [userID], references: [id])
-
-  @@map("banners")
 }
 
 model User {
@@ -78,10 +32,7 @@ model User {
   user     String @unique
   password String
   regionID String
-
   payment        Payment[]
-
-
   owner       Owner[]
   fuelStation FuelStation[]
   person      Person[]
@@ -90,50 +41,12 @@ model User {
   contact     Contact[]
   banners     Banner[]
   brand       Brand[]
-
   region Region @relation(fields: [regionID], references: [id])
-
   createdAt DateTime? @default(now())
 
   @@map("users")
 }
 
-model Map {
-  id     String @id @default(uuid())
-  latlng Json?
-  userID String
-
-  user User @relation(fields: [userID], references: [id])
-
-  @@map("maps")
-}
-
-model Region {
-  id   String @id @default(uuid())
-  name String
-
-  user      User[]
-  createdAt DateTime? @default(now())
-
-  @@map("regions")
-}
-
-model Contact {
-  id       String   @id @default(uuid())
-  name     String?
-  avatar   Json?
-  whatsapp String
-  time     Json?
-  sector   String?
-  saturday Boolean?
-  sunday   Boolean?
-  away     Boolean? //afastado
-  userID   String?
-
-  user User? @relation(fields: [userID], references: [id])
-
-  @@map("contacts")
-}
 
 model Store {
   id        String    @id @default(uuid())
@@ -151,19 +64,6 @@ model Store {
   createdAt DateTime? @default(now())
 
   @@map("stores")
-}
-
-model Brand {
-  id     String @id @default(uuid())
-  name   String
-  avatar Json?
-  userID String
-
-  user User? @relation(fields: [userID], references: [id])
-
-  createdAt DateTime? @default(now())
-
-  @@map("brands")
 }
 
 model Product {
@@ -191,6 +91,129 @@ model Product {
 
   @@map("products")
 }
+
+model Person {
+  id           String  @id @default(uuid())
+  avatar       Json?
+  name         String?
+  district     String?
+  address      String?
+  bio          String?
+  professionID String?
+  userID       String
+  type         String? @default("person")
+
+  user       User        @relation(fields: [userID], references: [id])
+  profession Profession? @relation(fields: [professionID], references: [id])
+
+  createdAt DateTime? @default(now())
+
+  @@map("persons")
+}
+
+model Profession {
+  id   String @id @default(uuid())
+  name String
+
+  person Person[]
+
+  createdAt DateTime? @default(now())
+
+  @@map("professions")
+}
+
+model Payment {
+  id         String  @id @default(uuid())
+  expiration String?
+  value      String
+  userID     String
+  status     String? @default("Processando") // Aprovado ou Vencido
+  user      User      @relation(fields: [userID], references: [id])
+  createdAt DateTime? @default(now())
+
+  @@map("payments")
+}
+
+model PaymentBanners {
+  id         String  @id @default(uuid())
+  expiration String?
+  value      String
+  status     String? @default("Processando") // Aprovado ou Vencido
+
+  bannerID   String?
+  banner      Banner?      @relation(fields: [bannerID], references: [id])
+  createdAt DateTime? @default(now())
+
+  @@map("paymentsBanners")
+}
+
+model Banner {
+  id       String @id @default(uuid())
+  image    Json
+  route    String? //Store - DetailProduct
+  paramsID String?
+  userID   String
+  link String?
+  typebanner String?
+  categoryID String? // para filtrar em qual categoria ele deve aparecer em detalhes 
+  paymentBanners PaymentBanners[]
+
+  user User @relation(fields: [userID], references: [id])
+
+  @@map("banners")
+}
+
+
+model Map {
+  id     String @id @default(uuid())
+  latlng Json?
+  userID String
+  user User @relation(fields: [userID], references: [id])
+
+  @@map("maps")
+}
+
+model Region {
+  id   String @id @default(uuid())
+  name String
+  user      User[]
+  createdAt DateTime? @default(now())
+
+  @@map("regions")
+}
+
+model Contact {
+  id       String   @id @default(uuid())
+  name     String?
+  avatar   Json?
+  whatsapp String
+  time     Json?
+  sector   String?
+  saturday Boolean?
+  sunday   Boolean?
+  away     Boolean? //afastado
+  userID   String?
+
+  user User? @relation(fields: [userID], references: [id])
+
+  @@map("contacts")
+}
+
+
+model Brand {
+  id     String @id @default(uuid())
+  name   String
+  avatar Json?
+  userID String
+
+  user User? @relation(fields: [userID], references: [id])
+
+  createdAt DateTime? @default(now())
+
+  @@map("brands")
+}
+
+
 
 model Category {
   id   String @id @default(uuid())
@@ -224,36 +247,6 @@ model Campaign {
   product Product[]
 
   @@map("campaigns")
-}
-
-model Person {
-  id           String  @id @default(uuid())
-  avatar       Json?
-  name         String?
-  district     String?
-  address      String?
-  bio          String?
-  professionID String?
-  userID       String
-  type         String? @default("person")
-
-  user       User        @relation(fields: [userID], references: [id])
-  profession Profession? @relation(fields: [professionID], references: [id])
-
-  createdAt DateTime? @default(now())
-
-  @@map("persons")
-}
-
-model Profession {
-  id   String @id @default(uuid())
-  name String
-
-  person Person[]
-
-  createdAt DateTime? @default(now())
-
-  @@map("professions")
 }
 
 model FuelStation {

@@ -73,6 +73,8 @@ const AtualizarPagamentoController_2 = require("./controllers/paymentBanner/Atua
 const BuscaPaymentController_2 = require("./controllers/paymentBanner/BuscaPaymentController");
 const CriarPagamentoController_2 = require("./controllers/paymentBanner/CriarPagamentoController");
 const ListarPaymentController_2 = require("./controllers/paymentBanner/ListarPaymentController");
+// import { BuscaBannerController } from './controllers/banner/BuscaBannerController';
+// import { AtualizarBannerController } from './controllers/banner/AtualizaBannerController';
 const CriarOwnerController_1 = require("./controllers/owner/CriarOwnerController");
 const BuscaRegiaoController_1 = require("./controllers/region/BuscaRegiaoController");
 const DeletaRegiaoController_1 = require("./controllers/region/DeletaRegiaoController");
@@ -137,8 +139,9 @@ rotas.get('/user', new BuscarUsuarioController_1.BuscaUsuarioController().handle
 rotas.post('/login', new AutenticaUsuarioController_1.AutenticaUsuarioController().handle);
 // pages/admin/create/banner
 rotas.post('/banner', authenticator_1.Authenticator, uploadBanner.single('image'), new CriaBannerController_1.CriaBannerController().handle);
-// components/FixedBanner - OK
 // pages/feed - OK
+// pages/productByCategory - OK
+// pages/detailProduct - OK
 rotas.get('/banners', new ListarBannersController_1.ListarBannersController().handle);
 // rotas.get('/banner', new BuscaBannerController().handle);
 // rotas.put('/banner', Authenticator, uploadBanner.single('image'), new AtualizarBannerController().handle);

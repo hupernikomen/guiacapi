@@ -23,22 +23,22 @@ class PorSubcategoriaProdutoService {
                     subcategoryID,
                     store: {
                         user: {
-                            payment: { some: { status: "Aprovado" } },
+                            payment: { some: { status: 'Aprovado' } },
                             regionID
                         }
                     }
                 },
                 select: {
                     id: true,
-                    name: true,
-                    price: true,
                     off: true,
+                    price: true,
+                    name: true,
                     image: true,
                     campaign: {
                         select: {
                             id: true,
                             name: true,
-                            theme: true,
+                            theme: true
                         }
                     },
                     subcategory: {
@@ -48,6 +48,7 @@ class PorSubcategoriaProdutoService {
                             name: true,
                             category: {
                                 select: {
+                                    id: true,
                                     name: true
                                 }
                             }
@@ -60,7 +61,7 @@ class PorSubcategoriaProdutoService {
                             delivery: true,
                             user: { select: { regionID: true } }
                         }
-                    },
+                    }
                 }
             });
         });

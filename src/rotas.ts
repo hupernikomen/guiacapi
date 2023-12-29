@@ -70,8 +70,8 @@ import { AtualizarPagamentoBannerController } from './controllers/paymentBanner/
 import { BuscaPaymentBannerController } from './controllers/paymentBanner/BuscaPaymentController';
 import { CriaPaymentBannerController } from './controllers/paymentBanner/CriarPagamentoController';
 import { ListarPaymentBannerController } from './controllers/paymentBanner/ListarPaymentController';
-import { BuscaBannerController } from './controllers/banner/BuscaBannerController';
-import { AtualizarBannerController } from './controllers/banner/AtualizaBannerController';
+// import { BuscaBannerController } from './controllers/banner/BuscaBannerController';
+// import { AtualizarBannerController } from './controllers/banner/AtualizaBannerController';
 import { CriaOwnerController } from './controllers/owner/CriarOwnerController';
 import { BuscaRegiaoController } from './controllers/region/BuscaRegiaoController';
 import { DeletaRegiaoController } from './controllers/region/DeletaRegiaoController';
@@ -150,8 +150,9 @@ rotas.post('/login', new AutenticaUsuarioController().handle);
 // pages/admin/create/banner
 rotas.post('/banner', Authenticator, uploadBanner.single('image'), new CriaBannerController().handle);
 
-// components/FixedBanner - OK
 // pages/feed - OK
+// pages/productByCategory - OK
+// pages/detailProduct - OK
 rotas.get('/banners', new ListarBannersController().handle);
 
 // rotas.get('/banner', new BuscaBannerController().handle);
