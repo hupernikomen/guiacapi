@@ -3,6 +3,11 @@ import prismaClient from '../../prisma';
 class ListaMapasService {
   async execute() {
     const map = await prismaClient.map.findMany({
+      where: {
+        user: {
+          payment: { every: { status: 'Aprovado' } }
+        }
+      },
       select: {
         id: true,
         latlng: true,

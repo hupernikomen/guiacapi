@@ -18,6 +18,11 @@ class ListaMapasService {
     execute() {
         return __awaiter(this, void 0, void 0, function* () {
             const map = yield prisma_1.default.map.findMany({
+                where: {
+                    user: {
+                        payment: { every: { status: 'Aprovado' } }
+                    }
+                },
                 select: {
                     id: true,
                     latlng: true,
