@@ -1,23 +1,22 @@
-import prismaClient from "../../prisma";
+import prismaClient from '../../prisma';
 
 interface mapaRequest {
-  userID: string
+  userID: string;
 }
 
 class BuscaMapaService {
   async execute({ userID }: mapaRequest) {
-
     const _map = await prismaClient.map.findFirst({
       where: { userID },
       select: {
         id: true,
         userID: true,
         latlng: true,
-        
+        user: { select: { person: true, store: true } }
       }
-    })
-    return _map
+    });
+    return _map;
   }
 }
 
-export { BuscaMapaService }
+export { BuscaMapaService };
