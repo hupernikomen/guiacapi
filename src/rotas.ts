@@ -80,6 +80,7 @@ import { ListarAdminController } from './controllers/banner/ListarAdminControlle
 import { ListarRegioesControllerAdmin } from './controllers/region/ListarRegioesControllerAdmin';
 import { BuscaOwnerController } from './controllers/owner/BuscarOwnerController';
 import { DeleteBannerController } from './controllers/banner/DeleteBannerController';
+import { CriaJobController } from './controllers/jobs/CreateJobController';
 
 const uploadProdutos = multer({
   fileFilter: fileFilter,
@@ -221,6 +222,8 @@ rotas.post('/posto', new CriaPostoController().handle);
 rotas.put('/posto', uploadAvatar.single('avatar'), new AtualizaPostoController().handle);
 rotas.get('/posto', new BuscaPostoController().handle);
 rotas.get('/postos', new ListarPostosController().handle);
+
+rotas.post('/job', Authenticator, new CriaJobController().handle);
 
 // account/store/manipulateproduct
 rotas.put('/product', Authenticator, new AtualizaProdutoController().handle);
