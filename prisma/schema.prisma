@@ -41,6 +41,8 @@ model User {
   contact     Contact[]
   banners     Banner[]
   brand       Brand[]
+  jobs Jobs[]
+
  
   region Region @relation(fields: [regionID], references: [id])
   createdAt DateTime? @default(now())
@@ -57,10 +59,8 @@ model Jobs {
   validity String
   sendCurriculum String
   
-  storeID     String?
-  personID    String?
-  store       Store?      @relation(fields: [storeID], references: [id])
-  person      Person?      @relation(fields: [personID], references: [id])
+  userID String
+  user User @relation(fields: [userID], references: [id])
 
   createdAt DateTime? @default(now())
 
@@ -80,7 +80,6 @@ model Store {
   userID    String
   type      String?   @default("store")
 
-  jobs Jobs[]
   user      User      @relation(fields: [userID], references: [id])
 
   product   Product[]
@@ -125,7 +124,6 @@ model Person {
   professionID String?
   userID       String
   type         String? @default("person")
-  jobs Jobs[]
 
   user       User        @relation(fields: [userID], references: [id])
   profession Profession? @relation(fields: [professionID], references: [id])

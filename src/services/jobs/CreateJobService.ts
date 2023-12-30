@@ -6,12 +6,11 @@ interface jobRequest {
   contact: string;
   validity: string;
   sendCurriculum: string;
-  storeID: string;
-  personID: string;
+  userID: string;
 }
 
 class CriaJobService {
-  async execute({ job, description, contact, validity, sendCurriculum, storeID, personID }: jobRequest) {
+  async execute({ job, description, contact, validity, sendCurriculum, userID }: jobRequest) {
     const _job = await prismaClient.jobs.create({
       data: {
         job,
@@ -19,8 +18,7 @@ class CriaJobService {
         contact,
         validity,
         sendCurriculum,
-        storeID,
-        personID
+        userID
       }
     });
 

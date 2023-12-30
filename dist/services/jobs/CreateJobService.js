@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CriaJobService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class CriaJobService {
-    execute({ job, description, contact, validity, sendCurriculum, storeID, personID }) {
+    execute({ job, description, contact, validity, sendCurriculum, userID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const _job = yield prisma_1.default.jobs.create({
                 data: {
@@ -24,8 +24,7 @@ class CriaJobService {
                     contact,
                     validity,
                     sendCurriculum,
-                    storeID,
-                    personID
+                    userID
                 }
             });
             return _job;

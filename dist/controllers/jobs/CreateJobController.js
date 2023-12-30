@@ -14,7 +14,8 @@ const CreateJobService_1 = require("../../services/jobs/CreateJobService");
 class CriaJobController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { job, description, contact, validity, sendCurriculum, storeID, personID } = req.body;
+            const userID = req.query.userID;
+            const { job, description, contact, validity, sendCurriculum } = req.body;
             const criaJobService = new CreateJobService_1.CriaJobService();
             yield criaJobService.execute({
                 job,
@@ -22,8 +23,7 @@ class CriaJobController {
                 contact,
                 validity,
                 sendCurriculum,
-                storeID,
-                personID
+                userID
             });
             return res.json({ message: 'Vaga criada com sucesso' });
         });

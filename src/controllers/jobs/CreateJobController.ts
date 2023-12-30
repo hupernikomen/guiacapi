@@ -3,7 +3,8 @@ import { CriaJobService } from '../../services/jobs/CreateJobService';
 
 class CriaJobController {
   async handle(req: Request, res: Response) {
-    const { job, description, contact, validity, sendCurriculum, storeID, personID } = req.body;
+    const userID = req.query.userID as string;
+    const { job, description, contact, validity, sendCurriculum } = req.body;
 
     const criaJobService = new CriaJobService();
 
@@ -13,8 +14,7 @@ class CriaJobController {
       contact,
       validity,
       sendCurriculum,
-      storeID,
-      personID
+      userID
     });
 
     return res.json({ message: 'Vaga criada com sucesso' });
