@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import { ListaContatosService } from '../../services/contact/ListaContatosService';
-import { shuffle } from 'lodash';
 
 class ListaContatosController {
   async handle(req: Request, res: Response) {
@@ -10,8 +9,7 @@ class ListaContatosController {
 
     const _contact = await listaContatosService.execute({ userID });
 
-    const shuffledResults = shuffle(_contact);
-    return res.json(shuffledResults);
+    return res.json(_contact);
   }
 }
 
