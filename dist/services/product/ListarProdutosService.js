@@ -22,13 +22,14 @@ class ListarProdutosService {
                 where: {
                     store: {
                         user: {
-                            payment: { some: { status: "Aprovado" } },
+                            payment: { some: { status: 'Aprovado' } },
                             regionID
                         }
-                    },
+                    }
                 },
                 select: {
                     id: true,
+                    reference: true,
                     name: true,
                     price: true,
                     off: true,
@@ -36,13 +37,17 @@ class ListarProdutosService {
                     campaign: { select: { id: true, name: true, theme: true } },
                     store: {
                         select: {
-                            id: true, name: true, delivery: true,
-                            user: { select: { regionID: true, } }
+                            id: true,
+                            name: true,
+                            delivery: true,
+                            user: { select: { regionID: true } }
                         }
                     },
                     category: {
                         select: {
-                            id: true, name: true, _count: true,
+                            id: true,
+                            name: true,
+                            _count: true,
                             subcategory: { select: { id: true, name: true, _count: true } }
                         }
                     }
