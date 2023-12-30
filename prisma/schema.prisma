@@ -41,10 +41,30 @@ model User {
   contact     Contact[]
   banners     Banner[]
   brand       Brand[]
+ 
   region Region @relation(fields: [regionID], references: [id])
   createdAt DateTime? @default(now())
 
   @@map("users")
+}
+
+
+model Jobs {
+  id  String @id @default(uuid())
+  job String
+  description String
+  contact String
+  validity String
+  sendCurriculum String
+  
+  storeID     String?
+  personID    String?
+  store       Store?      @relation(fields: [storeID], references: [id])
+  person      Person?      @relation(fields: [personID], references: [id])
+
+  createdAt DateTime? @default(now())
+
+  @@map("jobs")
 }
 
 
@@ -59,7 +79,10 @@ model Store {
   reference String?
   userID    String
   type      String?   @default("store")
+
+  jobs Jobs[]
   user      User      @relation(fields: [userID], references: [id])
+
   product   Product[]
   createdAt DateTime? @default(now())
 
@@ -102,6 +125,7 @@ model Person {
   professionID String?
   userID       String
   type         String? @default("person")
+  jobs Jobs[]
 
   user       User        @relation(fields: [userID], references: [id])
   profession Profession? @relation(fields: [professionID], references: [id])
