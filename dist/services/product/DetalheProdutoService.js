@@ -23,6 +23,7 @@ class DetalheProdutoService {
                 },
                 select: {
                     id: true,
+                    reference: true,
                     name: true,
                     description: true,
                     price: true,
