@@ -17,7 +17,18 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class ListarJobsService {
     execute() {
         return __awaiter(this, void 0, void 0, function* () {
-            const map = yield prisma_1.default.jobs.findMany();
+            const map = yield prisma_1.default.jobs.findMany({
+                select: {
+                    contact: true,
+                    createdAt: true,
+                    description: true,
+                    id: true,
+                    job: true,
+                    sendCurriculum: true,
+                    validity: true,
+                    user: { select: { person: true, store: true } }
+                }
+            });
             return map;
         });
     }
