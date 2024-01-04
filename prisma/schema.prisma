@@ -32,16 +32,17 @@ model User {
   user     String @unique
   password String
   regionID String
-  payment        Payment[]
+  payment     Payment[]
   owner       Owner[]
   fuelStation FuelStation[]
   person      Person[]
   store       Store[]
+  food        Food[]
   map         Map[]
   contact     Contact[]
   banners     Banner[]
   brand       Brand[]
-  jobs Jobs[]
+  jobs        Jobs[]
 
  
   region Region @relation(fields: [regionID], references: [id])
@@ -131,6 +132,39 @@ model Person {
   createdAt DateTime? @default(now())
 
   @@map("persons")
+}
+
+model Food {
+  id        String @id @default(uuid())
+  name      String
+  avatar    Json?
+  district  String
+  address   String
+  bio       String
+  type      String @default("food")
+  delivery  Boolean?  @default(false)
+
+  menu Menu[]
+
+  userID    String
+  user      User        @relation(fields: [userID], references: [id])
+  
+  createdAt DateTime? @default(now())
+  @@map("foods")
+}
+
+model Menu{
+  id String @id @default(uuid())
+  name String
+  price String
+  details String
+
+  foodID String
+  food Food @relation(fields: [foodID], references: [id])
+
+  createdAt DateTime? @default(now())
+
+  @@map("menus")
 }
 
 model Profession {
