@@ -81,6 +81,7 @@ import { ListarRegioesControllerAdmin } from './controllers/region/ListarRegioes
 import { BuscaOwnerController } from './controllers/owner/BuscarOwnerController';
 import { DeleteBannerController } from './controllers/banner/DeleteBannerController';
 import { CriaJobController } from './controllers/jobs/CreateJobController';
+import { ListarJobsController } from './controllers/jobs/ListarJobsController';
 
 const uploadProdutos = multer({
   fileFilter: fileFilter,
@@ -224,6 +225,7 @@ rotas.get('/posto', new BuscaPostoController().handle);
 rotas.get('/postos', new ListarPostosController().handle);
 
 rotas.post('/job', Authenticator, new CriaJobController().handle);
+rotas.get('/jobs', new ListarJobsController().handle);
 
 // account/store/manipulateproduct
 rotas.put('/product', Authenticator, new AtualizaProdutoController().handle);

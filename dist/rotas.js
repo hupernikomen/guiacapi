@@ -84,6 +84,7 @@ const ListarRegioesControllerAdmin_1 = require("./controllers/region/ListarRegio
 const BuscarOwnerController_1 = require("./controllers/owner/BuscarOwnerController");
 const DeleteBannerController_1 = require("./controllers/banner/DeleteBannerController");
 const CreateJobController_1 = require("./controllers/jobs/CreateJobController");
+const ListarJobsController_1 = require("./controllers/jobs/ListarJobsController");
 const uploadProdutos = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageProdutos.s3 : multer_2.storageProdutos.local,
@@ -192,6 +193,7 @@ rotas.put('/posto', uploadAvatar.single('avatar'), new AtualizaPostoController_1
 rotas.get('/posto', new BuscaPostoController_1.BuscaPostoController().handle);
 rotas.get('/postos', new ListaPostosController_1.ListarPostosController().handle);
 rotas.post('/job', authenticator_1.Authenticator, new CreateJobController_1.CriaJobController().handle);
+rotas.get('/jobs', new ListarJobsController_1.ListarJobsController().handle);
 // account/store/manipulateproduct
 rotas.put('/product', authenticator_1.Authenticator, new AtualizaProdutoController_1.AtualizaProdutoController().handle);
 // account/store/manipulateproduct

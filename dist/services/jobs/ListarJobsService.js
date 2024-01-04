@@ -12,23 +12,25 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ListarUsuariosService = void 0;
+exports.ListarJobsService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
-class ListarUsuariosService {
+class ListarJobsService {
     execute() {
         return __awaiter(this, void 0, void 0, function* () {
-            const usuarios = yield prisma_1.default.user.findMany({
+            const map = yield prisma_1.default.jobs.findMany({
                 select: {
+                    contact: true,
+                    createdAt: true,
+                    description: true,
                     id: true,
-                    store: { select: { name: true, userID: true, type: true } },
-                    person: { select: { userID: true, name: true, type: true, profession: { select: { name: true } } } },
-                    payment: true,
-                    map: true,
-                    user: true
+                    job: true,
+                    sendCurriculum: true,
+                    validity: true,
+                    user: { select: { person: true, store: true } }
                 }
             });
-            return usuarios;
+            return map;
         });
     }
 }
-exports.ListarUsuariosService = ListarUsuariosService;
+exports.ListarJobsService = ListarJobsService;

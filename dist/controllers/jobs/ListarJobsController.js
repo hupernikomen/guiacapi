@@ -8,27 +8,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ListarUsuariosService = void 0;
-const prisma_1 = __importDefault(require("../../prisma"));
-class ListarUsuariosService {
-    execute() {
+exports.ListarJobsController = void 0;
+const ListarJobsService_1 = require("../../services/jobs/ListarJobsService");
+class ListarJobsController {
+    handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const usuarios = yield prisma_1.default.user.findMany({
-                select: {
-                    id: true,
-                    store: { select: { name: true, userID: true, type: true } },
-                    person: { select: { userID: true, name: true, type: true, profession: { select: { name: true } } } },
-                    payment: true,
-                    map: true,
-                    user: true
-                }
-            });
-            return usuarios;
+            const listarJobsService = new ListarJobsService_1.ListarJobsService();
+            const _jobs = yield listarJobsService.execute();
+            return res.json(_jobs);
         });
     }
 }
-exports.ListarUsuariosService = ListarUsuariosService;
+exports.ListarJobsController = ListarJobsController;
