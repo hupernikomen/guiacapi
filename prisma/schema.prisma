@@ -37,7 +37,7 @@ model User {
   fuelStation FuelStation[]
   person      Person[]
   store       Store[]
-  // food        Food[]
+  food        Food[]
   map         Map[]
   contact     Contact[]
   banners     Banner[]
@@ -134,38 +134,38 @@ model Person {
   @@map("persons")
 }
 
-// model Food {
-//   id        String @id @default(uuid())
-//   name      String
-//   avatar    Json?
-//   district  String
-//   address   String
-//   bio       String
-//   type      String @default("food")
-//   delivery  Boolean?  @default(false)
+model Food {
+  id        String @id @default(uuid())
+  name      String
+  avatar    Json?
+  district  String
+  address   String
+  bio       String
+  type      String @default("food")
+  delivery  Boolean?  @default(false)
 
-//   menu Menu[]
+  menu Menu[]
 
-//   userID    String
-//   user      User        @relation(fields: [userID], references: [id])
+  userID    String
+  user      User        @relation(fields: [userID], references: [id])
   
-//   createdAt DateTime? @default(now())
-//   @@map("foods")
-// }
+  createdAt DateTime? @default(now())
+  @@map("foods")
+}
 
-// model Menu{
-//   id String @id @default(uuid())
-//   name String
-//   price String
-//   details String
+model Menu{
+  id String @id @default(uuid())
+  name String
+  price String
+  details String
 
-//   foodID String
-//   food Food @relation(fields: [foodID], references: [id])
+  foodID String
+  food Food @relation(fields: [foodID], references: [id])
 
-//   createdAt DateTime? @default(now())
+  createdAt DateTime? @default(now())
 
-//   @@map("menus")
-// }
+  @@map("menus")
+}
 
 model Profession {
   id   String @id @default(uuid())
