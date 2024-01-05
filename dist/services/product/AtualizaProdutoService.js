@@ -15,11 +15,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AtualizaProdutoService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class AtualizaProdutoService {
-    execute({ name, description, price, off, size, color, categoryID, campaignID, productID }) {
+    execute({ reference, name, description, price, off, size, color, categoryID, campaignID, productID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const _product = yield prisma_1.default.product.updateMany({
                 where: { id: productID },
                 data: {
+                    reference,
                     name,
                     description,
                     price,
@@ -27,8 +28,8 @@ class AtualizaProdutoService {
                     size,
                     color,
                     categoryID,
-                    campaignID: off != 0 ? campaignID : null,
-                },
+                    campaignID: off != 0 ? campaignID : null
+                }
             });
             return _product;
         });

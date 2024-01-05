@@ -15,9 +15,10 @@ class AtualizaProdutoController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const productID = req.query.productID;
-            const { name, description, price, off, size, color, categoryID, campaignID } = req.body;
+            const { reference, name, description, price, off, size, color, categoryID, campaignID } = req.body;
             const atualizaProdutoService = new AtualizaProdutoService_1.AtualizaProdutoService();
             yield atualizaProdutoService.execute({
+                reference,
                 name,
                 description,
                 price,
@@ -28,7 +29,7 @@ class AtualizaProdutoController {
                 campaignID,
                 productID
             });
-            return res.status(200).json({ message: "Produto atualizado" });
+            return res.status(200).json({ message: 'Produto atualizado' });
         });
     }
 }

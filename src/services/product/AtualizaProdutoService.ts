@@ -1,19 +1,24 @@
-import prismaClient from "../../prisma"
+import prismaClient from '../../prisma';
 
 interface produtoRequest {
-    name: string,
-    description: string,
-    price: number,
-    off: number,
-    size: string,
-    color:string[],
-    categoryID: string,
-    campaignID: string,    
-    productID: string,
+  reference: string;
+  name: string;
+  description: string;
+  price: number;
+  off: number;
+  size: string;
+  color: string[];
+  categoryID: string;
+  campaignID: string;
+  productID: string;
 }
 
 class AtualizaProdutoService {
-    async execute({
+  async execute({ reference, name, description, price, off, size, color, categoryID, campaignID, productID }: produtoRequest) {
+    const _product = await prismaClient.product.updateMany({
+      where: { id: productID },
+      data: {
+        reference,
         name,
         description,
         price,
@@ -21,28 +26,12 @@ class AtualizaProdutoService {
         size,
         color,
         categoryID,
-        campaignID,
-        productID
+        campaignID: off != 0 ? campaignID : null
+      }
+    });
 
-    }: produtoRequest) {
-
-        const _product = await prismaClient.product.updateMany({
-            where: { id: productID },
-            data: {
-                name,
-                description,
-                price,
-                off,
-                size,
-                color,
-                categoryID,
-                campaignID: off != 0 ? campaignID : null,
-            },
-        })
-
-        return _product
-
-    }
+    return _product;
+  }
 }
 
-export { AtualizaProdutoService }
+export { AtualizaProdutoService };
