@@ -31,7 +31,8 @@ class BuscaLojaService {
             description: true,
             size: true,
             reference: true,
-            image: true
+            image: true,
+            store: { select: { type: true } }
           }
         },
         userID: true,
