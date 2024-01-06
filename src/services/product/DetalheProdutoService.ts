@@ -22,6 +22,7 @@ class DetalheProdutoService {
         image: true,
         store: {
           select: {
+            type: true,
             id: true,
             name: true,
             bio: true,
