@@ -1,20 +1,19 @@
-import prismaClient from "../../prisma";
+import prismaClient from '../../prisma';
 import 'dotenv/config';
 
 interface ProdutoRequest {
   categoryID: string;
-  regionID: string
+  regionID: string;
 }
 
 class PorCategoriaProdutoService {
   async execute({ categoryID, regionID }: ProdutoRequest) {
-
     return await prismaClient.product.findMany({
       where: {
         categoryID,
         store: {
           user: {
-            payment: { some: { status: "Aprovado" } },
+            payment: { some: { status: 'Aprovado' } },
             regionID
           }
         }
@@ -37,7 +36,7 @@ class PorCategoriaProdutoService {
           select: {
             id: true,
             name: true,
-            _count: true,
+            _count: true
           }
         },
         subcategory: {
@@ -49,15 +48,14 @@ class PorCategoriaProdutoService {
         },
         store: {
           select: {
+            type: true,
             id: true,
             name: true,
             delivery: true
           }
-        },
+        }
       }
-
     });
-
   }
 }
 

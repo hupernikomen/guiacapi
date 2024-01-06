@@ -56,6 +56,7 @@ class PorSubcategoriaProdutoService {
                     },
                     store: {
                         select: {
+                            type: true,
                             id: true,
                             name: true,
                             delivery: true,

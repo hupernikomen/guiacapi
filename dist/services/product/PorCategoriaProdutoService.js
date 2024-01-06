@@ -23,7 +23,7 @@ class PorCategoriaProdutoService {
                     categoryID,
                     store: {
                         user: {
-                            payment: { some: { status: "Aprovado" } },
+                            payment: { some: { status: 'Aprovado' } },
                             regionID
                         }
                     }
@@ -45,7 +45,7 @@ class PorCategoriaProdutoService {
                         select: {
                             id: true,
                             name: true,
-                            _count: true,
+                            _count: true
                         }
                     },
                     subcategory: {
@@ -57,11 +57,12 @@ class PorCategoriaProdutoService {
                     },
                     store: {
                         select: {
+                            type: true,
                             id: true,
                             name: true,
                             delivery: true
                         }
-                    },
+                    }
                 }
             });
         });
