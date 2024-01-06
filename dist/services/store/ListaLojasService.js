@@ -21,12 +21,13 @@ class ListaLojasService {
             return yield prisma_1.default.store.findMany({
                 where: {
                     user: {
-                        payment: { some: { status: "Aprovado" } },
+                        payment: { some: { status: 'Aprovado' } },
                         regionID
                     }
                 },
                 select: {
                     product: true,
+                    type: true,
                     id: true,
                     name: true,
                     avatar: true,
@@ -35,8 +36,8 @@ class ListaLojasService {
                     district: true,
                     bio: true,
                     reference: true,
-                    user: { select: { payment: { select: { status: true, value: true, expiration: true, createdAt: true } }, } },
-                    userID: true,
+                    user: { select: { payment: { select: { status: true, value: true, expiration: true, createdAt: true } } } },
+                    userID: true
                 }
             });
         });
