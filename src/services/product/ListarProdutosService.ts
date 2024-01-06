@@ -27,6 +27,7 @@ class ListarProdutosService {
         campaign: { select: { id: true, name: true, theme: true } },
         store: {
           select: {
+            type: true,
             id: true,
             name: true,
             delivery: true,
