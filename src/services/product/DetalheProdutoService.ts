@@ -25,6 +25,10 @@ class DetalheProdutoService {
             id: true,
             name: true,
             bio: true,
+            address: true,
+            district: true,
+            createdAt: true,
+            reference: true,
             delivery: true,
             avatar: true,
             userID: true
