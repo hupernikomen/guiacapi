@@ -21,11 +21,9 @@ class BuscaUsuarioService {
                 where: { id: userID },
                 select: {
                     id: true,
-                    payment: true
-                    // user: true,
-                    // person: { select: { name: true } },
-                    // store: { select: { name: true } },
-                    // map: true
+                    payment: true,
+                    store: { select: { type: true } },
+                    person: { select: { type: true } }
                 }
             });
             return _user;
