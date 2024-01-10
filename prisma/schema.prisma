@@ -183,7 +183,7 @@ model Payment {
   expiration String?
   value      String
   userID     String
-  status     String? @default("Processando") // Aprovado ou Vencido
+  status     String? @default("Off") // Aprovado ou Vencido
   user      User      @relation(fields: [userID], references: [id])
   createdAt DateTime? @default(now())
 

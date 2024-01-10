@@ -21,7 +21,7 @@ class ListarProfissionalService {
             return yield prisma_1.default.person.findMany({
                 where: {
                     user: {
-                        payment: { some: { status: 'Aprovado' } },
+                        payment: { some: { status: 'On' } },
                         regionID
                     }
                 },

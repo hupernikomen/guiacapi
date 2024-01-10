@@ -23,7 +23,7 @@ class PorSubcategoriaProdutoService {
                     subcategoryID,
                     store: {
                         user: {
-                            payment: { some: { status: 'Aprovado' } },
+                            payment: { some: { status: 'On' } },
                             regionID
                         }
                     }

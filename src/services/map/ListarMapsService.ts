@@ -5,7 +5,7 @@ class ListaMapasService {
     const map = await prismaClient.map.findMany({
       where: {
         user: {
-          payment: { some: { status: 'Aprovado' } }
+          payment: { some: { status: 'On' } }
         }
       },
       select: {

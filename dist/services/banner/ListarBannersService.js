@@ -18,7 +18,7 @@ class ListarBannersService {
     execute() {
         return __awaiter(this, void 0, void 0, function* () {
             const _banners = yield prisma_1.default.banner.findMany({
-                where: { paymentBanners: { every: { status: 'Aprovado' } } },
+                where: { paymentBanners: { every: { status: 'On' } } },
                 select: {
                     id: true,
                     route: true,

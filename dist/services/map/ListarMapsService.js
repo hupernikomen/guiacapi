@@ -20,7 +20,7 @@ class ListaMapasService {
             const map = yield prisma_1.default.map.findMany({
                 where: {
                     user: {
-                        payment: { some: { status: 'Aprovado' } }
+                        payment: { some: { status: 'On' } }
                     }
                 },
                 select: {

@@ -21,7 +21,7 @@ class ListaLojasService {
             return yield prisma_1.default.store.findMany({
                 where: {
                     user: {
-                        payment: { some: { status: 'Aprovado' } },
+                        payment: { some: { status: 'On' } },
                         regionID
                     }
                 },
