@@ -12,7 +12,7 @@ class ListarProdutosService {
       where: {
         store: {
           user: {
-            payment: { some: { status: 'Aprovado' } },
+            payment: { some: { status: 'On' } },
             regionID
           }
         }

@@ -10,7 +10,7 @@ class ListaLojasService {
     return await prismaClient.store.findMany({
       where: {
         user: {
-          payment: { some: { status: 'Aprovado' } },
+          payment: { some: { status: 'On' } },
           regionID
         }
       },

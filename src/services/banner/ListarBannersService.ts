@@ -3,7 +3,7 @@ import prismaClient from '../../prisma';
 class ListarBannersService {
   async execute() {
     const _banners = await prismaClient.banner.findMany({
-      where: { paymentBanners: { every: { status: 'Aprovado' } } },
+      where: { paymentBanners: { every: { status: 'On' } } },
       select: {
         id: true,
         route: true,

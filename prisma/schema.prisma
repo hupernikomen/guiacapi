@@ -194,7 +194,7 @@ model PaymentBanners {
   id         String  @id @default(uuid())
   expiration String?
   value      String
-  status     String? @default("Processando") // Aprovado ou Vencido
+  status     String? @default("Off") 
 
   bannerID   String?
   banner      Banner?      @relation(fields: [bannerID], references: [id])

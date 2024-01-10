@@ -10,7 +10,7 @@ class ListarProfissionalService {
     return await prismaClient.person.findMany({
       where: {
         user: {
-          payment: { some: { status: 'Aprovado' } },
+          payment: { some: { status: 'On' } },
           regionID
         }
       },
