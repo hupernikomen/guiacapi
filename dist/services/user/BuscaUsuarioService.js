@@ -22,8 +22,8 @@ class BuscaUsuarioService {
                 select: {
                     id: true,
                     payment: true,
-                    store: { select: { type: true } },
-                    person: { select: { type: true } }
+                    store: { select: { name: true, type: true } },
+                    person: { select: { name: true, type: true } }
                 }
             });
             return _user;
