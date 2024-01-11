@@ -29,7 +29,7 @@ class LojaLogadaService {
                     reference: true,
                     bio: true,
                     delivery: true,
-                    user: true,
+                    user: { select: { payment: true } },
                     product: {
                         select: {
                             id: true,
