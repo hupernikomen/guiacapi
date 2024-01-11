@@ -9,6 +9,7 @@ class LojaLogadaService {
     const _store = await prismaClient.store.findFirst({
       where: { userID },
       select: {
+        type: true,
         id: true,
         avatar: true,
         name: true,
@@ -17,6 +18,7 @@ class LojaLogadaService {
         reference: true,
         bio: true,
         delivery: true,
+        user: true,
         product: {
           select: {
             id: true,
