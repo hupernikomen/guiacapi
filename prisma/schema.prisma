@@ -136,6 +136,7 @@ model Person {
 
 model Food {
   id        String @id @default(uuid())
+  category String?
   name      String
   avatar    Json?
   district  String
