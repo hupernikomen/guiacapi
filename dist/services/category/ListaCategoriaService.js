@@ -18,17 +18,17 @@ class ListaCategoriaService {
     execute() {
         return __awaiter(this, void 0, void 0, function* () {
             const _category = yield prisma_1.default.category.findMany({
-                where: {
-                    product: {
-                        some: {
-                            store: {
-                                user: {
-                                    payment: { some: { status: 'On' } }
-                                }
-                            }
-                        }
-                    }
-                },
+                //   where: {
+                //     product: {
+                //       some: {
+                //         store: {
+                //           user: {
+                //             payment: { some: { status: 'On' } }
+                //           }
+                //         }
+                //       }
+                //     }
+                //   },
                 select: {
                     id: true,
                     name: true,
