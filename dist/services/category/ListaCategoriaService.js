@@ -18,11 +18,22 @@ class ListaCategoriaService {
     execute() {
         return __awaiter(this, void 0, void 0, function* () {
             const _category = yield prisma_1.default.category.findMany({
+                where: {
+                    product: {
+                        every: {
+                            store: {
+                                user: {
+                                    payment: { some: { status: 'On' } }
+                                }
+                            }
+                        }
+                    }
+                },
                 select: {
                     id: true,
                     name: true,
                     subcategory: { select: { name: true, _count: true, categoryID: true } },
-                    _count: true,
+                    _count: true
                 }
             });
             return _category;

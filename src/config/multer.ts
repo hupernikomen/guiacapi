@@ -1,18 +1,17 @@
 import multer from 'multer';
-import crypto from 'crypto'
+import crypto from 'crypto';
 import path from 'path';
-import multerS3 from 'multer-s3'
+import multerS3 from 'multer-s3';
 import AWS from 'aws-sdk';
-import { resolve } from 'path'
+import { resolve } from 'path';
 
 import 'dotenv/config';
 
 let s3 = new AWS.S3({
   accessKeyId: process.env.ACCESS_KEY_ID,
   secretAccessKey: process.env.SECRET_ACCESS_KEY,
-  region: 'us-east-1',
+  region: 'us-east-1'
 });
-
 
 export default {
   upload(folder: string) {
@@ -20,38 +19,30 @@ export default {
       storage: multer.diskStorage({
         destination: resolve(__dirname, '..', '..', folder),
         filename: (request, file, callback) => {
-          const fileHash = crypto.randomBytes(16).toString("hex");
-          const fileName = `${fileHash}-${file.originalname}`
+          const fileHash = crypto.randomBytes(16).toString('hex');
+          const fileName = `${fileHash}-${file.originalname}`;
 
           return callback(null, fileName);
         }
       })
-    }
+    };
   }
-}
-
-
+};
 
 // Filtro de tipos
 export function fileFilter(req, file, callback) {
-  
   let errorMessage = '';
   const ext = path.extname(file.originalname).toLowerCase();
 
   if (file.size > 1024) {
     errorMessage = 'Tamanho do arquivo excede o limite permitido';
     return callback({ errorMessage: errorMessage, code: 'LIMIT_FILE_SIZE' }, false);
-   }
+  }
 
-  if (
-    ext !== '.png' &&
-    ext !== '.jpg' &&
-    ext !== '.jpeg' &&
-    ext !== '.webp'
-  ) return callback(new Error('Formato de arquivo não aceito'))
+  if (ext !== '.png' && ext !== '.jpg' && ext !== '.jpeg' && ext !== '.webp') return callback(new Error('Formato de arquivo não aceito'));
 
   if (errorMessage) {
-    console.log(errorMessage, "Multer API");
+    console.log(errorMessage, 'Multer API');
     return callback({ errorMessage: errorMessage, code: 'LIMIT_FILE_TYPE' }, false);
   }
 
@@ -63,12 +54,12 @@ const local = multer.diskStorage({
     cb(null, path.resolve(__dirname, '..', '..', 'files', 'users'));
   },
   filename: (request, file, callback) => {
-    const fileHash = crypto.randomBytes(16).toString("hex");
-    const fileName = `${fileHash}-${file.originalname}`
+    const fileHash = crypto.randomBytes(16).toString('hex');
+    const fileName = `${fileHash}-${file.originalname}`;
 
-    return callback(null, fileName)
-  },
-})
+    return callback(null, fileName);
+  }
+});
 
 export const storageProdutos = {
   local: local,
@@ -76,17 +67,17 @@ export const storageProdutos = {
     s3: s3,
     bucket: process.env.BUCKETEER_BUCKET_NAME,
     contentType: multerS3.AUTO_CONTENT_TYPE,
-    acl: "public-read",
+    acl: 'public-read',
     key: (req, file, cb) => {
       crypto.randomBytes(16, (err, hash) => {
         if (err) cb(err);
-        const fileHash = crypto.randomBytes(16).toString("hex");
+        const fileHash = crypto.randomBytes(16).toString('hex');
         const fileName = `produtos/${fileHash}-${file.originalname}`;
 
         cb(null, fileName);
       });
-    },
-  }),
+    }
+  })
 };
 
 export const storageAvatar = {
@@ -95,17 +86,17 @@ export const storageAvatar = {
     s3: s3,
     bucket: process.env.BUCKETEER_BUCKET_NAME,
     contentType: multerS3.AUTO_CONTENT_TYPE,
-    acl: "public-read",
+    acl: 'public-read',
     key: (req, file, cb) => {
       crypto.randomBytes(16, (err, hash) => {
         if (err) cb(err);
-        const fileHash = crypto.randomBytes(16).toString("hex");
+        const fileHash = crypto.randomBytes(16).toString('hex');
         const fileName = `avatar/${fileHash}-${file.originalname}`;
 
         cb(null, fileName);
       });
-    },
-  }),
+    }
+  })
 };
 
 export const storageBanner = {
@@ -114,20 +105,18 @@ export const storageBanner = {
     s3: s3,
     bucket: process.env.BUCKETEER_BUCKET_NAME,
     contentType: multerS3.AUTO_CONTENT_TYPE,
-    acl: "public-read",
+    acl: 'public-read',
     key: (req, file, cb) => {
       crypto.randomBytes(16, (err, hash) => {
         if (err) cb(err);
-        const fileHash = crypto.randomBytes(16).toString("hex");
+        const fileHash = crypto.randomBytes(16).toString('hex');
         const fileName = `banner/${fileHash}-${file.originalname}`;
 
         cb(null, fileName);
       });
-    },
-  }),
+    }
+  })
 };
-
-
 
 export const storagePortfolio = {
   local: local,
@@ -135,17 +124,17 @@ export const storagePortfolio = {
     s3: s3,
     bucket: process.env.BUCKETEER_BUCKET_NAME,
     contentType: multerS3.AUTO_CONTENT_TYPE,
-    acl: "public-read",
+    acl: 'public-read',
     key: (req, file, cb) => {
       crypto.randomBytes(16, (err, hash) => {
         if (err) cb(err);
-        const fileHash = crypto.randomBytes(16).toString("hex");
+        const fileHash = crypto.randomBytes(16).toString('hex');
         const fileName = `portfolio/${fileHash}-${file.originalname}`;
 
         cb(null, fileName);
       });
-    },
-  }),
+    }
+  })
 };
 export const storageMarca = {
   local: local,
@@ -153,15 +142,15 @@ export const storageMarca = {
     s3: s3,
     bucket: process.env.BUCKETEER_BUCKET_NAME,
     contentType: multerS3.AUTO_CONTENT_TYPE,
-    acl: "public-read",
+    acl: 'public-read',
     key: (req, file, cb) => {
       crypto.randomBytes(16, (err, hash) => {
         if (err) cb(err);
-        const fileHash = crypto.randomBytes(16).toString("hex");
+        const fileHash = crypto.randomBytes(16).toString('hex');
         const fileName = `marcas/${fileHash}-${file.originalname}`;
 
         cb(null, fileName);
       });
-    },
-  }),
+    }
+  })
 };
