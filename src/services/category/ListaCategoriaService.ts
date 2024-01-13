@@ -5,7 +5,7 @@ class ListaCategoriaService {
     const _category = await prismaClient.category.findMany({
       where: {
         product: {
-          every: {
+          some: {
             store: {
               user: {
                 payment: { some: { status: 'On' } }

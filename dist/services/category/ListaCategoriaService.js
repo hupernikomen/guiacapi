@@ -20,7 +20,7 @@ class ListaCategoriaService {
             const _category = yield prisma_1.default.category.findMany({
                 where: {
                     product: {
-                        every: {
+                        some: {
                             store: {
                                 user: {
                                     payment: { some: { status: 'On' } }
