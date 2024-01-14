@@ -12,22 +12,22 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CriaAdminService = void 0;
+exports.CreateAdminsService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 const bcryptjs_1 = require("bcryptjs");
-class CriaAdminService {
-    execute({ user, password, }) {
+class CreateAdminsService {
+    execute({ user, password }) {
         return __awaiter(this, void 0, void 0, function* () {
             if (!user)
-                throw new Error("informe seu user");
+                throw new Error('informe seu user');
             const _user = yield prisma_1.default.admin.findFirst({ where: { user } });
             if (_user)
-                throw new Error("Usuário já cadastrado!");
+                throw new Error('Usuário já cadastrado!');
             const passwordCripto = yield (0, bcryptjs_1.hash)(password, 8);
             const __user = yield prisma_1.default.admin.create({
                 data: {
                     user,
-                    password: passwordCripto,
+                    password: passwordCripto
                 },
                 select: { id: true }
             });
@@ -35,4 +35,4 @@ class CriaAdminService {
         });
     }
 }
-exports.CriaAdminService = CriaAdminService;
+exports.CreateAdminsService = CreateAdminsService;

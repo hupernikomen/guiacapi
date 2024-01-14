@@ -8,26 +8,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AtualizarBannerService = void 0;
-const prisma_1 = __importDefault(require("../../prisma"));
-class AtualizarBannerService {
-    execute({ image, route, paramsID, userID, }) {
+exports.CreateAdminsController = void 0;
+const CreateAdminsService_1 = require("../../services/admin/CreateAdminsService");
+class CreateAdminsController {
+    handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const _banner = yield prisma_1.default.banner.updateMany({
-                where: { userID },
-                data: {
-                    image,
-                    route,
-                    paramsID,
-                    userID
-                },
+            const { user, password } = req.body;
+            const createAdminsService = new CreateAdminsService_1.CreateAdminsService();
+            const _user = yield createAdminsService.execute({
+                user,
+                password
             });
-            return _banner;
+            if (!_user)
+                throw new Error('Ops, algo deu errado - API!');
+            return res.status(200).json({ message: 'Cadastrado com Sucesso' });
         });
     }
 }
-exports.AtualizarBannerService = AtualizarBannerService;
+exports.CreateAdminsController = CreateAdminsController;

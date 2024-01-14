@@ -9,6 +9,10 @@ const multer_1 = __importDefault(require("multer"));
 require("dotenv/config");
 const authenticator_1 = require("./middlewares/authenticator");
 const multer_2 = require("./config/multer");
+const CreateAdminsController_1 = require("./controllers/admin/CreateAdminsController");
+const CreateBannerController_1 = require("./controllers/banner/CreateBannerController");
+// import { GetUniqueBannerController } from './controllers/banner/GetUniqueBannerController';
+// import { UpdateBannerController } from './controllers/banner/UpdateBannerController';
 const LojaLogadaController_1 = require("./controllers/store/LojaLogadaController");
 const AutenticaUsuarioController_1 = require("./controllers/user/AutenticaUsuarioController");
 const BucaProfissionalController_1 = require("./controllers/person/BucaProfissionalController");
@@ -25,7 +29,6 @@ const AtualizaProdutoController_1 = require("./controllers/product/AtualizaProdu
 const AtualizaPostoController_1 = require("./controllers/fuelStation/AtualizaPostoController");
 const CriaMapaController_1 = require("./controllers/map/CriaMapaController");
 const CriaLojaController_1 = require("./controllers/store/CriaLojaController");
-const CriaBannerController_1 = require("./controllers/banner/CriaBannerController");
 const CriaUsuarioController_1 = require("./controllers/user/CriaUsuarioController");
 const CriaRegiaoController_1 = require("./controllers/region/CriaRegiaoController");
 const CriaProfissaoController_1 = require("./controllers/profession/CriaProfissaoController");
@@ -62,7 +65,6 @@ const AtualizaMapaController_1 = require("./controllers/map/AtualizaMapaControll
 const DeletaMarcaController_1 = require("./controllers/brand/DeletaMarcaController");
 const CriaMarcaController_1 = require("./controllers/brand/CriaMarcaController");
 const ListaMarcasController_1 = require("./controllers/brand/ListaMarcasController");
-const CriaAdminController_1 = require("./controllers/admin/CriaAdminController");
 const CriarPagamentoController_1 = require("./controllers/payment/CriarPagamentoController");
 const ListarPaymentController_1 = require("./controllers/payment/ListarPaymentController");
 const BuscaPaymentController_1 = require("./controllers/payment/BuscaPaymentController");
@@ -73,8 +75,6 @@ const AtualizarPagamentoController_2 = require("./controllers/paymentBanner/Atua
 const BuscaPaymentController_2 = require("./controllers/paymentBanner/BuscaPaymentController");
 const CriarPagamentoController_2 = require("./controllers/paymentBanner/CriarPagamentoController");
 const ListarPaymentController_2 = require("./controllers/paymentBanner/ListarPaymentController");
-// import { BuscaBannerController } from './controllers/banner/BuscaBannerController';
-// import { AtualizarBannerController } from './controllers/banner/AtualizaBannerController';
 const CriarOwnerController_1 = require("./controllers/owner/CriarOwnerController");
 const BuscaRegiaoController_1 = require("./controllers/region/BuscaRegiaoController");
 const DeletaRegiaoController_1 = require("./controllers/region/DeletaRegiaoController");
@@ -122,7 +122,7 @@ const uploadBanner = (0, multer_1.default)({
 });
 const rotas = (0, express_1.Router)();
 exports.rotas = rotas;
-rotas.post('/admin', new CriaAdminController_1.CriaAdminController().handle);
+rotas.post('/admins', new CreateAdminsController_1.CreateAdminsController().handle);
 rotas.get('/storesAdmin', new ListaLojasControllerAdmin_1.ListaLojasControllerAdmin().handle);
 rotas.get('/personsAdmin', new ListarProfissionalControllerAdmin_1.ListarProfissionalControllerAdmin().handle);
 // pages/admin/create/user
@@ -141,7 +141,7 @@ rotas.get('/user', new BuscarUsuarioController_1.BuscaUsuarioController().handle
 // context/appcontext
 rotas.post('/login', new AutenticaUsuarioController_1.AutenticaUsuarioController().handle);
 // pages/admin/create/banner
-rotas.post('/banner', authenticator_1.Authenticator, uploadBanner.single('image'), new CriaBannerController_1.CriaBannerController().handle);
+rotas.post('/banner', authenticator_1.Authenticator, uploadBanner.single('image'), new CreateBannerController_1.CreateBannerController().handle);
 // pages/feed - OK
 // pages/productByCategory - OK
 // pages/detailProduct - OK

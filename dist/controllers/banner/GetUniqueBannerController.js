@@ -9,21 +9,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CriaAdminController = void 0;
-const CriaAdminService_1 = require("../../services/admin/CriaAdminService");
-class CriaAdminController {
+exports.GetUniqueBannerController = void 0;
+const GetUniqueBannerService_1 = require("../../services/banner/GetUniqueBannerService");
+class GetUniqueBannerController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { user, password } = req.body;
-            const criaAdminService = new CriaAdminService_1.CriaAdminService();
-            const _user = yield criaAdminService.execute({
-                user,
-                password
-            });
-            if (!_user)
-                throw new Error("Ops, algo deu errado - API!");
-            return res.status(200).json({ message: "Cadastrado com Sucesso" });
+            const bannerID = req.query.bannerID;
+            const getUniqueBannerService = new GetUniqueBannerService_1.GetUniqueBannerService();
+            const banner = yield getUniqueBannerService.execute({ bannerID });
+            return res.json(banner);
         });
     }
 }
-exports.CriaAdminController = CriaAdminController;
+exports.GetUniqueBannerController = GetUniqueBannerController;

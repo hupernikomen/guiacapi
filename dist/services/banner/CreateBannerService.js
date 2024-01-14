@@ -8,18 +8,28 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BuscaBannerController = void 0;
-const BuscaBannerService_1 = require("../../services/banner/BuscaBannerService");
-class BuscaBannerController {
-    handle(req, res) {
+exports.CreateBannerService = void 0;
+const prisma_1 = __importDefault(require("../../prisma"));
+class CreateBannerService {
+    execute({ image, route, paramsID, userID, link, typebanner, categoryID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            // const userID = req.query.userID as string
-            const bannerID = req.query.bannerID;
-            const buscaBannerService = new BuscaBannerService_1.BuscaBannerService();
-            const banner = yield buscaBannerService.execute({ bannerID });
-            return res.json(banner);
+            const _banner = yield prisma_1.default.banner.create({
+                data: {
+                    image,
+                    route,
+                    paramsID,
+                    userID,
+                    link,
+                    typebanner,
+                    categoryID
+                }
+            });
+            return _banner;
         });
     }
 }
-exports.BuscaBannerController = BuscaBannerController;
+exports.CreateBannerService = CreateBannerService;

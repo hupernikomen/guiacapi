@@ -1,15 +1,15 @@
 import { Request, Response } from 'express';
-import { CriaBannerService } from '../../services/banner/CriaBannerService';
+import { CreateBannerService } from '../../services/banner/CreateBannerService';
 
-class CriaBannerController {
+class CreateBannerController {
   async handle(req: Request, res: Response) {
     const userID = req.query.userID as string;
     const { route, paramsID, link, typebanner, categoryID } = req.body;
 
     if (!req.file) throw new Error('Falha ao enviar banner');
 
-    const criaBannerService = new CriaBannerService();
-    const banner = await criaBannerService.execute({
+    const createBannerService = new CreateBannerService();
+    const banner = await createBannerService.execute({
       image: req.file,
       route,
       paramsID,
@@ -24,4 +24,4 @@ class CriaBannerController {
   }
 }
 
-export { CriaBannerController };
+export { CreateBannerController };

@@ -9,24 +9,29 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AtualizarBannerController = void 0;
-const AtualizarBannerService_1 = require("../../services/banner/AtualizarBannerService");
-class AtualizarBannerController {
+exports.CreateBannerController = void 0;
+const CreateBannerService_1 = require("../../services/banner/CreateBannerService");
+class CreateBannerController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const userID = req.query.userID;
-            const { route, paramsID } = req.body;
+            const { route, paramsID, link, typebanner, categoryID } = req.body;
             if (!req.file)
-                throw new Error("Falha ao enviar banner");
-            const atualizarBannerService = new AtualizarBannerService_1.AtualizarBannerService();
-            const _banner = yield atualizarBannerService.execute({
+                throw new Error('Falha ao enviar banner');
+            const createBannerService = new CreateBannerService_1.CreateBannerService();
+            const banner = yield createBannerService.execute({
                 image: req.file,
                 route,
                 paramsID,
                 userID,
+                link,
+                typebanner,
+                categoryID
             });
-            return res.json(_banner);
+            if (!banner)
+                throw new Error('Erro ao criar banner - API');
+            return res.status(200).json({ message: 'Criado com Sucesso', id: banner.id });
         });
     }
 }
-exports.AtualizarBannerController = AtualizarBannerController;
+exports.CreateBannerController = CreateBannerController;

@@ -6,6 +6,12 @@ import { Authenticator } from './middlewares/authenticator';
 
 import { fileFilter, storageProdutos, storageAvatar, storagePortfolio, storageMarca, storageBanner } from './config/multer';
 
+import { CreateAdminsController } from './controllers/admin/CreateAdminsController';
+
+import { CreateBannerController } from './controllers/banner/CreateBannerController';
+// import { GetUniqueBannerController } from './controllers/banner/GetUniqueBannerController';
+// import { UpdateBannerController } from './controllers/banner/UpdateBannerController';
+
 import { LojaLogadaController } from './controllers/store/LojaLogadaController';
 import { AutenticaUsuarioController } from './controllers/user/AutenticaUsuarioController';
 import { BuscaProfissionalController } from './controllers/person/BucaProfissionalController';
@@ -22,7 +28,6 @@ import { AtualizaProdutoController } from './controllers/product/AtualizaProduto
 import { AtualizaPostoController } from './controllers/fuelStation/AtualizaPostoController';
 import { CriaMapaController } from './controllers/map/CriaMapaController';
 import { CriaLojaController } from './controllers/store/CriaLojaController';
-import { CriaBannerController } from './controllers/banner/CriaBannerController';
 import { CriaUsuarioController } from './controllers/user/CriaUsuarioController';
 import { CriaRegiaoController } from './controllers/region/CriaRegiaoController';
 import { CriaProfissaoController } from './controllers/profession/CriaProfissaoController';
@@ -59,7 +64,6 @@ import { AtualizaMapaController } from './controllers/map/AtualizaMapaController
 import { DeletaMarcaController } from './controllers/brand/DeletaMarcaController';
 import { CriaMarcaController } from './controllers/brand/CriaMarcaController';
 import { ListaMarcasController } from './controllers/brand/ListaMarcasController';
-import { CriaAdminController } from './controllers/admin/CriaAdminController';
 import { CriaPaymentController } from './controllers/payment/CriarPagamentoController';
 import { ListarPaymentController } from './controllers/payment/ListarPaymentController';
 import { BuscaPaymentController } from './controllers/payment/BuscaPaymentController';
@@ -70,8 +74,7 @@ import { AtualizarPagamentoBannerController } from './controllers/paymentBanner/
 import { BuscaPaymentBannerController } from './controllers/paymentBanner/BuscaPaymentController';
 import { CriaPaymentBannerController } from './controllers/paymentBanner/CriarPagamentoController';
 import { ListarPaymentBannerController } from './controllers/paymentBanner/ListarPaymentController';
-// import { BuscaBannerController } from './controllers/banner/BuscaBannerController';
-// import { AtualizarBannerController } from './controllers/banner/AtualizaBannerController';
+
 import { CriaOwnerController } from './controllers/owner/CriarOwnerController';
 import { BuscaRegiaoController } from './controllers/region/BuscaRegiaoController';
 import { DeletaRegiaoController } from './controllers/region/DeletaRegiaoController';
@@ -123,8 +126,8 @@ const uploadBanner = multer({
 });
 
 const rotas = Router();
+rotas.post('/admins', new CreateAdminsController().handle);
 
-rotas.post('/admin', new CriaAdminController().handle);
 rotas.get('/storesAdmin', new ListaLojasControllerAdmin().handle);
 rotas.get('/personsAdmin', new ListarProfissionalControllerAdmin().handle);
 
@@ -151,7 +154,7 @@ rotas.get('/user', new BuscaUsuarioController().handle);
 rotas.post('/login', new AutenticaUsuarioController().handle);
 
 // pages/admin/create/banner
-rotas.post('/banner', Authenticator, uploadBanner.single('image'), new CriaBannerController().handle);
+rotas.post('/banner', Authenticator, uploadBanner.single('image'), new CreateBannerController().handle);
 
 // pages/feed - OK
 // pages/productByCategory - OK

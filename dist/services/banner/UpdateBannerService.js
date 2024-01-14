@@ -12,32 +12,22 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BuscaBannerService = void 0;
+exports.UpdateBannerService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
-class BuscaBannerService {
-    execute({ bannerID }) {
+class UpdateBannerService {
+    execute({ image, route, paramsID, userID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const _banner = yield prisma_1.default.banner.findFirst({
-                where: { id: bannerID },
-                select: {
-                    id: true,
-                    image: true,
-                    route: true,
-                    paramsID: true,
-                    userID: true,
-                    user: {
-                        select: {
-                            payment: {
-                                select: {
-                                    expiration: true
-                                }
-                            }
-                        }
-                    }
+            const _banner = yield prisma_1.default.banner.updateMany({
+                where: { userID },
+                data: {
+                    image,
+                    route,
+                    paramsID,
+                    userID
                 }
             });
             return _banner;
         });
     }
 }
-exports.BuscaBannerService = BuscaBannerService;
+exports.UpdateBannerService = UpdateBannerService;

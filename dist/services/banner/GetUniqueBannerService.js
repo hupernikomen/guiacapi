@@ -12,24 +12,32 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CriaBannerService = void 0;
+exports.GetUniqueBannerService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
-class CriaBannerService {
-    execute({ image, route, paramsID, userID, link, typebanner, categoryID }) {
+class GetUniqueBannerService {
+    execute({ bannerID }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const _banner = yield prisma_1.default.banner.create({
-                data: {
-                    image,
-                    route,
-                    paramsID,
-                    userID,
-                    link,
-                    typebanner,
-                    categoryID
+            const _banner = yield prisma_1.default.banner.findFirst({
+                where: { id: bannerID },
+                select: {
+                    id: true,
+                    image: true,
+                    route: true,
+                    paramsID: true,
+                    userID: true,
+                    user: {
+                        select: {
+                            payment: {
+                                select: {
+                                    expiration: true
+                                }
+                            }
+                        }
+                    }
                 }
             });
             return _banner;
         });
     }
 }
-exports.CriaBannerService = CriaBannerService;
+exports.GetUniqueBannerService = GetUniqueBannerService;

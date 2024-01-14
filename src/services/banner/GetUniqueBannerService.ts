@@ -4,7 +4,7 @@ interface bannerRequest {
   bannerID: string;
 }
 
-class BuscaBannerService {
+class GetUniqueBannerService {
   async execute({ bannerID }: bannerRequest) {
     const _banner = await prismaClient.banner.findFirst({
       where: { id: bannerID },
@@ -30,4 +30,4 @@ class BuscaBannerService {
   }
 }
 
-export { BuscaBannerService };
+export { GetUniqueBannerService };
