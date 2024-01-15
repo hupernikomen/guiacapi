@@ -11,6 +11,8 @@ import { CreateAdminsController } from './controllers/admin/CreateAdminsControll
 import { CreateBannerController } from './controllers/banner/CreateBannerController';
 // import { GetUniqueBannerController } from './controllers/banner/GetUniqueBannerController';
 // import { UpdateBannerController } from './controllers/banner/UpdateBannerController';
+import { CreateServiceController } from './controllers/service/CreateServiceController';
+import { ListServicesController } from './controllers/service/ListServicesController';
 
 import { LojaLogadaController } from './controllers/store/LojaLogadaController';
 import { AutenticaUsuarioController } from './controllers/user/AutenticaUsuarioController';
@@ -130,6 +132,8 @@ rotas.post('/admins', new CreateAdminsController().handle);
 
 rotas.get('/storesAdmin', new ListaLojasControllerAdmin().handle);
 rotas.get('/personsAdmin', new ListarProfissionalControllerAdmin().handle);
+rotas.post('/service', Authenticator, new CreateServiceController().handle);
+rotas.get('/services', new ListServicesController().handle);
 
 // pages/admin/create/user
 rotas.post('/owner', Authenticator, new CriaOwnerController().handle);

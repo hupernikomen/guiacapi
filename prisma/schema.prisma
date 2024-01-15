@@ -150,15 +150,15 @@ model Service {
   id String @id @default(uuid())
 
   avatar Json?
-  name String
-  district String
-  address String
-  bio String
+  name String?
+  district String?
+  address String?
+  bio String?
 
   type         String? @default("service")
 
-  categoryServiceID String
-  categoryService CategoryService @relation(fields: [categoryServiceID], references: [id])
+  categoryServiceID String?
+  categoryService CategoryService? @relation(fields: [categoryServiceID], references: [id])
 
   userID       String
   user       User        @relation(fields: [userID], references: [id])

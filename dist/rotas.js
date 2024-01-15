@@ -13,6 +13,8 @@ const CreateAdminsController_1 = require("./controllers/admin/CreateAdminsContro
 const CreateBannerController_1 = require("./controllers/banner/CreateBannerController");
 // import { GetUniqueBannerController } from './controllers/banner/GetUniqueBannerController';
 // import { UpdateBannerController } from './controllers/banner/UpdateBannerController';
+const CreateServiceController_1 = require("./controllers/service/CreateServiceController");
+const ListServicesController_1 = require("./controllers/service/ListServicesController");
 const LojaLogadaController_1 = require("./controllers/store/LojaLogadaController");
 const AutenticaUsuarioController_1 = require("./controllers/user/AutenticaUsuarioController");
 const BucaProfissionalController_1 = require("./controllers/person/BucaProfissionalController");
@@ -125,6 +127,8 @@ exports.rotas = rotas;
 rotas.post('/admins', new CreateAdminsController_1.CreateAdminsController().handle);
 rotas.get('/storesAdmin', new ListaLojasControllerAdmin_1.ListaLojasControllerAdmin().handle);
 rotas.get('/personsAdmin', new ListarProfissionalControllerAdmin_1.ListarProfissionalControllerAdmin().handle);
+rotas.post('/service', authenticator_1.Authenticator, new CreateServiceController_1.CreateServiceController().handle);
+rotas.get('/services', new ListServicesController_1.ListServicesController().handle);
 // pages/admin/create/user
 rotas.post('/owner', authenticator_1.Authenticator, new CriarOwnerController_1.CriaOwnerController().handle);
 // pages/contactUs - OK
