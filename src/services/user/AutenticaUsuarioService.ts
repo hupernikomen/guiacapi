@@ -1,76 +1,59 @@
 import prismaClient from '../../prisma';
-import { compare } from 'bcryptjs'
-import { sign } from 'jsonwebtoken'
+import { compare } from 'bcryptjs';
+import { sign } from 'jsonwebtoken';
 interface AuthRequest {
-    user: string,
-    password: string
+  user: string;
+  password: string;
 }
 
 class AutenticaService {
-    async execute({
-        user,
-        password
-    }: AuthRequest) {
+  async execute({ user, password }: AuthRequest) {
+    const _admin = await prismaClient.admin.findFirst({ where: { user } });
+    if (_admin) {
+      const comparePassword = await compare(password, _admin.password);
+      if (!comparePassword) throw new Error('password incorreta');
 
-        const _admin = await prismaClient.admin.findFirst({ where: { user } })
-        if (_admin) {
+      const token = sign({ user: _admin.user }, process.env.JWT_SECRET, { subject: _admin.id });
 
-            const comparePassword = await compare(password, _admin.password)
-            if (!comparePassword) throw new Error("password incorreta");
+      return {
+        id: _admin.id,
+        user: _admin.user,
+        token: token,
+        account: { type: 'admin' }
+      };
+    } else {
+      const _user = await prismaClient.user.findUnique({ where: { user } });
 
-            const token = sign(
-                { user: _admin.user },
-                process.env.JWT_SECRET,
-                { subject: _admin.id }
-            )
+      if (!_user) throw new Error('não cadastrado');
 
-            return {
-                id: _admin.id,
-                user: _admin.user,
-                token: token,
-                account: { type: "admin" }
-            }
+      const store = await prismaClient.store.findFirst({ where: { userID: _user.id } });
+      const person = await prismaClient.person.findFirst({ where: { userID: _user.id } });
+      const service = await prismaClient.service.findFirst({ where: { userID: _user.id } });
+      const gasStation = await prismaClient.fuelStation.findFirst({ where: { userID: _user.id } });
+      const payment = await prismaClient.payment.findMany({
+        where: { userID: _user.id },
+        orderBy: { expiration: 'desc' }
+      });
 
-        } else {
+      if (!_user) throw new Error('Usuário não cadastrado');
 
-            const _user = await prismaClient.user.findUnique({ where: { user } })
+      const comparePassword = await compare(password, _user.password);
 
-            if (!_user) throw new Error("não cadastrado");
+      if (!comparePassword) throw new Error('password incorreta');
 
-            const store = await prismaClient.store.findFirst({ where: { userID: _user.id } })
-            const person = await prismaClient.person.findFirst({ where: { userID: _user.id } })
-            const gasStation = await prismaClient.fuelStation.findFirst({ where: { userID: _user.id } })
-            const payment = await prismaClient.payment.findMany({
-                where: { userID: _user.id },
-                orderBy: { expiration: 'desc' }
-            })
+      const token = sign({ user: _user.user }, process.env.JWT_SECRET, { subject: _user.id });
 
+      const account = store || person || service || gasStation;
 
-            if (!_user) throw new Error("Usuário não cadastrado");
-
-            const comparePassword = await compare(password, _user.password)
-
-            if (!comparePassword) throw new Error("password incorreta");
-
-            const token = sign(
-                { user: _user.user },
-                process.env.JWT_SECRET,
-                { subject: _user.id }
-            )
-
-            const account = store || person || gasStation;
-
-
-            return {
-                id: _user.id,
-                user: _user.user,
-                token: token,
-                account: account,
-                payment
-            }
-        }
-
+      return {
+        id: _user.id,
+        user: _user.user,
+        token: token,
+        account: account,
+        payment
+      };
     }
+  }
 }
 
-export { AutenticaService }
+export { AutenticaService };

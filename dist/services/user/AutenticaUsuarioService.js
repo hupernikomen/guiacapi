@@ -23,33 +23,34 @@ class AutenticaService {
             if (_admin) {
                 const comparePassword = yield (0, bcryptjs_1.compare)(password, _admin.password);
                 if (!comparePassword)
-                    throw new Error("password incorreta");
+                    throw new Error('password incorreta');
                 const token = (0, jsonwebtoken_1.sign)({ user: _admin.user }, process.env.JWT_SECRET, { subject: _admin.id });
                 return {
                     id: _admin.id,
                     user: _admin.user,
                     token: token,
-                    account: { type: "admin" }
+                    account: { type: 'admin' }
                 };
             }
             else {
                 const _user = yield prisma_1.default.user.findUnique({ where: { user } });
                 if (!_user)
-                    throw new Error("não cadastrado");
+                    throw new Error('não cadastrado');
                 const store = yield prisma_1.default.store.findFirst({ where: { userID: _user.id } });
                 const person = yield prisma_1.default.person.findFirst({ where: { userID: _user.id } });
+                const service = yield prisma_1.default.service.findFirst({ where: { userID: _user.id } });
                 const gasStation = yield prisma_1.default.fuelStation.findFirst({ where: { userID: _user.id } });
                 const payment = yield prisma_1.default.payment.findMany({
                     where: { userID: _user.id },
                     orderBy: { expiration: 'desc' }
                 });
                 if (!_user)
-                    throw new Error("Usuário não cadastrado");
+                    throw new Error('Usuário não cadastrado');
                 const comparePassword = yield (0, bcryptjs_1.compare)(password, _user.password);
                 if (!comparePassword)
-                    throw new Error("password incorreta");
+                    throw new Error('password incorreta');
                 const token = (0, jsonwebtoken_1.sign)({ user: _user.user }, process.env.JWT_SECRET, { subject: _user.id });
-                const account = store || person || gasStation;
+                const account = store || person || service || gasStation;
                 return {
                     id: _user.id,
                     user: _user.user,
