@@ -24,6 +24,7 @@ class GetUniqueServiceService {
                     name: true,
                     avatar: true,
                     bio: true,
+                    type: true,
                     address: true,
                     userID: true,
                     user: { select: { map: { select: { latlng: true } } } },
