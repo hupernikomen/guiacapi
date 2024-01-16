@@ -13,6 +13,7 @@ import { CreateBannerController } from './controllers/banner/CreateBannerControl
 // import { UpdateBannerController } from './controllers/banner/UpdateBannerController';
 import { CreateServiceController } from './controllers/service/CreateServiceController';
 import { ListServicesController } from './controllers/service/ListServicesController';
+import { CreateCategoryServiceController } from './controllers/categoryService/CreateCategoryServiceController';
 
 import { LojaLogadaController } from './controllers/store/LojaLogadaController';
 import { AutenticaUsuarioController } from './controllers/user/AutenticaUsuarioController';
@@ -134,6 +135,7 @@ rotas.get('/storesAdmin', new ListaLojasControllerAdmin().handle);
 rotas.get('/personsAdmin', new ListarProfissionalControllerAdmin().handle);
 rotas.post('/service', Authenticator, new CreateServiceController().handle);
 rotas.get('/services', new ListServicesController().handle);
+rotas.post('/categoryService', Authenticator, new CreateCategoryServiceController().handle);
 
 // pages/admin/create/user
 rotas.post('/owner', Authenticator, new CriaOwnerController().handle);
