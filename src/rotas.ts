@@ -138,7 +138,7 @@ rotas.get('/personsAdmin', new ListarProfissionalControllerAdmin().handle);
 rotas.post('/service', Authenticator, new CreateServiceController().handle);
 rotas.get('/services', new ListServicesController().handle);
 rotas.post('/categoryService', Authenticator, new CreateCategoryServiceController().handle);
-rotas.put('/service', Authenticator, new PutServiceController().handle);
+rotas.put('/service', Authenticator, uploadAvatar.single('avatar'), new PutServiceController().handle);
 rotas.get('/categoryServices', new ListCategoryServicesController().handle);
 
 // pages/admin/create/user

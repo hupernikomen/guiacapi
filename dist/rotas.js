@@ -133,7 +133,7 @@ rotas.get('/personsAdmin', new ListarProfissionalControllerAdmin_1.ListarProfiss
 rotas.post('/service', authenticator_1.Authenticator, new CreateServiceController_1.CreateServiceController().handle);
 rotas.get('/services', new ListServicesController_1.ListServicesController().handle);
 rotas.post('/categoryService', authenticator_1.Authenticator, new CreateCategoryServiceController_1.CreateCategoryServiceController().handle);
-rotas.put('/service', authenticator_1.Authenticator, new PutServiceController_1.PutServiceController().handle);
+rotas.put('/service', authenticator_1.Authenticator, uploadAvatar.single('avatar'), new PutServiceController_1.PutServiceController().handle);
 rotas.get('/categoryServices', new ListCategoryServicesController_1.ListCategoryServicesController().handle);
 // pages/admin/create/user
 rotas.post('/owner', authenticator_1.Authenticator, new CriarOwnerController_1.CriaOwnerController().handle);
