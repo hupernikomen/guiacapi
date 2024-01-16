@@ -9,9 +9,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BuscaProfissionalController = void 0;
+exports.GetUniqueServiceController = void 0;
 const GetUniqueServiceService_1 = require("../../services/service/GetUniqueServiceService");
-class BuscaProfissionalController {
+class GetUniqueServiceController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const serviceID = req.query.serviceID;
@@ -21,4 +21,4 @@ class BuscaProfissionalController {
         });
     }
 }
-exports.BuscaProfissionalController = BuscaProfissionalController;
+exports.GetUniqueServiceController = GetUniqueServiceController;

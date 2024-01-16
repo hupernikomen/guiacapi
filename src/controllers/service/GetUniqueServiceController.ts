@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { GetUniqueServiceService } from '../../services/service/GetUniqueServiceService';
 
-class BuscaProfissionalController {
+class GetUniqueServiceController {
   async handle(req: Request, res: Response) {
     const serviceID = req.query.serviceID as string;
 
@@ -11,4 +11,4 @@ class BuscaProfissionalController {
   }
 }
 
-export { BuscaProfissionalController };
+export { GetUniqueServiceController };

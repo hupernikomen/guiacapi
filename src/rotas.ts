@@ -16,6 +16,7 @@ import { ListServicesController } from './controllers/service/ListServicesContro
 import { CreateCategoryServiceController } from './controllers/categoryService/CreateCategoryServiceController';
 import { PutServiceController } from './controllers/service/PutServiceController';
 import { ListCategoryServicesController } from './controllers/categoryService/ListCategoryServicesController';
+import { GetUniqueServiceController } from './controllers/service/GetUniqueServiceController';
 
 import { LojaLogadaController } from './controllers/store/LojaLogadaController';
 import { AutenticaUsuarioController } from './controllers/user/AutenticaUsuarioController';
@@ -140,6 +141,7 @@ rotas.get('/services', new ListServicesController().handle);
 rotas.post('/categoryService', Authenticator, new CreateCategoryServiceController().handle);
 rotas.put('/service', Authenticator, uploadAvatar.single('avatar'), new PutServiceController().handle);
 rotas.get('/categoryServices', new ListCategoryServicesController().handle);
+rotas.get('/service', new GetUniqueServiceController().handle);
 
 // pages/admin/create/user
 rotas.post('/owner', Authenticator, new CriaOwnerController().handle);
