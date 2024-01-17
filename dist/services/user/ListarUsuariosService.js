@@ -22,7 +22,7 @@ class ListarUsuariosService {
                     id: true,
                     services: { select: { name: true, userID: true, type: true } },
                     store: { select: { name: true, userID: true, type: true } },
-                    person: { select: { userID: true, name: true, type: true, profession: { select: { name: true } } } },
+                    // person: { select: { userID: true, name: true, type: true, profession: { select: { name: true } } } },
                     payment: true,
                     map: true,
                     user: true

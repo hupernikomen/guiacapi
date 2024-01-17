@@ -26,9 +26,7 @@ class AutenticaService {
       if (!_user) throw new Error('Usuário não cadastrado');
 
       const store = await prismaClient.store.findFirst({ where: { userID: _user.id } });
-      const person = await prismaClient.person.findFirst({ where: { userID: _user.id } });
       const service = await prismaClient.service.findFirst({ where: { userID: _user.id } });
-      const gasStation = await prismaClient.fuelStation.findFirst({ where: { userID: _user.id } });
       const payment = await prismaClient.payment.findMany({
         where: { userID: _user.id },
         orderBy: { expiration: 'desc' }
@@ -38,7 +36,7 @@ class AutenticaService {
       if (!comparePassword) throw new Error('Senha Inválida');
 
       const token = sign({ user: _user.user }, process.env.JWT_SECRET, { subject: _user.id });
-      const account = store || person || service || gasStation;
+      const account = store || service;
 
       return {
         id: _user.id,

@@ -29,8 +29,7 @@ class ListaMapasService {
                     user: {
                         select: {
                             store: true,
-                            services: true,
-                            person: { select: { profession: { select: { name: true } }, id: true, address: true, avatar: true, name: true, professionID: true, bio: true } }
+                            services: true
                         }
                     }
                 }

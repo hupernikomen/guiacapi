@@ -12,7 +12,7 @@ class BuscaUsuarioService {
         id: true,
         payment: true,
         store: { select: { name: true, type: true } },
-        person: { select: { name: true, type: true } },
+        // person: { select: { name: true, type: true } },
         services: { select: { name: true, type: true } }
       }
     });

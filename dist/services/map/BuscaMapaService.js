@@ -23,7 +23,7 @@ class BuscaMapaService {
                     id: true,
                     userID: true,
                     latlng: true,
-                    user: { select: { person: true, store: true } }
+                    user: { select: { services: true, store: true } }
                 }
             });
             return _map;
