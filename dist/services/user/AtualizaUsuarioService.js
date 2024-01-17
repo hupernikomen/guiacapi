@@ -20,7 +20,7 @@ class AtualizaService {
         return __awaiter(this, void 0, void 0, function* () {
             const _user = yield prisma_1.default.user.findUnique({ where: { id: userID } });
             if (!_user)
-                throw new Error("Ops, infelizmente não encontramos!");
+                throw new Error('Ops, infelizmente não encontramos!');
             let passwordCripto;
             if (password)
                 passwordCripto = yield (0, bcryptjs_1.hash)(password, 8);
@@ -33,6 +33,7 @@ class AtualizaService {
                     store: true,
                     fuelStation: true,
                     person: true,
+                    services: true
                 }
             });
             return __user;
