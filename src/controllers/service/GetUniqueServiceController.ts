@@ -6,8 +6,8 @@ class GetUniqueServiceController {
     const serviceID = req.query.serviceID as string;
 
     const getUniqueServiceService = new GetUniqueServiceService();
-    const _person = await getUniqueServiceService.execute({ serviceID });
-    return res.json(_person);
+    const _service = await getUniqueServiceService.execute({ serviceID });
+    return res.json(_service);
   }
 }
 
