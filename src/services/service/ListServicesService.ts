@@ -23,6 +23,7 @@ class ListServicesService {
         address: true,
         district: true,
         categoryServiceID: true,
+        categoryService: { select: { name: true } },
         user: { select: { payment: true } },
         userID: true,
         createdAt: true
