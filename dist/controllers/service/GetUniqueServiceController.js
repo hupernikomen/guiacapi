@@ -16,8 +16,8 @@ class GetUniqueServiceController {
         return __awaiter(this, void 0, void 0, function* () {
             const serviceID = req.query.serviceID;
             const getUniqueServiceService = new GetUniqueServiceService_1.GetUniqueServiceService();
-            const _person = yield getUniqueServiceService.execute({ serviceID });
-            return res.json(_person);
+            const _service = yield getUniqueServiceService.execute({ serviceID });
+            return res.json(_service);
         });
     }
 }
