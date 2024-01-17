@@ -7,7 +7,7 @@ class ListarRegioesService {
       select: {
         id: true,
         name: true,
-        user: { select: { person: true, store: true } }
+        user: { select: { services: true, store: true } }
       }
     });
 
