@@ -143,7 +143,7 @@ rotas.post('/categoryService', Authenticator, new CreateCategoryServiceControlle
 rotas.put('/service', Authenticator, uploadAvatar.single('avatar'), new PutServiceController().handle);
 rotas.get('/categoryServices', new ListCategoryServicesController().handle);
 rotas.get('/service', new GetUniqueServiceController().handle);
-rotas.get('/categoriesAdm', new ListCategoryControllerAdm().handle);
+rotas.get('/categoriesAll', new ListCategoryControllerAdm().handle);
 
 // pages/admin/create/user
 rotas.post('/owner', Authenticator, new CriaOwnerController().handle);
