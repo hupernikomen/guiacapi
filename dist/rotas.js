@@ -19,6 +19,7 @@ const CreateCategoryServiceController_1 = require("./controllers/categoryService
 const PutServiceController_1 = require("./controllers/service/PutServiceController");
 const ListCategoryServicesController_1 = require("./controllers/categoryService/ListCategoryServicesController");
 const GetUniqueServiceController_1 = require("./controllers/service/GetUniqueServiceController");
+const ListCategoryControllerAdm_1 = require("./controllers/category/ListCategoryControllerAdm");
 const LojaLogadaController_1 = require("./controllers/store/LojaLogadaController");
 const AutenticaUsuarioController_1 = require("./controllers/user/AutenticaUsuarioController");
 const BucaProfissionalController_1 = require("./controllers/person/BucaProfissionalController");
@@ -137,6 +138,7 @@ rotas.post('/categoryService', authenticator_1.Authenticator, new CreateCategory
 rotas.put('/service', authenticator_1.Authenticator, uploadAvatar.single('avatar'), new PutServiceController_1.PutServiceController().handle);
 rotas.get('/categoryServices', new ListCategoryServicesController_1.ListCategoryServicesController().handle);
 rotas.get('/service', new GetUniqueServiceController_1.GetUniqueServiceController().handle);
+rotas.get('/categoriesAdm', new ListCategoryControllerAdm_1.ListCategoryControllerAdm().handle);
 // pages/admin/create/user
 rotas.post('/owner', authenticator_1.Authenticator, new CriarOwnerController_1.CriaOwnerController().handle);
 // pages/contactUs - OK
