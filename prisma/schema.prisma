@@ -52,7 +52,6 @@ model User {
   @@map("users")
 }
 
-
 model Jobs {
   id  String @id @default(uuid())
   job String

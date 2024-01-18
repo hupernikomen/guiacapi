@@ -3,17 +3,17 @@ import prismaClient from '../../prisma';
 class ListaCategoriaService {
   async execute() {
     const _category = await prismaClient.category.findMany({
-      //   where: {
-      //     product: {
-      //       some: {
-      //         store: {
-      //           user: {
-      //             payment: { some: { status: 'On' } }
-      //           }
-      //         }
-      //       }
-      //     }
-      //   },
+      where: {
+        product: {
+          some: {
+            store: {
+              user: {
+                payment: { some: { status: 'On' } }
+              }
+            }
+          }
+        }
+      },
       select: {
         id: true,
         name: true,
