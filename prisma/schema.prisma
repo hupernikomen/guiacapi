@@ -105,8 +105,8 @@ model Product {
   subcategoryID String?
   campaignID    String?
 
-  store       Store        @relation(fields: [storeID], references: [id])
-  category    Category     @relation(fields: [categoryID], references: [id])
+  store       Store?        @relation(fields: [storeID], references: [id])
+  category    Category?     @relation(fields: [categoryID], references: [id])
   subcategory Subcategory? @relation(fields: [subcategoryID], references: [id])
   campaign    Campaign?    @relation(fields: [campaignID], references: [id])
 
