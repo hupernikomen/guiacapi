@@ -32,7 +32,6 @@ class CriaProdutoService {
       });
 
       console.log(_product);
-
       return _product;
     } catch (error) {
       console.error('Erro no Service API', error);
