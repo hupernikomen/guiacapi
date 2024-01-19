@@ -1,34 +1,21 @@
-import prismaClient from "../../prisma";
+import prismaClient from '../../prisma';
 
 interface ProductRequest {
-  reference: string,
-  name: string,
-  description: string,
-  price: number,
-  size: string,
-  color: string[],
-  image: object,
-  categoryID: string,
-  subcategoryID:string,
-  storeID: string,
+  reference: string;
+  name: string;
+  description: string;
+  price: number;
+  size: string;
+  color: string[];
+  image: object;
+  categoryID: string;
+  subcategoryID: string;
+  storeID: string;
 }
 
 class CriaProdutoService {
-  async execute({
-    reference,
-    name,
-    description,
-    price,
-    size,
-    color,
-    image,
-    categoryID,
-    subcategoryID,
-    storeID,
-  }: ProductRequest) {
-    
+  async execute({ reference, name, description, price, size, color, image, categoryID, subcategoryID, storeID }: ProductRequest) {
     try {
-
       const _product = await prismaClient.product.create({
         data: {
           reference,
@@ -40,16 +27,16 @@ class CriaProdutoService {
           image,
           categoryID,
           subcategoryID,
-          storeID,
-        },
+          storeID
+        }
       });
 
+      console.log(_product);
+
       return _product;
-
     } catch (error) {
-      console.error('Erro no Service API', error)
+      console.error('Erro no Service API', error);
     }
-
   }
 }
 

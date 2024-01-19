@@ -31,8 +31,7 @@ class CriaProdutoController {
                 subcategoryID,
                 storeID
             });
-            console.log(price, 'price');
-            console.log(produto, 'produto');
+            console.log(typeof price, 'price');
             return res.status(200).json(produto);
         });
     }
