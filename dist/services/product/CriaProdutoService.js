@@ -23,7 +23,7 @@ class CriaProdutoService {
                         reference,
                         name,
                         description,
-                        price: Number(price),
+                        price,
                         size,
                         color,
                         image,
@@ -33,6 +33,7 @@ class CriaProdutoService {
                     }
                 });
                 console.log(_product);
+                console.log(typeof _product.price, 'type');
                 return _product;
             }
             catch (error) {
