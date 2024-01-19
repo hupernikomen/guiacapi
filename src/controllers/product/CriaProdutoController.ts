@@ -22,9 +22,6 @@ class CriaProdutoController {
       storeID
     });
 
-    console.log(typeof price, 'recebido');
-    console.log(typeof produto.price, 'registrado');
-
     return res.status(200).json(produto);
   }
 }
