@@ -13,7 +13,7 @@ class CriaProdutoController {
       reference,
       name,
       description,
-      price,
+      price: parseFloat(price),
       size,
       color,
       image: req.files,
