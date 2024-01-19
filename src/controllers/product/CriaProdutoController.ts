@@ -8,10 +8,6 @@ class CriaProdutoController {
 
     if (!req.files) throw new Error('Ops.. algo deu errado!');
 
-    let priceReplace = price?.replace(',', '.').replace(/\s/g, '');
-
-    console.log(priceReplace, 'teste');
-
     const criaProdutoService = new CriaProdutoService();
     const produto = await criaProdutoService.execute({
       reference,

@@ -18,8 +18,6 @@ class CriaProdutoController {
             const { reference, name, description, price, size, color, categoryID, subcategoryID } = req.body;
             if (!req.files)
                 throw new Error('Ops.. algo deu errado!');
-            let priceReplace = price === null || price === void 0 ? void 0 : price.replace(',', '.').replace(/\s/g, '');
-            console.log(priceReplace, 'teste');
             const criaProdutoService = new CriaProdutoService_1.CriaProdutoService();
             const produto = yield criaProdutoService.execute({
                 reference,

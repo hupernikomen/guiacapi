@@ -21,7 +21,7 @@ class CriaProdutoService {
           reference,
           name,
           description,
-          price: Number(price),
+          price,
           size,
           color,
           image,
