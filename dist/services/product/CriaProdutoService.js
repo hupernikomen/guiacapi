@@ -33,7 +33,7 @@ class CriaProdutoService {
                     }
                 });
                 console.log(_product);
-                console.log(typeof _product.price, 'type');
+                console.log(typeof _product.price, 'tratado');
                 return _product;
             }
             catch (error) {
