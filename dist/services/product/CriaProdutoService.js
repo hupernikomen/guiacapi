@@ -38,6 +38,7 @@ class CriaProdutoService {
             }
             catch (error) {
                 console.error('Erro no Service API', error);
+                throw new Error('Ops! Algo deu errado na postagem');
             }
         });
     }
