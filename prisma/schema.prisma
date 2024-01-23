@@ -183,18 +183,18 @@ model CategoryService {
 
 model Food {
   id        String @id @default(uuid())
-  name      String
+  name      String?
   avatar    Json?
-  district  String
-  address   String
-  bio       String
+  district  String?
+  address   String?
+  bio       String?
   type      String @default("food")
   delivery  Boolean?  @default(false)
 
   menu Menu[]
 
-  categoryFoodID String
-  categoryFood CategoryFood @relation(fields: [categoryFoodID],references: [id])
+  categoryFoodID String?
+  categoryFood CategoryFood? @relation(fields: [categoryFoodID],references: [id])
 
   userID    String
   user      User        @relation(fields: [userID], references: [id])
