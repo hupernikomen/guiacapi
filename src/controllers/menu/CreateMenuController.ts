@@ -5,7 +5,8 @@ class CreateMenuController {
   async handle(req: Request, res: Response) {
     const createMenuService = new CreateMenuService();
 
-    const { name, price, details, foodID } = req.body;
+    const foodID = req.query.foodID as string;
+    const { name, price, details } = req.body;
 
     const _person = await createMenuService.execute({
       name,

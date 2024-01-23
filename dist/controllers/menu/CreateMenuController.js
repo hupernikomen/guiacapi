@@ -15,7 +15,8 @@ class CreateMenuController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const createMenuService = new CreateMenuService_1.CreateMenuService();
-            const { name, price, details, foodID } = req.body;
+            const foodID = req.query.foodID;
+            const { name, price, details } = req.body;
             const _person = yield createMenuService.execute({
                 name,
                 price,
