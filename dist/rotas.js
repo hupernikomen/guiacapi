@@ -92,6 +92,7 @@ const ListarJobsController_1 = require("./controllers/jobs/ListarJobsController"
 const CreateCategoryFoodController_1 = require("./controllers/categoryFood/CreateCategoryFoodController");
 const ListCategoryFoodController_1 = require("./controllers/categoryFood/ListCategoryFoodController");
 const CreateFoodController_1 = require("./controllers/food/CreateFoodController");
+const UpdateFoodController_1 = require("./controllers/food/UpdateFoodController");
 const uploadProdutos = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageProdutos.s3 : multer_2.storageProdutos.local,
@@ -142,6 +143,7 @@ rotas.get('/categoriesAll', new ListCategoryControllerAdm_1.ListCategoryControll
 rotas.post('/categoryFood', authenticator_1.Authenticator, new CreateCategoryFoodController_1.CreateCategoryFoodController().handle);
 rotas.get('/categoriesFood', new ListCategoryFoodController_1.ListCategoryFoodController().handle);
 rotas.post('/food', authenticator_1.Authenticator, new CreateFoodController_1.CreateFoodController().handle);
+rotas.put('/food', authenticator_1.Authenticator, new UpdateFoodController_1.UpdateFoodController().handle);
 // pages/admin/create/user
 rotas.post('/owner', authenticator_1.Authenticator, new CriarOwnerController_1.CriaOwnerController().handle);
 // pages/contactUs - OK
