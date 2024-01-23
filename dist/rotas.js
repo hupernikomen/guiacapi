@@ -89,6 +89,8 @@ const BuscarOwnerController_1 = require("./controllers/owner/BuscarOwnerControll
 const DeleteBannerController_1 = require("./controllers/banner/DeleteBannerController");
 const CreateJobController_1 = require("./controllers/jobs/CreateJobController");
 const ListarJobsController_1 = require("./controllers/jobs/ListarJobsController");
+const CreateCategoryFoodController_1 = require("./controllers/categoryFood/CreateCategoryFoodController");
+const ListCategoryFoodController_1 = require("./controllers/categoryFood/ListCategoryFoodController");
 const uploadProdutos = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageProdutos.s3 : multer_2.storageProdutos.local,
@@ -136,6 +138,8 @@ rotas.put('/service', authenticator_1.Authenticator, uploadAvatar.single('avatar
 rotas.get('/categoryServices', new ListCategoryServicesController_1.ListCategoryServicesController().handle);
 rotas.get('/service', new GetUniqueServiceController_1.GetUniqueServiceController().handle);
 rotas.get('/categoriesAll', new ListCategoryControllerAdm_1.ListCategoryControllerAdm().handle);
+rotas.post('/categoryFood', authenticator_1.Authenticator, new CreateCategoryFoodController_1.CreateCategoryFoodController().handle);
+rotas.get('/categoriesFood', new ListCategoryFoodController_1.ListCategoryFoodController().handle);
 // pages/admin/create/user
 rotas.post('/owner', authenticator_1.Authenticator, new CriarOwnerController_1.CriaOwnerController().handle);
 // pages/contactUs - OK

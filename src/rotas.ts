@@ -90,6 +90,9 @@ import { DeleteBannerController } from './controllers/banner/DeleteBannerControl
 import { CriaJobController } from './controllers/jobs/CreateJobController';
 import { ListarJobsController } from './controllers/jobs/ListarJobsController';
 
+import { CreateCategoryFoodController } from './controllers/categoryFood/CreateCategoryFoodController';
+import { ListCategoryFoodController } from './controllers/categoryFood/ListCategoryFoodController';
+
 const uploadProdutos = multer({
   fileFilter: fileFilter,
   storage: process.env.TYPE_STORAGE === 'S3' ? storageProdutos.s3 : storageProdutos.local,
@@ -141,6 +144,8 @@ rotas.put('/service', Authenticator, uploadAvatar.single('avatar'), new PutServi
 rotas.get('/categoryServices', new ListCategoryServicesController().handle);
 rotas.get('/service', new GetUniqueServiceController().handle);
 rotas.get('/categoriesAll', new ListCategoryControllerAdm().handle);
+rotas.post('/categoryFood', Authenticator, new CreateCategoryFoodController().handle);
+rotas.get('/categoriesFood', new ListCategoryFoodController().handle);
 
 // pages/admin/create/user
 rotas.post('/owner', Authenticator, new CriaOwnerController().handle);
