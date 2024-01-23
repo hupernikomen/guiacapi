@@ -17,13 +17,13 @@ class CreateMenuController {
             const createMenuService = new CreateMenuService_1.CreateMenuService();
             const foodID = req.query.foodID;
             const { name, price, details } = req.body;
-            const _person = yield createMenuService.execute({
+            const _menu = yield createMenuService.execute({
                 name,
                 price,
                 details,
                 foodID
             });
-            return res.status(200).json(_person);
+            return res.status(200).json(_menu);
         });
     }
 }

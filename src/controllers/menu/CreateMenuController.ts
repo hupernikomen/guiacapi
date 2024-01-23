@@ -8,14 +8,14 @@ class CreateMenuController {
     const foodID = req.query.foodID as string;
     const { name, price, details } = req.body;
 
-    const _person = await createMenuService.execute({
+    const _menu = await createMenuService.execute({
       name,
       price,
       details,
       foodID
     });
 
-    return res.status(200).json(_person);
+    return res.status(200).json(_menu);
   }
 }
 

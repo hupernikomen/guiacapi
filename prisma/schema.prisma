@@ -217,10 +217,10 @@ model Menu{
   id String @id @default(uuid())
   name String
   price String
-  details String
+  details String?
 
   foodID String
-  food Food @relation(fields: [foodID], references: [id])
+  food Food? @relation(fields: [foodID], references: [id])
 
   createdAt DateTime? @default(now())
 
