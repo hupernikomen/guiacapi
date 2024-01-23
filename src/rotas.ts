@@ -92,6 +92,7 @@ import { ListarJobsController } from './controllers/jobs/ListarJobsController';
 
 import { CreateCategoryFoodController } from './controllers/categoryFood/CreateCategoryFoodController';
 import { ListCategoryFoodController } from './controllers/categoryFood/ListCategoryFoodController';
+import { CreateFoodController } from './controllers/food/CreateFoodController';
 
 const uploadProdutos = multer({
   fileFilter: fileFilter,
@@ -146,6 +147,7 @@ rotas.get('/service', new GetUniqueServiceController().handle);
 rotas.get('/categoriesAll', new ListCategoryControllerAdm().handle);
 rotas.post('/categoryFood', Authenticator, new CreateCategoryFoodController().handle);
 rotas.get('/categoriesFood', new ListCategoryFoodController().handle);
+rotas.post('/food', Authenticator, new CreateFoodController().handle);
 
 // pages/admin/create/user
 rotas.post('/owner', Authenticator, new CriaOwnerController().handle);
