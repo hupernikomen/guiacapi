@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UpdateFoodService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class UpdateFoodService {
-    execute({ userID, avatar, name, bio, address, district, delivery }) {
+    execute({ userID, avatar, name, bio, address, district, delivery, categoryFoodID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const _food = yield prisma_1.default.food.findFirst({ where: { userID } });
             if (!_food)
@@ -28,7 +28,8 @@ class UpdateFoodService {
                     bio,
                     address,
                     district,
-                    delivery
+                    delivery,
+                    categoryFoodID
                 }
             });
             return __food;

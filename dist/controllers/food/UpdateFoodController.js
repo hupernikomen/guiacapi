@@ -15,7 +15,7 @@ class UpdateFoodController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const userID = req.query.userID;
-            const { name, bio, address, district, delivery } = req.body;
+            const { name, bio, address, district, delivery, categoryFoodID } = req.body;
             const updateFoodService = new UpdateFoodService_1.UpdateFoodService();
             yield updateFoodService.execute({
                 userID,
@@ -24,7 +24,8 @@ class UpdateFoodController {
                 bio,
                 address,
                 district,
-                delivery: Boolean(delivery)
+                delivery: Boolean(delivery),
+                categoryFoodID
             });
             return res.status(200).json({ message: 'Food Atualizado' });
         });

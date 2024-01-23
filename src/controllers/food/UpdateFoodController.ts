@@ -4,7 +4,7 @@ import { UpdateFoodService } from '../../services/food/UpdateFoodService';
 class UpdateFoodController {
   async handle(req: Request, res: Response) {
     const userID = req.query.userID as string;
-    const { name, bio, address, district, delivery } = req.body;
+    const { name, bio, address, district, delivery, categoryFoodID } = req.body;
 
     const updateFoodService = new UpdateFoodService();
     await updateFoodService.execute({
@@ -14,7 +14,8 @@ class UpdateFoodController {
       bio,
       address,
       district,
-      delivery: Boolean(delivery)
+      delivery: Boolean(delivery),
+      categoryFoodID
     });
 
     return res.status(200).json({ message: 'Food Atualizado' });

@@ -8,10 +8,11 @@ interface foodRequest {
   address: string;
   district: string;
   delivery: boolean;
+  categoryFoodID: string;
 }
 
 class UpdateFoodService {
-  async execute({ userID, avatar, name, bio, address, district, delivery }: foodRequest) {
+  async execute({ userID, avatar, name, bio, address, district, delivery, categoryFoodID }: foodRequest) {
     const _food = await prismaClient.food.findFirst({ where: { userID } });
 
     if (!_food) throw new Error('Ops, infelizmente não encontramos!');
@@ -24,7 +25,8 @@ class UpdateFoodService {
         bio,
         address,
         district,
-        delivery
+        delivery,
+        categoryFoodID
       }
     });
 
