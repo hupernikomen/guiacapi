@@ -149,7 +149,7 @@ rotas.get('/categoriesAll', new ListCategoryControllerAdm().handle);
 rotas.post('/categoryFood', Authenticator, new CreateCategoryFoodController().handle);
 rotas.get('/categoriesFood', new ListCategoryFoodController().handle);
 rotas.post('/food', Authenticator, new CreateFoodController().handle);
-rotas.put('/food', Authenticator, new UpdateFoodController().handle);
+rotas.put('/food', Authenticator, uploadAvatar.single('avatar'), new UpdateFoodController().handle);
 
 // pages/admin/create/user
 rotas.post('/owner', Authenticator, new CriaOwnerController().handle);
