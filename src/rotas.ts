@@ -94,6 +94,8 @@ import { CreateCategoryFoodController } from './controllers/categoryFood/CreateC
 import { ListCategoryFoodController } from './controllers/categoryFood/ListCategoryFoodController';
 import { CreateFoodController } from './controllers/food/CreateFoodController';
 import { UpdateFoodController } from './controllers/food/UpdateFoodController';
+import { CreateMenuController } from './controllers/menu/CreateMenuController';
+import { ListMenuController } from './controllers/menu/ListMenuController';
 
 const uploadProdutos = multer({
   fileFilter: fileFilter,
@@ -150,6 +152,8 @@ rotas.post('/categoryFood', Authenticator, new CreateCategoryFoodController().ha
 rotas.get('/categoriesFood', new ListCategoryFoodController().handle);
 rotas.post('/food', Authenticator, new CreateFoodController().handle);
 rotas.put('/food', Authenticator, uploadAvatar.single('avatar'), new UpdateFoodController().handle);
+rotas.post('/menu', Authenticator, new CreateMenuController().handle);
+rotas.get('/menu', new ListMenuController().handle);
 
 // pages/admin/create/user
 rotas.post('/owner', Authenticator, new CriaOwnerController().handle);
