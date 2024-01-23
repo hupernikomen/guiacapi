@@ -95,6 +95,7 @@ const CreateFoodController_1 = require("./controllers/food/CreateFoodController"
 const UpdateFoodController_1 = require("./controllers/food/UpdateFoodController");
 const CreateMenuController_1 = require("./controllers/menu/CreateMenuController");
 const ListMenuController_1 = require("./controllers/menu/ListMenuController");
+const GetFoodController_1 = require("./controllers/food/GetFoodController");
 const uploadProdutos = (0, multer_1.default)({
     fileFilter: multer_2.fileFilter,
     storage: process.env.TYPE_STORAGE === 'S3' ? multer_2.storageProdutos.s3 : multer_2.storageProdutos.local,
@@ -148,6 +149,7 @@ rotas.post('/food', authenticator_1.Authenticator, new CreateFoodController_1.Cr
 rotas.put('/food', authenticator_1.Authenticator, uploadAvatar.single('avatar'), new UpdateFoodController_1.UpdateFoodController().handle);
 rotas.post('/menu', authenticator_1.Authenticator, new CreateMenuController_1.CreateMenuController().handle);
 rotas.get('/menu', new ListMenuController_1.ListMenuController().handle);
+rotas.get('/food', new GetFoodController_1.GetFoodController().handle);
 // pages/admin/create/user
 rotas.post('/owner', authenticator_1.Authenticator, new CriarOwnerController_1.CriaOwnerController().handle);
 // pages/contactUs - OK
