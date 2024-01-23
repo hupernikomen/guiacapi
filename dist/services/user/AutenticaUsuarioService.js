@@ -38,6 +38,7 @@ class AutenticaService {
                     throw new Error('Usuário não cadastrado');
                 const store = yield prisma_1.default.store.findFirst({ where: { userID: _user.id } });
                 const service = yield prisma_1.default.service.findFirst({ where: { userID: _user.id } });
+                const food = yield prisma_1.default.food.findFirst({ where: { userID: _user.id } });
                 const payment = yield prisma_1.default.payment.findMany({
                     where: { userID: _user.id },
                     orderBy: { expiration: 'desc' }
@@ -46,7 +47,7 @@ class AutenticaService {
                 if (!comparePassword)
                     throw new Error('Senha Inválida');
                 const token = (0, jsonwebtoken_1.sign)({ user: _user.user }, process.env.JWT_SECRET, { subject: _user.id });
-                const account = store || service;
+                const account = store || service || food;
                 return {
                     id: _user.id,
                     user: _user.user,
