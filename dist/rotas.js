@@ -69,9 +69,6 @@ const PorSubcategoriaProdutoController_1 = require("./controllers/product/PorSub
 const ListarUsuariosController_1 = require("./controllers/user/ListarUsuariosController");
 const BuscarUsuarioController_1 = require("./controllers/user/BuscarUsuarioController");
 const AtualizaMapaController_1 = require("./controllers/map/AtualizaMapaController");
-const DeletaMarcaController_1 = require("./controllers/brand/DeletaMarcaController");
-const CriaMarcaController_1 = require("./controllers/brand/CriaMarcaController");
-const ListaMarcasController_1 = require("./controllers/brand/ListaMarcasController");
 const CriarPagamentoController_1 = require("./controllers/payment/CriarPagamentoController");
 const ListarPaymentController_1 = require("./controllers/payment/ListarPaymentController");
 const BuscaPaymentController_1 = require("./controllers/payment/BuscaPaymentController");
@@ -258,10 +255,6 @@ rotas.put('/store', authenticator_1.Authenticator, uploadAvatar.single('avatar')
 rotas.get('/stores', new ListaLojasController_1.ListaLojasController().handle);
 // pages/store
 rotas.get('/store', new BuscaLojaController_1.BuscaLojaController().handle);
-rotas.post('/brand', authenticator_1.Authenticator, uploadMarca.single('avatar'), new CriaMarcaController_1.CriaMarcaController().handle);
-rotas.delete('/brand', authenticator_1.Authenticator, new DeletaMarcaController_1.DeletaMarcaController().handle);
-// pages/feed
-rotas.get('/brands', new ListaMarcasController_1.ListaMarcasController().handle);
 // pages/admin/create/user
 rotas.post('/person', authenticator_1.Authenticator, new CriaProfissionalController_1.CriaProfissionalController().handle);
 // account/person/dados

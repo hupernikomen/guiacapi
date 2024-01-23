@@ -41,7 +41,6 @@ model User {
   map         Map[]
   contact     Contact[]
   banners     Banner[]
-  brand       Brand[]
   jobs        Jobs[]
   services Service[]
 
@@ -184,7 +183,6 @@ model CategoryService {
 
 model Food {
   id        String @id @default(uuid())
-  category String?
   name      String
   avatar    Json?
   district  String
@@ -195,11 +193,24 @@ model Food {
 
   menu Menu[]
 
+  categoryFoodID String
+  categoryFood CategoryFood @relation(fields: [categoryFoodID],references: [id])
+
   userID    String
   user      User        @relation(fields: [userID], references: [id])
   
   createdAt DateTime? @default(now())
   @@map("foods")
+}
+
+model CategoryFood {
+
+  id String @id @default(uuid())
+  name String
+
+  food Food[]
+
+  @@map("categoriesFoods")
 }
 
 model Menu{
@@ -294,21 +305,6 @@ model Contact {
 
   @@map("contacts")
 }
-
-
-model Brand {
-  id     String @id @default(uuid())
-  name   String
-  avatar Json?
-  userID String
-
-  user User? @relation(fields: [userID], references: [id])
-
-  createdAt DateTime? @default(now())
-
-  @@map("brands")
-}
-
 
 
 model Category {

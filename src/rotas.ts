@@ -68,9 +68,6 @@ import { PorSubcategoriaProdutoController } from './controllers/product/PorSubca
 import { ListarUsuariosController } from './controllers/user/ListarUsuariosController';
 import { BuscaUsuarioController } from './controllers/user/BuscarUsuarioController';
 import { AtualizaMapaController } from './controllers/map/AtualizaMapaController';
-import { DeletaMarcaController } from './controllers/brand/DeletaMarcaController';
-import { CriaMarcaController } from './controllers/brand/CriaMarcaController';
-import { ListaMarcasController } from './controllers/brand/ListaMarcasController';
 import { CriaPaymentController } from './controllers/payment/CriarPagamentoController';
 import { ListarPaymentController } from './controllers/payment/ListarPaymentController';
 import { BuscaPaymentController } from './controllers/payment/BuscaPaymentController';
@@ -312,12 +309,6 @@ rotas.get('/stores', new ListaLojasController().handle);
 
 // pages/store
 rotas.get('/store', new BuscaLojaController().handle);
-
-rotas.post('/brand', Authenticator, uploadMarca.single('avatar'), new CriaMarcaController().handle);
-rotas.delete('/brand', Authenticator, new DeletaMarcaController().handle);
-
-// pages/feed
-rotas.get('/brands', new ListaMarcasController().handle);
 
 // pages/admin/create/user
 rotas.post('/person', Authenticator, new CriaProfissionalController().handle);
