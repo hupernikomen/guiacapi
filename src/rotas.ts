@@ -153,7 +153,7 @@ rotas.post('/categoryFood', Authenticator, new CreateCategoryFoodController().ha
 rotas.get('/categoriesFood', new ListCategoryFoodController().handle);
 rotas.post('/food', Authenticator, new CreateFoodController().handle);
 rotas.put('/food', Authenticator, uploadAvatar.single('avatar'), new UpdateFoodController().handle);
-rotas.post('/menu', Authenticator, new CreateMenuController().handle);
+rotas.post('/menu', Authenticator, uploadProdutos.single('image'), new CreateMenuController().handle);
 rotas.get('/menu', new ListMenuController().handle);
 rotas.get('/food', new GetFoodController().handle);
 

@@ -147,7 +147,7 @@ rotas.post('/categoryFood', authenticator_1.Authenticator, new CreateCategoryFoo
 rotas.get('/categoriesFood', new ListCategoryFoodController_1.ListCategoryFoodController().handle);
 rotas.post('/food', authenticator_1.Authenticator, new CreateFoodController_1.CreateFoodController().handle);
 rotas.put('/food', authenticator_1.Authenticator, uploadAvatar.single('avatar'), new UpdateFoodController_1.UpdateFoodController().handle);
-rotas.post('/menu', authenticator_1.Authenticator, new CreateMenuController_1.CreateMenuController().handle);
+rotas.post('/menu', authenticator_1.Authenticator, uploadProdutos.single('image'), new CreateMenuController_1.CreateMenuController().handle);
 rotas.get('/menu', new ListMenuController_1.ListMenuController().handle);
 rotas.get('/food', new GetFoodController_1.GetFoodController().handle);
 // pages/admin/create/user
