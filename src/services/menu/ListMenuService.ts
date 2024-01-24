@@ -5,10 +5,12 @@ class ListMenuService {
     return await prismaClient.menu.findMany({
       select: {
         id: true,
+        image: true,
         name: true,
         price: true,
         details: true,
-        foodID: true
+        foodID: true,
+        food: { select: { name: true } }
       }
     });
   }
