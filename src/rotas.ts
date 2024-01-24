@@ -97,6 +97,7 @@ import { UpdateFoodController } from './controllers/food/UpdateFoodController';
 import { CreateMenuController } from './controllers/menu/CreateMenuController';
 import { ListMenuController } from './controllers/menu/ListMenuController';
 import { GetFoodController } from './controllers/food/GetFoodController';
+import { GetMenuController } from './controllers/menu/GetMenuController';
 
 const uploadProdutos = multer({
   fileFilter: fileFilter,
@@ -154,8 +155,9 @@ rotas.get('/categoriesFood', new ListCategoryFoodController().handle);
 rotas.post('/food', Authenticator, new CreateFoodController().handle);
 rotas.put('/food', Authenticator, uploadAvatar.single('avatar'), new UpdateFoodController().handle);
 rotas.post('/menu', Authenticator, uploadProdutos.single('image'), new CreateMenuController().handle);
-rotas.get('/menu', new ListMenuController().handle);
+rotas.get('/menuAll', new ListMenuController().handle);
 rotas.get('/food', new GetFoodController().handle);
+rotas.get('/menu', new GetMenuController().handle);
 
 // pages/admin/create/user
 rotas.post('/owner', Authenticator, new CriaOwnerController().handle);
