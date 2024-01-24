@@ -18,6 +18,13 @@ class ListMenuService {
     execute() {
         return __awaiter(this, void 0, void 0, function* () {
             return yield prisma_1.default.menu.findMany({
+                where: {
+                    food: {
+                        user: {
+                            payment: { some: { status: 'On' } }
+                        }
+                    }
+                },
                 select: {
                     id: true,
                     image: true,

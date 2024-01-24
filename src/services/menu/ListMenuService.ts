@@ -3,6 +3,13 @@ import prismaClient from '../../prisma';
 class ListMenuService {
   async execute() {
     return await prismaClient.menu.findMany({
+      where: {
+        food: {
+          user: {
+            payment: { some: { status: 'On' } }
+          }
+        }
+      },
       select: {
         id: true,
         image: true,

@@ -7,7 +7,14 @@ interface menuRequest {
 class GetMenuService {
   async execute({ menuID }: menuRequest) {
     const owner = await prismaClient.menu.findFirst({
-      where: { id: menuID },
+      where: {
+        id: menuID,
+        food: {
+          user: {
+            payment: { some: { status: 'On' } }
+          }
+        }
+      },
       select: {
         id: true,
         image: true,

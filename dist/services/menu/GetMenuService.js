@@ -18,7 +18,14 @@ class GetMenuService {
     execute({ menuID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const owner = yield prisma_1.default.menu.findFirst({
-                where: { id: menuID },
+                where: {
+                    id: menuID,
+                    food: {
+                        user: {
+                            payment: { some: { status: 'On' } }
+                        }
+                    }
+                },
                 select: {
                     id: true,
                     image: true,
