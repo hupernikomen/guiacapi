@@ -25,7 +25,7 @@ class ListMenuService {
                     price: true,
                     details: true,
                     foodID: true,
-                    food: { select: { name: true } }
+                    food: { select: { name: true, userID: true } }
                 }
             });
         });
