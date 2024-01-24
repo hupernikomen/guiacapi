@@ -9,6 +9,7 @@ class CreateMenuController {
     const { name, price, details } = req.body;
 
     const _menu = await createMenuService.execute({
+      image: req.file,
       name,
       price,
       details,

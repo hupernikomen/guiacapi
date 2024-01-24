@@ -18,6 +18,7 @@ class CreateMenuController {
             const foodID = req.query.foodID;
             const { name, price, details } = req.body;
             const _menu = yield createMenuService.execute({
+                image: req.file,
                 name,
                 price,
                 details,

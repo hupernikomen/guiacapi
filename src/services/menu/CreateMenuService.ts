@@ -1,6 +1,7 @@
 import prismaClient from '../../prisma';
 
 interface menuRequest {
+  image: object;
   name: string;
   price: string;
   details: string;
@@ -8,9 +9,10 @@ interface menuRequest {
 }
 
 class CreateMenuService {
-  async execute({ name, price, details, foodID }: menuRequest) {
+  async execute({ image, name, price, details, foodID }: menuRequest) {
     const _menu = await prismaClient.menu.create({
       data: {
+        image,
         name,
         price,
         details,

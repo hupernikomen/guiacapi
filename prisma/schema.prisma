@@ -215,6 +215,7 @@ model CategoryFood {
 
 model Menu{
   id String @id @default(uuid())
+  image    Json?
   name String
   price String
   details String?

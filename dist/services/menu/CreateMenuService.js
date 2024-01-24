@@ -15,10 +15,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateMenuService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class CreateMenuService {
-    execute({ name, price, details, foodID }) {
+    execute({ image, name, price, details, foodID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const _menu = yield prisma_1.default.menu.create({
                 data: {
+                    image,
                     name,
                     price,
                     details,
