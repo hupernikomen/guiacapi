@@ -15,11 +15,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.GetFoodService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class GetFoodService {
-    execute({ userID }) {
+    execute({ foodID }) {
         return __awaiter(this, void 0, void 0, function* () {
             const food = yield prisma_1.default.food.findFirst({
                 where: {
-                    userID
+                    id: foodID
                 },
                 select: {
                     type: true,

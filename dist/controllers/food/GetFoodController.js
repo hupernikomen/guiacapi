@@ -14,9 +14,9 @@ const GetFoodService_1 = require("../../services/food/GetFoodService");
 class GetFoodController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const userID = req.query.userID;
+            const foodID = req.query.foodID;
             const getFoodService = new GetFoodService_1.GetFoodService();
-            const _food = yield getFoodService.execute({ userID });
+            const _food = yield getFoodService.execute({ foodID });
             return res.json(_food);
         });
     }

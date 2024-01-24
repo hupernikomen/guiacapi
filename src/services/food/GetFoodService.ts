@@ -1,14 +1,14 @@
 import prismaClient from '../../prisma';
 
 interface foodRequest {
-  userID: string;
+  foodID: string;
 }
 
 class GetFoodService {
-  async execute({ userID }: foodRequest) {
+  async execute({ foodID }: foodRequest) {
     const food = await prismaClient.food.findFirst({
       where: {
-        userID
+        id: foodID
       },
       select: {
         type: true,
