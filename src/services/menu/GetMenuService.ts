@@ -14,7 +14,7 @@ class GetMenuService {
         name: true,
         price: true,
         details: true,
-        food: true
+        food: { select: { _count: true, menu: true, avatar: true, categoryFood: true, delivery: true, name: true, type: true, user: true } }
       }
     });
     return owner;
