@@ -11,12 +11,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListMenuController = void 0;
 const ListMenuService_1 = require("../../services/menu/ListMenuService");
+const lodash_1 = require("lodash");
 class ListMenuController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const listMenuService = new ListMenuService_1.ListMenuService();
             const _menu = yield listMenuService.execute();
-            return res.json(_menu);
+            const shuffledResults = (0, lodash_1.shuffle)(_menu);
+            return res.json(shuffledResults);
         });
     }
 }
