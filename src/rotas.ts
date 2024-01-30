@@ -158,7 +158,7 @@ rotas.put('/food', Authenticator, uploadAvatar.single('avatar'), new UpdateFoodC
 rotas.post('/menu', Authenticator, uploadProdutos.single('image'), new CreateMenuController().handle);
 rotas.get('/menuAll', new ListMenuController().handle);
 rotas.get('/food', new GetFoodController().handle);
-rotas.get('foodsAll', new ListFoodController().handle);
+rotas.get('/foodsAll', new ListFoodController().handle);
 rotas.get('/menu', new GetMenuController().handle);
 
 // pages/admin/create/user

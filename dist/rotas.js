@@ -152,7 +152,7 @@ rotas.put('/food', authenticator_1.Authenticator, uploadAvatar.single('avatar'),
 rotas.post('/menu', authenticator_1.Authenticator, uploadProdutos.single('image'), new CreateMenuController_1.CreateMenuController().handle);
 rotas.get('/menuAll', new ListMenuController_1.ListMenuController().handle);
 rotas.get('/food', new GetFoodController_1.GetFoodController().handle);
-rotas.get('foodsAll', new ListFoodController_1.ListFoodController().handle);
+rotas.get('/foodsAll', new ListFoodController_1.ListFoodController().handle);
 rotas.get('/menu', new GetMenuController_1.GetMenuController().handle);
 // pages/admin/create/user
 rotas.post('/owner', authenticator_1.Authenticator, new CriarOwnerController_1.CriaOwnerController().handle);
