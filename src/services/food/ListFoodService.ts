@@ -7,6 +7,13 @@ class ListFoodService {
         user: {
           payment: { some: { status: 'On' } }
         }
+      },
+      select: {
+        avatar: true,
+        name: true,
+        delivery: true,
+        type: true,
+        categoryFood: { select: { name: true } }
       }
     });
   }
