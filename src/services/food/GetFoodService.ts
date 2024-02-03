@@ -22,7 +22,7 @@ class GetFoodService {
         menu: true,
         userID: true,
         user: {
-          select: { map: { select: { latlng: true } } }
+          select: { id: true, map: { select: { latlng: true } } }
         }
       }
     });
