@@ -43,6 +43,7 @@ model User {
   banners     Banner[]
   jobs        Jobs[]
   services Service[]
+  scenario Scenario[]
 
  
   region Region @relation(fields: [regionID], references: [id])
@@ -226,6 +227,20 @@ model Menu{
   createdAt DateTime? @default(now())
 
   @@map("menus")
+}
+
+
+model Scenario {
+  id String @id @default(uuid())
+
+  image Json
+  userID       String
+  user       User        @relation(fields: [userID], references: [id])
+
+  createdAt DateTime? @default(now())
+
+  @@map("scenario")
+
 }
 
 
