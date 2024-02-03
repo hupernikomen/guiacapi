@@ -34,8 +34,8 @@ model User {
   regionID String
   payment     Payment[]
   owner       Owner[]
-  fuelStation FuelStation[]
-  person      Person[]
+  // fuelStation FuelStation[]
+  // person      Person[]
   store       Store[]
   food        Food[]
   map         Map[]
@@ -115,35 +115,35 @@ model Product {
   @@map("products")
 }
 
-model Person {
-  id           String  @id @default(uuid())
-  avatar       Json?
-  name         String?
-  district     String?
-  address      String?
-  bio          String?
-  professionID String?
-  userID       String
-  type         String? @default("person")
+// model Person {
+//   id           String  @id @default(uuid())
+//   avatar       Json?
+//   name         String?
+//   district     String?
+//   address      String?
+//   bio          String?
+//   professionID String?
+//   userID       String
+//   type         String? @default("person")
 
-  user       User        @relation(fields: [userID], references: [id])
-  profession Profession? @relation(fields: [professionID], references: [id])
+//   user       User        @relation(fields: [userID], references: [id])
+//   profession Profession? @relation(fields: [professionID], references: [id])
 
-  createdAt DateTime? @default(now())
+//   createdAt DateTime? @default(now())
 
-  @@map("persons")
-}
+//   @@map("persons")
+// }
 
-model Profession {
-  id   String @id @default(uuid())
-  name String
+// model Profession {
+//   id   String @id @default(uuid())
+//   name String
 
-  person Person[]
+//   person Person[]
 
-  createdAt DateTime? @default(now())
+//   createdAt DateTime? @default(now())
 
-  @@map("professions")
-}
+//   @@map("professions")
+// }
 
 model Service {
   id String @id @default(uuid())
@@ -357,19 +357,19 @@ model Campaign {
   @@map("campaigns")
 }
 
-model FuelStation {
-  id            String  @id @default(uuid())
-  avatar        Json?
-  name          String?
-  table         Json?
-  previoustable Json?
-  district      String?
-  userID        String
+// model FuelStation {
+//   id            String  @id @default(uuid())
+//   avatar        Json?
+//   name          String?
+//   table         Json?
+//   previoustable Json?
+//   district      String?
+//   userID        String
 
-  user User @relation(fields: [userID], references: [id])
+//   user User @relation(fields: [userID], references: [id])
 
-  createdAt DateTime? @default(now())
-  updatedAt DateTime? @default(now())
+//   createdAt DateTime? @default(now())
+//   updatedAt DateTime? @default(now())
 
-  @@map("fuelstations")
-}
+//   @@map("fuelstations")
+// }
