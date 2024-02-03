@@ -1,18 +1,18 @@
-import prismaClient from "../../prisma";
+// import prismaClient from "../../prisma";
 
-class ListaProfissaoService {
-  async execute() {
+// class ListaProfissaoService {
+//   async execute() {
 
-    const _profession = await prismaClient.profession.findMany({
-      select: {
-        id: true,
-        name: true,
-        _count: true,
-      }
-    })
+//     const _profession = await prismaClient.profession.findMany({
+//       select: {
+//         id: true,
+//         name: true,
+//         _count: true,
+//       }
+//     })
 
-    return _profession
-  }
-}
+//     return _profession
+//   }
+// }
 
-export { ListaProfissaoService }
+// export { ListaProfissaoService }

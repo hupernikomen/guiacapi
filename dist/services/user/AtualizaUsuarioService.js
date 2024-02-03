@@ -31,8 +31,8 @@ class AtualizaService {
                 },
                 select: {
                     store: true,
-                    fuelStation: true,
-                    person: true,
+                    // fuelStation: true,
+                    // person: true,
                     services: true
                 }
             });

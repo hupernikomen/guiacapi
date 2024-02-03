@@ -1,38 +1,37 @@
-"use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.AtualizarProfissionalService = void 0;
-const prisma_1 = __importDefault(require("../../prisma"));
-class AtualizarProfissionalService {
-    execute({ personID, professionID, avatar, name, bio, address, district, }) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const _person = yield prisma_1.default.person.findFirst({ where: { id: personID } });
-            if (!_person)
-                throw new Error("Ops, infelizmente não encontramos!");
-            const __person = yield prisma_1.default.person.updateMany({
-                where: { id: personID },
-                data: {
-                    name,
-                    avatar,
-                    bio,
-                    address,
-                    district,
-                    professionID
-                },
-            });
-            return __person;
-        });
-    }
-}
-exports.AtualizarProfissionalService = AtualizarProfissionalService;
+// import prismaClient from "../../prisma"
+// interface profissionalRequest {
+//     personID: string,
+//     professionID:string,
+//     avatar: object,
+//     name: string,
+//     bio: string,
+//     address: string,
+//     district: string,
+// }
+// class AtualizarProfissionalService {
+//     async execute({
+//         personID,
+//         professionID,
+//         avatar,
+//         name,
+//         bio,
+//         address,
+//         district,
+//     }: profissionalRequest) {
+//         const _person = await prismaClient.person.findFirst({ where: { id: personID } })
+//         if (!_person) throw new Error("Ops, infelizmente não encontramos!");
+//         const __person = await prismaClient.person.updateMany({
+//             where: { id: personID },
+//             data: {
+//                 name,
+//                 avatar,
+//                 bio,
+//                 address,
+//                 district,
+//                 professionID
+//             },
+//         })
+//         return __person
+//     }
+// }
+// export { AtualizarProfissionalService }

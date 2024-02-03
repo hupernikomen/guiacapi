@@ -22,43 +22,43 @@ const GetUniqueServiceController_1 = require("./controllers/service/GetUniqueSer
 const ListCategoryControllerAdm_1 = require("./controllers/category/ListCategoryControllerAdm");
 const LojaLogadaController_1 = require("./controllers/store/LojaLogadaController");
 const AutenticaUsuarioController_1 = require("./controllers/user/AutenticaUsuarioController");
-const BucaProfissionalController_1 = require("./controllers/person/BucaProfissionalController");
+// import { BuscaProfissionalController } from './controllers/person/BucaProfissionalController';
 const BuscaMapaController_1 = require("./controllers/map/BuscaMapaController");
 const BuscaLojaController_1 = require("./controllers/store/BuscaLojaController");
-const BuscaPostoController_1 = require("./controllers/fuelStation/BuscaPostoController");
+// import { BuscaPostoController } from './controllers/fuelStation/BuscaPostoController';
 const DetalheProdutoController_1 = require("./controllers/product/DetalheProdutoController");
 const AtualizaUsuarioController_1 = require("./controllers/user/AtualizaUsuarioController");
 const AtualizaLojaController_1 = require("./controllers/store/AtualizaLojaController");
 const AtualizaCategoriaController_1 = require("./controllers/category/AtualizaCategoriaController");
 const AtualizaCampanhaController_1 = require("./controllers/campaign/AtualizaCampanhaController");
-const AtualizarProfissionalController_1 = require("./controllers/person/AtualizarProfissionalController");
+// import { AtualizarProfissionalController } from './controllers/person/AtualizarProfissionalController';
 const AtualizaProdutoController_1 = require("./controllers/product/AtualizaProdutoController");
-const AtualizaPostoController_1 = require("./controllers/fuelStation/AtualizaPostoController");
+// import { AtualizaPostoController } from './controllers/fuelStation/AtualizaPostoController';
 const CriaMapaController_1 = require("./controllers/map/CriaMapaController");
 const CriaLojaController_1 = require("./controllers/store/CriaLojaController");
 const CriaUsuarioController_1 = require("./controllers/user/CriaUsuarioController");
 const CriaRegiaoController_1 = require("./controllers/region/CriaRegiaoController");
-const CriaProfissaoController_1 = require("./controllers/profession/CriaProfissaoController");
+// import { CriaProfissaoController } from './controllers/profession/CriaProfissaoController';
 const CriaCategoriaController_1 = require("./controllers/category/CriaCategoriaController");
 const CriaContatoController_1 = require("./controllers/contact/CriaContatoController");
-const CriaProfissionalController_1 = require("./controllers/person/CriaProfissionalController");
-const CriaPostoController_1 = require("./controllers/fuelStation/CriaPostoController");
+// import { CriaProfissionalController } from './controllers/person/CriaProfissionalController';
+// import { CriaPostoController } from './controllers/fuelStation/CriaPostoController';
 const CriaCampanhaController_1 = require("./controllers/campaign/CriaCampanhaController");
 const CriaProdutoController_1 = require("./controllers/product/CriaProdutoController");
 const ListarRegioesController_1 = require("./controllers/region/ListarRegioesController");
 const ListarProdutosController_1 = require("./controllers/product/ListarProdutosController");
-const ListarProfissionalController_1 = require("./controllers/person/ListarProfissionalController");
-const ListaProfissaoController_1 = require("./controllers/profession/ListaProfissaoController");
+// import { ListarProfissionalController } from './controllers/person/ListarProfissionalController';
+// import { ListaProfissaoController } from './controllers/profession/ListaProfissaoController';
 const ListaContatosController_1 = require("./controllers/contact/ListaContatosController");
 const ListaCategoriaController_1 = require("./controllers/category/ListaCategoriaController");
 const ListaCampanhasInativasController_1 = require("./controllers/campaign/ListaCampanhasInativasController");
 const ListaCampanhaController_1 = require("./controllers/campaign/ListaCampanhaController");
-const ListaPostosController_1 = require("./controllers/fuelStation/ListaPostosController");
+// import { ListarPostosController } from './controllers/fuelStation/ListaPostosController';
 const ListaLojasController_1 = require("./controllers/store/ListaLojasController");
 const PorCategoriaProdutoController_1 = require("./controllers/product/PorCategoriaProdutoController");
-const PorProfissaoController_1 = require("./controllers/person/PorProfissaoController");
+// import { PorProfissaoController } from './controllers/person/PorProfissaoController';
 const DeletaProdutoController_1 = require("./controllers/product/DeletaProdutoController");
-const AtualizaProfissaoController_1 = require("./controllers/profession/AtualizaProfissaoController");
+// import { AtualizaProfissaoController } from './controllers/profession/AtualizaProfissaoController';
 const DeletaCategoriaController_1 = require("./controllers/category/DeletaCategoriaController");
 const ListarBannersController_1 = require("./controllers/banner/ListarBannersController");
 const DeletaContatoController_1 = require("./controllers/contact/DeletaContatoController");
@@ -74,7 +74,7 @@ const ListarPaymentController_1 = require("./controllers/payment/ListarPaymentCo
 const BuscaPaymentController_1 = require("./controllers/payment/BuscaPaymentController");
 const AtualizarPagamentoController_1 = require("./controllers/payment/AtualizarPagamentoController");
 const ListaLojasControllerAdmin_1 = require("./controllers/store/ListaLojasControllerAdmin");
-const ListarProfissionalControllerAdmin_1 = require("./controllers/person/ListarProfissionalControllerAdmin");
+// import { ListarProfissionalControllerAdmin } from './controllers/person/ListarProfissionalControllerAdmin';
 const AtualizarPagamentoController_2 = require("./controllers/paymentBanner/AtualizarPagamentoController");
 const BuscaPaymentController_2 = require("./controllers/paymentBanner/BuscaPaymentController");
 const CriarPagamentoController_2 = require("./controllers/paymentBanner/CriarPagamentoController");
@@ -137,7 +137,7 @@ const rotas = (0, express_1.Router)();
 exports.rotas = rotas;
 rotas.post('/admins', new CreateAdminsController_1.CreateAdminsController().handle);
 rotas.get('/storesAdmin', new ListaLojasControllerAdmin_1.ListaLojasControllerAdmin().handle);
-rotas.get('/personsAdmin', new ListarProfissionalControllerAdmin_1.ListarProfissionalControllerAdmin().handle);
+// rotas.get('/personsAdmin', new ListarProfissionalControllerAdmin().handle);
 rotas.post('/service', authenticator_1.Authenticator, new CreateServiceController_1.CreateServiceController().handle);
 rotas.get('/services', new ListServicesController_1.ListServicesController().handle);
 rotas.post('/categoryService', authenticator_1.Authenticator, new CreateCategoryServiceController_1.CreateCategoryServiceController().handle);
@@ -217,10 +217,10 @@ rotas.post('/campaign', authenticator_1.Authenticator, new CriaCampanhaControlle
 rotas.put('/campaign', authenticator_1.Authenticator, new AtualizaCampanhaController_1.AtualizaCampanhaController().handle);
 rotas.get('/campaigns', new ListaCampanhasInativasController_1.ListaCampanhasInativasController().handle);
 rotas.get('/campaigns/active', new ListaCampanhaController_1.ListaCampanhaController().handle);
-rotas.post('/posto', new CriaPostoController_1.CriaPostoController().handle);
-rotas.put('/posto', uploadAvatar.single('avatar'), new AtualizaPostoController_1.AtualizaPostoController().handle);
-rotas.get('/posto', new BuscaPostoController_1.BuscaPostoController().handle);
-rotas.get('/postos', new ListaPostosController_1.ListarPostosController().handle);
+// rotas.post('/posto', new CriaPostoController().handle);
+// rotas.put('/posto', uploadAvatar.single('avatar'), new AtualizaPostoController().handle);
+// rotas.get('/posto', new BuscaPostoController().handle);
+// rotas.get('/postos', new ListarPostosController().handle);
 rotas.post('/job', authenticator_1.Authenticator, new CreateJobController_1.CriaJobController().handle);
 rotas.get('/jobs', new ListarJobsController_1.ListarJobsController().handle);
 // account/store/manipulateproduct
@@ -273,20 +273,3 @@ rotas.put('/store', authenticator_1.Authenticator, uploadAvatar.single('avatar')
 rotas.get('/stores', new ListaLojasController_1.ListaLojasController().handle);
 // pages/store
 rotas.get('/store', new BuscaLojaController_1.BuscaLojaController().handle);
-// pages/admin/create/user
-rotas.post('/person', authenticator_1.Authenticator, new CriaProfissionalController_1.CriaProfissionalController().handle);
-// account/person/dados
-// pages/admin/create/user
-rotas.put('/person', authenticator_1.Authenticator, uploadAvatar.single('avatar'), new AtualizarProfissionalController_1.AtualizarProfissionalController().handle);
-// account/person/dados
-rotas.get('/person', new BucaProfissionalController_1.BuscaProfissionalController().handle);
-// pages/feed
-// pages/listPersons
-// pages/search
-rotas.get('/persons', new ListarProfissionalController_1.ListarProfissionalController().handle);
-// pages/admin/create/profession
-rotas.post('/profession', authenticator_1.Authenticator, new CriaProfissaoController_1.CriaProfissaoController().handle);
-rotas.put('/profession', authenticator_1.Authenticator, new AtualizaProfissaoController_1.AtualizaProfissaoController().handle);
-// pages/admin/create/user
-rotas.get('/professions', new ListaProfissaoController_1.ListaProfissaoController().handle);
-rotas.get('/profession/persons', new PorProfissaoController_1.PorProfissaoController().handle);

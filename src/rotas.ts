@@ -21,43 +21,43 @@ import { ListCategoryControllerAdm } from './controllers/category/ListCategoryCo
 
 import { LojaLogadaController } from './controllers/store/LojaLogadaController';
 import { AutenticaUsuarioController } from './controllers/user/AutenticaUsuarioController';
-import { BuscaProfissionalController } from './controllers/person/BucaProfissionalController';
+// import { BuscaProfissionalController } from './controllers/person/BucaProfissionalController';
 import { BuscaMapaController } from './controllers/map/BuscaMapaController';
 import { BuscaLojaController } from './controllers/store/BuscaLojaController';
-import { BuscaPostoController } from './controllers/fuelStation/BuscaPostoController';
+// import { BuscaPostoController } from './controllers/fuelStation/BuscaPostoController';
 import { DetalheProdutoController } from './controllers/product/DetalheProdutoController';
 import { AtualizaUsuarioController } from './controllers/user/AtualizaUsuarioController';
 import { AtualizaLojaController } from './controllers/store/AtualizaLojaController';
 import { AtualizaCategoriaController } from './controllers/category/AtualizaCategoriaController';
 import { AtualizaCampanhaController } from './controllers/campaign/AtualizaCampanhaController';
-import { AtualizarProfissionalController } from './controllers/person/AtualizarProfissionalController';
+// import { AtualizarProfissionalController } from './controllers/person/AtualizarProfissionalController';
 import { AtualizaProdutoController } from './controllers/product/AtualizaProdutoController';
-import { AtualizaPostoController } from './controllers/fuelStation/AtualizaPostoController';
+// import { AtualizaPostoController } from './controllers/fuelStation/AtualizaPostoController';
 import { CriaMapaController } from './controllers/map/CriaMapaController';
 import { CriaLojaController } from './controllers/store/CriaLojaController';
 import { CriaUsuarioController } from './controllers/user/CriaUsuarioController';
 import { CriaRegiaoController } from './controllers/region/CriaRegiaoController';
-import { CriaProfissaoController } from './controllers/profession/CriaProfissaoController';
+// import { CriaProfissaoController } from './controllers/profession/CriaProfissaoController';
 import { CriaCategoriaController } from './controllers/category/CriaCategoriaController';
 import { CriaContatoController } from './controllers/contact/CriaContatoController';
-import { CriaProfissionalController } from './controllers/person/CriaProfissionalController';
-import { CriaPostoController } from './controllers/fuelStation/CriaPostoController';
+// import { CriaProfissionalController } from './controllers/person/CriaProfissionalController';
+// import { CriaPostoController } from './controllers/fuelStation/CriaPostoController';
 import { CriaCampanhaController } from './controllers/campaign/CriaCampanhaController';
 import { CriaProdutoController } from './controllers/product/CriaProdutoController';
 import { ListarRegioesController } from './controllers/region/ListarRegioesController';
 import { ListarProdutosController } from './controllers/product/ListarProdutosController';
-import { ListarProfissionalController } from './controllers/person/ListarProfissionalController';
-import { ListaProfissaoController } from './controllers/profession/ListaProfissaoController';
+// import { ListarProfissionalController } from './controllers/person/ListarProfissionalController';
+// import { ListaProfissaoController } from './controllers/profession/ListaProfissaoController';
 import { ListaContatosController } from './controllers/contact/ListaContatosController';
 import { ListaCategoriaController } from './controllers/category/ListaCategoriaController';
 import { ListaCampanhasInativasController } from './controllers/campaign/ListaCampanhasInativasController';
 import { ListaCampanhaController } from './controllers/campaign/ListaCampanhaController';
-import { ListarPostosController } from './controllers/fuelStation/ListaPostosController';
+// import { ListarPostosController } from './controllers/fuelStation/ListaPostosController';
 import { ListaLojasController } from './controllers/store/ListaLojasController';
 import { PorCategoriaProdutoController } from './controllers/product/PorCategoriaProdutoController';
-import { PorProfissaoController } from './controllers/person/PorProfissaoController';
+// import { PorProfissaoController } from './controllers/person/PorProfissaoController';
 import { DeletaProdutoController } from './controllers/product/DeletaProdutoController';
-import { AtualizaProfissaoController } from './controllers/profession/AtualizaProfissaoController';
+// import { AtualizaProfissaoController } from './controllers/profession/AtualizaProfissaoController';
 import { DeletaCategoriaController } from './controllers/category/DeletaCategoriaController';
 import { ListarBannersController } from './controllers/banner/ListarBannersController';
 import { DeletarContatoController } from './controllers/contact/DeletaContatoController';
@@ -73,7 +73,7 @@ import { ListarPaymentController } from './controllers/payment/ListarPaymentCont
 import { BuscaPaymentController } from './controllers/payment/BuscaPaymentController';
 import { AtualizarPagamentoController } from './controllers/payment/AtualizarPagamentoController';
 import { ListaLojasControllerAdmin } from './controllers/store/ListaLojasControllerAdmin';
-import { ListarProfissionalControllerAdmin } from './controllers/person/ListarProfissionalControllerAdmin';
+// import { ListarProfissionalControllerAdmin } from './controllers/person/ListarProfissionalControllerAdmin';
 import { AtualizarPagamentoBannerController } from './controllers/paymentBanner/AtualizarPagamentoController';
 import { BuscaPaymentBannerController } from './controllers/paymentBanner/BuscaPaymentController';
 import { CriaPaymentBannerController } from './controllers/paymentBanner/CriarPagamentoController';
@@ -143,7 +143,7 @@ const rotas = Router();
 rotas.post('/admins', new CreateAdminsController().handle);
 
 rotas.get('/storesAdmin', new ListaLojasControllerAdmin().handle);
-rotas.get('/personsAdmin', new ListarProfissionalControllerAdmin().handle);
+// rotas.get('/personsAdmin', new ListarProfissionalControllerAdmin().handle);
 rotas.post('/service', Authenticator, new CreateServiceController().handle);
 rotas.get('/services', new ListServicesController().handle);
 rotas.post('/categoryService', Authenticator, new CreateCategoryServiceController().handle);
@@ -252,10 +252,10 @@ rotas.post('/campaign', Authenticator, new CriaCampanhaController().handle);
 rotas.put('/campaign', Authenticator, new AtualizaCampanhaController().handle);
 rotas.get('/campaigns', new ListaCampanhasInativasController().handle);
 rotas.get('/campaigns/active', new ListaCampanhaController().handle);
-rotas.post('/posto', new CriaPostoController().handle);
-rotas.put('/posto', uploadAvatar.single('avatar'), new AtualizaPostoController().handle);
-rotas.get('/posto', new BuscaPostoController().handle);
-rotas.get('/postos', new ListarPostosController().handle);
+// rotas.post('/posto', new CriaPostoController().handle);
+// rotas.put('/posto', uploadAvatar.single('avatar'), new AtualizaPostoController().handle);
+// rotas.get('/posto', new BuscaPostoController().handle);
+// rotas.get('/postos', new ListarPostosController().handle);
 
 rotas.post('/job', Authenticator, new CriaJobController().handle);
 rotas.get('/jobs', new ListarJobsController().handle);
@@ -330,27 +330,27 @@ rotas.get('/stores', new ListaLojasController().handle);
 rotas.get('/store', new BuscaLojaController().handle);
 
 // pages/admin/create/user
-rotas.post('/person', Authenticator, new CriaProfissionalController().handle);
+// rotas.post('/person', Authenticator, new CriaProfissionalController().handle);
 
 // account/person/dados
 // pages/admin/create/user
-rotas.put('/person', Authenticator, uploadAvatar.single('avatar'), new AtualizarProfissionalController().handle);
+// rotas.put('/person', Authenticator, uploadAvatar.single('avatar'), new AtualizarProfissionalController().handle);
 
 // account/person/dados
-rotas.get('/person', new BuscaProfissionalController().handle);
+// rotas.get('/person', new BuscaProfissionalController().handle);
 
 // pages/feed
 // pages/listPersons
 // pages/search
-rotas.get('/persons', new ListarProfissionalController().handle);
+// rotas.get('/persons', new ListarProfissionalController().handle);
 
 // pages/admin/create/profession
-rotas.post('/profession', Authenticator, new CriaProfissaoController().handle);
+// rotas.post('/profession', Authenticator, new CriaProfissaoController().handle);
 
-rotas.put('/profession', Authenticator, new AtualizaProfissaoController().handle);
+// rotas.put('/profession', Authenticator, new AtualizaProfissaoController().handle);
 
 // pages/admin/create/user
-rotas.get('/professions', new ListaProfissaoController().handle);
-rotas.get('/profession/persons', new PorProfissaoController().handle);
+// rotas.get('/professions', new ListaProfissaoController().handle);
+// rotas.get('/profession/persons', new PorProfissaoController().handle);
 
 export { rotas };

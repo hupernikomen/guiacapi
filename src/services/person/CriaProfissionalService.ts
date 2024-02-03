@@ -1,28 +1,28 @@
-import prismaClient from "../../prisma";
+// import prismaClient from "../../prisma";
 
-interface profissionalRequest {
-  userID: string,
-  professionID:string
-}
+// interface profissionalRequest {
+//   userID: string,
+//   professionID:string
+// }
 
-class CriaProfissionalService {
+// class CriaProfissionalService {
 
-  async execute({
+//   async execute({
 
-    userID,
-    professionID
+//     userID,
+//     professionID
 
-  }: profissionalRequest) {
+//   }: profissionalRequest) {
 
-    const _person = await prismaClient.person.create({
-      data: {
-        userID,
-        professionID
-      }
-    })
+//     const _person = await prismaClient.person.create({
+//       data: {
+//         userID,
+//         professionID
+//       }
+//     })
 
-    return _person
-  }
-}
+//     return _person
+//   }
+// }
 
-export { CriaProfissionalService }
+// export { CriaProfissionalService }

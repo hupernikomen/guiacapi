@@ -26,7 +26,7 @@ class ListarJobsService {
                     job: true,
                     sendCurriculum: true,
                     validity: true,
-                    user: { select: { person: true, store: true } }
+                    user: { select: { store: true } }
                 }
             });
             return map;
