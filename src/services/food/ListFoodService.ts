@@ -9,6 +9,7 @@ class ListFoodService {
         }
       },
       select: {
+        id: true,
         avatar: true,
         name: true,
         delivery: true,
